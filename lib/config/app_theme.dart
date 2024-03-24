@@ -5,13 +5,19 @@ import 'app_styles.dart';
 
 class AppTheme {
   ThemeData appThemeDate = ThemeData(
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.grey[100],
+      centerTitle: true,
+      elevation: 0.0,
+      iconTheme: const IconThemeData(color: AppColors.primaryColor),
+    ),
     inputDecorationTheme: InputDecorationTheme(
       alignLabelWithHint: true,
       fillColor: AppColors.veryLightGrey,
       filled: true,
       floatingLabelBehavior: FloatingLabelBehavior.auto,
       hintStyle: AppStyles.lightStyle(color: AppColors.lightGrey),
-      labelStyle: AppStyles.lightStyle(),
+      labelStyle: AppStyles.mediumStyle(),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.transparent)),

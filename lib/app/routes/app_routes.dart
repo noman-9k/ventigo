@@ -7,6 +7,11 @@ abstract class Routes {
   static const DASHBOARD = _Paths.DASHBOARD;
   static const MAIN = _Paths.MAIN;
   static const LOGIN = _Paths.LOGIN;
+  static const ADD_REPORT = _Paths.ADD_REPORT;
+  static const SERVICES = _Paths.SERVICES;
+  static const ADD_SERVICE = _Paths.ADD_SERVICE;
+  static const STATISTIC = _Paths.STATISTIC;
+  static const FILTERS = _Paths.FILTERS;
 }
 
 abstract class _Paths {
@@ -15,4 +20,9 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const MAIN = '/main';
   static const LOGIN = '/login';
+  static const ADD_REPORT = '/add-report';
+  static const SERVICES = '/services';
+  static const ADD_SERVICE = '/add-service';
+  static const STATISTIC = '/statistic';
+  static const FILTERS = '/filters';
 }

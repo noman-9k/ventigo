@@ -26,7 +26,7 @@ class AppStyles {
   }
 
   static TextStyle boldStyle({Color? color, double? fontSize}) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.notoSans(
         fontSize: fontSize ?? 18.sp,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.primaryColor);

@@ -11,7 +11,7 @@ class AppText {
     return Text(s, style: AppStyles.mediumStyle(color: color));
   }
 
-  static boldText(String s, {required Color color, double? fontSize}) {
+  static boldText(String s, {Color? color, double? fontSize}) {
     return Text(s,
         style: AppStyles.boldStyle(color: color, fontSize: fontSize));
   }
