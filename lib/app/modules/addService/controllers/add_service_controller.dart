@@ -71,7 +71,7 @@ class AddServiceController extends GetxController {
         .firstWhere((element) => element.name == categoryName)
         .services;
 
-    services?.add(Service(
+    services?.add(AppService(
         name: serviceNameController.text,
         price: double.tryParse(priceController.text) ?? 0));
   }
@@ -82,7 +82,7 @@ class AddServiceController extends GetxController {
 
   addNewCategoryAndService(String categoryName) {
     categories.add(Category(name: categoryName, services: [
-      Service(
+      AppService(
           name: serviceNameController.text,
           price: double.tryParse(priceController.text) ?? 0)
     ]));

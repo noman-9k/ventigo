@@ -24,8 +24,8 @@ class MainController extends GetxController {
         customerData: "User_$i",
         date: DateTime.now().subtract(Duration(days: i)),
         category: Category(name: 'Category $i', services: []),
-        typeOfService:
-            Service(name: 'Service $i', price: random.nextInt(100).toDouble()),
+        typeOfService: AppService(
+            name: 'Service $i', price: random.nextInt(100).toDouble()),
         price: random.nextInt(100).toString(),
         total: random.nextInt(100).toString(),
         isNewCustomer: random.nextBool(),

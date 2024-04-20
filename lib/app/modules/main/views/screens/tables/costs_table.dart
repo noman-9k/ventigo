@@ -1,22 +1,19 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/physics.dart';
 import 'package:horizontal_data_table/horizontal_data_table.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
-import '../../controllers/table_data.dart';
+import '../../../controllers/table_data.dart';
 
-class HorTable extends StatefulWidget {
-  HorTable({super.key, required this.tableItems});
+class CostsTable extends StatefulWidget {
+  CostsTable({super.key, required this.tableItems});
   final List<TableItem> tableItems;
 
   @override
-  State<HorTable> createState() => _HorTableState();
+  State<CostsTable> createState() => _CostsTableState();
 }
 
-class _HorTableState extends State<HorTable> {
+class _CostsTableState extends State<CostsTable> {
   ScrollController _scrollController = ScrollController();
   bool changeColor = false;
   DateTime currentDate = DateTime.now();
@@ -32,7 +29,7 @@ class _HorTableState extends State<HorTable> {
           onScrollControllerReady:
               (verticalController, horizontalController) {},
           leftHandSideColumnWidth: 100,
-          rightHandSideColumnWidth: 550,
+          rightHandSideColumnWidth: 500,
           isFixedHeader: true,
           headerWidgets: _getTitleWidget(),
           footerWidgets: _getTitleWidget(),
@@ -108,14 +105,13 @@ class _HorTableState extends State<HorTable> {
 
   List<Widget> _getTitleWidget() {
     return [
-      _getTitleItemWidget('Customer Data', 100),
-      _getTitleItemWidget('New Cus', 50),
-      _getTitleItemWidget('Reg Cus', 50),
-      _getTitleItemWidget('Card Pay', 50),
+      _getTitleItemWidget('Name Of Cost', 100),
+      _getTitleItemWidget('Related Category', 100),
+      _getTitleItemWidget('Deducted from Tax', 100),
       _getTitleItemWidget('Data of Service', 100),
-      _getTitleItemWidget('Category', 100, label2: 'Service'),
+      // _getTitleItemWidget('Category', 100, label2: 'Service'),
       _getTitleItemWidget('Price', 100, label2: 'Total'),
-      _getTitleItemWidget('%', 100, label2: 'Total'),
+      // _getTitleItemWidget('%', 100, label2: 'Total'),
     ];
   }
 
@@ -163,55 +159,6 @@ class _HorTableState extends State<HorTable> {
       children: <Widget>[
         Container(
           color: changeColor ? Colors.grey[200] : Colors.white,
-          width: 50,
-          height: 52,
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Icon(
-            widget.tableItems[index].cardPay ? Icons.done : Icons.minimize,
-            color: widget.tableItems[index].cardPay ? Colors.green : Colors.red,
-          ),
-        ),
-        Container(
-          color: changeColor ? Colors.grey[200] : Colors.white,
-          width: 50,
-          height: 52,
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Icon(
-            !widget.tableItems[index].isNewCustomer
-                ? Icons.done
-                : Icons.minimize,
-            color: !widget.tableItems[index].isNewCustomer
-                ? Colors.green
-                : Colors.red,
-          ),
-        ),
-        Container(
-          color: changeColor ? Colors.grey[200] : Colors.white,
-          width: 50,
-          height: 52,
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Icon(
-            widget.tableItems[index].isNewCustomer
-                ? Icons.done
-                : Icons.minimize,
-            color: widget.tableItems[index].isNewCustomer
-                ? Colors.green
-                : Colors.red,
-          ),
-        ),
-        Container(
-          color: changeColor ? Colors.grey[200] : Colors.white,
-          width: 100,
-          height: 52,
-          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Text(widget.tableItems[index].date.smallDate()),
-        ),
-        Container(
-          color: changeColor ? Colors.grey[200] : Colors.white,
           width: 100,
           height: 52,
           padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -229,14 +176,42 @@ class _HorTableState extends State<HorTable> {
           width: 100,
           height: 52,
           padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-          alignment: Alignment.centerLeft,
-          child: Column(
-            children: [
-              Text(widget.tableItems[index].price),
-              Divider(height: 1, endIndent: 20, indent: 20),
-              Text(widget.tableItems[index].total),
-            ],
+          alignment: Alignment.center,
+          child: Icon(
+            widget.tableItems[index].cardPay ? Icons.done : Icons.minimize,
+            color: widget.tableItems[index].cardPay ? Colors.green : Colors.red,
           ),
+        ),
+        Container(
+          color: changeColor ? Colors.grey[200] : Colors.white,
+          width: 100,
+          height: 52,
+          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+          child: Text(widget.tableItems[index].date.smallDate()),
+        ),
+        // Container(
+        //   color: changeColor ? Colors.grey[200] : Colors.white,
+        //   width: 50,
+        //   height: 52,
+        //   padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+        //   alignment: Alignment.centerLeft,
+        //   child: Icon(
+        //     widget.tableItems[index].isNewCustomer
+        //         ? Icons.done
+        //         : Icons.minimize,
+        //     color: widget.tableItems[index].isNewCustomer
+        //         ? Colors.green
+        //         : Colors.red,
+        //   ),
+        // ),
+        Container(
+          color: changeColor ? Colors.grey[200] : Colors.white,
+          width: 100,
+          height: 52,
+          padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+          alignment: Alignment.centerLeft,
+          child: Text(widget.tableItems[index].date.smallDate()),
         ),
         Container(
           color: changeColor ? Colors.grey[200] : Colors.white,
@@ -246,12 +221,26 @@ class _HorTableState extends State<HorTable> {
           alignment: Alignment.centerLeft,
           child: Column(
             children: [
-              Text(widget.tableItems[index].percentage + '%'),
+              Text(widget.tableItems[index].price),
               Divider(height: 1, endIndent: 20, indent: 20),
               Text(widget.tableItems[index].total),
             ],
           ),
         ),
+        // Container(
+        //   color: changeColor ? Colors.grey[200] : Colors.white,
+        //   width: 100,
+        //   height: 52,
+        //   padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+        //   alignment: Alignment.centerLeft,
+        //   child: Column(
+        //     children: [
+        //       Text(widget.tableItems[index].percentage + '%'),
+        //       Divider(height: 1, endIndent: 20, indent: 20),
+        //       Text(widget.tableItems[index].total),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }

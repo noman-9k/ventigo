@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../controllers/add_service_controller.dart';
 
@@ -13,7 +14,10 @@ class AddServiceView extends GetView<AddServiceController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: AppText.boldText('Add Service'), centerTitle: true),
+      appBar: AppBar(
+          leading: AppBackButton(),
+          title: AppText.boldText('Add Service'),
+          centerTitle: true),
       body: Padding(
         padding: AppConstants.defaultPadding,
         child: Column(
@@ -25,6 +29,7 @@ class AddServiceView extends GetView<AddServiceController> {
               return CustomDropDown(
                 items: controller.categories.map((e) => e.name).toList(),
                 onChanged: controller.onCategoryChanged,
+                title: 'Select Category',
               );
             }),
             32.verticalSpace,

@@ -2,26 +2,28 @@ import 'package:awesome_bottom_bar/tab_item.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ventigo/app/modules/employees/views/employees_view.dart';
 
 import '../../../../config/app_text.dart';
 import '../../main/views/main_view.dart';
 import '../../services/views/services_view.dart';
+import '../../settings/views/settings_view.dart';
 import '../../statistic/views/statistic_view.dart';
 
 class DashboardController extends GetxController {
   List<TabItem> navItems = [
-    TabItem(title: 'Setings', icon: FontAwesomeIcons.gear),
+    TabItem(title: 'Settings', icon: FontAwesomeIcons.gear),
     TabItem(title: 'Statistic', icon: FontAwesomeIcons.chartLine),
     TabItem(title: 'Filters', icon: FontAwesomeIcons.filter),
     TabItem(title: 'Services', icon: FontAwesomeIcons.gears),
-    TabItem(title: 'Employes', icon: FontAwesomeIcons.users),
+    TabItem(title: 'Employees', icon: FontAwesomeIcons.users),
   ];
   List<Widget> widgetOptions = <Widget>[
-    Center(child: AppText.lightText('Setings')),
+    SettingsView(),
     StatisticView(),
     MainView(),
     ServicesView(),
-    Center(child: AppText.lightText('Employes')),
+    EmployeesView(),
   ];
 
   RxInt currentIndex = 2.obs;

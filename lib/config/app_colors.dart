@@ -14,5 +14,7 @@ class AppColors {
 
   static var lightYellow = const Color(0xFFFFFFE8);
 
+  static const Color veryLightBlue = const Color(0xFFF0F5FE);
+
   AppColors._();
 }

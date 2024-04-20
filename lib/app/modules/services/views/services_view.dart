@@ -10,6 +10,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../common/app_search_field.dart';
+import '../../common/back_button.dart';
 import '../controllers/services_controller.dart';
 
 class ServicesView extends GetView<ServicesController> {
@@ -18,6 +19,7 @@ class ServicesView extends GetView<ServicesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: AppBackButton(),
         title: AppText.boldText('Services'),
         centerTitle: true,
         automaticallyImplyLeading: false,

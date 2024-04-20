@@ -7,7 +7,7 @@ class TableItem {
   String customerData;
   DateTime date;
   Category category;
-  Service typeOfService;
+  AppService typeOfService;
   String price;
   String total;
   bool isNewCustomer;

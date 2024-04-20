@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../config/app_text.dart';
@@ -12,7 +13,8 @@ class DateWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         decoration: BoxDecoration(
-            color: Colors.grey[200], borderRadius: BorderRadius.circular(50)),
+            color: AppColors.veryLightBlue,
+            borderRadius: BorderRadius.circular(50)),
         child: AppText.mediumText(DateTime.now().smallDate()),
       ),
     );

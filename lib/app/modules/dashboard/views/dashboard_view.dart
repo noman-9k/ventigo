@@ -17,15 +17,17 @@ class DashboardView extends GetView<DashboardController> {
         bottomNavigationBar: BottomBarInspiredOutside(
           height: 45,
           items: controller.navItems,
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.primaryColor.withOpacity(0.9),
           color: Colors.white,
           colorSelected: AppColors.whiteColor,
           iconSize: 20,
           itemStyle: ItemStyle.circle,
           indexSelected: controller.currentIndex.value,
           countStyle: CountStyle(
-              background: AppColors.primaryColor, color: Colors.white),
-          chipStyle: ChipStyle(background: AppColors.primaryColor),
+              background: AppColors.primaryColor.withOpacity(0.9),
+              color: Colors.white),
+          chipStyle:
+              ChipStyle(background: AppColors.primaryColor.withOpacity(0.9)),
           titleStyle: AppStyles.lightStyle(),
           onTap: (int index) => controller.onTapped(index),
         ),

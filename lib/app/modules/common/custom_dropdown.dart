@@ -5,16 +5,18 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 class CustomDropDown extends StatefulWidget {
-  const CustomDropDown({super.key, required this.items, this.onChanged});
-  final List<String> items;
+  const CustomDropDown(
+      {super.key, required this.items, this.onChanged, required this.title});
+  final List<String>? items;
   final Function(String?)? onChanged;
+  final String title;
 
   @override
   State<CustomDropDown> createState() => _CustomDropDownState();
 }
 
 class _CustomDropDownState extends State<CustomDropDown> {
-  var selectedValue;
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -22,36 +24,32 @@ class _CustomDropDownState extends State<CustomDropDown> {
       child: DropdownButton2<String>(
         isExpanded: true,
         value: selectedValue,
-        hint: AppText.mediumText('Select Category'),
-        items: widget.items
-            .map((String item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: AppText.mediumText(item),
-                ))
-            .toList(),
+        hint: AppText.mediumText(widget.title),
+        items: widget.items != null
+            ? widget.items!
+                .map((String item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: AppText.mediumText(item),
+                    ))
+                .toList()
+            : [],
         onChanged: (value) {
           setState(() {
             selectedValue = value;
           });
-          widget.onChanged!(selectedValue);
+          if (widget.onChanged != null) widget.onChanged!(selectedValue);
         },
         buttonStyleData: ButtonStyleData(
           height: 50,
           width: 1.sw,
           padding: const EdgeInsets.only(left: 14, right: 14),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(14),
-            // border: Border.all(color: Colors.black26),
-            color: Color.fromARGB(255, 236, 236, 236),
-          ),
+              borderRadius: BorderRadius.circular(14),
+              color: Color(0xFFECECEC)),
           elevation: 2,
         ),
         iconStyleData: const IconStyleData(
-          icon: Icon(Icons.arrow_forward_ios_outlined),
-          iconSize: 14,
-          // iconEnabledColor: Colors.grey,
-          // iconDisabledColor: Colors.grey,
-        ),
+            icon: Icon(Icons.arrow_forward_ios_outlined), iconSize: 14),
         dropdownStyleData: DropdownStyleData(
           maxHeight: 200,
           width: 1.sw - 40,
@@ -66,9 +64,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
           ),
         ),
         menuItemStyleData: const MenuItemStyleData(
-          height: 40,
-          padding: EdgeInsets.only(left: 14, right: 14),
-        ),
+            height: 40, padding: EdgeInsets.only(left: 14, right: 14)),
       ),
     );
   }

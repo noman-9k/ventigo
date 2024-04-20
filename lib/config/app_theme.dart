@@ -6,7 +6,7 @@ import 'app_styles.dart';
 class AppTheme {
   ThemeData appThemeDate = ThemeData(
     appBarTheme: AppBarTheme(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       elevation: 0.0,
       iconTheme: const IconThemeData(color: AppColors.primaryColor),

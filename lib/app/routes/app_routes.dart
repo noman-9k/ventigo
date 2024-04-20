@@ -12,6 +12,11 @@ abstract class Routes {
   static const ADD_SERVICE = _Paths.ADD_SERVICE;
   static const STATISTIC = _Paths.STATISTIC;
   static const FILTERS = _Paths.FILTERS;
+  static const EMPLOYEES = _Paths.EMPLOYEES;
+  static const ADD_EMPLOYE = _Paths.ADD_EMPLOYE;
+  static const SETTINGS = _Paths.SETTINGS;
+  static const ADD_COST = _Paths.ADD_COST;
+  static const COSTS_FILTER = _Paths.COSTS_FILTER;
 }
 
 abstract class _Paths {
@@ -25,4 +30,9 @@ abstract class _Paths {
   static const ADD_SERVICE = '/add-service';
   static const STATISTIC = '/statistic';
   static const FILTERS = '/filters';
+  static const EMPLOYEES = '/employees';
+  static const ADD_EMPLOYE = '/add-employe';
+  static const SETTINGS = '/settings';
+  static const ADD_COST = '/add-cost';
+  static const COSTS_FILTER = '/costs-filter';
 }

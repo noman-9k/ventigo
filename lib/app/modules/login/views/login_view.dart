@@ -72,7 +72,7 @@ class LoginView extends GetView<LoginController> {
             ),
             60.verticalSpace,
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () => controller.adminLogin(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

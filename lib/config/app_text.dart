@@ -7,8 +7,11 @@ class AppText {
     return Text(text, style: AppStyles.lightStyle(color: color));
   }
 
-  static mediumText(String s, {Color? color}) {
-    return Text(s, style: AppStyles.mediumStyle(color: color));
+  static mediumText(String s,
+      {Color? color, TextAlign? align, double? fontSize}) {
+    return Text(s,
+        style: AppStyles.mediumStyle(color: color, fontSize: fontSize),
+        textAlign: align);
   }
 
   static boldText(String s, {Color? color, double? fontSize}) {

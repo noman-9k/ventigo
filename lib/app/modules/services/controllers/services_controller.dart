@@ -11,7 +11,8 @@ class ServicesController extends GetxController {
 
   static ServicesController get to => Get.find();
 
-  List fetchData() {
+  Future<List> fetchData() async {
+    await Future.delayed(Duration(milliseconds: 1));
     return getservicesSearchList();
   }
 
