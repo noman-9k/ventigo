@@ -5,10 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:ventigo/app/modules/common/two_tabs_view.dart';
 import 'package:ventigo/config/app_text.dart';
 
-import '../../../../config/app_colors.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_app_bar.dart';
 import '../../common/bottom_add_logout_bar.dart';

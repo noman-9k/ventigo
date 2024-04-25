@@ -100,7 +100,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
               10.verticalSpace,
               24.verticalSpace,
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () => controller.getAllEmployees(),
                 child: AppText.boldText('Save Employee', color: Colors.white),
               ),
             ],

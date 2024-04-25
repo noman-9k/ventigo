@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/category_service.dart';
+import 'package:ventigo/app/db/tables/tables.dart';
 
 import '../../../models/caregory.dart';
 
@@ -10,6 +11,8 @@ class ServicesController extends GetxController {
   var key = GlobalKey<FormState>();
 
   static ServicesController get to => Get.find();
+
+  List<DbCategories> dbCategories = [];
 
   Future<List> fetchData() async {
     await Future.delayed(Duration(milliseconds: 1));
