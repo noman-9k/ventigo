@@ -17,13 +17,30 @@ class AppDb extends _$AppDb {
   @override
   int get schemaVersion => 1;
 
-  @override
-
   // Employees
   Future insertNewEmployee(DbEmployee employee) =>
       into(dbEmployees).insert(employee);
 
+  Future updateEmployee(DbEmployee employee) =>
+      update(dbEmployees).replace(employee);
+
+  Future<int> insertNewCompanionEmployee(String name, String lastName,
+      String login, String password, double percentage,
+      {List<String>? categories, List<String>? visibility}) async {
+    final id = await into(dbEmployees).insert(DbEmployeesCompanion.insert(
+        name: Value(name),
+        lastName: Value(lastName),
+        login: Value(login),
+        password: Value(password),
+        percentage: Value(percentage),
+        categories: categories ?? [],
+        visibility: visibility ?? []));
+
+    return id;
+  }
+
   Stream<List<DbEmployee>> getAllEmployees() => select(dbEmployees).watch();
+  Future<List<DbEmployee>> getAllEmployeesList() => select(dbEmployees).get();
 
   // Categories
   Future insertNewCategory(DbCategory category) =>
@@ -43,6 +60,14 @@ class AppDb extends _$AppDb {
   }
 
   Stream<List<DbCategory>> getAllCategories() => select(dbCategories).watch();
+  Future<List<DbCategory>?> getCategoriesByIDs(List<String> categories) async {
+    final ids = categories.map((e) => int.parse(e)).toList();
+    final categoriesList =
+        await (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
+    return categoriesList;
+  }
+
+  Future<List<DbCategory>> getCategoriesAsList() => select(dbCategories).get();
 
   // Services
   Future insertNewService(DbService service) =>

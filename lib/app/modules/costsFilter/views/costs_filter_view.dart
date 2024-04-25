@@ -10,7 +10,6 @@ import '../../../app_services/category_service.dart';
 import '../../common/back_button.dart';
 import '../../common/common_price_range_slider.dart';
 import '../../common/custom_dropdown.dart';
-import '../../filters/views/widgets/price_range_slider.dart';
 import '../controllers/costs_filter_controller.dart';
 
 class CostsFilterView extends GetView<CostsFilterController> {
@@ -33,14 +32,14 @@ class CostsFilterView extends GetView<CostsFilterController> {
               ),
             ),
             20.verticalSpace,
-            CustomDropDown(
-              items: CategoryService.to
-                  .getAllServicesCategories()
-                  .map((e) => e.name)
-                  .toList(),
-              onChanged: controller.onCategoryChanged,
-              title: 'Select Category',
-            ),
+            // CustomDropDown(
+            //   items: CategoryService.to
+            //       .getAllServicesCategories()
+            //       .map((e) => e.name)
+            //       .toList(),
+            //   onChanged: controller.onCategoryChanged,
+            //   title: 'Select Category',
+            // ),
             20.verticalSpace,
             YesNoButton(onChanged: (_) {}, title: 'Deduct from TAX'),
             20.verticalSpace,

@@ -1,14 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/db/db_controller.dart';
-import 'package:ventigo/app/db/drift_db.dart';
-import 'package:ventigo/app/db/tables/tables.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../common/back_button.dart';

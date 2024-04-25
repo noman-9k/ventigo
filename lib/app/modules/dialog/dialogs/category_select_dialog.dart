@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../db/drift_db.dart';
 import '../../../models/caregory.dart';
 
 class CategorySelectDialog extends StatefulWidget {
@@ -8,16 +9,16 @@ class CategorySelectDialog extends StatefulWidget {
       required this.categories,
       required this.onDone,
       this.selectedCategories = const []});
-  final List<Category> categories;
-  final Function(List<Category>?) onDone;
-  final List<Category>? selectedCategories;
+  final List<DbCategory> categories;
+  final Function(List<DbCategory>?) onDone;
+  final List<DbCategory>? selectedCategories;
 
   @override
   State<CategorySelectDialog> createState() => _CategorySelectDialogState();
 }
 
 class _CategorySelectDialogState extends State<CategorySelectDialog> {
-  List<Category> selectedCategories = [];
+  List<DbCategory> selectedCategories = [];
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class _CategorySelectDialogState extends State<CategorySelectDialog> {
         child: Column(
           children: widget.categories.map((category) {
             return CheckboxListTile(
-              title: Text(category.name),
+              title: Text(category.name!),
               value: selectedCategories.contains(category),
               onChanged: (value) {
                 if (value!) {

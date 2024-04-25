@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,26 +36,31 @@ class EmployeesView extends GetView<EmployeesController> {
               10.verticalSpace,
               AppSearchField(
                 label: 'Search',
-                fetchData: () => controller.fetchData(),
+                fetchData: () => controller.getEmployeesSearchList(),
                 getSelectedValue: (EmployeeSearchItem value) =>
                     controller.scrollToValue(value.value),
               ),
               10.verticalSpace,
-              controller.employees.isEmpty
-                  ? const Center(child: Text('No Employees'))
-                  : ListView.separated(
+              StreamBuilder(
+                  stream: controller.fetchEmploys(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return ListView.separated(
                       separatorBuilder: (context, index) =>
                           Divider(indent: 20, endIndent: 20, height: 5),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: controller.employees.length,
+                      itemCount: snapshot.data?.length ?? 0,
                       itemBuilder: (context, index) {
-                        final employee = controller.employees[index];
+                        final employee = snapshot.data?[index];
                         return ListTile(
-                          title: Text(employee.name),
+                          onTap: () => controller.viewEmployee(employee),
+                          title: Text(employee!.name!),
                           subtitle: Text(employee.login ?? ''),
                           leading: CircleAvatar(
-                            child: AppText.boldText(employee.name[0]),
+                            child: AppText.boldText(employee.name![0]),
                             radius: 25,
                           ),
                           trailing: Row(
@@ -89,7 +95,8 @@ class EmployeesView extends GetView<EmployeesController> {
                           ),
                         );
                       },
-                    ),
+                    );
+                  }),
             ],
           ),
         ),

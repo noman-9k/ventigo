@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ventigo/app/models/caregory.dart';
-import 'package:ventigo/extensions/date_extension.dart';
 
+import '../../db/drift_db.dart';
 import 'dialogs/add_new_category_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
 
@@ -29,9 +29,9 @@ pushDatePicker(BuildContext context, Function(DateTime) onDone) {
 
 pushCategorySelectDialog(
   BuildContext context, {
-  required List<Category> categories,
-  required Function(List<Category>?) onDone,
-  List<Category>? selectedCategories,
+  required List<DbCategory> categories,
+  required Function(List<DbCategory>?) onDone,
+  List<DbCategory>? selectedCategories,
 }) {
   showDialog(
     context: context,

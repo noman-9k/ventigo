@@ -20,9 +20,10 @@ class ServicesController extends GetxController {
   }
 
   List<SearchItem> getservicesSearchList() {
-    return CategoryService.to.servicesCategories
-        .map((e) => SearchItem(label: e.name, value: e))
-        .toList();
+    return [];
+    // CategoryService.to.servicesCategories
+    //     .map((e) => SearchItem(label: e.name, value: e))
+    //     .toList();
   }
 
   scrollToValue(Category? service, {double height = 100.0}) {

@@ -7,7 +7,6 @@ import '../../../config/app_colors.dart';
 import '../../../config/app_styles.dart';
 import '../../../config/app_text.dart';
 import '../../routes/app_pages.dart';
-import 'date_widget.dart';
 
 class TwoTabsView extends StatefulWidget {
   const TwoTabsView(

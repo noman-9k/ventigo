@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:ventigo/config/app_text.dart';
 
 import '../../common/app_app_bar.dart';
 import '../../common/date_widget.dart';

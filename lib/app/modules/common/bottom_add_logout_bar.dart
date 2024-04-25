@@ -2,11 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import '../../../config/app_colors.dart';
-import '../../routes/app_pages.dart';
 
 class BottomAddLogoutBar extends StatelessWidget {
   const BottomAddLogoutBar({super.key, this.logout, this.add});

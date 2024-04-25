@@ -8,9 +8,10 @@ class AppText {
   }
 
   static mediumText(String s,
-      {Color? color, TextAlign? align, double? fontSize}) {
+      {Color? color, TextAlign? align, double? fontSize, int? maxLines}) {
     return Text(s,
         style: AppStyles.mediumStyle(color: color, fontSize: fontSize),
+        maxLines: maxLines,
         textAlign: align);
   }
 

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
-import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
@@ -50,7 +49,7 @@ class ServicesView extends GetView<ServicesController> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 AppText.boldText('Categories'),
-                AppText.boldText('Type of Servis'),
+                AppText.boldText('Type of Service'),
               ],
             ),
             10.verticalSpace,

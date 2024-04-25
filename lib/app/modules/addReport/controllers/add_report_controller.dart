@@ -5,7 +5,9 @@ import 'package:ventigo/app/models/service.dart';
 import '../../../app_services/category_service.dart';
 
 class AddReportController extends GetxController {
-  List<Category> categories = CategoryService.to.servicesCategories;
+  List<Category> categories = [];
+  // CategoryService.to.servicesCategories;
+
   List<AppService> selectedCategoryServices = [];
   Category? selectedCategory;
   AppService? selectedService;

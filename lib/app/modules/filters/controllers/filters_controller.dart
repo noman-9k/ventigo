@@ -22,8 +22,10 @@ class FiltersController extends GetxController {
     Employee(name: 'bob3', lastName: 'Doe', login: 'john.doe')
   ];
 
-  List<Category> categoriesList = CategoryService.to.getAllServicesCategories();
-  List<AppService> servicesList = CategoryService.to.getAllServices();
+  // List<Category> categoriesList = CategoryService.to.getAllServicesCategories();
+  // List<AppService> servicesList = CategoryService.to.getAllServices();
+  List<Category> categoriesList = [];
+  List<AppService> servicesList = [];
 
   List<Employee> selectedMaster = [];
   List<Category> selectedCategories = [];

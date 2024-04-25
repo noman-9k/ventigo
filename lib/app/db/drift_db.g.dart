@@ -46,9 +46,23 @@ class $DbEmployeesTable extends DbEmployees
   late final GeneratedColumn<double> percentage = GeneratedColumn<double>(
       'percentage', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _categoriesMeta =
+      const VerificationMeta('categories');
+  @override
+  late final GeneratedColumnWithTypeConverter<List<String>, String> categories =
+      GeneratedColumn<String>('categories', aliasedName, false,
+              type: DriftSqlType.string, requiredDuringInsert: true)
+          .withConverter<List<String>>($DbEmployeesTable.$convertercategories);
+  static const VerificationMeta _visibilityMeta =
+      const VerificationMeta('visibility');
+  @override
+  late final GeneratedColumnWithTypeConverter<List<String>, String> visibility =
+      GeneratedColumn<String>('visibility', aliasedName, false,
+              type: DriftSqlType.string, requiredDuringInsert: true)
+          .withConverter<List<String>>($DbEmployeesTable.$convertervisibility);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, name, lastName, login, password, percentage];
+      [id, name, lastName, login, password, percentage, categories, visibility];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -84,6 +98,8 @@ class $DbEmployeesTable extends DbEmployees
           percentage.isAcceptableOrUnknown(
               data['percentage']!, _percentageMeta));
     }
+    context.handle(_categoriesMeta, const VerificationResult.success());
+    context.handle(_visibilityMeta, const VerificationResult.success());
     return context;
   }
 
@@ -105,6 +121,12 @@ class $DbEmployeesTable extends DbEmployees
           .read(DriftSqlType.string, data['${effectivePrefix}password']),
       percentage: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}percentage']),
+      categories: $DbEmployeesTable.$convertercategories.fromSql(
+          attachedDatabase.typeMapping.read(
+              DriftSqlType.string, data['${effectivePrefix}categories'])!),
+      visibility: $DbEmployeesTable.$convertervisibility.fromSql(
+          attachedDatabase.typeMapping.read(
+              DriftSqlType.string, data['${effectivePrefix}visibility'])!),
     );
   }
 
@@ -112,6 +134,11 @@ class $DbEmployeesTable extends DbEmployees
   $DbEmployeesTable createAlias(String alias) {
     return $DbEmployeesTable(attachedDatabase, alias);
   }
+
+  static TypeConverter<List<String>, String> $convertercategories =
+      const StringListConverter();
+  static TypeConverter<List<String>, String> $convertervisibility =
+      const StringListConverter();
 }
 
 class DbEmployee extends DataClass implements Insertable<DbEmployee> {
@@ -121,13 +148,17 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
   final String? login;
   final String? password;
   final double? percentage;
+  final List<String> categories;
+  final List<String> visibility;
   const DbEmployee(
       {required this.id,
       this.name,
       this.lastName,
       this.login,
       this.password,
-      this.percentage});
+      this.percentage,
+      required this.categories,
+      required this.visibility});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -147,6 +178,14 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
     if (!nullToAbsent || percentage != null) {
       map['percentage'] = Variable<double>(percentage);
     }
+    {
+      map['categories'] = Variable<String>(
+          $DbEmployeesTable.$convertercategories.toSql(categories));
+    }
+    {
+      map['visibility'] = Variable<String>(
+          $DbEmployeesTable.$convertervisibility.toSql(visibility));
+    }
     return map;
   }
 
@@ -165,6 +204,8 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
       percentage: percentage == null && nullToAbsent
           ? const Value.absent()
           : Value(percentage),
+      categories: Value(categories),
+      visibility: Value(visibility),
     );
   }
 
@@ -178,6 +219,8 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
       login: serializer.fromJson<String?>(json['login']),
       password: serializer.fromJson<String?>(json['password']),
       percentage: serializer.fromJson<double?>(json['percentage']),
+      categories: serializer.fromJson<List<String>>(json['categories']),
+      visibility: serializer.fromJson<List<String>>(json['visibility']),
     );
   }
   @override
@@ -190,6 +233,8 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
       'login': serializer.toJson<String?>(login),
       'password': serializer.toJson<String?>(password),
       'percentage': serializer.toJson<double?>(percentage),
+      'categories': serializer.toJson<List<String>>(categories),
+      'visibility': serializer.toJson<List<String>>(visibility),
     };
   }
 
@@ -199,7 +244,9 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
           Value<String?> lastName = const Value.absent(),
           Value<String?> login = const Value.absent(),
           Value<String?> password = const Value.absent(),
-          Value<double?> percentage = const Value.absent()}) =>
+          Value<double?> percentage = const Value.absent(),
+          List<String>? categories,
+          List<String>? visibility}) =>
       DbEmployee(
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
@@ -207,6 +254,8 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
         login: login.present ? login.value : this.login,
         password: password.present ? password.value : this.password,
         percentage: percentage.present ? percentage.value : this.percentage,
+        categories: categories ?? this.categories,
+        visibility: visibility ?? this.visibility,
       );
   @override
   String toString() {
@@ -216,14 +265,16 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
           ..write('lastName: $lastName, ')
           ..write('login: $login, ')
           ..write('password: $password, ')
-          ..write('percentage: $percentage')
+          ..write('percentage: $percentage, ')
+          ..write('categories: $categories, ')
+          ..write('visibility: $visibility')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode =>
-      Object.hash(id, name, lastName, login, password, percentage);
+  int get hashCode => Object.hash(
+      id, name, lastName, login, password, percentage, categories, visibility);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -233,7 +284,9 @@ class DbEmployee extends DataClass implements Insertable<DbEmployee> {
           other.lastName == this.lastName &&
           other.login == this.login &&
           other.password == this.password &&
-          other.percentage == this.percentage);
+          other.percentage == this.percentage &&
+          other.categories == this.categories &&
+          other.visibility == this.visibility);
 }
 
 class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
@@ -243,6 +296,8 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
   final Value<String?> login;
   final Value<String?> password;
   final Value<double?> percentage;
+  final Value<List<String>> categories;
+  final Value<List<String>> visibility;
   const DbEmployeesCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -250,6 +305,8 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
     this.login = const Value.absent(),
     this.password = const Value.absent(),
     this.percentage = const Value.absent(),
+    this.categories = const Value.absent(),
+    this.visibility = const Value.absent(),
   });
   DbEmployeesCompanion.insert({
     this.id = const Value.absent(),
@@ -258,7 +315,10 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
     this.login = const Value.absent(),
     this.password = const Value.absent(),
     this.percentage = const Value.absent(),
-  });
+    required List<String> categories,
+    required List<String> visibility,
+  })  : categories = Value(categories),
+        visibility = Value(visibility);
   static Insertable<DbEmployee> custom({
     Expression<int>? id,
     Expression<String>? name,
@@ -266,6 +326,8 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
     Expression<String>? login,
     Expression<String>? password,
     Expression<double>? percentage,
+    Expression<String>? categories,
+    Expression<String>? visibility,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -274,6 +336,8 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
       if (login != null) 'login': login,
       if (password != null) 'password': password,
       if (percentage != null) 'percentage': percentage,
+      if (categories != null) 'categories': categories,
+      if (visibility != null) 'visibility': visibility,
     });
   }
 
@@ -283,7 +347,9 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
       Value<String?>? lastName,
       Value<String?>? login,
       Value<String?>? password,
-      Value<double?>? percentage}) {
+      Value<double?>? percentage,
+      Value<List<String>>? categories,
+      Value<List<String>>? visibility}) {
     return DbEmployeesCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -291,6 +357,8 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
       login: login ?? this.login,
       password: password ?? this.password,
       percentage: percentage ?? this.percentage,
+      categories: categories ?? this.categories,
+      visibility: visibility ?? this.visibility,
     );
   }
 
@@ -315,6 +383,14 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
     if (percentage.present) {
       map['percentage'] = Variable<double>(percentage.value);
     }
+    if (categories.present) {
+      map['categories'] = Variable<String>(
+          $DbEmployeesTable.$convertercategories.toSql(categories.value));
+    }
+    if (visibility.present) {
+      map['visibility'] = Variable<String>(
+          $DbEmployeesTable.$convertervisibility.toSql(visibility.value));
+    }
     return map;
   }
 
@@ -326,7 +402,9 @@ class DbEmployeesCompanion extends UpdateCompanion<DbEmployee> {
           ..write('lastName: $lastName, ')
           ..write('login: $login, ')
           ..write('password: $password, ')
-          ..write('percentage: $percentage')
+          ..write('percentage: $percentage, ')
+          ..write('categories: $categories, ')
+          ..write('visibility: $visibility')
           ..write(')'))
         .toString();
   }

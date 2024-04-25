@@ -32,14 +32,14 @@ class AddCostView extends GetView<AddCostController> {
               ),
             ),
             20.verticalSpace,
-            CustomDropDown(
-              items: CategoryService.to
-                  .getAllServicesCategories()
-                  .map((e) => e.name)
-                  .toList(),
-              onChanged: controller.onCategoryChanged,
-              title: 'Select Category',
-            ),
+            // CustomDropDown(
+            //   items: CategoryService.to
+            //       .getAllServicesCategories()
+            //       .map((e) => e.name)
+            //       .toList(),
+            //   onChanged: controller.onCategoryChanged,
+            //   title: 'Select Category',
+            // ),
             20.verticalSpace,
             YesNoButton(onChanged: (_) {}, title: 'Deduct from TAX'),
             20.verticalSpace,

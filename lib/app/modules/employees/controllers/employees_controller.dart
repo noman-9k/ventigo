@@ -1,35 +1,49 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
+import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/db/db_converter/employee_converter.dart';
+import 'package:ventigo/app/db/drift_db.dart';
 import 'package:ventigo/app/models/employee.dart';
+import 'package:ventigo/app/routes/app_pages.dart';
 
 class EmployeesController extends GetxController {
   static EmployeesController get to => Get.find();
 
-  List<Employee> employees = [
-    Employee(name: 'John', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker2', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob3', lastName: 'Doe', login: 'john.doe'),
-  ];
+  Stream<List<DbEmployee>> fetchEmploys() {
+    return DbController.to.appDb.getAllEmployees();
+  }
 
-  List<EmployeeSearchItem> getEmployeesList() {
-    return employees
-        .map((e) => EmployeeSearchItem(label: e.name, value: e))
+  Future<List<EmployeeSearchItem>> getEmployeesSearchList() async {
+    var fetchEmploys = await DbController.to.appDb.getAllEmployeesList();
+
+    return await fetchEmploys
+        .map((e) => EmployeeSearchItem(label: e.name!, value: e))
         .toList();
   }
 
-  fetchData() async {
-    return getEmployeesList();
+  fetchDataAsString() async {
+    fetchEmploys().listen((event) {
+      event.forEach((element) {
+        print('Employee: ${element.name}');
+      });
+    });
+
+    return fetchEmploys();
   }
 
   scrollToValue(value) {
     print(value);
   }
+
+  viewEmployee(DbEmployee employee) async {
+    Get.toNamed(Routes.ADD_EMPLOYE, arguments: employee);
+  }
 }
 
 class EmployeeSearchItem {
   String label;
-  Employee value;
+  DbEmployee value;
   EmployeeSearchItem({required this.label, required this.value});
 
   factory EmployeeSearchItem.fromJson(Map<String, dynamic> json) {
