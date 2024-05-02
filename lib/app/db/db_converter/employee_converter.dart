@@ -22,6 +22,7 @@ class EmployeeConverter {
     }
 
     return Employee(
+      id: dbEmployee.id,
       name: dbEmployee.name!,
       lastName: dbEmployee.lastName!,
       login: dbEmployee.login,

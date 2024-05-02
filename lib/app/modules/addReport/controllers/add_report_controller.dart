@@ -1,33 +1,78 @@
-import 'package:get/get.dart';
-import 'package:ventigo/app/models/caregory.dart';
-import 'package:ventigo/app/models/service.dart';
+import 'dart:developer';
 
-import '../../../app_services/category_service.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:ventigo/app/app_services/category_service.dart';
+import 'package:ventigo/app/app_services/employee_service.dart';
+import 'package:ventigo/app/db/db_controller.dart';
+
+import '../../../db/drift_db.dart';
 
 class AddReportController extends GetxController {
-  List<Category> categories = [];
-  // CategoryService.to.servicesCategories;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
+  bool? newCustomer;
+  bool? regCustomer;
+  bool? cardPay;
+  RxBool isLoading = false.obs;
 
-  List<AppService> selectedCategoryServices = [];
-  Category? selectedCategory;
-  AppService? selectedService;
+  List<DbCategory> categories = [];
+  List<DbService> services = [];
 
-  void submit() {
-    Get.back();
+  DbCategory? selectedCategory;
+  DbService? selectedService;
+
+  @override
+  Future<void> onInit() async {
+    categories = await CategoryService.to.getAllServicesCategories();
+    update();
+    super.onInit();
   }
 
   onCategoryChanged(String? p1) {
-    selectedService = null;
+    selectedCategory = null;
     update();
     selectedCategory = categories.firstWhere((element) => element.name == p1);
-    selectedCategoryServices = selectedCategory?.services ?? [];
     update();
   }
 
-  onServiceChanged(String? p1) {
-    // selectedService =
-    //     selectedCategoryServices?.firstWhere((element) => element.name == p1);
-
+  onServiceChanged(DbService p1) {
+    selectedService = p1;
+    log('Service changed');
     update();
+  }
+
+  Future<void> submit() async {
+    isLoading.value = true;
+    int categoryId = selectedCategory!.id;
+    int serviceId = selectedService!.id;
+    int employeeId = EmployeeService.to.employee!.value.id;
+    String name =
+        nameController.text.trim() + ' ' + lastNameController.text.trim();
+    String phone = phoneController.text.trim();
+    bool newCustomer = this.newCustomer ?? false;
+    bool regCustomer = this.regCustomer ?? false;
+    bool cardPay = this.cardPay ?? false;
+    double price = double.parse(priceController.text.trim());
+
+    await DbController.to.appDb.insertNewCompanionDataItem(
+        name,
+        phone,
+        employeeId,
+        categoryId,
+        serviceId,
+        newCustomer,
+        regCustomer,
+        DateTime.now(),
+        cardPay,
+        price,
+        1);
+    isLoading.value = false;
+
+    log(DbController.to.appDb.getAllDataItems().toString());
+
+    Get.back();
   }
 }

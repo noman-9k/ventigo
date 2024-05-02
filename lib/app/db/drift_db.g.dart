@@ -874,15 +874,728 @@ class DbServicesCompanion extends UpdateCompanion<DbService> {
   }
 }
 
+class $DbDataItemsTable extends DbDataItems
+    with TableInfo<$DbDataItemsTable, DbDataItem> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DbDataItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _phoneMeta = const VerificationMeta('phone');
+  @override
+  late final GeneratedColumn<String> phone = GeneratedColumn<String>(
+      'phone', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _employeeIdMeta =
+      const VerificationMeta('employeeId');
+  @override
+  late final GeneratedColumn<int> employeeId = GeneratedColumn<int>(
+      'employee_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES db_employees (id)'));
+  static const VerificationMeta _employeeNameMeta =
+      const VerificationMeta('employeeName');
+  @override
+  late final GeneratedColumn<String> employeeName = GeneratedColumn<String>(
+      'employee_name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _categoryIdMeta =
+      const VerificationMeta('categoryId');
+  @override
+  late final GeneratedColumn<int> categoryId = GeneratedColumn<int>(
+      'category_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES db_categories (id)'));
+  static const VerificationMeta _categoryNameMeta =
+      const VerificationMeta('categoryName');
+  @override
+  late final GeneratedColumn<String> categoryName = GeneratedColumn<String>(
+      'category_name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _serviceIdMeta =
+      const VerificationMeta('serviceId');
+  @override
+  late final GeneratedColumn<int> serviceId = GeneratedColumn<int>(
+      'service_id', aliasedName, false,
+      type: DriftSqlType.int,
+      requiredDuringInsert: true,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('REFERENCES db_services (id)'));
+  static const VerificationMeta _serviceNameMeta =
+      const VerificationMeta('serviceName');
+  @override
+  late final GeneratedColumn<String> serviceName = GeneratedColumn<String>(
+      'service_name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _newCustomerMeta =
+      const VerificationMeta('newCustomer');
+  @override
+  late final GeneratedColumn<bool> newCustomer = GeneratedColumn<bool>(
+      'new_customer', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("new_customer" IN (0, 1))'));
+  static const VerificationMeta _regCustomerMeta =
+      const VerificationMeta('regCustomer');
+  @override
+  late final GeneratedColumn<bool> regCustomer = GeneratedColumn<bool>(
+      'reg_customer', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("reg_customer" IN (0, 1))'));
+  static const VerificationMeta _dateMeta = const VerificationMeta('date');
+  @override
+  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
+      'date', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  static const VerificationMeta _cardPayMeta =
+      const VerificationMeta('cardPay');
+  @override
+  late final GeneratedColumn<bool> cardPay = GeneratedColumn<bool>(
+      'card_pay', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("card_pay" IN (0, 1))'));
+  static const VerificationMeta _priceMeta = const VerificationMeta('price');
+  @override
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+      'price', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _totalMeta = const VerificationMeta('total');
+  @override
+  late final GeneratedColumn<double> total = GeneratedColumn<double>(
+      'total', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        name,
+        phone,
+        employeeId,
+        employeeName,
+        categoryId,
+        categoryName,
+        serviceId,
+        serviceName,
+        newCustomer,
+        regCustomer,
+        date,
+        cardPay,
+        price,
+        total
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'db_data_items';
+  @override
+  VerificationContext validateIntegrity(Insertable<DbDataItem> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    }
+    if (data.containsKey('phone')) {
+      context.handle(
+          _phoneMeta, phone.isAcceptableOrUnknown(data['phone']!, _phoneMeta));
+    }
+    if (data.containsKey('employee_id')) {
+      context.handle(
+          _employeeIdMeta,
+          employeeId.isAcceptableOrUnknown(
+              data['employee_id']!, _employeeIdMeta));
+    } else if (isInserting) {
+      context.missing(_employeeIdMeta);
+    }
+    if (data.containsKey('employee_name')) {
+      context.handle(
+          _employeeNameMeta,
+          employeeName.isAcceptableOrUnknown(
+              data['employee_name']!, _employeeNameMeta));
+    }
+    if (data.containsKey('category_id')) {
+      context.handle(
+          _categoryIdMeta,
+          categoryId.isAcceptableOrUnknown(
+              data['category_id']!, _categoryIdMeta));
+    } else if (isInserting) {
+      context.missing(_categoryIdMeta);
+    }
+    if (data.containsKey('category_name')) {
+      context.handle(
+          _categoryNameMeta,
+          categoryName.isAcceptableOrUnknown(
+              data['category_name']!, _categoryNameMeta));
+    }
+    if (data.containsKey('service_id')) {
+      context.handle(_serviceIdMeta,
+          serviceId.isAcceptableOrUnknown(data['service_id']!, _serviceIdMeta));
+    } else if (isInserting) {
+      context.missing(_serviceIdMeta);
+    }
+    if (data.containsKey('service_name')) {
+      context.handle(
+          _serviceNameMeta,
+          serviceName.isAcceptableOrUnknown(
+              data['service_name']!, _serviceNameMeta));
+    }
+    if (data.containsKey('new_customer')) {
+      context.handle(
+          _newCustomerMeta,
+          newCustomer.isAcceptableOrUnknown(
+              data['new_customer']!, _newCustomerMeta));
+    }
+    if (data.containsKey('reg_customer')) {
+      context.handle(
+          _regCustomerMeta,
+          regCustomer.isAcceptableOrUnknown(
+              data['reg_customer']!, _regCustomerMeta));
+    }
+    if (data.containsKey('date')) {
+      context.handle(
+          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+    }
+    if (data.containsKey('card_pay')) {
+      context.handle(_cardPayMeta,
+          cardPay.isAcceptableOrUnknown(data['card_pay']!, _cardPayMeta));
+    }
+    if (data.containsKey('price')) {
+      context.handle(
+          _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
+    }
+    if (data.containsKey('total')) {
+      context.handle(
+          _totalMeta, total.isAcceptableOrUnknown(data['total']!, _totalMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DbDataItem map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DbDataItem(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name']),
+      phone: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}phone']),
+      employeeId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}employee_id'])!,
+      employeeName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}employee_name']),
+      categoryId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}category_id'])!,
+      categoryName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}category_name']),
+      serviceId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}service_id'])!,
+      serviceName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}service_name']),
+      newCustomer: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}new_customer']),
+      regCustomer: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}reg_customer']),
+      date: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}date']),
+      cardPay: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}card_pay']),
+      price: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price']),
+      total: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}total']),
+    );
+  }
+
+  @override
+  $DbDataItemsTable createAlias(String alias) {
+    return $DbDataItemsTable(attachedDatabase, alias);
+  }
+}
+
+class DbDataItem extends DataClass implements Insertable<DbDataItem> {
+  final int id;
+  final String? name;
+  final String? phone;
+  final int employeeId;
+  final String? employeeName;
+  final int categoryId;
+  final String? categoryName;
+  final int serviceId;
+  final String? serviceName;
+  final bool? newCustomer;
+  final bool? regCustomer;
+  final DateTime? date;
+  final bool? cardPay;
+  final double? price;
+  final double? total;
+  const DbDataItem(
+      {required this.id,
+      this.name,
+      this.phone,
+      required this.employeeId,
+      this.employeeName,
+      required this.categoryId,
+      this.categoryName,
+      required this.serviceId,
+      this.serviceName,
+      this.newCustomer,
+      this.regCustomer,
+      this.date,
+      this.cardPay,
+      this.price,
+      this.total});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    if (!nullToAbsent || name != null) {
+      map['name'] = Variable<String>(name);
+    }
+    if (!nullToAbsent || phone != null) {
+      map['phone'] = Variable<String>(phone);
+    }
+    map['employee_id'] = Variable<int>(employeeId);
+    if (!nullToAbsent || employeeName != null) {
+      map['employee_name'] = Variable<String>(employeeName);
+    }
+    map['category_id'] = Variable<int>(categoryId);
+    if (!nullToAbsent || categoryName != null) {
+      map['category_name'] = Variable<String>(categoryName);
+    }
+    map['service_id'] = Variable<int>(serviceId);
+    if (!nullToAbsent || serviceName != null) {
+      map['service_name'] = Variable<String>(serviceName);
+    }
+    if (!nullToAbsent || newCustomer != null) {
+      map['new_customer'] = Variable<bool>(newCustomer);
+    }
+    if (!nullToAbsent || regCustomer != null) {
+      map['reg_customer'] = Variable<bool>(regCustomer);
+    }
+    if (!nullToAbsent || date != null) {
+      map['date'] = Variable<DateTime>(date);
+    }
+    if (!nullToAbsent || cardPay != null) {
+      map['card_pay'] = Variable<bool>(cardPay);
+    }
+    if (!nullToAbsent || price != null) {
+      map['price'] = Variable<double>(price);
+    }
+    if (!nullToAbsent || total != null) {
+      map['total'] = Variable<double>(total);
+    }
+    return map;
+  }
+
+  DbDataItemsCompanion toCompanion(bool nullToAbsent) {
+    return DbDataItemsCompanion(
+      id: Value(id),
+      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
+      phone:
+          phone == null && nullToAbsent ? const Value.absent() : Value(phone),
+      employeeId: Value(employeeId),
+      employeeName: employeeName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(employeeName),
+      categoryId: Value(categoryId),
+      categoryName: categoryName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(categoryName),
+      serviceId: Value(serviceId),
+      serviceName: serviceName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(serviceName),
+      newCustomer: newCustomer == null && nullToAbsent
+          ? const Value.absent()
+          : Value(newCustomer),
+      regCustomer: regCustomer == null && nullToAbsent
+          ? const Value.absent()
+          : Value(regCustomer),
+      date: date == null && nullToAbsent ? const Value.absent() : Value(date),
+      cardPay: cardPay == null && nullToAbsent
+          ? const Value.absent()
+          : Value(cardPay),
+      price:
+          price == null && nullToAbsent ? const Value.absent() : Value(price),
+      total:
+          total == null && nullToAbsent ? const Value.absent() : Value(total),
+    );
+  }
+
+  factory DbDataItem.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DbDataItem(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String?>(json['name']),
+      phone: serializer.fromJson<String?>(json['phone']),
+      employeeId: serializer.fromJson<int>(json['employeeId']),
+      employeeName: serializer.fromJson<String?>(json['employeeName']),
+      categoryId: serializer.fromJson<int>(json['categoryId']),
+      categoryName: serializer.fromJson<String?>(json['categoryName']),
+      serviceId: serializer.fromJson<int>(json['serviceId']),
+      serviceName: serializer.fromJson<String?>(json['serviceName']),
+      newCustomer: serializer.fromJson<bool?>(json['newCustomer']),
+      regCustomer: serializer.fromJson<bool?>(json['regCustomer']),
+      date: serializer.fromJson<DateTime?>(json['date']),
+      cardPay: serializer.fromJson<bool?>(json['cardPay']),
+      price: serializer.fromJson<double?>(json['price']),
+      total: serializer.fromJson<double?>(json['total']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String?>(name),
+      'phone': serializer.toJson<String?>(phone),
+      'employeeId': serializer.toJson<int>(employeeId),
+      'employeeName': serializer.toJson<String?>(employeeName),
+      'categoryId': serializer.toJson<int>(categoryId),
+      'categoryName': serializer.toJson<String?>(categoryName),
+      'serviceId': serializer.toJson<int>(serviceId),
+      'serviceName': serializer.toJson<String?>(serviceName),
+      'newCustomer': serializer.toJson<bool?>(newCustomer),
+      'regCustomer': serializer.toJson<bool?>(regCustomer),
+      'date': serializer.toJson<DateTime?>(date),
+      'cardPay': serializer.toJson<bool?>(cardPay),
+      'price': serializer.toJson<double?>(price),
+      'total': serializer.toJson<double?>(total),
+    };
+  }
+
+  DbDataItem copyWith(
+          {int? id,
+          Value<String?> name = const Value.absent(),
+          Value<String?> phone = const Value.absent(),
+          int? employeeId,
+          Value<String?> employeeName = const Value.absent(),
+          int? categoryId,
+          Value<String?> categoryName = const Value.absent(),
+          int? serviceId,
+          Value<String?> serviceName = const Value.absent(),
+          Value<bool?> newCustomer = const Value.absent(),
+          Value<bool?> regCustomer = const Value.absent(),
+          Value<DateTime?> date = const Value.absent(),
+          Value<bool?> cardPay = const Value.absent(),
+          Value<double?> price = const Value.absent(),
+          Value<double?> total = const Value.absent()}) =>
+      DbDataItem(
+        id: id ?? this.id,
+        name: name.present ? name.value : this.name,
+        phone: phone.present ? phone.value : this.phone,
+        employeeId: employeeId ?? this.employeeId,
+        employeeName:
+            employeeName.present ? employeeName.value : this.employeeName,
+        categoryId: categoryId ?? this.categoryId,
+        categoryName:
+            categoryName.present ? categoryName.value : this.categoryName,
+        serviceId: serviceId ?? this.serviceId,
+        serviceName: serviceName.present ? serviceName.value : this.serviceName,
+        newCustomer: newCustomer.present ? newCustomer.value : this.newCustomer,
+        regCustomer: regCustomer.present ? regCustomer.value : this.regCustomer,
+        date: date.present ? date.value : this.date,
+        cardPay: cardPay.present ? cardPay.value : this.cardPay,
+        price: price.present ? price.value : this.price,
+        total: total.present ? total.value : this.total,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('DbDataItem(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('phone: $phone, ')
+          ..write('employeeId: $employeeId, ')
+          ..write('employeeName: $employeeName, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('categoryName: $categoryName, ')
+          ..write('serviceId: $serviceId, ')
+          ..write('serviceName: $serviceName, ')
+          ..write('newCustomer: $newCustomer, ')
+          ..write('regCustomer: $regCustomer, ')
+          ..write('date: $date, ')
+          ..write('cardPay: $cardPay, ')
+          ..write('price: $price, ')
+          ..write('total: $total')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      name,
+      phone,
+      employeeId,
+      employeeName,
+      categoryId,
+      categoryName,
+      serviceId,
+      serviceName,
+      newCustomer,
+      regCustomer,
+      date,
+      cardPay,
+      price,
+      total);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DbDataItem &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.phone == this.phone &&
+          other.employeeId == this.employeeId &&
+          other.employeeName == this.employeeName &&
+          other.categoryId == this.categoryId &&
+          other.categoryName == this.categoryName &&
+          other.serviceId == this.serviceId &&
+          other.serviceName == this.serviceName &&
+          other.newCustomer == this.newCustomer &&
+          other.regCustomer == this.regCustomer &&
+          other.date == this.date &&
+          other.cardPay == this.cardPay &&
+          other.price == this.price &&
+          other.total == this.total);
+}
+
+class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
+  final Value<int> id;
+  final Value<String?> name;
+  final Value<String?> phone;
+  final Value<int> employeeId;
+  final Value<String?> employeeName;
+  final Value<int> categoryId;
+  final Value<String?> categoryName;
+  final Value<int> serviceId;
+  final Value<String?> serviceName;
+  final Value<bool?> newCustomer;
+  final Value<bool?> regCustomer;
+  final Value<DateTime?> date;
+  final Value<bool?> cardPay;
+  final Value<double?> price;
+  final Value<double?> total;
+  const DbDataItemsCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.phone = const Value.absent(),
+    this.employeeId = const Value.absent(),
+    this.employeeName = const Value.absent(),
+    this.categoryId = const Value.absent(),
+    this.categoryName = const Value.absent(),
+    this.serviceId = const Value.absent(),
+    this.serviceName = const Value.absent(),
+    this.newCustomer = const Value.absent(),
+    this.regCustomer = const Value.absent(),
+    this.date = const Value.absent(),
+    this.cardPay = const Value.absent(),
+    this.price = const Value.absent(),
+    this.total = const Value.absent(),
+  });
+  DbDataItemsCompanion.insert({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.phone = const Value.absent(),
+    required int employeeId,
+    this.employeeName = const Value.absent(),
+    required int categoryId,
+    this.categoryName = const Value.absent(),
+    required int serviceId,
+    this.serviceName = const Value.absent(),
+    this.newCustomer = const Value.absent(),
+    this.regCustomer = const Value.absent(),
+    this.date = const Value.absent(),
+    this.cardPay = const Value.absent(),
+    this.price = const Value.absent(),
+    this.total = const Value.absent(),
+  })  : employeeId = Value(employeeId),
+        categoryId = Value(categoryId),
+        serviceId = Value(serviceId);
+  static Insertable<DbDataItem> custom({
+    Expression<int>? id,
+    Expression<String>? name,
+    Expression<String>? phone,
+    Expression<int>? employeeId,
+    Expression<String>? employeeName,
+    Expression<int>? categoryId,
+    Expression<String>? categoryName,
+    Expression<int>? serviceId,
+    Expression<String>? serviceName,
+    Expression<bool>? newCustomer,
+    Expression<bool>? regCustomer,
+    Expression<DateTime>? date,
+    Expression<bool>? cardPay,
+    Expression<double>? price,
+    Expression<double>? total,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (phone != null) 'phone': phone,
+      if (employeeId != null) 'employee_id': employeeId,
+      if (employeeName != null) 'employee_name': employeeName,
+      if (categoryId != null) 'category_id': categoryId,
+      if (categoryName != null) 'category_name': categoryName,
+      if (serviceId != null) 'service_id': serviceId,
+      if (serviceName != null) 'service_name': serviceName,
+      if (newCustomer != null) 'new_customer': newCustomer,
+      if (regCustomer != null) 'reg_customer': regCustomer,
+      if (date != null) 'date': date,
+      if (cardPay != null) 'card_pay': cardPay,
+      if (price != null) 'price': price,
+      if (total != null) 'total': total,
+    });
+  }
+
+  DbDataItemsCompanion copyWith(
+      {Value<int>? id,
+      Value<String?>? name,
+      Value<String?>? phone,
+      Value<int>? employeeId,
+      Value<String?>? employeeName,
+      Value<int>? categoryId,
+      Value<String?>? categoryName,
+      Value<int>? serviceId,
+      Value<String?>? serviceName,
+      Value<bool?>? newCustomer,
+      Value<bool?>? regCustomer,
+      Value<DateTime?>? date,
+      Value<bool?>? cardPay,
+      Value<double?>? price,
+      Value<double?>? total}) {
+    return DbDataItemsCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+      employeeId: employeeId ?? this.employeeId,
+      employeeName: employeeName ?? this.employeeName,
+      categoryId: categoryId ?? this.categoryId,
+      categoryName: categoryName ?? this.categoryName,
+      serviceId: serviceId ?? this.serviceId,
+      serviceName: serviceName ?? this.serviceName,
+      newCustomer: newCustomer ?? this.newCustomer,
+      regCustomer: regCustomer ?? this.regCustomer,
+      date: date ?? this.date,
+      cardPay: cardPay ?? this.cardPay,
+      price: price ?? this.price,
+      total: total ?? this.total,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (phone.present) {
+      map['phone'] = Variable<String>(phone.value);
+    }
+    if (employeeId.present) {
+      map['employee_id'] = Variable<int>(employeeId.value);
+    }
+    if (employeeName.present) {
+      map['employee_name'] = Variable<String>(employeeName.value);
+    }
+    if (categoryId.present) {
+      map['category_id'] = Variable<int>(categoryId.value);
+    }
+    if (categoryName.present) {
+      map['category_name'] = Variable<String>(categoryName.value);
+    }
+    if (serviceId.present) {
+      map['service_id'] = Variable<int>(serviceId.value);
+    }
+    if (serviceName.present) {
+      map['service_name'] = Variable<String>(serviceName.value);
+    }
+    if (newCustomer.present) {
+      map['new_customer'] = Variable<bool>(newCustomer.value);
+    }
+    if (regCustomer.present) {
+      map['reg_customer'] = Variable<bool>(regCustomer.value);
+    }
+    if (date.present) {
+      map['date'] = Variable<DateTime>(date.value);
+    }
+    if (cardPay.present) {
+      map['card_pay'] = Variable<bool>(cardPay.value);
+    }
+    if (price.present) {
+      map['price'] = Variable<double>(price.value);
+    }
+    if (total.present) {
+      map['total'] = Variable<double>(total.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DbDataItemsCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('phone: $phone, ')
+          ..write('employeeId: $employeeId, ')
+          ..write('employeeName: $employeeName, ')
+          ..write('categoryId: $categoryId, ')
+          ..write('categoryName: $categoryName, ')
+          ..write('serviceId: $serviceId, ')
+          ..write('serviceName: $serviceName, ')
+          ..write('newCustomer: $newCustomer, ')
+          ..write('regCustomer: $regCustomer, ')
+          ..write('date: $date, ')
+          ..write('cardPay: $cardPay, ')
+          ..write('price: $price, ')
+          ..write('total: $total')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDb extends GeneratedDatabase {
   _$AppDb(QueryExecutor e) : super(e);
   late final $DbEmployeesTable dbEmployees = $DbEmployeesTable(this);
   late final $DbCategoriesTable dbCategories = $DbCategoriesTable(this);
   late final $DbServicesTable dbServices = $DbServicesTable(this);
+  late final $DbDataItemsTable dbDataItems = $DbDataItemsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [dbEmployees, dbCategories, dbServices];
+      [dbEmployees, dbCategories, dbServices, dbDataItems];
 }

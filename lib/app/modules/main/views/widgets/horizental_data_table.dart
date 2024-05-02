@@ -3,7 +3,7 @@ import 'package:horizontal_data_table/horizontal_data_table.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
-import '../../../main/controllers/table_data.dart';
+import '../../../statistic/controllers/table_data.dart';
 
 class HorTable extends StatefulWidget {
   HorTable({super.key, required this.tableItems});

@@ -18,16 +18,18 @@ import '../modules/filters/bindings/filters_binding.dart';
 import '../modules/filters/views/filters_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/main/bindings/main_binding.dart';
-import '../modules/main/views/main_view.dart';
+import '../modules/statistic/bindings/statistic_binding.dart';
+import '../modules/statistic/views/statistic_view.dart';
 import '../modules/services/bindings/services_binding.dart';
 import '../modules/services/views/services_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/statistic/bindings/statistic_binding.dart';
-import '../modules/statistic/views/statistic_view.dart';
+import '../modules/main/bindings/main_binding.dart';
+import '../modules/main/views/main_view.dart';
+import '../modules/userData/bindings/user_data_binding.dart';
+import '../modules/userData/views/user_data_view.dart';
 
 part 'app_routes.dart';
 
@@ -50,8 +52,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MAIN,
-      page: () => const MainView(),
-      binding: MainBinding(),
+      page: () => const StatisticsView(),
+      binding: StatisticBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -75,10 +77,7 @@ class AppPages {
       binding: AddServiceBinding(),
     ),
     GetPage(
-      name: _Paths.STATISTIC,
-      page: () => StatisticView(),
-      binding: StatisticBinding(),
-    ),
+        name: _Paths.STATISTIC, page: () => MainView(), binding: MainBinding()),
     GetPage(
       transition: Transition.rightToLeft,
       name: _Paths.FILTERS,
@@ -110,6 +109,11 @@ class AppPages {
       name: _Paths.COSTS_FILTER,
       page: () => const CostsFilterView(),
       binding: CostsFilterBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_DATA,
+      page: () => const UserDataView(),
+      binding: UserDataBinding(),
     ),
   ];
 }

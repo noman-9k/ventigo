@@ -69,12 +69,12 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       align: TextAlign.center),
                   5.verticalSpace,
                   TextField(
-                      controller: controller.percentageController,
-                      keyboardType: TextInputType.number,
-                      decoration: InputDecoration(
+                    controller: controller.percentageController,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
                         labelText: 'percentage',
-                        hintText: 'Set percentage of income',
-                      )),
+                        hintText: 'Set percentage of income'),
+                  ),
                   10.verticalSpace,
                   AppText.mediumText(
                       ' Visibility level with a cross from the list',
@@ -89,19 +89,19 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       type: VisibilityFilter.percentageMonth),
                   10.verticalSpace,
                   _checkbox(
-                      title: ' Amount Percentage per day',
+                      title: 'Amount Percentage per day',
                       type: VisibilityFilter.percentageDay),
                   10.verticalSpace,
                   _checkbox(
-                      title: ' Number of Service for month',
+                      title: 'Number of Service for month',
                       type: VisibilityFilter.numberOfServices),
                   10.verticalSpace,
                   _checkbox(
-                      title: ' Hide Phone (visible last 3 numbers)',
+                      title: 'Hide Phone (visible last 3 numbers)',
                       type: VisibilityFilter.hidePhone),
                   10.verticalSpace,
                   _checkbox(
-                      title: ' Total Price Service per day',
+                      title: 'Total Price Service per day',
                       type: VisibilityFilter.servicesPerDay),
                   24.verticalSpace,
                   ElevatedButton(

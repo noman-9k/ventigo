@@ -15,11 +15,11 @@ class FiltersController extends GetxController {
   DateTime toDate = DateTime.now();
 
   List<Employee> mastersList = [
-    Employee(name: 'John', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker2', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob3', lastName: 'Doe', login: 'john.doe')
+    // Employee(name: 'John', lastName: 'Doe', login: 'john.doe'),
+    // Employee(name: 'Walker', lastName: 'Doe', login: 'john.doe'),
+    // Employee(name: 'bob', lastName: 'Doe', login: 'john.doe'),
+    // Employee(name: 'Walker2', lastName: 'Doe', login: 'john.doe'),
+    // Employee(name: 'bob3', lastName: 'Doe', login: 'john.doe')
   ];
 
   // List<Category> categoriesList = CategoryService.to.getAllServicesCategories();

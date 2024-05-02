@@ -2,13 +2,15 @@ import 'dart:math';
 
 import 'package:get/get.dart';
 
-import '../../../models/service.dart';
 import '../../../models/caregory.dart';
+import '../../../models/service.dart';
 import '../../../routes/app_pages.dart';
-import 'table_data.dart';
+import '../../statistic/controllers/table_data.dart';
 
 class MainController extends GetxController {
   List<TableItem> tableItems = [];
+
+  static MainController get to => Get.find();
 
   @override
   void onInit() {
@@ -39,3 +41,24 @@ class MainController extends GetxController {
     Get.offAllNamed(Routes.LOGIN);
   }
 }
+
+// }
+
+
+//     with GetSingleTickerProviderStateMixin {
+//   late TabController tabController;
+
+//   var selectedTab;
+
+//   @override
+//   void onInit() {
+//     tabController = TabController(length: 2, vsync: this);
+//     super.onInit();
+//   }
+
+  ///
+  ///
+  ///
+  ///
+  ///
+// }

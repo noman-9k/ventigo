@@ -17,6 +17,7 @@ abstract class Routes {
   static const SETTINGS = _Paths.SETTINGS;
   static const ADD_COST = _Paths.ADD_COST;
   static const COSTS_FILTER = _Paths.COSTS_FILTER;
+  static const USER_DATA = _Paths.USER_DATA;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const SETTINGS = '/settings';
   static const ADD_COST = '/add-cost';
   static const COSTS_FILTER = '/costs-filter';
+  static const USER_DATA = '/user-data';
 }

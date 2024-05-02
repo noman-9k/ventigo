@@ -15,71 +15,72 @@ class AddServiceView extends GetView<AddServiceController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => controller.getAll(),
-        child: Icon(Icons.arrow_forward),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => controller.getAll(),
+      //   child: Icon(Icons.arrow_forward),
+      // ),
       appBar: AppBar(
           leading: AppBackButton(),
           title: AppText.boldText('Add Service'),
           centerTitle: true),
-      body: Padding(
-        padding: AppConstants.defaultPadding,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            AppText.mediumText('Create Or Select a category'),
-            16.verticalSpace,
-            GetBuilder<AddServiceController>(builder: (controller) {
-              return StreamBuilder(
-                  stream: DbController.to.appDb.getAllCategories(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return CustomDropDown(
-                        items: snapshot.data!.map((e) => e.name!).toList(),
-                        onChanged: controller.onCategoryChanged,
-                        title: 'Select Category',
-                      );
-                    }
-                    return CircularProgressIndicator();
-                  });
-            }),
-            10.verticalSpace,
-            AppText.mediumText('Or Create a new Category'),
-            10.verticalSpace,
-            TextField(
-              onTap: controller.addNewCategory,
-              readOnly: true,
-              controller: controller.categoryNameController,
-              decoration: InputDecoration(
-                labelText: 'Category Name',
-                hintText: 'Enter Category Name',
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: AppConstants.defaultPadding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AppText.mediumText('Create Or Select a category'),
+              16.verticalSpace,
+              GetBuilder<AddServiceController>(builder: (controller) {
+                return StreamBuilder(
+                    stream: DbController.to.appDb.getAllCategories(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return CustomDropDown(
+                          items: snapshot.data!.map((e) => e.name!).toList(),
+                          onChanged: controller.onCategoryChanged,
+                          title: 'Select Category',
+                        );
+                      }
+                      return CircularProgressIndicator();
+                    });
+              }),
+              10.verticalSpace,
+              AppText.mediumText('Or Create a new Category'),
+              10.verticalSpace,
+              TextField(
+                onTap: controller.addNewCategory,
+                readOnly: true,
+                controller: controller.categoryNameController,
+                decoration: InputDecoration(
+                  labelText: 'Category Name',
+                  hintText: 'Enter Category Name',
+                ),
               ),
-            ),
-            32.verticalSpace,
-            AppText.mediumText('Name of the Service'),
-            10.verticalSpace,
-            TextField(
-              controller: controller.serviceNameController,
-              decoration: InputDecoration(
-                  labelText: 'Service Name', hintText: 'Enter Service Name'),
-            ),
-            32.verticalSpace,
-            AppText.mediumText('Cost of Materials for this Services'),
-            10.verticalSpace,
-            TextField(
-              controller: controller.priceController,
-              keyboardType: TextInputType.number,
-              decoration:
-                  InputDecoration(labelText: 'Price', hintText: 'Enter Price'),
-            ),
-            32.verticalSpace,
-            ElevatedButton(
-              onPressed: controller.dbAddService,
-              // addService,
-              child: AppText.boldText('Add Service'),
-            ),
-          ],
+              32.verticalSpace,
+              AppText.mediumText('Name of the Service'),
+              10.verticalSpace,
+              TextField(
+                controller: controller.serviceNameController,
+                decoration: InputDecoration(
+                    labelText: 'Service Name', hintText: 'Enter Service Name'),
+              ),
+              32.verticalSpace,
+              AppText.mediumText('Cost of Materials for this Services'),
+              10.verticalSpace,
+              TextField(
+                controller: controller.priceController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                    labelText: 'Price', hintText: 'Enter Price'),
+              ),
+              32.verticalSpace,
+              ElevatedButton(
+                onPressed: controller.dbAddService,
+                child: AppText.boldText('Add Service', color: Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
     );

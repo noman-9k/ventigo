@@ -24,6 +24,24 @@ class DbServices extends Table {
   RealColumn get price => real().nullable()();
 }
 
+class DbDataItems extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get name => text().nullable()();
+  TextColumn get phone => text().nullable()();
+  IntColumn get employeeId => integer().references(DbEmployees, #id)();
+  TextColumn get employeeName => text().nullable()();
+  IntColumn get categoryId => integer().references(DbCategories, #id)();
+  TextColumn get categoryName => text().nullable()();
+  IntColumn get serviceId => integer().references(DbServices, #id)();
+  TextColumn get serviceName => text().nullable()();
+  BoolColumn get newCustomer => boolean().nullable()();
+  BoolColumn get regCustomer => boolean().nullable()();
+  DateTimeColumn get date => dateTime().nullable()();
+  BoolColumn get cardPay => boolean().nullable()();
+  RealColumn get price => real().nullable()();
+  RealColumn get total => real().nullable()();
+}
+
 // write class that converts List of Strings to String
 // and vice versa
 class StringListConverter extends TypeConverter<List<String>, String> {

@@ -10,7 +10,7 @@ import 'tables/tables.dart';
 
 part 'drift_db.g.dart';
 
-@DriftDatabase(tables: [DbEmployees, DbCategories, DbServices])
+@DriftDatabase(tables: [DbEmployees, DbCategories, DbServices, DbDataItems])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
 
@@ -82,10 +82,68 @@ class AppDb extends _$AppDb {
 
   Stream<List<DbService>> getAllServices() => select(dbServices).watch();
 
-  Stream<List<DbService>> getServicesByCategory(int i) {
-    return (select(dbServices)..where((tbl) => tbl.categoryId.equals(i)))
-        .watch();
+  Stream<List<DbService>> getServicesByCategory(int i) =>
+      (select(dbServices)..where((tbl) => tbl.categoryId.equals(i))).watch();
+  Future<List<DbService>> getServicesByCategoryId(int i) =>
+      (select(dbServices)..where((tbl) => tbl.categoryId.equals(i))).get();
+
+  Future<DbEmployee?> getEmployeeByLoginPassword(
+      String login, String password) async {
+    final employee = await (select(dbEmployees)
+          ..where(
+              (tbl) => tbl.login.equals(login) & tbl.password.equals(password)))
+        .getSingleOrNull();
+    return employee;
   }
+
+  // DataItems
+
+  Future insertNewDataItem(DbDataItem dataItem) =>
+      into(dbDataItems).insert(dataItem);
+
+  Future<int> insertNewCompanionDataItem(
+      String name,
+      String phone,
+      int employeeId,
+      int categoryId,
+      int serviceId,
+      bool newCustomer,
+      bool regCustomer,
+      DateTime date,
+      bool cardPay,
+      double price,
+      double total) async {
+    final id = await into(dbDataItems).insert(DbDataItemsCompanion.insert(
+      name: Value(name),
+      phone: Value(phone),
+      employeeId: employeeId,
+      categoryId: categoryId,
+      serviceId: serviceId,
+      newCustomer: Value(newCustomer),
+      regCustomer: Value(regCustomer),
+      date: Value(date),
+      cardPay: Value(cardPay),
+      price: Value(price),
+      total: Value(total),
+    ));
+    return id;
+  }
+
+  Future updateDataItem(DbDataItem dataItem) =>
+      update(dbDataItems).replace(dataItem);
+
+  Stream<List<DbDataItem>> getAllDataItems() => select(dbDataItems).watch();
+
+  Stream<List<DbDataItem>> getDataItemsByEmployee(int i) =>
+      (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(i))).watch();
+
+  Stream<List<DbDataItem>> getDataItemsByDateRange(
+          DateTime start, DateTime end) =>
+      (select(dbDataItems)
+            ..where((tbl) =>
+                tbl.date.isBiggerOrEqualValue(start) &
+                tbl.date.isSmallerOrEqualValue(end)))
+          .watch();
 }
 
 LazyDatabase _openConnection() {

@@ -4,6 +4,7 @@ import 'package:ventigo/config/app_enums.dart';
 import '../db/drift_db.dart';
 
 class Employee {
+  int id;
   String name;
   String lastName;
   String? login;
@@ -13,6 +14,7 @@ class Employee {
   List<VisibilityFilter>? visibility;
 
   Employee({
+    required this.id,
     required this.name,
     required this.lastName,
     this.login,
@@ -21,4 +23,9 @@ class Employee {
     this.percentage,
     this.visibility,
   });
+
+  @override
+  String toString() {
+    return 'Employee{name: $name, lastName: $lastName, login: $login, password: $password, categories: $categories, percentage: $percentage, visibility: $visibility}';
+  }
 }

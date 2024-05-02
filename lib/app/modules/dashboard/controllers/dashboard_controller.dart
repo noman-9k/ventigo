@@ -4,10 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/modules/employees/views/employees_view.dart';
 
-import '../../main/views/main_view.dart';
+import '../../statistic/views/statistic_view.dart';
 import '../../services/views/services_view.dart';
 import '../../settings/views/settings_view.dart';
-import '../../statistic/views/statistic_view.dart';
+import '../../main/views/main_view.dart';
 
 class DashboardController extends GetxController {
   List<TabItem> navItems = [
@@ -19,7 +19,7 @@ class DashboardController extends GetxController {
   ];
   List<Widget> widgetOptions = <Widget>[
     SettingsView(),
-    StatisticView(),
+    StatisticsView(),
     MainView(),
     ServicesView(),
     EmployeesView(),
