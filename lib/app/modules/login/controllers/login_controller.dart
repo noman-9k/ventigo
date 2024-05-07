@@ -30,6 +30,6 @@ class LoginController extends GetxController {
   }
 
   adminLogin() {
-    Get.toNamed(Routes.DASHBOARD);
+    Get.toNamed(Routes.ADMIN_AUTH);
   }
 }

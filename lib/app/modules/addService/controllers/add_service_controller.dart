@@ -40,12 +40,12 @@ class AddServiceController extends GetxController {
     return categories.asFuture();
   }
 
-  // @override
-  // void onClose() {
-  //   removeAddNewCategory();
+  @override
+  void onClose() {
+    removeAddNewCategory();
 
-  //   super.onClose();
-  // }
+    super.onClose();
+  }
 
   addNewCategory() => pushAddNewCategoryDialog(Get.context!, (value) {
         if (value != null) {
@@ -65,53 +65,6 @@ class AddServiceController extends GetxController {
     categoryName = p1;
     // if (p1.contains('Add New Category')) {}
   }
-
-  // addService() {
-  //   if (serviceNameController.text.isEmpty) {
-  //     Get.snackbar('Error', 'Service Name is required');
-  //     return;
-  //   }
-  //   if (categoryName.isEmpty) {
-  //     Get.snackbar('Error', 'Category Name is required');
-  //     return;
-  //   }
-  //   if (priceController.text.isEmpty) {
-  //     Get.snackbar('Error', 'Price is required');
-  //     return;
-  //   }
-  //   Get.focusScope?.unfocus();
-  //   removeAddNewCategory();
-
-  //   isCategoryExist(categoryName)
-  //       ? addServiceToPreviousCategory(categoryName)
-  //       : addNewCategoryAndService(categoryName);
-
-  //   ServicesController.to.update();
-
-  //   Get.back();
-  // }
-
-  // void addServiceToPreviousCategory(String categoryName) {
-  //   var services = categories
-  //       .firstWhere((element) => element.name == categoryName)
-  //       .services;
-
-  //   services?.add(AppService(
-  //       name: serviceNameController.text,
-  //       price: double.tryParse(priceController.text) ?? 0));
-  // }
-
-  // isCategoryExist(String categoryName) {
-  //   return categories.any((element) => element.name == categoryName);
-  // }
-
-  // addNewCategoryAndService(String categoryName) {
-  //   categories.add(Category(name: categoryName, services: [
-  //     AppService(
-  //         name: serviceNameController.text,
-  //         price: double.tryParse(priceController.text) ?? 0)
-  //   ]));
-  // }
 
   void removeAddNewCategory() {
     // categories.removeWhere((element) => element.name == 'Add New Category');

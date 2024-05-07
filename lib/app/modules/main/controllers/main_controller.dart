@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/db/drift_db.dart';
 
 import '../../../models/caregory.dart';
 import '../../../models/service.dart';
@@ -40,25 +42,8 @@ class MainController extends GetxController {
   void logout() {
     Get.offAllNamed(Routes.LOGIN);
   }
+
+  Stream<List<DbDataItem>> getTableStream() {
+    return DbController.to.appDb.getAllDataItems();
+  }
 }
-
-// }
-
-
-//     with GetSingleTickerProviderStateMixin {
-//   late TabController tabController;
-
-//   var selectedTab;
-
-//   @override
-//   void onInit() {
-//     tabController = TabController(length: 2, vsync: this);
-//     super.onInit();
-//   }
-
-  ///
-  ///
-  ///
-  ///
-  ///
-// }

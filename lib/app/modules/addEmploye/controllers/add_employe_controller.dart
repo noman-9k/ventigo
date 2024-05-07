@@ -56,8 +56,6 @@ class AddEmployeeController extends GetxController {
       trueFilters.remove(filter);
     }
     update();
-
-    log('trueFilters: $trueFilters');
   }
 
   categoryTab(BuildContext context) async {
@@ -108,14 +106,5 @@ class AddEmployeeController extends GetxController {
       visibility: trueFilters.map((e) => e.toString()).toList(),
     );
     Get.back();
-  }
-
-  getAllEmploys() {
-    log('getAllEmploys');
-    DbController.to.appDb.getAllEmployees().listen((event) {
-      event.forEach((element) {
-        log('element: ${element.visibility}');
-      });
-    });
   }
 }

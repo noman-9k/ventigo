@@ -48,14 +48,23 @@ class AddReportView extends GetView<AddReportController> {
                     controller: controller.phoneController,
                     decoration: InputDecoration(labelText: 'Phone Number')),
                 16.verticalSpace,
-                YesNoButton(title: 'New Customer', onChanged: (_) {}),
+                YesNoButton(
+                    title: 'New Customer',
+                    onChanged: (value) {
+                      controller.newCustomer = value;
+                    }),
                 16.verticalSpace,
                 YesNoButton(
                     title: 'Regular Customer',
-                    onChanged: (_) {},
-                    defaultValue: true),
+                    onChanged: (value) {
+                      controller.regCustomer = value;
+                    }),
                 16.verticalSpace,
-                YesNoButton(title: 'Payment CASH', onChanged: (_) {}),
+                YesNoButton(
+                    title: 'Payment by Card',
+                    onChanged: (value) {
+                      controller.cardPay = value;
+                    }),
                 16.verticalSpace,
                 AppText.mediumText('Select Category'),
                 CustomDropDown(
@@ -81,7 +90,7 @@ class AddReportView extends GetView<AddReportController> {
                 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(
-                      onPressed: () => controller.submit(),
+                      onPressed: controller.submit,
                       child: controller.isLoading.isTrue
                           ? CircularProgressIndicator()
                           : AppText.boldText('Submit', color: Colors.white));

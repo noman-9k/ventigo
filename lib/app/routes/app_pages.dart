@@ -8,6 +8,8 @@ import '../modules/addReport/bindings/add_report_binding.dart';
 import '../modules/addReport/views/add_report_view.dart';
 import '../modules/addService/bindings/add_service_binding.dart';
 import '../modules/addService/views/add_service_view.dart';
+import '../modules/adminAuth/bindings/admin_auth_binding.dart';
+import '../modules/adminAuth/views/admin_auth_view.dart';
 import '../modules/costsFilter/bindings/costs_filter_binding.dart';
 import '../modules/costsFilter/views/costs_filter_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -18,16 +20,16 @@ import '../modules/filters/bindings/filters_binding.dart';
 import '../modules/filters/views/filters_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
-import '../modules/statistic/bindings/statistic_binding.dart';
-import '../modules/statistic/views/statistic_view.dart';
+import '../modules/main/bindings/main_binding.dart';
+import '../modules/main/views/main_view.dart';
 import '../modules/services/bindings/services_binding.dart';
 import '../modules/services/views/services_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
-import '../modules/main/bindings/main_binding.dart';
-import '../modules/main/views/main_view.dart';
+import '../modules/statistic/bindings/statistic_binding.dart';
+import '../modules/statistic/views/statistic_view.dart';
 import '../modules/userData/bindings/user_data_binding.dart';
 import '../modules/userData/views/user_data_view.dart';
 
@@ -114,6 +116,11 @@ class AppPages {
       name: _Paths.USER_DATA,
       page: () => const UserDataView(),
       binding: UserDataBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_AUTH,
+      page: () => const AdminAuthView(),
+      binding: AdminAuthBinding(),
     ),
   ];
 }

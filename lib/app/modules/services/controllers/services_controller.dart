@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/db/tables/tables.dart';
 
+import '../../../db/db_controller.dart';
 import '../../../models/caregory.dart';
 
 class ServicesController extends GetxController {
@@ -31,6 +32,14 @@ class ServicesController extends GetxController {
     int index = CategoryService.to.servicesCategories.indexOf(service);
     scrollController.animateTo(index * height,
         duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+  }
+
+  deleteService(int id) {
+    DbController.to.appDb.deleteService(id);
+  }
+
+  deleteCategory(int id) {
+    DbController.to.appDb.deleteCategory(id);
   }
 }
 

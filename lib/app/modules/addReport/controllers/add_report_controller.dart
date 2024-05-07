@@ -25,8 +25,8 @@ class AddReportController extends GetxController {
   DbService? selectedService;
 
   @override
-  Future<void> onInit() async {
-    categories = await CategoryService.to.getAllServicesCategories();
+  void onInit() {
+    categories = CategoryService.to.getEmployeeCategories();
     update();
     super.onInit();
   }
@@ -52,21 +52,28 @@ class AddReportController extends GetxController {
     String name =
         nameController.text.trim() + ' ' + lastNameController.text.trim();
     String phone = phoneController.text.trim();
-    bool newCustomer = this.newCustomer ?? false;
-    bool regCustomer = this.regCustomer ?? false;
-    bool cardPay = this.cardPay ?? false;
+    // bool newCustomer = this.newCustomer ?? false;
+    // bool regCustomer = this.regCustomer ?? false;
+    // bool cardPay = this.cardPay ?? false;
     double price = double.parse(priceController.text.trim());
+
+    log('Name: $name, Phone: $phone, EmployeeId: $employeeId, CategoryId: $categoryId, ServiceId: $serviceId, NewCustomer: $newCustomer, RegCustomer: $regCustomer, CardPay: $cardPay, Price: $price'
+        .toString()
+        .toUpperCase());
 
     await DbController.to.appDb.insertNewCompanionDataItem(
         name,
         phone,
         employeeId,
+        EmployeeService.to.employee!.value.name,
         categoryId,
+        selectedCategory?.name ?? 'No category',
         serviceId,
-        newCustomer,
-        regCustomer,
+        selectedService?.name ?? 'No service',
+        newCustomer ?? false,
+        regCustomer ?? false,
         DateTime.now(),
-        cardPay,
+        cardPay ?? false,
         price,
         1);
     isLoading.value = false;

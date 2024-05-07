@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
+import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../config/app_text.dart';
 import '../../../routes/app_pages.dart';
@@ -17,10 +19,11 @@ class EmployeesView extends GetView<EmployeesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 20),
+        padding: const EdgeInsets.only(bottom: 100),
         child: FloatingActionButton(
+          backgroundColor: AppColors.primaryColor,
           onPressed: () => Get.toNamed(Routes.ADD_EMPLOYE),
-          child: Icon(Icons.add),
+          child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),
       ),
       appBar: AppBar(
@@ -55,6 +58,7 @@ class EmployeesView extends GetView<EmployeesController> {
                       itemCount: snapshot.data?.length ?? 0,
                       itemBuilder: (context, index) {
                         final employee = snapshot.data?[index];
+
                         return ListTile(
                           onTap: () => controller.viewEmployee(employee),
                           title: Text(employee!.name!),
@@ -69,7 +73,8 @@ class EmployeesView extends GetView<EmployeesController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  AppText.mediumText('Access Level'),
+                                  AppText.mediumText('Access Level',
+                                      fontWeight: FontWeight.bold),
                                   Row(
                                     children: [
                                       Container(
@@ -77,20 +82,29 @@ class EmployeesView extends GetView<EmployeesController> {
                                           height: 15,
                                           width: 20,
                                           decoration: BoxDecoration(
-                                              color: Colors.green,
+                                              color:
+                                                  employee.visibility.length ==
+                                                          6
+                                                      ? Color(0xFF00A3E8)
+                                                      : Color(0xFFA349A1),
                                               borderRadius:
                                                   BorderRadius.circular(4))),
                                       5.horizontalSpace,
-                                      AppText.mediumText('Full'),
+                                      AppText.mediumText(
+                                          employee.visibility.length == 6
+                                              ? 'Not Limited'
+                                              : 'Limited'),
                                     ],
                                   ),
                                 ],
                               ),
-                              IconButton(
-                                icon:
-                                    const Icon(Icons.arrow_forward_ios_rounded),
-                                onPressed: () {},
-                              ),
+                              10.horizontalSpace,
+                              Icon(Icons.arrow_forward_ios_rounded)
+                              // IconButton(
+                              //   icon:
+                              //       const Icon(Icons.arrow_forward_ios_rounded),
+                              //   onPressed: () {},
+                              // ),
                             ],
                           ),
                         );

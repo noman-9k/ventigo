@@ -11,7 +11,6 @@ import '../../common/back_button.dart';
 import '../controllers/filters_controller.dart';
 import 'widgets/categories_section.dart';
 import 'widgets/date_section.dart';
-import 'widgets/price_range_slider.dart';
 import 'widgets/services_section.dart';
 
 class FiltersView extends GetView<FiltersController> {
@@ -21,7 +20,7 @@ class FiltersView extends GetView<FiltersController> {
     return Scaffold(
       appBar: AppBar(
         leading: AppBackButton(),
-        title: const Text('Filters'),
+        title: AppText.boldText('Filters', fontSize: 20.sp),
         centerTitle: true,
       ),
       body: Padding(
@@ -50,7 +49,31 @@ class FiltersView extends GetView<FiltersController> {
               10.verticalSpace,
               ServicesSection(),
               10.verticalSpace,
-              PriceRangeSlider(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppText.boldText('Price Range', fontSize: 20.sp),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(labelText: 'Min Price'),
+                        ),
+                      ),
+                      10.horizontalSpace,
+                      Expanded(
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(labelText: 'Max Price'),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+
+              // PriceRangeSlider(),
               10.verticalSpace,
               YesNoButton(onChanged: (_) {}, title: 'New Customer'),
               20.verticalSpace,

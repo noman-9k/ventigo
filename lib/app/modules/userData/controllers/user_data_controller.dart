@@ -1,12 +1,7 @@
-import 'dart:math';
-
 import 'package:get/get.dart';
+import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/drift_db.dart';
-
-import '../../../models/caregory.dart';
-import '../../../models/service.dart';
-import '../../statistic/controllers/table_data.dart';
 
 class UserDataController extends GetxController {
   // List<DbDataItem> currentI = [];
@@ -19,7 +14,8 @@ class UserDataController extends GetxController {
   }
 
   Stream<List<DbDataItem>> getAllDataItems() {
-    return DbController.to.appDb.getAllDataItems();
+    return DbController.to.appDb
+        .getAllDataItemsByEmployeeId(EmployeeService.to.employee!.value.id);
   }
 
   logout() {}

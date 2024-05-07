@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +8,6 @@ import 'package:ventigo/config/app_text.dart';
 
 import '../../common/back_button.dart';
 import '../controllers/add_employe_controller.dart';
-import 'widgets/employee_checkbox.dart';
 
 class AddEmployeeView extends GetView<AddEmployeeController> {
   const AddEmployeeView({Key? key}) : super(key: key);
@@ -97,8 +95,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       type: VisibilityFilter.numberOfServices),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Hide Phone (visible last 3 numbers)',
-                      type: VisibilityFilter.hidePhone),
+                      title: 'Show Phone)', type: VisibilityFilter.showPhone),
                   10.verticalSpace,
                   _checkbox(
                       title: 'Total Price Service per day',

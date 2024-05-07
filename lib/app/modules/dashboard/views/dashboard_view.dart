@@ -32,6 +32,7 @@ class DashboardView extends GetView<DashboardController> {
           onTap: (int index) => controller.onTapped(index),
         ),
         body: controller.widgetOptions[controller.currentIndex.value],
+        extendBody: true,
       );
     });
   }

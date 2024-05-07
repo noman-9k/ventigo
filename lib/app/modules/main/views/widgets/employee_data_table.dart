@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
-import '../../../db/drift_db.dart';
+import '../../../../db/drift_db.dart';
 
-class UserDataTable extends StatelessWidget {
-  UserDataTable({super.key, required this.stream});
+class EmployeeDataTable extends StatelessWidget {
+  EmployeeDataTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   DateTime currentDate = DateTime.now();
 
@@ -38,7 +38,7 @@ class UserDataTable extends StatelessWidget {
                   DataColumn2(label: Text('Card\nPay'), size: ColumnSize.S),
                   DataColumn2(
                       label:
-                          Text('Customer\nData', textAlign: TextAlign.center),
+                          Text('Employee\nData', textAlign: TextAlign.center),
                       size: ColumnSize.L),
                   DataColumn2(
                       label: Center(child: Text('Date')), fixedWidth: 100),
@@ -68,7 +68,7 @@ class UserDataTable extends StatelessWidget {
                                   currentDate.difference(tableItem.date!);
                               var changeColor = difference.inDays.isEven;
                               return changeColor
-                                  ? Colors.grey[200]
+                                  ? Color(0xFFDDFDF1)
                                   : Colors.white;
                             }),
                             cells: [
@@ -82,7 +82,8 @@ class UserDataTable extends StatelessWidget {
                                   tableItem.cardPay ?? false
                                       ? 'assets/icon/true.png'
                                       : 'assets/icon/false.png')),
-                              DataCell(Text(tableItem.name ?? 'No data')),
+                              DataCell(
+                                  Text(tableItem.employeeName ?? 'No data')),
                               DataCell(Text(tableItem.date?.smallDate() ?? '')),
                               DataCell(Column(
                                 children: [

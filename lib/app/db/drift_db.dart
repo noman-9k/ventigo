@@ -60,6 +60,8 @@ class AppDb extends _$AppDb {
   }
 
   Stream<List<DbCategory>> getAllCategories() => select(dbCategories).watch();
+  Future<List<DbCategory>> getAllCategoriesF() => select(dbCategories).get();
+
   Future<List<DbCategory>?> getCategoriesByIDs(List<String> categories) async {
     final ids = categories.map((e) => int.parse(e)).toList();
     final categoriesList =
@@ -68,6 +70,15 @@ class AppDb extends _$AppDb {
   }
 
   Future<List<DbCategory>> getCategoriesAsList() => select(dbCategories).get();
+
+  Future<void> updateCategory(DbCategory category) {
+    return update(dbCategories).replace(category);
+  }
+
+  void deleteCategory(int id) {
+    (delete(dbCategories)..where((tbl) => tbl.id.equals(id))).go();
+    (delete(dbServices)..where((tbl) => tbl.categoryId.equals(id))).go();
+  }
 
   // Services
   Future insertNewService(DbService service) =>
@@ -80,7 +91,16 @@ class AppDb extends _$AppDb {
     return id;
   }
 
+  Future<void> updateService(DbService service) {
+    return update(dbServices).replace(service);
+  }
+
+  void deleteService(int id) {
+    (delete(dbServices)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   Stream<List<DbService>> getAllServices() => select(dbServices).watch();
+  Future<List<DbService>> getAllServicesF() => select(dbServices).get();
 
   Stream<List<DbService>> getServicesByCategory(int i) =>
       (select(dbServices)..where((tbl) => tbl.categoryId.equals(i))).watch();
@@ -105,8 +125,11 @@ class AppDb extends _$AppDb {
       String name,
       String phone,
       int employeeId,
+      String employeeName,
       int categoryId,
+      String categoryName,
       int serviceId,
+      String serviceName,
       bool newCustomer,
       bool regCustomer,
       DateTime date,
@@ -117,8 +140,11 @@ class AppDb extends _$AppDb {
       name: Value(name),
       phone: Value(phone),
       employeeId: employeeId,
+      employeeName: Value(employeeName),
       categoryId: categoryId,
+      categoryName: Value(categoryName),
       serviceId: serviceId,
+      serviceName: Value(serviceName),
       newCustomer: Value(newCustomer),
       regCustomer: Value(regCustomer),
       date: Value(date),
@@ -133,6 +159,8 @@ class AppDb extends _$AppDb {
       update(dbDataItems).replace(dataItem);
 
   Stream<List<DbDataItem>> getAllDataItems() => select(dbDataItems).watch();
+  Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
+      (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(id))).watch();
 
   Stream<List<DbDataItem>> getDataItemsByEmployee(int i) =>
       (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(i))).watch();

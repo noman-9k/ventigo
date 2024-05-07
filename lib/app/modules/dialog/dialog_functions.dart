@@ -1,9 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:ventigo/app/models/caregory.dart';
 
 import '../../db/drift_db.dart';
 import 'dialogs/add_new_category_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
+import 'dialogs/edit_category_dialog.dart';
+import 'dialogs/edit_service_dialog.dart';
+
+pushEditServiceDialog(
+    BuildContext context, DbService service, Function(String?) onDone) {
+  showDialog(
+    context: context,
+    builder: (context) => EditServiceDialog(
+      service: service,
+      onDone: onDone,
+    ),
+  );
+}
+
+pushConfirmDialog(
+  BuildContext context, {
+  required String title,
+  required String message,
+  required Function() onDone,
+}) {
+  showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      title: Text(title),
+      content: Text(message),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.pop(context),
+          child: Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            onDone();
+          },
+          child: Text('Confirm'),
+        ),
+      ],
+    ),
+  );
+}
+
+pushEditCategoryDialog(
+    BuildContext context, DbCategory category, Function(String?) onDone) {
+  showDialog(
+    context: context,
+    builder: (context) => EditCategoryDialog(
+      category: category,
+    ),
+  );
+}
 
 pushAddNewCategoryDialog(BuildContext context, Function(String?) onDone) {
   showDialog(

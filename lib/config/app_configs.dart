@@ -6,7 +6,7 @@ class AppConfigs {
     VisibilityFilter.percentageMonth,
     VisibilityFilter.percentageDay,
     VisibilityFilter.numberOfServices,
-    VisibilityFilter.hidePhone,
+    VisibilityFilter.showPhone,
     VisibilityFilter.servicesPerDay
   ];
 }

@@ -8,7 +8,7 @@ extension DateExtension on DateTime {
 
 extension SmallDate on DateTime {
   String smallDate() {
-    return DateFormat('dd.mm.yyyy').format(this);
+    return DateFormat('dd.MM.yyyy').format(this);
   }
 
   String getDay() {

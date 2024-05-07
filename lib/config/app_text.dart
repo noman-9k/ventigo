@@ -8,9 +8,14 @@ class AppText {
   }
 
   static mediumText(String s,
-      {Color? color, TextAlign? align, double? fontSize, int? maxLines}) {
+      {Color? color,
+      TextAlign? align,
+      double? fontSize,
+      int? maxLines,
+      FontWeight? fontWeight}) {
     return Text(s,
-        style: AppStyles.mediumStyle(color: color, fontSize: fontSize),
+        style: AppStyles.mediumStyle(
+            color: color, fontSize: fontSize, fontWeight: fontWeight),
         maxLines: maxLines,
         textAlign: align);
   }
@@ -18,5 +23,11 @@ class AppText {
   static boldText(String s, {Color? color, double? fontSize}) {
     return Text(s,
         style: AppStyles.boldStyle(color: color, fontSize: fontSize));
+  }
+
+  static mediumBoldText(String s, {Color? color, double? fontSize}) {
+    return Text(s,
+        style: AppStyles.mediumStyle(
+            fontWeight: FontWeight.w600, fontSize: fontSize ?? 16));
   }
 }

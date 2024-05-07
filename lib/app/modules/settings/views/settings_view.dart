@@ -22,7 +22,7 @@ class SettingsView extends GetView<SettingsController> {
                 20.verticalSpace,
                 Image.asset('assets/icon/settings.png', height: 80.h),
                 10.verticalSpace,
-                AppText.boldText('General Settings'),
+                // AppText.boldText('General Settings'),
                 20.verticalSpace,
                 ListTile(
                   title: AppText.boldText('Language'),
@@ -62,45 +62,45 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ]),
             ),
-            Spacer(),
             Container(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               color: AppColors.veryLightBlue,
+              padding: EdgeInsets.only(left: 40),
               width: 1.sw,
               height: 70.h,
               child: AppText.boldText('Data Backup'),
             ),
             Container(
-              color: AppColors.blueColor,
+              // color: AppColors.blueColor,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Column(
                   children: [
                     10.verticalSpace,
                     ListTile(
-                      title: AppText.boldText('Create Data',
-                          color: AppColors.whiteColor),
+                      title: AppText.boldText('Create Data'),
                       leading: Image.asset(
                         'assets/icon/create_db.png',
+                        color: AppColors.primaryColor,
                         height: 30.h,
                         width: 30.h,
                       ),
                     ),
                     ListTile(
-                      title: AppText.boldText('Restore Data',
-                          color: AppColors.whiteColor),
+                      title: AppText.boldText('Restore Data'),
                       leading: Image.asset(
                         'assets/icon/restore_db.png',
+                        color: AppColors.primaryColor,
                         height: 30.h,
                         width: 30.h,
                       ),
                     ),
                     // clear data
                     ListTile(
-                      title: AppText.boldText('Clear Data',
-                          color: AppColors.whiteColor),
+                      title: AppText.boldText('Clear Data'),
                       leading: Image.asset(
                         'assets/icon/clear_db.png',
+                        color: AppColors.primaryColor,
                         height: 30.h,
                         width: 30.h,
                       ),
@@ -110,6 +110,7 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ),
             ),
+            50.verticalSpace
           ],
         ),
       ),
