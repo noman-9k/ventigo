@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/config/app_enums.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../common/back_button.dart';
 import '../controllers/add_employe_controller.dart';
@@ -26,42 +27,40 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
               return Column(
                 children: [
                   TextField(
-                      controller: controller.nameController,
-                      decoration: InputDecoration(
-                          labelText: 'Name', hintText: 'Enter your name')),
+                          controller: controller.nameController,
+                          decoration:
+                              InputDecoration(hintText: 'Enter your name'))
+                      .withLabel('Name'),
                   10.verticalSpace,
                   TextField(
                       controller: controller.lastNameController,
                       decoration: InputDecoration(
-                        labelText: 'Last Name',
                         hintText: 'Enter your last name',
-                      )),
+                      )).withLabel('Last Name'),
                   10.verticalSpace,
                   TextField(
                       controller: controller.loginController,
                       decoration: InputDecoration(
-                        labelText: 'Login',
                         hintText: 'Enter your login',
-                      )),
+                      )).withLabel('Login'),
                   10.verticalSpace,
                   TextField(
                       controller: controller.passController,
                       decoration: InputDecoration(
-                        labelText: 'Password',
                         hintText: 'Enter your password',
-                      )),
+                      )).withLabel('Password'),
                   10.verticalSpace,
                   AppText.mediumText(
                       'Select Categories from the list\n(maybe several)',
                       align: TextAlign.center),
                   10.verticalSpace,
                   TextField(
-                      readOnly: true,
-                      onTap: () => controller.categoryTab(context),
-                      controller: controller.categoriesController,
-                      decoration: InputDecoration(
-                          labelText: 'Categories',
-                          hintText: 'Select categories')),
+                          readOnly: true,
+                          onTap: () => controller.categoryTab(context),
+                          controller: controller.categoriesController,
+                          decoration:
+                              InputDecoration(hintText: 'Select categories'))
+                      .withLabel('Categories'),
                   10.verticalSpace,
                   AppText.mediumText('Set percentage of income if necessary',
                       align: TextAlign.center),
@@ -69,10 +68,9 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   TextField(
                     controller: controller.percentageController,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        labelText: 'percentage',
-                        hintText: 'Set percentage of income'),
-                  ),
+                    decoration:
+                        InputDecoration(hintText: 'Set percentage of income'),
+                  ).withLabel('Percentage'),
                   10.verticalSpace,
                   AppText.mediumText(
                       ' Visibility level with a cross from the list',

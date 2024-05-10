@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:drift/drift.dart';
 import 'package:get/get.dart';
 
 import 'drift_db.dart';
@@ -14,9 +13,10 @@ class DbController extends GetxController {
   void onInit() {
     super.onInit();
 
-    log('DbController.onInit()');
     _appDb = AppDb();
   }
+
+  Iterable<TableInfo<Table, dynamic>> get tables => _appDb.allTables;
 
   @override
   void onClose() {

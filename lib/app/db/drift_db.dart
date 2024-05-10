@@ -5,6 +5,7 @@ import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
+import 'package:ventigo/app/db/db_controller.dart';
 
 import 'tables/tables.dart';
 
@@ -172,6 +173,13 @@ class AppDb extends _$AppDb {
                 tbl.date.isBiggerOrEqualValue(start) &
                 tbl.date.isSmallerOrEqualValue(end)))
           .watch();
+
+  void deleteDatabase() {
+    final tables = DbController.to.tables;
+    for (final table in tables) {
+      delete(table).go();
+    }
+  }
 }
 
 LazyDatabase _openConnection() {

@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/yes_no_button.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../../config/app_text.dart';
 import '../../../app_services/category_service.dart';
@@ -28,9 +29,8 @@ class CostsFilterView extends GetView<CostsFilterController> {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Name of cost',
-                labelText: 'Name of cost',
               ),
-            ),
+            ).withLabel('Name of cost'),
             20.verticalSpace,
             // CustomDropDown(
             //   items: CategoryService.to

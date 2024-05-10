@@ -7,6 +7,7 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/drift_db.dart';
 import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 class EditServiceDialog extends StatefulWidget {
   const EditServiceDialog(
@@ -42,18 +43,16 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
           TextField(
             controller: serviceNameController,
             decoration: InputDecoration(
-              labelText: 'Service Name',
               border: InputBorder.none,
             ),
-          ),
+          ).withLabel('Service Name'),
           16.verticalSpace,
           TextField(
             controller: priceController,
             decoration: InputDecoration(
-              labelText: 'Price',
               border: InputBorder.none,
             ),
-          ),
+          ).withLabel('Price'),
           16.verticalSpace,
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

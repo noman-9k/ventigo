@@ -11,6 +11,10 @@ extension SmallDate on DateTime {
     return DateFormat('dd.MM.yyyy').format(this);
   }
 
+  String smallDateWithTime() {
+    return DateFormat('dd MMMM yyyy HH:mm').format(this);
+  }
+
   String getDay() {
     return DateFormat('dd').format(this);
   }

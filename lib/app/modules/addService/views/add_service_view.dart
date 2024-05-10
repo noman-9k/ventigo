@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
@@ -53,27 +54,24 @@ class AddServiceView extends GetView<AddServiceController> {
                 readOnly: true,
                 controller: controller.categoryNameController,
                 decoration: InputDecoration(
-                  labelText: 'Category Name',
                   hintText: 'Enter Category Name',
                 ),
-              ),
+              ).withLabel('Category Name'),
               32.verticalSpace,
               AppText.mediumText('Name of the Service'),
               10.verticalSpace,
               TextField(
                 controller: controller.serviceNameController,
-                decoration: InputDecoration(
-                    labelText: 'Service Name', hintText: 'Enter Service Name'),
-              ),
+                decoration: InputDecoration(hintText: 'Enter Service Name'),
+              ).withLabel('Service Name'),
               32.verticalSpace,
               AppText.mediumText('Cost of Materials for this Services'),
               10.verticalSpace,
               TextField(
                 controller: controller.priceController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                    labelText: 'Price', hintText: 'Enter Price'),
-              ),
+                decoration: InputDecoration(hintText: 'Enter Price'),
+              ).withLabel('Price'),
               32.verticalSpace,
               ElevatedButton(
                 onPressed: controller.dbAddService,

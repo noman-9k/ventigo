@@ -6,6 +6,7 @@ import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/yes_no_button.dart';
 import 'package:ventigo/app/modules/filters/views/widgets/masters_selection.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../common/back_button.dart';
 import '../controllers/filters_controller.dart';
@@ -35,9 +36,9 @@ class FiltersView extends GetView<FiltersController> {
               YesNoButton(onChanged: (_) {}, title: 'Card Pay'),
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,
-              TextField(decoration: InputDecoration(labelText: 'Name')),
+              TextField(decoration: InputDecoration()).withLabel('Name'),
               10.verticalSpace,
-              TextField(decoration: InputDecoration(labelText: 'Phone')),
+              TextField(decoration: InputDecoration()).withLabel('Phone'),
               10.verticalSpace,
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,

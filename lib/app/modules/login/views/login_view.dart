@@ -7,6 +7,7 @@ import 'package:ventigo/app/constants/app_images.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/elevated_button_extension.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../constants/app_constants.dart';
 import '../controllers/login_controller.dart';
@@ -21,7 +22,7 @@ class LoginView extends GetView<LoginController> {
           padding: AppConstants.defaultPadding,
           child: Column(
             children: [
-              100.verticalSpace,
+              80.verticalSpace,
               Image.asset(AppImages.logo),
               60.verticalSpace,
               AppText.boldText('Login',
@@ -37,17 +38,17 @@ class LoginView extends GetView<LoginController> {
               TextField(
                 controller: controller.loginController,
                 decoration: InputDecoration(
-                    label: AppText.mediumText('User Name'),
+                    // label: AppText.mediumText('User Name'),
                     prefixIcon: Icon(FontAwesomeIcons.user)),
-              ),
+              ).withLabel('User Name'),
               10.verticalSpace,
               TextField(
                 controller: controller.passController,
                 decoration: InputDecoration(
-                  label: AppText.mediumText('Password'),
+                  // label: AppText.mediumText('Password'),
                   prefixIcon: Icon(Icons.lock_outlined),
                 ),
-              ),
+              ).withLabel('Password'),
               60.verticalSpace,
               Obx(() {
                 return ElevatedButton(

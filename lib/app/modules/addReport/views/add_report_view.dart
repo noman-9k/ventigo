@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/app_app_bar.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../app_services/employee_service.dart';
 import '../../common/custom_dropdown.dart';
@@ -34,19 +35,20 @@ class AddReportView extends GetView<AddReportController> {
                 Center(child: AppText.boldText('Add Report', fontSize: 20.sp)),
                 16.verticalSpace,
                 TextField(
-                    controller: controller.nameController,
-                    decoration: InputDecoration(
-                        labelText: 'Name', hintText: 'Name of Client')),
+                        controller: controller.nameController,
+                        decoration: InputDecoration(hintText: 'Name of Client'))
+                    .withLabel('Name'),
                 16.verticalSpace,
                 TextField(
-                    controller: controller.lastNameController,
-                    decoration: InputDecoration(
-                        labelText: 'LastName',
-                        hintText: 'Last Name of Client')),
+                        controller: controller.lastNameController,
+                        decoration:
+                            InputDecoration(hintText: 'Last Name of Client'))
+                    .withLabel('Last Name'),
                 16.verticalSpace,
                 TextField(
-                    controller: controller.phoneController,
-                    decoration: InputDecoration(labelText: 'Phone Number')),
+                        controller: controller.phoneController,
+                        decoration: InputDecoration(labelText: 'Phone Number'))
+                    .withLabel('Phone Number'),
                 16.verticalSpace,
                 YesNoButton(
                     title: 'New Customer',
@@ -85,8 +87,7 @@ class AddReportView extends GetView<AddReportController> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       hintText: 'Price of Service',
-                      labelText: 'Price',
-                    )),
+                    )).withLabel('Price'),
                 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(

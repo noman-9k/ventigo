@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../db/drift_db.dart';
 
@@ -35,11 +36,8 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           10.verticalSpace,
           TextField(
             controller: categoryNameController,
-            decoration: InputDecoration(
-              labelText: 'Category Name',
-              border: InputBorder.none,
-            ),
-          ),
+            decoration: InputDecoration(border: InputBorder.none),
+          ).withLabel('Category Name'),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
