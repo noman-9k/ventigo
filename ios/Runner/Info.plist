@@ -48,6 +48,6 @@
 		<key>UIStatusBarHidden</key>
 		<false/>
 		<key>NSFaceIDUsageDescription</key>
-<string>To Use Admin Featires in App</string>
+		<string>To Use Admin Featires in App</string>
 	</dict>
 </plist>
