@@ -1,14 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EmployeeCheckbox extends StatefulWidget {
   const EmployeeCheckbox(
-      {super.key, required this.text, required this.onChanged});
+      {super.key,
+      required this.text,
+      required this.onChanged,
+      this.initialValue = false});
   final String text;
   final Function(bool) onChanged;
+  final bool? initialValue;
 
   @override
   State<EmployeeCheckbox> createState() => _EmployeeCheckboxState();
@@ -17,12 +20,18 @@ class EmployeeCheckbox extends StatefulWidget {
 class _EmployeeCheckboxState extends State<EmployeeCheckbox> {
   bool value = false;
   @override
+  initState() {
+    value = widget.initialValue!;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         value = !value;
         setState(() {});
-        widget.onChanged(!value);
+        widget.onChanged(value);
         log('${widget.text} = value: $value');
       },
       child: Container(
@@ -37,7 +46,10 @@ class _EmployeeCheckboxState extends State<EmployeeCheckbox> {
             Text(widget.text),
             const Spacer(),
             IgnorePointer(
-              child: Checkbox(value: value, onChanged: (_) {}),
+              child: Checkbox(
+                value: value,
+                onChanged: (_) {},
+              ),
             )
           ],
         ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "120268146482",
+    "project_id": "salone-ventigo",
+    "storage_bucket": "salone-ventigo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:120268146482:android:1dbca4b08656140022792b",
+        "android_client_info": {
+          "package_name": "com.salon.ventigo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAabC_F7vzNsSD_Rmbp0p14CKrtwDeO5Mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

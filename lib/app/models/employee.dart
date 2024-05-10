@@ -1,15 +1,20 @@
-import 'caregory.dart';
+import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/config/app_enums.dart';
+
+import '../db/drift_db.dart';
 
 class Employee {
+  int id;
   String name;
   String lastName;
   String? login;
   String? password;
-  List<Category>? categories;
+  List<DbCategory>? categories;
   double? percentage;
-  List<Visibility>? visibility;
+  List<VisibilityFilter>? visibility;
 
   Employee({
+    required this.id,
     required this.name,
     required this.lastName,
     this.login,
@@ -19,47 +24,8 @@ class Employee {
     this.visibility,
   });
 
-  factory Employee.fromJson(Map<String, dynamic> json) {
-    return Employee(
-      name: json['name'],
-      lastName: json['lastName'],
-      login: json['login'],
-      password: json['password'],
-      categories: List<Category>.from(
-          json['categories'].map((x) => Category.fromJson(x))),
-      percentage: json['percentage'],
-      visibility: List<Visibility>.from(
-          json['visibility'].map((x) => Visibility.fromJson(x))),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'lastName': lastName,
-      'login': login,
-      'password': password,
-      'categories': categories?.map((x) => x.toJson()).toList(),
-      'percentage': percentage,
-      'visibility': visibility?.map((x) => x.toJson()).toList(),
-    };
-  }
-}
-
-class Visibility {
-  String name;
-  bool isVisible;
-
-  Visibility({required this.name, required this.isVisible});
-
-  factory Visibility.fromJson(Map<String, dynamic> json) {
-    return Visibility(name: json['name'], isVisible: json['isVisible']);
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'isVisible': isVisible,
-    };
+  @override
+  String toString() {
+    return 'Employee{name: $name, lastName: $lastName, login: $login, password: $password, categories: $categories, percentage: $percentage, visibility: $visibility}';
   }
 }

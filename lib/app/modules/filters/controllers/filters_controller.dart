@@ -6,6 +6,8 @@ import 'package:ventigo/app/models/employee.dart';
 import 'package:ventigo/app/models/service.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../../../app_services/employee_service.dart';
+import '../../../db/drift_db.dart';
 import '../../dialog/dialog_functions.dart';
 
 class FiltersController extends GetxController {
@@ -14,20 +16,17 @@ class FiltersController extends GetxController {
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now();
 
-  List<Employee> mastersList = [
-    Employee(name: 'John', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'Walker2', lastName: 'Doe', login: 'john.doe'),
-    Employee(name: 'bob3', lastName: 'Doe', login: 'john.doe')
-  ];
+  @override
+  void onInit() {
+    super.onInit();
+  }
 
-  List<Category> categoriesList = CategoryService.to.getAllServicesCategories();
-  List<AppService> servicesList = CategoryService.to.getAllServices();
+  List<Category> categoriesList = [];
+  List<AppService> servicesList = [];
 
-  List<Employee> selectedMaster = [];
-  List<Category> selectedCategories = [];
-  List<AppService> selectedServices = [];
+  List<DbEmployee> selectedMaster = [];
+  List<DbCategory> selectedCategories = [];
+  List<DbService> selectedServices = [];
 
   RangeValues priceRange = const RangeValues(0, 1000);
 

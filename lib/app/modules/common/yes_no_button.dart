@@ -9,17 +9,17 @@ class YesNoButton extends StatefulWidget {
       {super.key,
       required this.onChanged,
       required this.title,
-      this.defaultValue = false});
+      this.defaultValue});
   final String title;
   final void Function(bool) onChanged;
-  final bool defaultValue;
+  final bool? defaultValue;
 
   @override
   State<YesNoButton> createState() => _YesNoButtonState();
 }
 
 class _YesNoButtonState extends State<YesNoButton> {
-  var isYes = false;
+  var isYes = null;
 
   @override
   void initState() {

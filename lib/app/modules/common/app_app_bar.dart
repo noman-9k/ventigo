@@ -14,7 +14,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: AppBackButton(),
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -31,5 +31,5 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(56.0);
+  Size get preferredSize => const Size.fromHeight(50.0);
 }

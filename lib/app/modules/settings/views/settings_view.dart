@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../dialog/dialog_functions.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -23,7 +23,7 @@ class SettingsView extends GetView<SettingsController> {
                 20.verticalSpace,
                 Image.asset('assets/icon/settings.png', height: 80.h),
                 10.verticalSpace,
-                AppText.boldText('General Settings'),
+                // AppText.boldText('General Settings'),
                 20.verticalSpace,
                 ListTile(
                   title: AppText.boldText('Language'),
@@ -63,54 +63,64 @@ class SettingsView extends GetView<SettingsController> {
                 ),
               ]),
             ),
-            Spacer(),
             Container(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               color: AppColors.veryLightBlue,
+              padding: EdgeInsets.only(left: 40),
               width: 1.sw,
               height: 70.h,
               child: AppText.boldText('Data Backup'),
             ),
-            Container(
-              color: AppColors.blueColor,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Column(
-                  children: [
-                    10.verticalSpace,
-                    ListTile(
-                      title: AppText.boldText('Create Data',
-                          color: AppColors.whiteColor),
-                      leading: Image.asset(
-                        'assets/icon/create_db.png',
-                        height: 30.h,
-                        width: 30.h,
+            GetBuilder<SettingsController>(builder: (controller) {
+              return Container(
+                // color: AppColors.blueColor,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Column(
+                    children: [
+                      10.verticalSpace,
+                      ListTile(
+                        onTap: controller.createData,
+                        title: AppText.boldText('BackUp Data'),
+                        leading: Image.asset(
+                          'assets/icon/create_db.png',
+                          color: AppColors.primaryColor,
+                          height: 30.h,
+                          width: 30.h,
+                        ),
                       ),
-                    ),
-                    ListTile(
-                      title: AppText.boldText('Restore Data',
-                          color: AppColors.whiteColor),
-                      leading: Image.asset(
-                        'assets/icon/restore_db.png',
-                        height: 30.h,
-                        width: 30.h,
+                      ListTile(
+                        onTap: controller.pushRestoreDialog,
+                        title: AppText.boldText('Restore Data'),
+                        leading: Image.asset(
+                          'assets/icon/restore_db.png',
+                          color: AppColors.primaryColor,
+                          height: 30.h,
+                          width: 30.h,
+                        ),
                       ),
-                    ),
-                    // clear data
-                    ListTile(
-                      title: AppText.boldText('Clear Data',
-                          color: AppColors.whiteColor),
-                      leading: Image.asset(
-                        'assets/icon/clear_db.png',
-                        height: 30.h,
-                        width: 30.h,
+                      ListTile(
+                        onTap: () => pushConfirmDialog(
+                          context,
+                          title: 'Clear Data',
+                          message: 'Are you sure you want to clear all data?',
+                          onDone: controller.clearData,
+                        ),
+                        title: AppText.boldText('Clear Data'),
+                        leading: Image.asset(
+                          'assets/icon/clear_db.png',
+                          color: AppColors.primaryColor,
+                          height: 30.h,
+                          width: 30.h,
+                        ),
                       ),
-                    ),
-                    20.verticalSpace,
-                  ],
+                      20.verticalSpace,
+                    ],
+                  ),
                 ),
-              ),
-            ),
+              );
+            }),
+            50.verticalSpace
           ],
         ),
       ),

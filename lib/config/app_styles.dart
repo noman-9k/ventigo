@@ -10,10 +10,11 @@ class AppStyles {
         fontSize: 12.sp, color: color ?? AppColors.primaryColor);
   }
 
-  static TextStyle lightStyle({Color? color, double? fontSize}) {
+  static TextStyle lightStyle(
+      {Color? color, double? fontSize, FontWeight? fontWeight}) {
     return GoogleFonts.notoSans(
         fontSize: fontSize ?? 10.sp,
-        fontWeight: FontWeight.w400,
+        fontWeight: fontWeight ?? FontWeight.w400,
         color: color ?? AppColors.primaryColor);
   }
 

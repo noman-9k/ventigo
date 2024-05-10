@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../modules/addCost/bindings/add_cost_binding.dart';
@@ -10,6 +8,8 @@ import '../modules/addReport/bindings/add_report_binding.dart';
 import '../modules/addReport/views/add_report_view.dart';
 import '../modules/addService/bindings/add_service_binding.dart';
 import '../modules/addService/views/add_service_view.dart';
+import '../modules/adminAuth/bindings/admin_auth_binding.dart';
+import '../modules/adminAuth/views/admin_auth_view.dart';
 import '../modules/costsFilter/bindings/costs_filter_binding.dart';
 import '../modules/costsFilter/views/costs_filter_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -30,6 +30,8 @@ import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/statistic/bindings/statistic_binding.dart';
 import '../modules/statistic/views/statistic_view.dart';
+import '../modules/userData/bindings/user_data_binding.dart';
+import '../modules/userData/views/user_data_view.dart';
 
 part 'app_routes.dart';
 
@@ -52,8 +54,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.MAIN,
-      page: () => const MainView(),
-      binding: MainBinding(),
+      page: () => const StatisticsView(),
+      binding: StatisticBinding(),
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -77,10 +79,7 @@ class AppPages {
       binding: AddServiceBinding(),
     ),
     GetPage(
-      name: _Paths.STATISTIC,
-      page: () => StatisticView(),
-      binding: StatisticBinding(),
-    ),
+        name: _Paths.STATISTIC, page: () => MainView(), binding: MainBinding()),
     GetPage(
       transition: Transition.rightToLeft,
       name: _Paths.FILTERS,
@@ -112,6 +111,16 @@ class AppPages {
       name: _Paths.COSTS_FILTER,
       page: () => const CostsFilterView(),
       binding: CostsFilterBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_DATA,
+      page: () => const UserDataView(),
+      binding: UserDataBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_AUTH,
+      page: () => const AdminAuthView(),
+      binding: AdminAuthBinding(),
     ),
   ];
 }

@@ -1,14 +1,18 @@
 import 'dart:math';
 
 import 'package:get/get.dart';
+import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/db/drift_db.dart';
 
-import '../../../models/service.dart';
 import '../../../models/caregory.dart';
+import '../../../models/service.dart';
 import '../../../routes/app_pages.dart';
-import 'table_data.dart';
+import '../../statistic/controllers/table_data.dart';
 
 class MainController extends GetxController {
   List<TableItem> tableItems = [];
+
+  static MainController get to => Get.find();
 
   @override
   void onInit() {
@@ -37,5 +41,9 @@ class MainController extends GetxController {
 
   void logout() {
     Get.offAllNamed(Routes.LOGIN);
+  }
+
+  Stream<List<DbDataItem>> getTableStream() {
+    return DbController.to.appDb.getAllDataItems();
   }
 }

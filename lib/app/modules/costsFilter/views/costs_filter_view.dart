@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/yes_no_button.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../../config/app_text.dart';
 import '../../../app_services/category_service.dart';
 import '../../common/back_button.dart';
 import '../../common/common_price_range_slider.dart';
 import '../../common/custom_dropdown.dart';
-import '../../filters/views/widgets/price_range_slider.dart';
 import '../controllers/costs_filter_controller.dart';
 
 class CostsFilterView extends GetView<CostsFilterController> {
@@ -29,18 +29,17 @@ class CostsFilterView extends GetView<CostsFilterController> {
             TextField(
               decoration: InputDecoration(
                 hintText: 'Name of cost',
-                labelText: 'Name of cost',
               ),
-            ),
+            ).withLabel('Name of cost'),
             20.verticalSpace,
-            CustomDropDown(
-              items: CategoryService.to
-                  .getAllServicesCategories()
-                  .map((e) => e.name)
-                  .toList(),
-              onChanged: controller.onCategoryChanged,
-              title: 'Select Category',
-            ),
+            // CustomDropDown(
+            //   items: CategoryService.to
+            //       .getAllServicesCategories()
+            //       .map((e) => e.name)
+            //       .toList(),
+            //   onChanged: controller.onCategoryChanged,
+            //   title: 'Select Category',
+            // ),
             20.verticalSpace,
             YesNoButton(onChanged: (_) {}, title: 'Deduct from TAX'),
             20.verticalSpace,
