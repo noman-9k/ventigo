@@ -15,9 +15,10 @@ class StatisticsView extends GetView<StatisticController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppAppBar(
-          title: 'Hello, ' +
-              (EmployeeService.to.employee?.value.name ?? 'Walker!')),
+      appBar: AppAppBar(title: 'Hello, '
+          // +
+          //     (EmployeeService.to.employee?.value.name ?? 'Walker!')
+          ),
       body: TwoTabsView(
         topCenterWidget: DateWidget(),
         tabNames: ["Graphics", "Results"],

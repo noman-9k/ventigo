@@ -29,6 +29,11 @@ class AppTheme {
           const EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
       prefixStyle: AppStyles.lightStyle(),
     ),
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+    ).copyWith(
+      backgroundColor: AppColors.whiteColor,
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         maximumSize:

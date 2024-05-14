@@ -93,7 +93,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       type: VisibilityFilter.numberOfServices),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Show Phone)', type: VisibilityFilter.showPhone),
+                      title: 'Show Phone', type: VisibilityFilter.showPhone),
                   10.verticalSpace,
                   _checkbox(
                       title: 'Total Price Service per day',

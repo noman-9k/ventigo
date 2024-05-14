@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../../../../../config/app_text.dart';
 import '../../../../db/drift_db.dart';
 
 class EmployeeDataTable extends StatelessWidget {
@@ -87,9 +88,15 @@ class EmployeeDataTable extends StatelessWidget {
                               DataCell(Text(tableItem.date?.smallDate() ?? '')),
                               DataCell(Column(
                                 children: [
-                                  Text('${tableItem.categoryName}'),
-                                  Divider(height: 1),
-                                  Text('${tableItem.serviceName}'),
+                                  SizedBox(height: 2),
+                                  AppText.lightText(
+                                      tableItem.categoryName ?? '',
+                                      height: 1.1,
+                                      align: TextAlign.center,
+                                      color: Colors.black),
+                                  Divider(height: 2),
+                                  AppText.lightText(tableItem.serviceName ?? '',
+                                      color: Colors.black),
                                 ],
                               )),
                               DataCell(Text('${tableItem.price}')),

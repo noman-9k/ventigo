@@ -3,6 +3,8 @@ import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/drift_db.dart';
 
+import '../../../routes/app_pages.dart';
+
 class UserDataController extends GetxController {
   // List<DbDataItem> currentI = [];
 
@@ -18,5 +20,7 @@ class UserDataController extends GetxController {
         .getAllDataItemsByEmployeeId(EmployeeService.to.employee!.value.id);
   }
 
-  logout() {}
+  logout() {
+    Get.offAllNamed(Routes.LOGIN);
+  }
 }

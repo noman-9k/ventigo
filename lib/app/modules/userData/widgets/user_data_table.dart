@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_colors.dart';
+import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../db/drift_db.dart';
@@ -56,6 +59,9 @@ class UserDataTable extends StatelessWidget {
                 ],
                 rows: tableItems
                     .map((tableItem) => DataRow(
+                            onLongPress: () {
+                              log('Long press');
+                            },
                             color: MaterialStateProperty.resolveWith<Color?>(
                                 (Set<MaterialState> states) {
                               if (states.contains(MaterialState.selected))
@@ -86,9 +92,15 @@ class UserDataTable extends StatelessWidget {
                               DataCell(Text(tableItem.date?.smallDate() ?? '')),
                               DataCell(Column(
                                 children: [
-                                  Text('${tableItem.categoryName}'),
-                                  Divider(height: 1),
-                                  Text('${tableItem.serviceName}'),
+                                  SizedBox(height: 2),
+                                  AppText.lightText(
+                                      tableItem.categoryName ?? '',
+                                      height: 1.1,
+                                      align: TextAlign.center,
+                                      color: Colors.black),
+                                  Divider(height: 2),
+                                  AppText.lightText(tableItem.serviceName ?? '',
+                                      color: Colors.black),
                                 ],
                               )),
                               DataCell(Text('${tableItem.price}')),

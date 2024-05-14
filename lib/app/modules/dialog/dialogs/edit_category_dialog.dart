@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ventigo/app/db/db_controller.dart';
@@ -36,7 +35,6 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           10.verticalSpace,
           TextField(
             controller: categoryNameController,
-            decoration: InputDecoration(border: InputBorder.none),
           ).withLabel('Category Name'),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,

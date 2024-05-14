@@ -50,6 +50,21 @@ class EmployeesView extends GetView<EmployeesController> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     }
+                    if (snapshot.data!.isEmpty) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          20.verticalSpace,
+                          Image.asset('assets/place_holders/employees.png',
+                              height: 200.h, width: 200.w),
+                          AppText.mediumText(
+                              'No Employee Found\nPlease add a new employee.',
+                              align: TextAlign.center,
+                              color: AppColors.lightGrey),
+                        ],
+                      );
+                    }
                     return ListView.separated(
                       separatorBuilder: (context, index) =>
                           Divider(indent: 20, endIndent: 20, height: 5),

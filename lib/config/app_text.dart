@@ -3,8 +3,11 @@ import 'package:ventigo/config/app_styles.dart';
 
 class AppText {
   AppText._();
-  static Widget lightText(String text, {Color? color}) {
-    return Text(text, style: AppStyles.lightStyle(color: color));
+  static Widget lightText(String text,
+      {Color? color, TextAlign? align, double? height}) {
+    return Text(text,
+        style: AppStyles.lightStyle(color: color, height: height),
+        textAlign: align);
   }
 
   static mediumText(String s,
@@ -28,7 +31,9 @@ class AppText {
   static mediumBoldText(String s, {Color? color, double? fontSize}) {
     return Text(s,
         style: AppStyles.mediumStyle(
-            fontWeight: FontWeight.w600, fontSize: fontSize ?? 16));
+            color: color,
+            fontWeight: FontWeight.w600,
+            fontSize: fontSize ?? 16));
   }
 
   static lightBoldText(String s, {Color? color, double? fontSize}) {

@@ -58,6 +58,9 @@ class AddReportView extends GetView<AddReportController> {
                 16.verticalSpace,
                 YesNoButton(
                     title: 'Regular Customer',
+                    // defaultValue: controller.newCustomer == null
+                    //     ? null
+                    //     : !controller.newCustomer!,
                     onChanged: (value) {
                       controller.regCustomer = value;
                     }),

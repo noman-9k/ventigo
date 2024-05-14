@@ -20,9 +20,10 @@ class MainView extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppAppBar(
-          title: 'Hello, ' +
-              (EmployeeService.to.employee?.value.name ?? 'Walker!')),
+      appBar: AppAppBar(title: 'Hello, '
+          //  +
+          //     (EmployeeService.to.employee?.value.name ?? 'Walker!')
+          ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -34,14 +35,14 @@ class MainView extends GetView<MainController> {
               children: [
                 Expanded(
                     child: Wrap(children: [
-                  Chip(
-                    shape: StadiumBorder(),
-                    label: AppText.mediumText('Today'),
-                    deleteIcon: Icon(FontAwesomeIcons.xmark),
-                    onDeleted: () {
-                      print('delete');
-                    },
-                  ),
+                  //   // Chip(
+                  //   //   shape: StadiumBorder(),
+                  //   //   label: AppText.mediumText('Today'),
+                  //   //   deleteIcon: Icon(FontAwesomeIcons.xmark),
+                  //   //   onDeleted: () {
+                  //   //     print('delete');
+                  //   //   },
+                  //   // ),
                 ])),
                 IconButton(
                     onPressed: () => Get.toNamed(Routes.FILTERS),

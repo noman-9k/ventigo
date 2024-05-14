@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 import 'package:ventigo/app/modules/userData/widgets/user_data_table.dart';
 
 import '../../../app_services/employee_service.dart';
@@ -18,7 +19,14 @@ class UserDataView extends GetView<UserDataController> {
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: BottomAddLogoutBar(
-        logout: controller.logout,
+        logout: () => pushConfirmDialog(context,
+            title: 'Are you sure you want to logout?',
+            message:
+                '${EmployeeService.to.employee?.value.name} you will be logged out.',
+            onDone: controller.logout),
+        // // logout:
+        // //
+        //  controller.logout,
         add: () => Get.toNamed(Routes.ADD_REPORT),
       ),
       appBar: AppAppBar(

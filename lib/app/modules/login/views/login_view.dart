@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_images.dart';
@@ -22,9 +21,9 @@ class LoginView extends GetView<LoginController> {
           padding: AppConstants.defaultPadding,
           child: Column(
             children: [
-              80.verticalSpace,
+              70.verticalSpace,
               Image.asset(AppImages.logo),
-              60.verticalSpace,
+              50.verticalSpace,
               AppText.boldText('Login',
                   color: AppColors.blueColor, fontSize: 24.sp),
               4.verticalSpace,
@@ -34,22 +33,24 @@ class LoginView extends GetView<LoginController> {
                       borderRadius: BorderRadius.circular(5)),
                   height: 5,
                   width: 50),
-              60.verticalSpace,
+              50.verticalSpace,
               TextField(
                 controller: controller.loginController,
                 decoration: InputDecoration(
                     // label: AppText.mediumText('User Name'),
-                    prefixIcon: Icon(FontAwesomeIcons.user)),
+                    prefixIcon:
+                        Icon(Icons.person, color: AppColors.primaryColor)),
               ).withLabel('User Name'),
               10.verticalSpace,
               TextField(
                 controller: controller.passController,
                 decoration: InputDecoration(
                   // label: AppText.mediumText('Password'),
-                  prefixIcon: Icon(Icons.lock_outlined),
+                  prefixIcon:
+                      Icon(Icons.lock_outlined, color: AppColors.primaryColor),
                 ),
               ).withLabel('Password'),
-              60.verticalSpace,
+              50.verticalSpace,
               Obx(() {
                 return ElevatedButton(
                     onPressed: controller.login,
@@ -57,7 +58,7 @@ class LoginView extends GetView<LoginController> {
                         ? CircularProgressIndicator()
                         : AppText.mediumText('Login'));
               }),
-              60.verticalSpace,
+              50.verticalSpace,
               Row(
                 children: [
                   Expanded(

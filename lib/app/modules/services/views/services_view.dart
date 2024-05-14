@@ -64,6 +64,22 @@ class ServicesView extends GetView<ServicesController> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
                   }
+                  if (snapshot.data!.isEmpty) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        50.verticalSpace,
+                        Image.asset('assets/place_holders/categories.png',
+                            height: 200.h, width: 200.w),
+                        20.verticalSpace,
+                        AppText.mediumText(
+                            'No Services Found\nPlease add a new service',
+                            align: TextAlign.center,
+                            color: AppColors.lightGrey),
+                      ],
+                    );
+                  }
 
                   return snapshot.hasData
                       ? ListView.separated(
@@ -78,7 +94,7 @@ class ServicesView extends GetView<ServicesController> {
                                 splashFactory: NoSplash.splashFactory,
                               ),
                               child: ExpansionTile(
-                                title: AppText.boldText(
+                                title: AppText.mediumBoldText(
                                     snapshot.data![index].name!),
                                 expandedCrossAxisAlignment:
                                     CrossAxisAlignment.start,
@@ -97,9 +113,7 @@ class ServicesView extends GetView<ServicesController> {
                                   children: [
                                     IconButton(
                                       onPressed: () => pushEditCategoryDialog(
-                                          context,
-                                          snapshot.data![index],
-                                          (value) {}),
+                                          context, snapshot.data![index]),
                                       icon: Icon(Icons.edit,
                                           color: AppColors.primaryColor),
                                     ),
@@ -131,8 +145,8 @@ class ServicesView extends GetView<ServicesController> {
                                         borderRadius: BorderRadius.circular(10),
                                       ),
                                       alignment: Alignment.centerLeft,
-                                      child:
-                                          AppText.mediumBoldText('Services')),
+                                      child: AppText.mediumBoldText('Services',
+                                          color: AppColors.primaryColor)),
                                   StreamBuilder<List<DbService>>(
                                     stream: DbController.to.appDb
                                         .getServicesByCategory(
@@ -183,6 +197,7 @@ class ServicesView extends GetView<ServicesController> {
                                                                     .data![i],
                                                                 (value) {}),
                                                         icon: Icon(Icons.edit,
+                                                            size: 20,
                                                             color: AppColors
                                                                 .primaryColor),
                                                       ),
@@ -204,6 +219,7 @@ class ServicesView extends GetView<ServicesController> {
                                                         icon: Icon(
                                                             Icons
                                                                 .delete_outline_outlined,
+                                                            size: 20,
                                                             color: AppColors
                                                                 .redColor),
                                                       ),

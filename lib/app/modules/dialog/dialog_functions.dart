@@ -45,8 +45,7 @@ pushConfirmDialog(
   );
 }
 
-pushEditCategoryDialog(
-    BuildContext context, DbCategory category, Function(String?) onDone) {
+pushEditCategoryDialog(BuildContext context, DbCategory category) {
   showDialog(
     context: context,
     builder: (context) => EditCategoryDialog(
