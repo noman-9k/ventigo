@@ -29,7 +29,8 @@ class LoginController extends GetxController {
     isLoading.value = false;
   }
 
-  adminLogin() {
-    Get.toNamed(Routes.ADMIN_AUTH);
+  adminLogin({bool isCost = false}) {
+    Get.toNamed(Routes.ADMIN_AUTH, arguments: isCost);
+    // Get.toNamed(Routes.ADMIN_AUTH);
   }
 }

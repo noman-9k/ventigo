@@ -1157,6 +1157,7 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
   final bool? cardPay;
   final double? price;
   final double? total;
+
   const DbDataItem(
       {required this.id,
       this.name,

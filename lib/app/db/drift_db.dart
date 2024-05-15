@@ -6,6 +6,7 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/extensions/date_extension.dart';
 
 import 'tables/tables.dart';
 
@@ -161,7 +162,13 @@ class AppDb extends _$AppDb {
 
   Stream<List<DbDataItem>> getAllDataItems() => select(dbDataItems).watch();
   Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
-      (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(id))).watch();
+      (select(dbDataItems)
+            ..where((tbl) => tbl.employeeId.equals(id))
+            ..orderBy([
+              (tbl) =>
+                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+            ]))
+          .watch();
 
   Stream<List<DbDataItem>> getDataItemsByEmployee(int i) =>
       (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(i))).watch();
@@ -177,8 +184,45 @@ class AppDb extends _$AppDb {
   void deleteDatabase() {
     final tables = DbController.to.tables;
     for (final table in tables) {
+      // if (table == dbDataItems) {
       delete(table).go();
+      // }
     }
+  }
+
+  // Future<double>? getTotalSalesOfTheDay(
+  //     int rowId, int employeeId, DateTime dateTime) async {
+  //   final query = select(dbDataItems)
+  //     ..where((tbl) =>
+  //             tbl.employeeId.equals(employeeId) &
+  //             tbl.date.day.equals(dateTime.day)
+  //         // &
+  //         // tbl.id.isSmallerOrEqualValue(rowId),
+  //         );
+
+  //   final dataItems = await query.get();
+  //   final total =
+  //       dataItems.map((e) => e.price).toList().cast<double?>().sumAll();
+
+  //   return total;
+  // }
+
+  Future<double?> getTodayTotalByEmployeeId(int employeeId) async {
+    final query = select(dbDataItems)
+      ..where((tbl) => tbl.employeeId.equals(employeeId));
+
+    final dataItems = await query.get();
+    final total = dataItems
+        .map((e) {
+          if (e.date?.isToday() ?? false) {
+            return e.price;
+          }
+        })
+        .toList()
+        .cast<double?>()
+        .sumAll();
+
+    return total;
   }
 }
 
@@ -190,4 +234,12 @@ LazyDatabase _openConnection() {
 
     return NativeDatabase.createInBackground(file, logStatements: true);
   });
+}
+
+// write extension on lists to get the sum of the list
+extension Sum on List<double?> {
+  double sumAll() {
+    return this
+        .fold(0, (previousValue, element) => previousValue + (element ?? 0));
+  }
 }

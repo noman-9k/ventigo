@@ -32,7 +32,18 @@ class EmployeeService extends GetxService {
     return emp;
   }
 
+  double? getEmployeePercentageOf(double? value) {
+    return value?.percentage(employee!.value.percentage);
+  }
+
   setEmployee(Employee emp) {
     employee = emp.obs;
+  }
+}
+
+// extension on double to get percentage of value
+extension Percentage on double {
+  double? percentage(double? value) {
+    return this * (value ?? 1) / 100;
   }
 }

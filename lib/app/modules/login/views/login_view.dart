@@ -93,7 +93,7 @@ class LoginView extends GetView<LoginController> {
                   )).alterP(isTransparent: true),
               20.verticalSpace,
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () => controller.adminLogin(isCost: true),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

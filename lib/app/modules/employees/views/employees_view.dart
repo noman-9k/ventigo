@@ -19,7 +19,7 @@ class EmployeesView extends GetView<EmployeesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 100),
+        padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
           onPressed: () => Get.toNamed(Routes.ADD_EMPLOYE),
@@ -55,13 +55,14 @@ class EmployeesView extends GetView<EmployeesController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          20.verticalSpace,
-                          Image.asset('assets/place_holders/employees.png',
-                              height: 200.h, width: 200.w),
+                          70.verticalSpace,
                           AppText.mediumText(
                               'No Employee Found\nPlease add a new employee.',
                               align: TextAlign.center,
                               color: AppColors.lightGrey),
+                          20.verticalSpace,
+                          Image.asset('assets/place_holders/employees.png',
+                              height: 100.h, width: 100.w),
                         ],
                       );
                     }

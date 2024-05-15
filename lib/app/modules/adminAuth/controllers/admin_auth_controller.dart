@@ -8,6 +8,7 @@ import 'package:ventigo/app/routes/app_pages.dart';
 class AdminAuthController extends GetxController {
   late final LocalAuthentication localAuthentication;
   RxBool isSupported = false.obs;
+  bool isCost = false;
 
   List<TextEditingController> pinController =
       List.generate(4, (index) => TextEditingController());
@@ -21,6 +22,11 @@ class AdminAuthController extends GetxController {
     });
     getAvailableBiometrics();
     authenticate();
+    try {
+      isCost = Get.arguments;
+    } catch (e) {
+      log(e.toString());
+    }
     super.onInit();
   }
 
@@ -31,7 +37,7 @@ class AdminAuthController extends GetxController {
     });
 
     if (pin == '1234') {
-      Get.offNamed(Routes.DASHBOARD);
+      isCost ? Get.offNamed(Routes.ADD_COST) : Get.offNamed(Routes.DASHBOARD);
     } else {
       Get.snackbar('Error', 'Invalid pin');
     }
@@ -71,7 +77,7 @@ class AdminAuthController extends GetxController {
     )
         .then((value) {
       if (value) {
-        Get.offNamed(Routes.DASHBOARD);
+        isCost ? Get.offNamed(Routes.ADD_COST) : Get.offNamed(Routes.DASHBOARD);
       }
     });
   }

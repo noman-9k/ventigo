@@ -27,7 +27,7 @@ class ServicesView extends GetView<ServicesController> {
         automaticallyImplyLeading: false,
       ),
       floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 80),
+        padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
           onPressed: () => Get.toNamed(Routes.ADD_SERVICE),
@@ -69,14 +69,14 @@ class ServicesView extends GetView<ServicesController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        50.verticalSpace,
-                        Image.asset('assets/place_holders/categories.png',
-                            height: 200.h, width: 200.w),
-                        20.verticalSpace,
+                        70.verticalSpace,
                         AppText.mediumText(
                             'No Services Found\nPlease add a new service',
                             align: TextAlign.center,
                             color: AppColors.lightGrey),
+                        20.verticalSpace,
+                        Image.asset('assets/place_holders/categories.png',
+                            height: 100.h, width: 100.w),
                       ],
                     );
                   }

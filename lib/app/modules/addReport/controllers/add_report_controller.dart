@@ -45,6 +45,24 @@ class AddReportController extends GetxController {
   }
 
   Future<void> submit() async {
+    final total = await DbController.to.appDb
+            .getTodayTotalByEmployeeId(EmployeeService.to.employee!.value.id) ??
+        0.0;
+
+    log('Total: $total');
+    // DbController.to.appDb.getAllDataItems().asBroadcastStream().listen((event) {
+    //   event.forEach((element) {
+    //     log('Event: ${element.date?.day}');
+    //     log('Id: ${element.employeeId}');
+    //     log('Service Id: ${EmployeeService.to.employee!.value.id}');
+    //   });
+    // });
+
+    // log(DateTime.now().day.toString());
+
+    // // log(DbController.to.appDb.getAllDataItems().toString());
+
+    // return;
     isLoading.value = true;
     int categoryId = selectedCategory!.id;
     int serviceId = selectedService!.id;
@@ -75,10 +93,9 @@ class AddReportController extends GetxController {
         DateTime.now(),
         cardPay ?? false,
         price,
-        1);
-    isLoading.value = false;
+        (total + price));
 
-    log(DbController.to.appDb.getAllDataItems().toString());
+    isLoading.value = false;
 
     Get.back();
   }

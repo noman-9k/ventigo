@@ -9,6 +9,7 @@ import '../controllers/admin_auth_controller.dart';
 
 class AdminAuthView extends GetView<AdminAuthController> {
   const AdminAuthView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
