@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -36,53 +37,55 @@ class ServicesView extends GetView<ServicesController> {
       ),
       body: Padding(
         padding: AppConstants.defaultPadding,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              20.verticalSpace,
-              AppSearchField(
-                label: 'Search',
-                fetchData: () => controller.fetchData(),
-                getSelectedValue: (SearchItem value) =>
-                    controller.scrollToValue(value.value),
-              ),
-              20.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: StreamBuilder<List<DbCategory>>(
+          stream: DbController.to.appDb.getAllCategories(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.data!.isEmpty) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  AppText.boldText('Categories'),
-                  AppText.boldText('Type of Service'),
+                  Image.asset('assets/place_holders/categories.png',
+                      height: 100.h, width: 100.w),
+                  20.verticalSpace,
+                  Center(
+                    child: AppText.mediumText(
+                        'No Services Found\nPlease add a new service',
+                        align: TextAlign.center,
+                        color: AppColors.lightGrey),
+                  ),
+                  90.verticalSpace,
                 ],
-              ),
-              10.verticalSpace,
-              StreamBuilder<List<DbCategory>>(
-                stream: DbController.to.appDb.getAllCategories(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}');
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  }
-                  if (snapshot.data!.isEmpty) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        70.verticalSpace,
-                        AppText.mediumText(
-                            'No Services Found\nPlease add a new service',
-                            align: TextAlign.center,
-                            color: AppColors.lightGrey),
-                        20.verticalSpace,
-                        Image.asset('assets/place_holders/categories.png',
-                            height: 100.h, width: 100.w),
-                      ],
-                    );
-                  }
+              );
+            }
 
-                  return snapshot.hasData
-                      ? ListView.separated(
+            return snapshot.hasData
+                ? SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        20.verticalSpace,
+                        AppSearchField(
+                          label: 'Search',
+                          fetchData: () => controller.fetchData(),
+                          getSelectedValue: (SearchItem value) =>
+                              controller.scrollToValue(value.value),
+                        ),
+                        20.verticalSpace,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            AppText.boldText('Categories'),
+                            AppText.boldText('Type of Service'),
+                          ],
+                        ),
+                        10.verticalSpace,
+                        ListView.separated(
                           physics: NeverScrollableScrollPhysics(),
                           separatorBuilder: (context, index) => 5.verticalSpace,
                           shrinkWrap: true,
@@ -233,12 +236,12 @@ class ServicesView extends GetView<ServicesController> {
                               ),
                             );
                           },
-                        )
-                      : Text('No data');
-                },
-              ),
-            ],
-          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Text('No data');
+          },
         ),
       ),
     );

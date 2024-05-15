@@ -13,7 +13,7 @@ class BottomAddLogoutBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
+      padding: const EdgeInsets.fromLTRB(50, 20, 50, 90),
       child: ClipRect(
         child: BackdropFilter(
           filter: new ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),

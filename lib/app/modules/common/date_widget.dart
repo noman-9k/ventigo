@@ -11,7 +11,7 @@ class DateWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
         decoration: BoxDecoration(
             color: AppColors.veryLightBlue,
             borderRadius: BorderRadius.circular(50)),

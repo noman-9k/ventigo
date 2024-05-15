@@ -33,40 +33,42 @@ class EmployeesView extends GetView<EmployeesController> {
       ),
       body: Padding(
         padding: AppConstants.defaultPadding,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              10.verticalSpace,
-              AppSearchField(
-                label: 'Search',
-                fetchData: () => controller.getEmployeesSearchList(),
-                getSelectedValue: (EmployeeSearchItem value) =>
-                    controller.scrollToValue(value.value),
-              ),
-              10.verticalSpace,
-              StreamBuilder(
-                  stream: controller.fetchEmploys(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    if (snapshot.data!.isEmpty) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          70.verticalSpace,
-                          AppText.mediumText(
-                              'No Employee Found\nPlease add a new employee.',
-                              align: TextAlign.center,
-                              color: AppColors.lightGrey),
-                          20.verticalSpace,
-                          Image.asset('assets/place_holders/employees.png',
-                              height: 100.h, width: 100.w),
-                        ],
-                      );
-                    }
-                    return ListView.separated(
+        child: StreamBuilder(
+            stream: controller.fetchEmploys(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              if (snapshot.data!.isEmpty) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: Image.asset('assets/place_holders/employees.png',
+                          height: 100.h, width: 100.w),
+                    ),
+                    20.verticalSpace,
+                    AppText.mediumText(
+                        'No Employee Found\nPlease add a new employee.',
+                        align: TextAlign.center,
+                        color: AppColors.lightGrey),
+                    90.verticalSpace,
+                  ],
+                );
+              }
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    10.verticalSpace,
+                    AppSearchField(
+                      label: 'Search',
+                      fetchData: () => controller.getEmployeesSearchList(),
+                      getSelectedValue: (EmployeeSearchItem value) =>
+                          controller.scrollToValue(value.value),
+                    ),
+                    10.verticalSpace,
+                    ListView.separated(
                       separatorBuilder: (context, index) =>
                           Divider(indent: 20, endIndent: 20, height: 5),
                       shrinkWrap: true,
@@ -125,11 +127,11 @@ class EmployeesView extends GetView<EmployeesController> {
                           ),
                         );
                       },
-                    );
-                  }),
-            ],
-          ),
-        ),
+                    ),
+                  ],
+                ),
+              );
+            }),
       ),
     );
   }

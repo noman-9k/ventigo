@@ -14,12 +14,12 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: AppBackButton(),
       centerTitle: true,
       title: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 10, bottom: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Spacer(),
-            CircleAvatar(child: FaIcon(FontAwesomeIcons.users)),
+            CircleAvatar(child: FaIcon(FontAwesomeIcons.users, size: 20)),
             const SizedBox(width: 10),
             AppText.boldText(title),
             Spacer(),

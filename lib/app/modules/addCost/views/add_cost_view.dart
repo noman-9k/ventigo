@@ -18,20 +18,20 @@ class AddCostView extends GetView<AddCostController> {
     return Scaffold(
       appBar: AppBar(
         leading: AppBackButton(),
-        title: const Text('Add Cost'),
+        title: AppText.boldText('Add Cost'),
         centerTitle: true,
       ),
       body: Padding(
         padding: AppConstants.defaultPadding,
         child: Column(
           children: [
+            20.verticalSpace,
             TextField(
               decoration: InputDecoration(
                 hintText: 'Name of expense',
                 labelText: 'Name of expense',
               ),
             ),
-            20.verticalSpace,
             // CustomDropDown(
             //   items: CategoryService.to
             //       .getAllServicesCategories()

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -20,6 +22,10 @@ class StatisticsView extends GetView<StatisticController> {
           //     (EmployeeService.to.employee?.value.name ?? 'Walker!')
           ),
       body: TwoTabsView(
+        onFilterPressed: (p0) {
+          log('Filter pressed $p0');
+        },
+        showFilter: true,
         topCenterWidget: DateWidget(),
         tabNames: ["Graphics", "Results"],
         widgets: [GraphicsScreen(), ResultsScreen()],

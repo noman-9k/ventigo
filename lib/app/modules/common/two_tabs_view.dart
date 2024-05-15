@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../config/app_styles.dart';
 import '../../../config/app_text.dart';
-import '../../routes/app_pages.dart';
 
 class TwoTabsView extends StatefulWidget {
   const TwoTabsView(
       {super.key,
       required this.tabNames,
       required this.widgets,
-      this.topCenterWidget});
+      this.topCenterWidget,
+      this.onFilterPressed,
+      this.showFilter = false,
+      this.isSmall = false});
   final List<String> tabNames;
   final List<Widget> widgets;
   final Widget? topCenterWidget;
+  final bool showFilter;
+  final bool isSmall;
+  final Function(int)? onFilterPressed;
 
   @override
   State<TwoTabsView> createState() => _TwoTabsViewState();
@@ -40,16 +44,16 @@ class _TwoTabsViewState extends State<TwoTabsView>
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            1.verticalSpace,
+            if (widget.showFilter) 1.verticalSpace,
             Container(
               margin: EdgeInsets.only(top: 10.h),
-              height: 55.h,
+              height: widget.isSmall ? 45.h : 55.h,
               decoration: BoxDecoration(
                   color: AppColors.veryLightBlue,
                   borderRadius: BorderRadius.circular(90.0.r)),
               child: Container(
                 margin: EdgeInsets.all(6.h),
-                width: 270.w,
+                width: widget.isSmall ? 200.w : 270.w,
                 child: TabBar(
                     dividerColor: Colors.transparent,
                     controller: _tabController,
@@ -71,9 +75,14 @@ class _TwoTabsViewState extends State<TwoTabsView>
                         .toList()),
               ),
             ),
-            IconButton(
-                onPressed: () => Get.toNamed(Routes.COSTS_FILTER),
-                icon: Icon(FontAwesomeIcons.list))
+            if (widget.showFilter)
+              IconButton(
+                  // onPressed: () => Get.toNamed(Routes.COSTS_FILTER),
+                  onPressed: () {
+                    if (widget.onFilterPressed != null)
+                      widget.onFilterPressed!(_tabController.index);
+                  },
+                  icon: Icon(FontAwesomeIcons.list))
           ],
         ),
         Expanded(
