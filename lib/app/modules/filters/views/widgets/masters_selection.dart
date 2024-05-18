@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
@@ -24,6 +22,7 @@ class MastersSelection extends GetView<FiltersController> {
           var employees = snapshot.data;
 
           return ExpansionTile(
+            initiallyExpanded: true,
             collapsedBackgroundColor: AppColors.veryLightGrey,
             collapsedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12), side: BorderSide.none),
@@ -34,13 +33,12 @@ class MastersSelection extends GetView<FiltersController> {
                     (e) => GetBuilder<FiltersController>(builder: (controller) {
                           return CheckboxListTile(
                             title: Text(e.name ?? ''),
-                            value: controller.selectedMaster.contains(e),
+                            value: controller.ifSelectedMaster(e.name!),
                             onChanged: (value) {
-                              log('value: $value');
                               if (value == true) {
-                                controller.selectedMaster.add(e);
+                                controller.selectedMaster.add(e.name!);
                               } else {
-                                controller.selectedMaster.remove(e);
+                                controller.selectedMaster.remove(e.name);
                               }
                               controller.update();
                             },

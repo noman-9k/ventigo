@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../userData/widgets/user_data_table.dart';
+import '../../../db/db_controller.dart';
 import '../controllers/main_controller.dart';
-import 'widgets/employee_data_table.dart';
 import 'widgets/reports_table.dart';
 
 class MainReportsView extends GetView<MainController> {
@@ -35,7 +34,9 @@ class MainReportsView extends GetView<MainController> {
           ),
         ),
         10.verticalSpace,
-        Expanded(child: ReportsTable(stream: controller.getReports()))
+        Expanded(child: GetBuilder<MainController>(builder: (controller) {
+          return ReportsTable(stream: controller.currentStream);
+        }))
       ],
     );
   }

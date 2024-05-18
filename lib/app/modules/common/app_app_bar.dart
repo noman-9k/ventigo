@@ -5,13 +5,16 @@ import '../../../config/app_text.dart';
 import 'back_button.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AppAppBar({super.key, required this.title});
+  const AppAppBar({super.key, required this.title, this.onBack});
   final String title;
+  final Function()? onBack;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: AppBackButton(),
+      leading: AppBackButton(
+        onBack: onBack,
+      ),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 10),

@@ -36,7 +36,6 @@ class AddCostController extends GetxController {
   }
 
   onSubmitted() {
-    log('deduct from tax ${deductFromTax}');
     if (nameController.text.isEmpty) {
       Get.snackbar('Error', 'Name cannot be empty');
       return;
@@ -85,7 +84,7 @@ class AddCostController extends GetxController {
       categories,
       DateTime.now(),
     );
-    Get.snackbar('Success', 'Cost added successfully');
     Get.back();
+    Get.snackbar('Success', 'Cost added successfully');
   }
 }

@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
@@ -22,7 +21,8 @@ class ReportsTable extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            List<DbDataItem> tableItems = snapshot.data!;
+            List<DbDataItem> tableItems = snapshot.data ?? [];
+
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
@@ -98,10 +98,16 @@ class ReportsTable extends StatelessWidget {
                         return tableItem.date?.getDayColor();
                       }),
                       cells: [
-                        DataCell(Text(tableItem.employeeName ?? 'No data')),
+                        DataCell(FittedBox(
+                            child: Center(
+                                child: Text(
+                                    tableItem.employeeName ?? 'No data')))),
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
-                        DataCell(Text(tableItem.name ?? 'No data')),
+                        DataCell(Center(
+                          child: FittedBox(
+                              child: Text(tableItem.name ?? 'No data')),
+                        )),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -131,21 +137,21 @@ class ReportsTable extends StatelessWidget {
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text('${tableItem.price}'),
+                            FittedBox(child: Text('${tableItem.price}')),
                             Divider(height: 4, endIndent: 8, indent: 8),
-                            Text('${tableItem.total}'),
+                            FittedBox(child: Text('${tableItem.total}')),
                           ],
                         )),
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(EmployeeService.to
-                                .getEmployeePercentageOf(tableItem.price)
-                                .toString()),
-                            Divider(height: 4, endIndent: 8, indent: 8),
-                            Text(EmployeeService.to
-                                .getEmployeePercentageOf(tableItem.total)
-                                .toString()),
+                            // Text(EmployeeService.to
+                            //     .getEmployeePercentageOf(tableItem.price, tableItem.p)
+                            //     .toString()),
+                            // Divider(height: 4, endIndent: 8, indent: 8),
+                            // Text(EmployeeService.to
+                            //     .getEmployeePercentageOf(tableItem.total)
+                            //     .toString()),
                           ],
                         )),
                       ],

@@ -19,19 +19,20 @@ class UserDataView extends GetView<UserDataController> {
     return Scaffold(
       extendBody: true,
       bottomNavigationBar: BottomAddLogoutBar(
-        logout: () => pushConfirmDialog(context,
-            title: 'Are you sure you want to logout?',
-            message:
-                '${EmployeeService.to.employee?.value.name} you will be logged out.',
-            onDone: controller.logout),
+        logout: () => controller.logout(
+          context,
+        ),
+
         // // logout:
         // //
         //  controller.logout,
         add: () => Get.toNamed(Routes.ADD_REPORT),
       ),
       appBar: AppAppBar(
-          title: 'Hello, ' +
-              (EmployeeService.to.employee?.value.name ?? 'Walker!')),
+        onBack: () => controller.logout(context),
+        title:
+            'Hello, ' + (EmployeeService.to.employee?.value.name ?? 'Walker!'),
+      ),
       body: Column(
         children: [
           20.verticalSpace,

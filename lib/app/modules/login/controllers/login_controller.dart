@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
@@ -18,7 +16,7 @@ class LoginController extends GetxController {
         .employeeLogin(loginController.text.trim(), passController.text.trim());
 
     if (employee != null) {
-      Get.toNamed(Routes.USER_DATA);
+      Get.offAllNamed(Routes.USER_DATA);
     } else {
       Get.showSnackbar(GetSnackBar(
         title: 'Error',
@@ -30,7 +28,7 @@ class LoginController extends GetxController {
   }
 
   adminLogin({bool isCost = false}) {
-    Get.toNamed(Routes.ADMIN_AUTH, arguments: isCost);
+    Get.offAllNamed(Routes.ADMIN_AUTH, arguments: isCost);
     // Get.toNamed(Routes.ADMIN_AUTH);
   }
 }

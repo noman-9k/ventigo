@@ -58,7 +58,6 @@ dependencies:
   cloud_firestore: ^4.17.3
   shimmer: ^3.0.0
   csv: ^6.0.0
-  # file_picker: ^8.0.3
   permission_handler: ^11.3.1
 
 dev_dependencies:

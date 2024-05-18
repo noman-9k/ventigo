@@ -6,8 +6,10 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/modules/filters/db_filter/filter_data.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../modules/filters/db_filter/user_data_filter.dart';
 import 'tables/tables.dart';
 
 part 'drift_db.g.dart';
@@ -185,28 +187,9 @@ class AppDb extends _$AppDb {
   void deleteDatabase() {
     final tables = DbController.to.tables;
     for (final table in tables) {
-      // if (table == dbDataItems) {
       delete(table).go();
-      // }
     }
   }
-
-  // Future<double>? getTotalSalesOfTheDay(
-  //     int rowId, int employeeId, DateTime dateTime) async {
-  //   final query = select(dbDataItems)
-  //     ..where((tbl) =>
-  //             tbl.employeeId.equals(employeeId) &
-  //             tbl.date.day.equals(dateTime.day)
-  //         // &
-  //         // tbl.id.isSmallerOrEqualValue(rowId),
-  //         );
-
-  //   final dataItems = await query.get();
-  //   final total =
-  //       dataItems.map((e) => e.price).toList().cast<double?>().sumAll();
-
-  //   return total;
-  // }
 
   Future<double?> getTodayTotalByEmployeeId(int employeeId) async {
     final query = select(dbDataItems)
@@ -251,6 +234,76 @@ class AppDb extends _$AppDb {
   }
 
   Stream<List<DbCost>> getAllCosts() => select(dbCosts).watch();
+
+  Future<int> count(String tableName, {String? whereClause}) {
+    final table = getTable(tableName);
+    if (table == null) return Future.value(0);
+    final count = DbController.to.appDb.customSelect(
+        'SELECT COUNT(*) FROM ${tableName} ${whereClause ?? ''}',
+        readsFrom: {table}).get();
+    return count.then((value) => value.first.data['COUNT(*)'] as int);
+  }
+
+  Stream<List<DbDataItem>> getFilteredDataItems(UserDataFilter filterData) {
+    final query = select(dbDataItems);
+
+    if (filterData.fromDate != null) {
+      query.where((tbl) => tbl.date.isBiggerOrEqualValue(filterData.fromDate!));
+    }
+    if (filterData.toDate != null) {
+      query.where((tbl) => tbl.date.isSmallerOrEqualValue(filterData.toDate!));
+    }
+    if (filterData.priceFrom != null) {
+      query.where(
+          (tbl) => tbl.price.isBiggerOrEqualValue(filterData.priceFrom!));
+    }
+    if (filterData.priceTo != null) {
+      query
+          .where((tbl) => tbl.price.isSmallerOrEqualValue(filterData.priceTo!));
+    }
+    if (filterData.selectedMasters?.isNotEmpty ?? false) {
+      query.where((tbl) => tbl.employeeName.isIn(filterData.selectedMasters!));
+    }
+    if (filterData.selectedCategories?.isNotEmpty ?? false) {
+      query.where(
+          (tbl) => tbl.categoryName.isIn(filterData.selectedCategories!));
+    }
+    if (filterData.name?.isNotEmpty ?? false) {
+      query.where((tbl) => tbl.name.like('%${filterData.name}%'));
+    }
+    if (filterData.phone?.isNotEmpty ?? false) {
+      query.where((tbl) => tbl.phone.like('%${filterData.phone}%'));
+    }
+    if (filterData.isRegularCustomer != null) {
+      query.where(
+          (tbl) => tbl.regCustomer.equals(filterData.isRegularCustomer!));
+    }
+    if (filterData.isCustomerCard != null) {
+      query.where((tbl) => tbl.cardPay.equals(filterData.isCustomerCard!));
+    }
+    if (filterData.isNewCustomer != null) {
+      query.where((tbl) => tbl.newCustomer.equals(filterData.isNewCustomer!));
+    }
+
+    return query.watch();
+  }
+
+  Future<List<Map<String, dynamic>>> customSelectFuture(String query) =>
+      DbController.to.appDb.customSelect(query).map((item) => item.data).get();
+
+  Stream<List<Map<String, dynamic>>> customSelectStream(String query,
+          {Set<String>? fromEntityNames}) =>
+      DbController.to.appDb
+          .customSelect(query)
+          .map((item) => item.data)
+          .watch();
+
+  TableInfo<Table, dynamic>? getTable(String tableName) {
+    final tables = DbController.to.appDb.allTables
+        .where((element) => element.actualTableName == tableName);
+    if (tables.isEmpty) return null;
+    return tables.first;
+  }
 }
 
 LazyDatabase _openConnection() {

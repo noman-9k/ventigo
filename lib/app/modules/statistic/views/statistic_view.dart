@@ -16,10 +16,7 @@ class StatisticsView extends GetView<StatisticController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppAppBar(title: 'Hello, '
-          // +
-          //     (EmployeeService.to.employee?.value.name ?? 'Walker!')
-          ),
+      appBar: AppAppBar(title: 'Hello '),
       body: TwoTabsView(
         onFilterPressed: (p0) {
           log('Filter pressed $p0');

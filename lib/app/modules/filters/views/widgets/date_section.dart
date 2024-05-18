@@ -23,8 +23,7 @@ class DateSection extends GetView<FiltersController> {
                 controller: controller.fromDateController,
                 readOnly: true,
                 onTap: () {
-                  controller.selectDate(context, controller.fromDateController,
-                      controller.fromDate);
+                  controller.selectDate(context, isFromDate: true);
                 },
               ),
             ),
@@ -35,8 +34,7 @@ class DateSection extends GetView<FiltersController> {
                 controller: controller.toDateController,
                 readOnly: true,
                 onTap: () {
-                  controller.selectDate(
-                      context, controller.toDateController, controller.toDate);
+                  controller.selectDate(context, isFromDate: false);
                 },
               ),
             ),
