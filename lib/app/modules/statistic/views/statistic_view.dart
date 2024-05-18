@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../app_services/employee_service.dart';
 import '../../common/app_app_bar.dart';
 import '../../common/date_widget.dart';
 import '../../common/two_tabs_view.dart';
@@ -25,7 +24,7 @@ class StatisticsView extends GetView<StatisticController> {
         onFilterPressed: (p0) {
           log('Filter pressed $p0');
         },
-        showFilter: true,
+        // showFilter: true,
         topCenterWidget: DateWidget(),
         tabNames: ["Graphics", "Results"],
         widgets: [GraphicsScreen(), ResultsScreen()],

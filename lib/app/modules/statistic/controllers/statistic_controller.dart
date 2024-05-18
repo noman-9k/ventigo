@@ -1,41 +1,36 @@
-import 'dart:math';
-
 import 'package:get/get.dart';
+import 'package:ventigo/app/db/db_controller.dart';
 
-import '../../../models/service.dart';
-import '../../../models/caregory.dart';
 import '../../../routes/app_pages.dart';
-import 'table_data.dart';
+import '../views/screens/graphs/tracker_chart_widget.dart';
 
 class StatisticController extends GetxController {
-  List<TableItem> tableItems = [];
-
-  @override
-  void onInit() {
-    initData(100);
-    super.onInit();
+  void logout() {
+    Get.offAllNamed(Routes.LOGIN);
   }
 
-  void initData(int size) {
-    tableItems.clear();
-    final random = Random();
-    for (int i = 0; i < size; i++) {
-      tableItems.add(TableItem(
-        customerData: "User_$i",
-        date: DateTime.now().subtract(Duration(days: i)),
-        category: Category(name: 'Category $i', services: []),
-        typeOfService: AppService(
-            name: 'Service $i', price: random.nextInt(100).toDouble()),
-        price: random.nextInt(100).toString(),
-        total: random.nextInt(100).toString(),
-        isNewCustomer: random.nextBool(),
-        percentage: random.nextInt(100).toString(),
-        cardPay: random.nextBool(),
-      ));
+  Stream<List<SalesData>?> getSalesChartData() async* {
+    var allCosts = DbController.to.appDb.getAllCosts();
+
+    await for (var costs in allCosts) {
+      var salesData = <SalesData>[];
+      for (var cost in costs) {
+        salesData.add(SalesData(cost.date ?? DateTime.now(), cost.price!));
+      }
+      yield salesData;
     }
   }
 
-  void logout() {
-    Get.offAllNamed(Routes.LOGIN);
+  Stream<List<SalesData>?> getReportsChartData() {
+    var allServices = DbController.to.appDb.getAllDataItems();
+
+    return allServices.map((services) {
+      var salesData = <SalesData>[];
+      for (var service in services) {
+        salesData
+            .add(SalesData(service.date ?? DateTime.now(), service.price!));
+      }
+      return salesData;
+    });
   }
 }

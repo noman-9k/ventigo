@@ -42,7 +42,7 @@ class SettingsView extends GetView<SettingsController> {
                 title: AppText.boldText('Export to file'),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  // Get.toNamed('/theme');
+                  controller.exportToCSVFile();
                 },
               ),
               // about section

@@ -12,7 +12,8 @@ import 'tables/tables.dart';
 
 part 'drift_db.g.dart';
 
-@DriftDatabase(tables: [DbEmployees, DbCategories, DbServices, DbDataItems])
+@DriftDatabase(
+    tables: [DbEmployees, DbCategories, DbServices, DbDataItems, DbCosts])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
 
@@ -224,6 +225,32 @@ class AppDb extends _$AppDb {
 
     return total;
   }
+
+  void insertCost(
+      String name,
+      bool? deductFromTax,
+      bool? systematicExpenditure,
+      String? retrievalInterval,
+      int? numberOfUnits,
+      double? price,
+      String? unitsOfMeasurement,
+      List<String> selectedCategories,
+      DateTime date) {
+    var cost = DbCostsCompanion(
+      name: Value(name),
+      isDeductFromTax: Value(deductFromTax),
+      isSystematic: Value(systematicExpenditure),
+      repetitionInterval: Value(retrievalInterval),
+      numberOfUnits: Value(numberOfUnits),
+      price: Value(price),
+      unitsOfMeasurement: Value(unitsOfMeasurement),
+      categories: Value(selectedCategories),
+      date: Value(date),
+    );
+    into(dbCosts).insert(cost);
+  }
+
+  Stream<List<DbCost>> getAllCosts() => select(dbCosts).watch();
 }
 
 LazyDatabase _openConnection() {

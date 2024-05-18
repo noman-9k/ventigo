@@ -72,6 +72,7 @@ class AddReportView extends GetView<AddReportController> {
                     }),
                 16.verticalSpace,
                 AppText.mediumText('Select Category'),
+                5.verticalSpace,
                 CustomDropDown(
                   items: controller.categories.map((e) => e.name!).toList(),
                   onChanged: controller.onCategoryChanged,
@@ -79,6 +80,7 @@ class AddReportView extends GetView<AddReportController> {
                 ),
                 16.verticalSpace,
                 AppText.mediumText('Select Service'),
+                5.verticalSpace,
                 controller.selectedCategory == null
                     ? const SizedBox()
                     : GetServiceOfCategoryById(

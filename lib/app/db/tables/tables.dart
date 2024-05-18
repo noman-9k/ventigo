@@ -42,6 +42,19 @@ class DbDataItems extends Table {
   RealColumn get total => real().nullable()();
 }
 
+class DbCosts extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get name => text().nullable()();
+  BoolColumn get isDeductFromTax => boolean().nullable()();
+  BoolColumn get isSystematic => boolean().nullable()();
+  TextColumn get repetitionInterval => text().nullable()();
+  IntColumn get numberOfUnits => integer().nullable()();
+  RealColumn get price => real().nullable()();
+  TextColumn get unitsOfMeasurement => text().nullable()();
+  TextColumn get categories => text().map(const StringListConverter())();
+  DateTimeColumn get date => dateTime().nullable()();
+}
+
 // write class that converts List of Strings to String
 // and vice versa
 class StringListConverter extends TypeConverter<List<String>, String> {

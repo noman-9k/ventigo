@@ -1157,7 +1157,6 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
   final bool? cardPay;
   final double? price;
   final double? total;
-
   const DbDataItem(
       {required this.id,
       this.name,
@@ -1587,16 +1586,536 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
   }
 }
 
+class $DbCostsTable extends DbCosts with TableInfo<$DbCostsTable, DbCost> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $DbCostsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _isDeductFromTaxMeta =
+      const VerificationMeta('isDeductFromTax');
+  @override
+  late final GeneratedColumn<bool> isDeductFromTax = GeneratedColumn<bool>(
+      'is_deduct_from_tax', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_deduct_from_tax" IN (0, 1))'));
+  static const VerificationMeta _isSystematicMeta =
+      const VerificationMeta('isSystematic');
+  @override
+  late final GeneratedColumn<bool> isSystematic = GeneratedColumn<bool>(
+      'is_systematic', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_systematic" IN (0, 1))'));
+  static const VerificationMeta _repetitionIntervalMeta =
+      const VerificationMeta('repetitionInterval');
+  @override
+  late final GeneratedColumn<String> repetitionInterval =
+      GeneratedColumn<String>('repetition_interval', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _numberOfUnitsMeta =
+      const VerificationMeta('numberOfUnits');
+  @override
+  late final GeneratedColumn<int> numberOfUnits = GeneratedColumn<int>(
+      'number_of_units', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _priceMeta = const VerificationMeta('price');
+  @override
+  late final GeneratedColumn<double> price = GeneratedColumn<double>(
+      'price', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _unitsOfMeasurementMeta =
+      const VerificationMeta('unitsOfMeasurement');
+  @override
+  late final GeneratedColumn<String> unitsOfMeasurement =
+      GeneratedColumn<String>('units_of_measurement', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _categoriesMeta =
+      const VerificationMeta('categories');
+  @override
+  late final GeneratedColumnWithTypeConverter<List<String>, String> categories =
+      GeneratedColumn<String>('categories', aliasedName, false,
+              type: DriftSqlType.string, requiredDuringInsert: true)
+          .withConverter<List<String>>($DbCostsTable.$convertercategories);
+  static const VerificationMeta _dateMeta = const VerificationMeta('date');
+  @override
+  late final GeneratedColumn<DateTime> date = GeneratedColumn<DateTime>(
+      'date', aliasedName, true,
+      type: DriftSqlType.dateTime, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        name,
+        isDeductFromTax,
+        isSystematic,
+        repetitionInterval,
+        numberOfUnits,
+        price,
+        unitsOfMeasurement,
+        categories,
+        date
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'db_costs';
+  @override
+  VerificationContext validateIntegrity(Insertable<DbCost> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    }
+    if (data.containsKey('is_deduct_from_tax')) {
+      context.handle(
+          _isDeductFromTaxMeta,
+          isDeductFromTax.isAcceptableOrUnknown(
+              data['is_deduct_from_tax']!, _isDeductFromTaxMeta));
+    }
+    if (data.containsKey('is_systematic')) {
+      context.handle(
+          _isSystematicMeta,
+          isSystematic.isAcceptableOrUnknown(
+              data['is_systematic']!, _isSystematicMeta));
+    }
+    if (data.containsKey('repetition_interval')) {
+      context.handle(
+          _repetitionIntervalMeta,
+          repetitionInterval.isAcceptableOrUnknown(
+              data['repetition_interval']!, _repetitionIntervalMeta));
+    }
+    if (data.containsKey('number_of_units')) {
+      context.handle(
+          _numberOfUnitsMeta,
+          numberOfUnits.isAcceptableOrUnknown(
+              data['number_of_units']!, _numberOfUnitsMeta));
+    }
+    if (data.containsKey('price')) {
+      context.handle(
+          _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
+    }
+    if (data.containsKey('units_of_measurement')) {
+      context.handle(
+          _unitsOfMeasurementMeta,
+          unitsOfMeasurement.isAcceptableOrUnknown(
+              data['units_of_measurement']!, _unitsOfMeasurementMeta));
+    }
+    context.handle(_categoriesMeta, const VerificationResult.success());
+    if (data.containsKey('date')) {
+      context.handle(
+          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  DbCost map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return DbCost(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name']),
+      isDeductFromTax: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool, data['${effectivePrefix}is_deduct_from_tax']),
+      isSystematic: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_systematic']),
+      repetitionInterval: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}repetition_interval']),
+      numberOfUnits: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}number_of_units']),
+      price: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price']),
+      unitsOfMeasurement: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}units_of_measurement']),
+      categories: $DbCostsTable.$convertercategories.fromSql(attachedDatabase
+          .typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}categories'])!),
+      date: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}date']),
+    );
+  }
+
+  @override
+  $DbCostsTable createAlias(String alias) {
+    return $DbCostsTable(attachedDatabase, alias);
+  }
+
+  static TypeConverter<List<String>, String> $convertercategories =
+      const StringListConverter();
+}
+
+class DbCost extends DataClass implements Insertable<DbCost> {
+  final int id;
+  final String? name;
+  final bool? isDeductFromTax;
+  final bool? isSystematic;
+  final String? repetitionInterval;
+  final int? numberOfUnits;
+  final double? price;
+  final String? unitsOfMeasurement;
+  final List<String> categories;
+  final DateTime? date;
+  const DbCost(
+      {required this.id,
+      this.name,
+      this.isDeductFromTax,
+      this.isSystematic,
+      this.repetitionInterval,
+      this.numberOfUnits,
+      this.price,
+      this.unitsOfMeasurement,
+      required this.categories,
+      this.date});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    if (!nullToAbsent || name != null) {
+      map['name'] = Variable<String>(name);
+    }
+    if (!nullToAbsent || isDeductFromTax != null) {
+      map['is_deduct_from_tax'] = Variable<bool>(isDeductFromTax);
+    }
+    if (!nullToAbsent || isSystematic != null) {
+      map['is_systematic'] = Variable<bool>(isSystematic);
+    }
+    if (!nullToAbsent || repetitionInterval != null) {
+      map['repetition_interval'] = Variable<String>(repetitionInterval);
+    }
+    if (!nullToAbsent || numberOfUnits != null) {
+      map['number_of_units'] = Variable<int>(numberOfUnits);
+    }
+    if (!nullToAbsent || price != null) {
+      map['price'] = Variable<double>(price);
+    }
+    if (!nullToAbsent || unitsOfMeasurement != null) {
+      map['units_of_measurement'] = Variable<String>(unitsOfMeasurement);
+    }
+    {
+      map['categories'] = Variable<String>(
+          $DbCostsTable.$convertercategories.toSql(categories));
+    }
+    if (!nullToAbsent || date != null) {
+      map['date'] = Variable<DateTime>(date);
+    }
+    return map;
+  }
+
+  DbCostsCompanion toCompanion(bool nullToAbsent) {
+    return DbCostsCompanion(
+      id: Value(id),
+      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
+      isDeductFromTax: isDeductFromTax == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isDeductFromTax),
+      isSystematic: isSystematic == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isSystematic),
+      repetitionInterval: repetitionInterval == null && nullToAbsent
+          ? const Value.absent()
+          : Value(repetitionInterval),
+      numberOfUnits: numberOfUnits == null && nullToAbsent
+          ? const Value.absent()
+          : Value(numberOfUnits),
+      price:
+          price == null && nullToAbsent ? const Value.absent() : Value(price),
+      unitsOfMeasurement: unitsOfMeasurement == null && nullToAbsent
+          ? const Value.absent()
+          : Value(unitsOfMeasurement),
+      categories: Value(categories),
+      date: date == null && nullToAbsent ? const Value.absent() : Value(date),
+    );
+  }
+
+  factory DbCost.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return DbCost(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String?>(json['name']),
+      isDeductFromTax: serializer.fromJson<bool?>(json['isDeductFromTax']),
+      isSystematic: serializer.fromJson<bool?>(json['isSystematic']),
+      repetitionInterval:
+          serializer.fromJson<String?>(json['repetitionInterval']),
+      numberOfUnits: serializer.fromJson<int?>(json['numberOfUnits']),
+      price: serializer.fromJson<double?>(json['price']),
+      unitsOfMeasurement:
+          serializer.fromJson<String?>(json['unitsOfMeasurement']),
+      categories: serializer.fromJson<List<String>>(json['categories']),
+      date: serializer.fromJson<DateTime?>(json['date']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String?>(name),
+      'isDeductFromTax': serializer.toJson<bool?>(isDeductFromTax),
+      'isSystematic': serializer.toJson<bool?>(isSystematic),
+      'repetitionInterval': serializer.toJson<String?>(repetitionInterval),
+      'numberOfUnits': serializer.toJson<int?>(numberOfUnits),
+      'price': serializer.toJson<double?>(price),
+      'unitsOfMeasurement': serializer.toJson<String?>(unitsOfMeasurement),
+      'categories': serializer.toJson<List<String>>(categories),
+      'date': serializer.toJson<DateTime?>(date),
+    };
+  }
+
+  DbCost copyWith(
+          {int? id,
+          Value<String?> name = const Value.absent(),
+          Value<bool?> isDeductFromTax = const Value.absent(),
+          Value<bool?> isSystematic = const Value.absent(),
+          Value<String?> repetitionInterval = const Value.absent(),
+          Value<int?> numberOfUnits = const Value.absent(),
+          Value<double?> price = const Value.absent(),
+          Value<String?> unitsOfMeasurement = const Value.absent(),
+          List<String>? categories,
+          Value<DateTime?> date = const Value.absent()}) =>
+      DbCost(
+        id: id ?? this.id,
+        name: name.present ? name.value : this.name,
+        isDeductFromTax: isDeductFromTax.present
+            ? isDeductFromTax.value
+            : this.isDeductFromTax,
+        isSystematic:
+            isSystematic.present ? isSystematic.value : this.isSystematic,
+        repetitionInterval: repetitionInterval.present
+            ? repetitionInterval.value
+            : this.repetitionInterval,
+        numberOfUnits:
+            numberOfUnits.present ? numberOfUnits.value : this.numberOfUnits,
+        price: price.present ? price.value : this.price,
+        unitsOfMeasurement: unitsOfMeasurement.present
+            ? unitsOfMeasurement.value
+            : this.unitsOfMeasurement,
+        categories: categories ?? this.categories,
+        date: date.present ? date.value : this.date,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('DbCost(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('isDeductFromTax: $isDeductFromTax, ')
+          ..write('isSystematic: $isSystematic, ')
+          ..write('repetitionInterval: $repetitionInterval, ')
+          ..write('numberOfUnits: $numberOfUnits, ')
+          ..write('price: $price, ')
+          ..write('unitsOfMeasurement: $unitsOfMeasurement, ')
+          ..write('categories: $categories, ')
+          ..write('date: $date')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      name,
+      isDeductFromTax,
+      isSystematic,
+      repetitionInterval,
+      numberOfUnits,
+      price,
+      unitsOfMeasurement,
+      categories,
+      date);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is DbCost &&
+          other.id == this.id &&
+          other.name == this.name &&
+          other.isDeductFromTax == this.isDeductFromTax &&
+          other.isSystematic == this.isSystematic &&
+          other.repetitionInterval == this.repetitionInterval &&
+          other.numberOfUnits == this.numberOfUnits &&
+          other.price == this.price &&
+          other.unitsOfMeasurement == this.unitsOfMeasurement &&
+          other.categories == this.categories &&
+          other.date == this.date);
+}
+
+class DbCostsCompanion extends UpdateCompanion<DbCost> {
+  final Value<int> id;
+  final Value<String?> name;
+  final Value<bool?> isDeductFromTax;
+  final Value<bool?> isSystematic;
+  final Value<String?> repetitionInterval;
+  final Value<int?> numberOfUnits;
+  final Value<double?> price;
+  final Value<String?> unitsOfMeasurement;
+  final Value<List<String>> categories;
+  final Value<DateTime?> date;
+  const DbCostsCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.isDeductFromTax = const Value.absent(),
+    this.isSystematic = const Value.absent(),
+    this.repetitionInterval = const Value.absent(),
+    this.numberOfUnits = const Value.absent(),
+    this.price = const Value.absent(),
+    this.unitsOfMeasurement = const Value.absent(),
+    this.categories = const Value.absent(),
+    this.date = const Value.absent(),
+  });
+  DbCostsCompanion.insert({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+    this.isDeductFromTax = const Value.absent(),
+    this.isSystematic = const Value.absent(),
+    this.repetitionInterval = const Value.absent(),
+    this.numberOfUnits = const Value.absent(),
+    this.price = const Value.absent(),
+    this.unitsOfMeasurement = const Value.absent(),
+    required List<String> categories,
+    this.date = const Value.absent(),
+  }) : categories = Value(categories);
+  static Insertable<DbCost> custom({
+    Expression<int>? id,
+    Expression<String>? name,
+    Expression<bool>? isDeductFromTax,
+    Expression<bool>? isSystematic,
+    Expression<String>? repetitionInterval,
+    Expression<int>? numberOfUnits,
+    Expression<double>? price,
+    Expression<String>? unitsOfMeasurement,
+    Expression<String>? categories,
+    Expression<DateTime>? date,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+      if (isDeductFromTax != null) 'is_deduct_from_tax': isDeductFromTax,
+      if (isSystematic != null) 'is_systematic': isSystematic,
+      if (repetitionInterval != null) 'repetition_interval': repetitionInterval,
+      if (numberOfUnits != null) 'number_of_units': numberOfUnits,
+      if (price != null) 'price': price,
+      if (unitsOfMeasurement != null)
+        'units_of_measurement': unitsOfMeasurement,
+      if (categories != null) 'categories': categories,
+      if (date != null) 'date': date,
+    });
+  }
+
+  DbCostsCompanion copyWith(
+      {Value<int>? id,
+      Value<String?>? name,
+      Value<bool?>? isDeductFromTax,
+      Value<bool?>? isSystematic,
+      Value<String?>? repetitionInterval,
+      Value<int?>? numberOfUnits,
+      Value<double?>? price,
+      Value<String?>? unitsOfMeasurement,
+      Value<List<String>>? categories,
+      Value<DateTime?>? date}) {
+    return DbCostsCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      isDeductFromTax: isDeductFromTax ?? this.isDeductFromTax,
+      isSystematic: isSystematic ?? this.isSystematic,
+      repetitionInterval: repetitionInterval ?? this.repetitionInterval,
+      numberOfUnits: numberOfUnits ?? this.numberOfUnits,
+      price: price ?? this.price,
+      unitsOfMeasurement: unitsOfMeasurement ?? this.unitsOfMeasurement,
+      categories: categories ?? this.categories,
+      date: date ?? this.date,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (isDeductFromTax.present) {
+      map['is_deduct_from_tax'] = Variable<bool>(isDeductFromTax.value);
+    }
+    if (isSystematic.present) {
+      map['is_systematic'] = Variable<bool>(isSystematic.value);
+    }
+    if (repetitionInterval.present) {
+      map['repetition_interval'] = Variable<String>(repetitionInterval.value);
+    }
+    if (numberOfUnits.present) {
+      map['number_of_units'] = Variable<int>(numberOfUnits.value);
+    }
+    if (price.present) {
+      map['price'] = Variable<double>(price.value);
+    }
+    if (unitsOfMeasurement.present) {
+      map['units_of_measurement'] = Variable<String>(unitsOfMeasurement.value);
+    }
+    if (categories.present) {
+      map['categories'] = Variable<String>(
+          $DbCostsTable.$convertercategories.toSql(categories.value));
+    }
+    if (date.present) {
+      map['date'] = Variable<DateTime>(date.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('DbCostsCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name, ')
+          ..write('isDeductFromTax: $isDeductFromTax, ')
+          ..write('isSystematic: $isSystematic, ')
+          ..write('repetitionInterval: $repetitionInterval, ')
+          ..write('numberOfUnits: $numberOfUnits, ')
+          ..write('price: $price, ')
+          ..write('unitsOfMeasurement: $unitsOfMeasurement, ')
+          ..write('categories: $categories, ')
+          ..write('date: $date')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDb extends GeneratedDatabase {
   _$AppDb(QueryExecutor e) : super(e);
   late final $DbEmployeesTable dbEmployees = $DbEmployeesTable(this);
   late final $DbCategoriesTable dbCategories = $DbCategoriesTable(this);
   late final $DbServicesTable dbServices = $DbServicesTable(this);
   late final $DbDataItemsTable dbDataItems = $DbDataItemsTable(this);
+  late final $DbCostsTable dbCosts = $DbCostsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [dbEmployees, dbCategories, dbServices, dbDataItems];
+      [dbEmployees, dbCategories, dbServices, dbDataItems, dbCosts];
 }

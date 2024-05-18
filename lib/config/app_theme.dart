@@ -18,7 +18,7 @@ class AppTheme {
       floatingLabelBehavior: FloatingLabelBehavior.auto,
       hintStyle:
           AppStyles.lightStyle(color: AppColors.lightGrey, fontSize: 12.0),
-      labelStyle: AppStyles.mediumStyle(),
+      labelStyle: AppStyles.mediumStyle(color: Colors.grey),
       border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(color: Colors.transparent)),

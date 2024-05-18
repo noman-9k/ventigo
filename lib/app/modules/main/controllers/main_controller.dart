@@ -46,4 +46,12 @@ class MainController extends GetxController {
   Stream<List<DbDataItem>> getTableStream() {
     return DbController.to.appDb.getAllDataItems();
   }
+
+  getCostsStream() {
+    return DbController.to.appDb.getAllCosts();
+  }
+
+  getReports() {
+    return DbController.to.appDb.getAllDataItems();
+  }
 }

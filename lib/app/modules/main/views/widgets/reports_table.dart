@@ -3,15 +3,13 @@ import 'dart:async';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
-import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
-import '../../../db/drift_db.dart';
-import '../../common/app_shimmer.dart';
+import '../../../../db/drift_db.dart';
 
-class UserDataTable extends StatelessWidget {
-  const UserDataTable({super.key, required this.stream});
+class ReportsTable extends StatelessWidget {
+  const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
 
@@ -28,7 +26,7 @@ class UserDataTable extends StatelessWidget {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 600,
+              minWidth: 620,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
@@ -39,6 +37,9 @@ class UserDataTable extends StatelessWidget {
                 return AppColors.lightYellow;
               }),
               columns: [
+                DataColumn2(
+                    label: Text('Employee\nData', textAlign: TextAlign.center),
+                    size: ColumnSize.L),
                 DataColumn2(label: Text('Reg\nCus'), size: ColumnSize.S),
                 DataColumn2(label: Text('Card\nPay'), size: ColumnSize.S),
                 DataColumn2(
@@ -97,6 +98,7 @@ class UserDataTable extends StatelessWidget {
                         return tableItem.date?.getDayColor();
                       }),
                       cells: [
+                        DataCell(Text(tableItem.employeeName ?? 'No data')),
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
                         DataCell(Text(tableItem.name ?? 'No data')),
@@ -132,28 +134,6 @@ class UserDataTable extends StatelessWidget {
                             Text('${tableItem.price}'),
                             Divider(height: 4, endIndent: 8, indent: 8),
                             Text('${tableItem.total}'),
-
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           snapshot.data.toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                         DataCell(Column(
@@ -166,31 +146,6 @@ class UserDataTable extends StatelessWidget {
                             Text(EmployeeService.to
                                 .getEmployeePercentageOf(tableItem.total)
                                 .toString()),
-
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           EmployeeService.to
-                            //               .getEmployeePercentageOf(
-                            //                   snapshot.data)
-                            //               .toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                       ],

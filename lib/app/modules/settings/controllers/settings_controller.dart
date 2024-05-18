@@ -1,11 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/modules/settings/controllers/file_storage.dart';
 import 'package:ventigo/app/modules/settings/views/restore_dialog.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
 
@@ -91,6 +93,30 @@ class SettingsController extends GetxController {
 
   void clearData() {
     DbController.to.appDb.deleteDatabase();
+  }
+
+  Future<void> exportToCSVFile() async {
+    final stream = DbController.to.appDb.getAllDataItems();
+    var csvData = [
+      ['ID', 'Name', 'Phone', 'Price', 'Employee Name']
+    ];
+
+    await stream.listen((event) async {
+      event.forEach((element) {
+        csvData.add([
+          element.id.toString(),
+          element.name ?? '',
+          element.phone ?? '',
+          element.price.toString(),
+          element.employeeName ?? ''
+        ]);
+      });
+
+      final csv = const ListToCsvConverter().convert(csvData);
+
+      FileStorage.writeCounter(csv, 'data2.csv');
+      Get.snackbar('Exported', 'Check your file in the Downloads folder');
+    });
   }
 }
 
