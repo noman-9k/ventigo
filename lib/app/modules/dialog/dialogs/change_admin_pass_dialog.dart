@@ -4,15 +4,16 @@ import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
-class AddNewCategoryDialog extends StatefulWidget {
-  const AddNewCategoryDialog({super.key, required this.onDone});
-  final Function(String?) onDone;
+import '../../../app_services/local_storage_service.dart';
+
+class ChangeAdminPassDialog extends StatefulWidget {
+  const ChangeAdminPassDialog({super.key});
 
   @override
-  State<AddNewCategoryDialog> createState() => _AddNewCategoryDialogState();
+  State<ChangeAdminPassDialog> createState() => _ChangeAdminPassDialogState();
 }
 
-class _AddNewCategoryDialogState extends State<AddNewCategoryDialog> {
+class _ChangeAdminPassDialogState extends State<ChangeAdminPassDialog> {
   TextEditingController _controller = TextEditingController();
 
   @override
@@ -20,13 +21,13 @@ class _AddNewCategoryDialogState extends State<AddNewCategoryDialog> {
     return DialogModel(
         child: Column(
       children: [
-        AppText.boldText('Enter Category Name'),
+        AppText.boldText('Change Admin Password'),
         16.verticalSpace,
         TextField(
           textCapitalization: TextCapitalization.sentences,
           controller: _controller,
           decoration: InputDecoration(border: InputBorder.none),
-        ).withLabel('Category Name'),
+        ).withLabel('New Password'),
         16.verticalSpace,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -37,7 +38,7 @@ class _AddNewCategoryDialogState extends State<AddNewCategoryDialog> {
             ),
             TextButton(
               onPressed: () {
-                widget.onDone(_controller.text);
+                MySharedPref.saveToDisk('admin_pin', _controller.text);
                 Navigator.pop(context);
               },
               child: Text('Done'),

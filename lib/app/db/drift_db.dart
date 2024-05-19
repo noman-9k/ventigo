@@ -306,18 +306,47 @@ class AppDb extends _$AppDb {
     return tables.first;
   }
 
-  Future<List<QueryRow>> getStatisticsReports() async {
+  Future<double> getCostsByDate(DateTime? date) async {
+    if (date == null) return 0;
+    final costs =
+        await (select(dbCosts)..where((tbl) => tbl.date.equals(date))).get();
+
+    return costs.map((e) => e.price).toList().sumAll();
+  }
+
+  Future<List<QueryRow>> getStatisticsReports(
+      {DateTime? fromDate, DateTime? toDate}) async {
+    int? from;
+    int? to;
+    String? whereClause;
+    if (fromDate != null) {
+      from = fromDate.millisecondsSinceEpoch ~/ 1000;
+      whereClause = 'AND date > $from';
+    }
+    if (toDate != null) {
+      to = toDate.millisecondsSinceEpoch ~/ 1000;
+      whereClause = 'AND date < $to';
+    }
+    if (fromDate != null && toDate != null) {
+      whereClause = 'AND "date" BETWEEN $from AND $to';
+    }
+    if (fromDate == null && toDate == null) {
+      whereClause = '';
+    }
+
     var query = '''
     SELECT 
-    COUNT(*) FILTER (WHERE new_customer=1) as newClient,
-    COUNT(*) FILTER (WHERE reg_customer=1) as regularClient,
-    COUNT(*) as numberOfServices, 
-      SUM(price) as cost, 
-      date FROM db_data_items GROUP BY date
+    COUNT(*) FILTER (WHERE new_customer=1 $whereClause )  as newClient ,
+    COUNT(*) FILTER (WHERE reg_customer=1  $whereClause) as regularClient ,
+    COUNT(*) FILTER (WHERE 1=1 $whereClause) as numberOfServices , 
+      SUM(price)  FILTER (WHERE 1=1 $whereClause) as sales, 
+      date
+       FROM db_data_items
+     
+       GROUP BY date
 ''';
 
-    return DbController.to.appDb
-        .customSelect(query, readsFrom: {dbDataItems}).get();
+    return DbController.to.appDb.customSelect(query).get();
   }
 }
 

@@ -25,19 +25,19 @@ class SettingsView extends GetView<SettingsController> {
               // AppText.boldText('General Settings'),
               20.verticalSpace,
               ListTile(
-                title: AppText.boldText('Language'),
+                title: AppText.boldText('Change Admin Password'),
                 trailing: Icon(Icons.arrow_forward_ios),
                 onTap: () {
-                  // Get.toNamed('/language');
+                  pushChangeAdminPassDialog(context);
                 },
               ),
-              ListTile(
-                title: AppText.boldText('Currency'),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  // Get.toNamed('/currency');
-                },
-              ),
+              // ListTile(
+              //   title: AppText.boldText('Currency'),
+              //   trailing: Icon(Icons.arrow_forward_ios),
+              //   onTap: () {
+              //     // Get.toNamed('/currency');
+              //   },
+              // ),
               ListTile(
                 title: AppText.boldText('Export to file'),
                 trailing: Icon(Icons.arrow_forward_ios),

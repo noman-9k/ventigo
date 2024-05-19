@@ -114,7 +114,9 @@ class SettingsController extends GetxController {
 
       final csv = const ListToCsvConverter().convert(csvData);
 
-      FileStorage.writeCounter(csv, 'data2.csv');
+      final fileName = DateTime.now().toString().split(' ')[0];
+
+      FileStorage.writeCounter(csv, 'fileName.csv');
       Get.snackbar('Exported', 'Check your file in the Downloads folder');
     });
   }

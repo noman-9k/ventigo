@@ -10,6 +10,9 @@ class CostsTable extends StatelessWidget {
   const CostsTable({super.key, required this.stream});
   final Stream<List<DbCost>> stream;
 
+  final TextStyle headerStyle =
+      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<DbCost>>(
@@ -35,27 +38,29 @@ class CostsTable extends StatelessWidget {
                 minWidth: 500,
                 columns: [
                   DataColumn2(
-                      label:
-                          Text('Name of\nCost', textAlign: TextAlign.center)),
+                      label: Text('Name of\nCost',
+                          textAlign: TextAlign.center, style: headerStyle)),
                   DataColumn2(
                       label: Text(
                     'Related\nCategories',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12),
+                    style: headerStyle,
                   )),
                   DataColumn2(
                       label: Text(
                     'Deducted\nFrom TAX',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12),
+                    style: headerStyle,
                   )),
-                  DataColumn2(label: Center(child: Text('Date'))),
-                  DataColumn2(label: Center(child: Text('Price'))),
+                  DataColumn2(
+                      label: Center(child: Text('Date', style: headerStyle))),
+                  DataColumn2(
+                      label: Center(child: Text('Price', style: headerStyle))),
                   DataColumn2(
                       label: Text(
                     'Systematic\nExpenditure',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12),
+                    style: headerStyle,
                   )),
                 ],
                 rows: tableItems

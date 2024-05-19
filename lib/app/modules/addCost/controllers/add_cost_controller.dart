@@ -41,10 +41,7 @@ class AddCostController extends GetxController {
       Get.snackbar('Error', 'Name cannot be empty');
       return;
     }
-    if (selectedCategories.isEmpty) {
-      Get.snackbar('Error', 'Please select a category');
-      return;
-    }
+
     if (priceController.text.isEmpty) {
       Get.snackbar('Error', 'Price cannot be empty');
       return;
@@ -72,7 +69,7 @@ class AddCostController extends GetxController {
       return;
     }
 
-    List<String> categories = selectedCategories.map((e) => e.name!).toList();
+    List<String>? categories = selectedCategories.map((e) => e.name!).toList();
 
     DbController.to.appDb.insertCost(
       nameController.text,

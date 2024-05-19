@@ -47,12 +47,12 @@ class AddServiceController extends GetxController {
     super.onClose();
   }
 
-  addNewCategory() => pushAddNewCategoryDialog(Get.context!, (value) {
-        if (value != null) {
-          categoryNameController.text = value;
-          update();
-        }
-      });
+  // addNewCategory() => pushAddNewCategoryDialog(Get.context!, (value) {
+  //       if (value != null) {
+  //         categoryNameController.text = value;
+  //         update();
+  //       }
+  //     });
 
   resetCategoryName() {
     categoryName = null;

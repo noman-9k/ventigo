@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/firebase_options.dart';
+import 'app/app_services/local_storage_service.dart';
 import 'app/routes/app_pages.dart';
 import 'app_bindings.dart';
 import 'config/app_theme.dart';
@@ -12,6 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await MySharedPref.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await MySharedPref.init();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());

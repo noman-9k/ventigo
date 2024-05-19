@@ -34,8 +34,4 @@ class StatisticController extends GetxController {
       return salesData;
     });
   }
-
-  Future<List<QueryRow>> reportsData() {
-    return DbController.to.appDb.getStatisticsReports();
-  }
 }

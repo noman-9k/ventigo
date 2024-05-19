@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../db/drift_db.dart';
-import 'dialogs/add_new_category_dialog.dart';
+import 'dialogs/change_admin_pass_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
 import 'dialogs/edit_category_dialog.dart';
 import 'dialogs/edit_service_dialog.dart';
@@ -54,10 +54,10 @@ pushEditCategoryDialog(BuildContext context, DbCategory category) {
   );
 }
 
-pushAddNewCategoryDialog(BuildContext context, Function(String?) onDone) {
+pushChangeAdminPassDialog(BuildContext context) {
   showDialog(
     context: context,
-    builder: (context) => AddNewCategoryDialog(onDone: onDone),
+    builder: (context) => ChangeAdminPassDialog(),
   );
 }
 

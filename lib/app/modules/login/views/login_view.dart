@@ -37,7 +37,7 @@ class LoginView extends GetView<LoginController> {
               TextField(
                 controller: controller.loginController,
                 decoration: InputDecoration(
-                    // label: AppText.mediumText('User Name'),
+                    hintText: 'User Name',
                     prefixIcon:
                         Icon(Icons.person, color: AppColors.primaryColor)),
               ).withLabel('User Name'),
@@ -45,7 +45,7 @@ class LoginView extends GetView<LoginController> {
               TextField(
                 controller: controller.passController,
                 decoration: InputDecoration(
-                  // label: AppText.mediumText('Password'),
+                  hintText: 'Password',
                   prefixIcon:
                       Icon(Icons.lock_outlined, color: AppColors.primaryColor),
                 ),

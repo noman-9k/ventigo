@@ -32,7 +32,7 @@ class AppStyles {
 
   static TextStyle boldStyle({Color? color, double? fontSize}) {
     return GoogleFonts.poppins(
-        fontSize: fontSize ?? 18.sp,
+        fontSize: fontSize ?? 16.sp,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.primaryColor);
   }

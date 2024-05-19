@@ -27,7 +27,7 @@ class ServicesController extends GetxController {
     //     .toList();
   }
 
-  scrollToValue(Category? service, {double height = 100.0}) {
+  scrollToValue(Category? service, {double height = 50.0}) {
     if (service == null) return;
     int index = CategoryService.to.servicesCategories.indexOf(service);
     scrollController.animateTo(index * height,

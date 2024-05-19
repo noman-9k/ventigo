@@ -68,6 +68,7 @@ class ServicesView extends GetView<ServicesController> {
             return snapshot.hasData
                 ? SingleChildScrollView(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         20.verticalSpace,
                         AppSearchField(
@@ -77,13 +78,7 @@ class ServicesView extends GetView<ServicesController> {
                               controller.scrollToValue(value.value),
                         ),
                         20.verticalSpace,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            AppText.boldText('Categories'),
-                            AppText.boldText('Type of Service'),
-                          ],
-                        ),
+                        AppText.boldText('Categories'),
                         10.verticalSpace,
                         ListView.separated(
                           physics: NeverScrollableScrollPhysics(),
@@ -105,10 +100,11 @@ class ServicesView extends GetView<ServicesController> {
                                     borderRadius: BorderRadius.circular(10)),
                                 childrenPadding: EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 10),
-                                backgroundColor:
-                                    AppColors.veryLightPrimaryColor,
-                                collapsedBackgroundColor:
-                                    AppColors.veryLightGrey,
+                                backgroundColor: AppColors.veryLightPrimaryColor
+                                    .withOpacity(0.1),
+                                collapsedBackgroundColor: AppColors
+                                    .veryLightPrimaryColor
+                                    .withOpacity(0.2),
                                 collapsedShape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10)),
                                 trailing: Row(
@@ -138,18 +134,20 @@ class ServicesView extends GetView<ServicesController> {
                                   ],
                                 ),
                                 children: [
-                                  Container(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
-                                      height: 40,
-                                      width: 1.sw,
-                                      decoration: BoxDecoration(
-                                        color: AppColors.veryLightGrey,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.centerLeft,
-                                      child: AppText.mediumBoldText('Services',
-                                          color: AppColors.primaryColor)),
+                                  // Container(
+                                  //     padding:
+                                  //         EdgeInsets.symmetric(horizontal: 10),
+                                  //     height: 40,
+                                  //     width: 1.sw,
+                                  //     decoration: BoxDecoration(
+                                  //       color: AppColors.veryLightGrey,
+                                  //       borderRadius: BorderRadius.circular(10),
+                                  //     ),
+                                  //     alignment: Alignment.centerLeft,
+                                  //     child: AppText.mediumBoldText('Services',
+                                  //         color: AppColors.primaryColor)),
+                                  Divider(height: 1),
+
                                   StreamBuilder<List<DbService>>(
                                     stream: DbController.to.appDb
                                         .getServicesByCategory(
@@ -177,16 +175,16 @@ class ServicesView extends GetView<ServicesController> {
                                                           context,
                                                           snapshot.data![i],
                                                           (value) {}),
-                                                  title: AppText.mediumBoldText(
+                                                  title: AppText.mediumText(
                                                       'Name: ' +
                                                           snapshot
-                                                              .data![i].name!),
-                                                  subtitle:
-                                                      AppText.mediumBoldText(
+                                                              .data![i].name!,
+                                                      fontSize: 14),
+                                                  subtitle: AppText.mediumText(
                                                     'Price: ' +
                                                         snapshot.data![i].price
                                                             .toString(),
-                                                    fontSize: 15,
+                                                    fontSize: 14,
                                                   ),
                                                   trailing: Row(
                                                     mainAxisSize:

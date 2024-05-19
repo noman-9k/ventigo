@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:ventigo/app/app_services/local_storage_service.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
 
 class AdminAuthController extends GetxController {
@@ -36,7 +37,7 @@ class AdminAuthController extends GetxController {
       pin += element.text;
     });
 
-    if (pin == '1234') {
+    if (pin == (MySharedPref.getFromDisk('admin_pin') ?? '1234')) {
       isCost ? Get.offNamed(Routes.ADD_COST) : Get.offNamed(Routes.DASHBOARD);
     } else {
       Get.snackbar('Error', 'Invalid pin');

@@ -12,6 +12,8 @@ class ReportsTable extends StatelessWidget {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
+  final TextStyle headerStyle =
+      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -39,37 +41,54 @@ class ReportsTable extends StatelessWidget {
               }),
               columns: [
                 DataColumn2(
-                    label: Text('Employee\nData', textAlign: TextAlign.center),
-                    size: ColumnSize.L),
-                DataColumn2(label: Text('Reg\nCus'), size: ColumnSize.S),
-                DataColumn2(label: Text('Card\nPay'), size: ColumnSize.S),
-                DataColumn2(
-                    label: Text('Customer\nData', textAlign: TextAlign.center),
+                    label: Text('Employee\nData',
+                        style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
-                    label: Center(child: Text('Date')), fixedWidth: 100),
+                  label: Text('Reg\nCus',
+                      style: headerStyle, textAlign: TextAlign.center),
+                  size: ColumnSize.S,
+                ),
+                DataColumn2(
+                    label: Text('Card\nPay',
+                        style: headerStyle, textAlign: TextAlign.center),
+                    size: ColumnSize.S),
+                DataColumn2(
+                    label: Text('Customer\nData',
+                        style: headerStyle, textAlign: TextAlign.center),
+                    size: ColumnSize.L),
+                DataColumn2(
+                    label: Center(
+                        child: Text('Date',
+                            style: headerStyle, textAlign: TextAlign.center)),
+                    fixedWidth: 100),
                 DataColumn2(
                     label: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Category'),
+                        Text('Category',
+                            style: headerStyle, textAlign: TextAlign.center),
                         Divider(height: 1),
-                        Text('Service'),
+                        Text('Service',
+                            style: headerStyle, textAlign: TextAlign.center),
                       ],
                     ),
                     size: ColumnSize.M),
                 DataColumn2(
-                    label: Text('New\nCus', textAlign: TextAlign.center),
+                    label: Text('New\nCus',
+                        style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
                     label: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Price'),
+                          Text('Price',
+                              style: headerStyle, textAlign: TextAlign.center),
                           Divider(height: 1),
-                          Text('Total'),
+                          Text('Total',
+                              style: headerStyle, textAlign: TextAlign.center),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -78,9 +97,9 @@ class ReportsTable extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('%'),
+                          Text('%', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total'),
+                          Text('Total', style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),

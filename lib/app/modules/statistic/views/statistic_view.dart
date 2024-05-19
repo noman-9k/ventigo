@@ -1,6 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 
@@ -10,6 +12,7 @@ import '../../common/two_tabs_view.dart';
 import '../controllers/statistic_controller.dart';
 import 'screens/graphics_screen.dart';
 import 'screens/results/results_screen.dart';
+import 'screens/results/statistic_report_screen.dart';
 
 class StatisticsView extends GetView<StatisticController> {
   const StatisticsView({Key? key}) : super(key: key);

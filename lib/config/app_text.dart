@@ -33,7 +33,7 @@ class AppText {
         style: AppStyles.mediumStyle(
             color: color,
             fontWeight: FontWeight.w600,
-            fontSize: fontSize ?? 16));
+            fontSize: fontSize ?? 14));
   }
 
   static lightBoldText(String s, {Color? color, double? fontSize}) {
