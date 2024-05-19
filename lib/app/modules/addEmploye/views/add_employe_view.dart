@@ -27,12 +27,14 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
               return Column(
                 children: [
                   TextField(
+                          textCapitalization: TextCapitalization.sentences,
                           controller: controller.nameController,
                           decoration:
                               InputDecoration(hintText: 'Enter your name'))
                       .withLabel('Name'),
                   10.verticalSpace,
                   TextField(
+                      textCapitalization: TextCapitalization.sentences,
                       controller: controller.lastNameController,
                       decoration: InputDecoration(
                         hintText: 'Enter your last name',

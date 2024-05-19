@@ -34,6 +34,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           AppText.boldText('Edit Category'),
           10.verticalSpace,
           TextField(
+            textCapitalization: TextCapitalization.sentences,
             controller: categoryNameController,
           ).withLabel('Category Name'),
           Row(

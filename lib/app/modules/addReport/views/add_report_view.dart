@@ -35,11 +35,13 @@ class AddReportView extends GetView<AddReportController> {
                 Center(child: AppText.boldText('Add Report', fontSize: 20.sp)),
                 16.verticalSpace,
                 TextField(
+                        textCapitalization: TextCapitalization.sentences,
                         controller: controller.nameController,
                         decoration: InputDecoration(hintText: 'Name of Client'))
                     .withLabel('Name'),
                 16.verticalSpace,
                 TextField(
+                        textCapitalization: TextCapitalization.sentences,
                         controller: controller.lastNameController,
                         decoration:
                             InputDecoration(hintText: 'Last Name of Client'))

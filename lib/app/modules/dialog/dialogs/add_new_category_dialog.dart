@@ -23,6 +23,7 @@ class _AddNewCategoryDialogState extends State<AddNewCategoryDialog> {
         AppText.boldText('Enter Category Name'),
         16.verticalSpace,
         TextField(
+          textCapitalization: TextCapitalization.sentences,
           controller: _controller,
           decoration: InputDecoration(border: InputBorder.none),
         ).withLabel('Category Name'),

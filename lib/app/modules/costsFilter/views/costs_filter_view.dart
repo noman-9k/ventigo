@@ -27,6 +27,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
         child: Column(
           children: [
             TextField(
+              textCapitalization: TextCapitalization.sentences,
               decoration: InputDecoration(
                 hintText: 'Name of cost',
               ),

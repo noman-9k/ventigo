@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 
@@ -32,5 +33,9 @@ class StatisticController extends GetxController {
       }
       return salesData;
     });
+  }
+
+  Future<List<QueryRow>> reportsData() {
+    return DbController.to.appDb.getStatisticsReports();
   }
 }

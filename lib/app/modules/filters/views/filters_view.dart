@@ -64,6 +64,7 @@ class FiltersView extends GetView<FiltersController> {
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,
               TextField(
+                      textCapitalization: TextCapitalization.sentences,
                       controller: controller.nameController,
                       decoration: InputDecoration())
                   .withLabel('Name'),

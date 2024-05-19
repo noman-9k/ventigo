@@ -114,8 +114,6 @@ class FiltersController extends GetxController {
                 .join('\n'))
             .toList());
 
-    log('Data: $data');
-
     // DbController.to.appDb
     //     .customSelectFuture('SELECT * FROM db_employees WHERE name = op');
   }

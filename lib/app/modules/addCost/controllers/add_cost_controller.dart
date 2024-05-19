@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../app_services/category_service.dart';
 import '../../../db/drift_db.dart';
@@ -82,7 +83,7 @@ class AddCostController extends GetxController {
       price,
       unitsOfMeasurement,
       categories,
-      DateTime.now(),
+      DateTime.now().onlyDate(),
     );
     Get.back();
     Get.snackbar('Success', 'Cost added successfully');

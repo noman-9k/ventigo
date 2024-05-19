@@ -9,7 +9,7 @@ import '../../common/date_widget.dart';
 import '../../common/two_tabs_view.dart';
 import '../controllers/statistic_controller.dart';
 import 'screens/graphics_screen.dart';
-import 'screens/results_screen.dart';
+import 'screens/results/results_screen.dart';
 
 class StatisticsView extends GetView<StatisticController> {
   const StatisticsView({Key? key}) : super(key: key);

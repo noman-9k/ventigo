@@ -50,6 +50,7 @@ class AddServiceView extends GetView<AddServiceController> {
               AppText.mediumText('Or Create a new Category'),
               10.verticalSpace,
               TextField(
+                textCapitalization: TextCapitalization.sentences,
                 // onTap: controller.addNewCategory,
                 // readOnly: true,
                 controller: controller.categoryNameController,
@@ -61,6 +62,7 @@ class AddServiceView extends GetView<AddServiceController> {
               AppText.mediumText('Name of the Service'),
               10.verticalSpace,
               TextField(
+                textCapitalization: TextCapitalization.sentences,
                 controller: controller.serviceNameController,
                 decoration: InputDecoration(hintText: 'Enter Service Name'),
               ).withLabel('Service Name'),

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../db/drift_db.dart';
 
@@ -90,10 +91,11 @@ class AddReportController extends GetxController {
         selectedService?.name ?? 'No service',
         newCustomer ?? false,
         regCustomer ?? false,
-        DateTime.now(),
+        DateTime.now().onlyDate(),
         cardPay ?? false,
         price,
-        (total + price));
+        (total + price),
+        EmployeeService.to.employee!.value.percentage ?? 0.0);
 
     isLoading.value = false;
 

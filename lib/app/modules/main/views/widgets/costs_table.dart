@@ -2,6 +2,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../../../../../config/app_colors.dart';
 import '../../../../db/drift_db.dart';
 import '../../../userData/widgets/user_data_table.dart';
 
@@ -20,9 +21,6 @@ class CostsTable extends StatelessWidget {
           if (snapshot.hasData) {
             List<DbCost> tableItems = snapshot.data!;
             return DataTable2(
-                columnSpacing: 12,
-                horizontalMargin: 12,
-                minWidth: 500,
                 headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                     (Set<MaterialState> states) {
                   if (states.contains(MaterialState.selected))
@@ -30,8 +28,11 @@ class CostsTable extends StatelessWidget {
                         .colorScheme
                         .primary
                         .withOpacity(0.08);
-                  return Colors.grey[200];
+                  return AppColors.lightYellow;
                 }),
+                columnSpacing: 12,
+                horizontalMargin: 12,
+                minWidth: 500,
                 columns: [
                   DataColumn2(
                       label:

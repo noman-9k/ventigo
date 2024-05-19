@@ -4,6 +4,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/double_extensions.dart';
 
 import '../../../../db/drift_db.dart';
 
@@ -145,13 +146,11 @@ class ReportsTable extends StatelessWidget {
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.price, tableItem.p)
-                            //     .toString()),
-                            // Divider(height: 4, endIndent: 8, indent: 8),
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.total)
-                            //     .toString()),
+                            Text(tableItem.price!
+                                .percentageOf(tableItem.percentage)),
+                            Divider(height: 4, endIndent: 8, indent: 8),
+                            Text(tableItem.total!
+                                .percentageOf(tableItem.percentage)),
                           ],
                         )),
                       ],

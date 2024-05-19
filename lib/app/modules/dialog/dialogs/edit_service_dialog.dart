@@ -58,6 +58,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
             AppText.boldText('Edit Service'),
             16.verticalSpace,
             TextField(
+              textCapitalization: TextCapitalization.sentences,
               controller: serviceNameController,
               decoration: InputDecoration(
                   // border: OutlineInputBorder(

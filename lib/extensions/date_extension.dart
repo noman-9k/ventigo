@@ -29,6 +29,10 @@ extension SmallDate on DateTime {
     return now.day == this.day;
   }
 
+  DateTime onlyDate() {
+    return DateTime(this.year, this.month, this.day);
+  }
+
   // write extension that return diferent color for each day number from 1- 31 have different color not using switch case
 
   Color getDayColor() {

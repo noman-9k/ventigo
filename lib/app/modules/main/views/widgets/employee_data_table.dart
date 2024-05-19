@@ -9,7 +9,7 @@ import '../../../../db/drift_db.dart';
 class EmployeeDataTable extends StatelessWidget {
   EmployeeDataTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
-  DateTime currentDate = DateTime.now();
+  DateTime currentDate = DateTime.now().onlyDate();
 
   @override
   Widget build(BuildContext context) {

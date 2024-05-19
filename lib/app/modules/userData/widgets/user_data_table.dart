@@ -6,6 +6,7 @@ import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/double_extensions.dart';
 
 import '../../../db/drift_db.dart';
 import '../../common/app_shimmer.dart';
@@ -159,14 +160,18 @@ class UserDataTable extends StatelessWidget {
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(EmployeeService.to
-                                .getEmployeePercentageOf(tableItem.price)
-                                .toString()),
+                            Text(tableItem.price!
+                                .percentageOf(tableItem.percentage)),
                             Divider(height: 4, endIndent: 8, indent: 8),
-                            Text(EmployeeService.to
-                                .getEmployeePercentageOf(tableItem.total)
-                                .toString()),
-
+                            Text(tableItem.total!
+                                .percentageOf(tableItem.percentage)),
+                            // Text(EmployeeService.to
+                            //     .getEmployeePercentageOf(tableItem.price)
+                            //     .toString()),
+                            // Divider(height: 4, endIndent: 8, indent: 8),
+                            // Text(EmployeeService.to
+                            //     .getEmployeePercentageOf(tableItem.total)
+                            //     .toString()),
                             // FutureBuilder(
                             //     future: DbController.to.appDb
                             //         .getTotalSalesOfTheDay(

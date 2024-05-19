@@ -6,7 +6,6 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
-import 'package:ventigo/app/modules/filters/db_filter/filter_data.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../modules/filters/db_filter/user_data_filter.dart';
@@ -140,7 +139,8 @@ class AppDb extends _$AppDb {
       DateTime date,
       bool cardPay,
       double price,
-      double total) async {
+      double total,
+      double percentage) async {
     final id = await into(dbDataItems).insert(DbDataItemsCompanion.insert(
       name: Value(name),
       phone: Value(phone),
@@ -156,6 +156,7 @@ class AppDb extends _$AppDb {
       cardPay: Value(cardPay),
       price: Value(price),
       total: Value(total),
+      percentage: Value(percentage),
     ));
     return id;
   }
@@ -303,6 +304,20 @@ class AppDb extends _$AppDb {
         .where((element) => element.actualTableName == tableName);
     if (tables.isEmpty) return null;
     return tables.first;
+  }
+
+  Future<List<QueryRow>> getStatisticsReports() async {
+    var query = '''
+    SELECT 
+    COUNT(*) FILTER (WHERE new_customer=1) as newClient,
+    COUNT(*) FILTER (WHERE reg_customer=1) as regularClient,
+    COUNT(*) as numberOfServices, 
+      SUM(price) as cost, 
+      date FROM db_data_items GROUP BY date
+''';
+
+    return DbController.to.appDb
+        .customSelect(query, readsFrom: {dbDataItems}).get();
   }
 }
 

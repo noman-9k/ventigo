@@ -986,6 +986,12 @@ class $DbDataItemsTable extends DbDataItems
   late final GeneratedColumn<double> total = GeneratedColumn<double>(
       'total', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _percentageMeta =
+      const VerificationMeta('percentage');
+  @override
+  late final GeneratedColumn<double> percentage = GeneratedColumn<double>(
+      'percentage', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns => [
         id,
@@ -1002,7 +1008,8 @@ class $DbDataItemsTable extends DbDataItems
         date,
         cardPay,
         price,
-        total
+        total,
+        percentage
       ];
   @override
   String get aliasedName => _alias ?? actualTableName;
@@ -1093,6 +1100,12 @@ class $DbDataItemsTable extends DbDataItems
       context.handle(
           _totalMeta, total.isAcceptableOrUnknown(data['total']!, _totalMeta));
     }
+    if (data.containsKey('percentage')) {
+      context.handle(
+          _percentageMeta,
+          percentage.isAcceptableOrUnknown(
+              data['percentage']!, _percentageMeta));
+    }
     return context;
   }
 
@@ -1132,6 +1145,8 @@ class $DbDataItemsTable extends DbDataItems
           .read(DriftSqlType.double, data['${effectivePrefix}price']),
       total: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}total']),
+      percentage: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}percentage']),
     );
   }
 
@@ -1157,6 +1172,7 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
   final bool? cardPay;
   final double? price;
   final double? total;
+  final double? percentage;
   const DbDataItem(
       {required this.id,
       this.name,
@@ -1172,7 +1188,8 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
       this.date,
       this.cardPay,
       this.price,
-      this.total});
+      this.total,
+      this.percentage});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
@@ -1213,6 +1230,9 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
     if (!nullToAbsent || total != null) {
       map['total'] = Variable<double>(total);
     }
+    if (!nullToAbsent || percentage != null) {
+      map['percentage'] = Variable<double>(percentage);
+    }
     return map;
   }
 
@@ -1248,6 +1268,9 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
           price == null && nullToAbsent ? const Value.absent() : Value(price),
       total:
           total == null && nullToAbsent ? const Value.absent() : Value(total),
+      percentage: percentage == null && nullToAbsent
+          ? const Value.absent()
+          : Value(percentage),
     );
   }
 
@@ -1270,6 +1293,7 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
       cardPay: serializer.fromJson<bool?>(json['cardPay']),
       price: serializer.fromJson<double?>(json['price']),
       total: serializer.fromJson<double?>(json['total']),
+      percentage: serializer.fromJson<double?>(json['percentage']),
     );
   }
   @override
@@ -1291,6 +1315,7 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
       'cardPay': serializer.toJson<bool?>(cardPay),
       'price': serializer.toJson<double?>(price),
       'total': serializer.toJson<double?>(total),
+      'percentage': serializer.toJson<double?>(percentage),
     };
   }
 
@@ -1309,7 +1334,8 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
           Value<DateTime?> date = const Value.absent(),
           Value<bool?> cardPay = const Value.absent(),
           Value<double?> price = const Value.absent(),
-          Value<double?> total = const Value.absent()}) =>
+          Value<double?> total = const Value.absent(),
+          Value<double?> percentage = const Value.absent()}) =>
       DbDataItem(
         id: id ?? this.id,
         name: name.present ? name.value : this.name,
@@ -1328,6 +1354,7 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
         cardPay: cardPay.present ? cardPay.value : this.cardPay,
         price: price.present ? price.value : this.price,
         total: total.present ? total.value : this.total,
+        percentage: percentage.present ? percentage.value : this.percentage,
       );
   @override
   String toString() {
@@ -1346,7 +1373,8 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
           ..write('date: $date, ')
           ..write('cardPay: $cardPay, ')
           ..write('price: $price, ')
-          ..write('total: $total')
+          ..write('total: $total, ')
+          ..write('percentage: $percentage')
           ..write(')'))
         .toString();
   }
@@ -1367,7 +1395,8 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
       date,
       cardPay,
       price,
-      total);
+      total,
+      percentage);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -1386,7 +1415,8 @@ class DbDataItem extends DataClass implements Insertable<DbDataItem> {
           other.date == this.date &&
           other.cardPay == this.cardPay &&
           other.price == this.price &&
-          other.total == this.total);
+          other.total == this.total &&
+          other.percentage == this.percentage);
 }
 
 class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
@@ -1405,6 +1435,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
   final Value<bool?> cardPay;
   final Value<double?> price;
   final Value<double?> total;
+  final Value<double?> percentage;
   const DbDataItemsCompanion({
     this.id = const Value.absent(),
     this.name = const Value.absent(),
@@ -1421,6 +1452,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
     this.cardPay = const Value.absent(),
     this.price = const Value.absent(),
     this.total = const Value.absent(),
+    this.percentage = const Value.absent(),
   });
   DbDataItemsCompanion.insert({
     this.id = const Value.absent(),
@@ -1438,6 +1470,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
     this.cardPay = const Value.absent(),
     this.price = const Value.absent(),
     this.total = const Value.absent(),
+    this.percentage = const Value.absent(),
   })  : employeeId = Value(employeeId),
         categoryId = Value(categoryId),
         serviceId = Value(serviceId);
@@ -1457,6 +1490,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
     Expression<bool>? cardPay,
     Expression<double>? price,
     Expression<double>? total,
+    Expression<double>? percentage,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -1474,6 +1508,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
       if (cardPay != null) 'card_pay': cardPay,
       if (price != null) 'price': price,
       if (total != null) 'total': total,
+      if (percentage != null) 'percentage': percentage,
     });
   }
 
@@ -1492,7 +1527,8 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
       Value<DateTime?>? date,
       Value<bool?>? cardPay,
       Value<double?>? price,
-      Value<double?>? total}) {
+      Value<double?>? total,
+      Value<double?>? percentage}) {
     return DbDataItemsCompanion(
       id: id ?? this.id,
       name: name ?? this.name,
@@ -1509,6 +1545,7 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
       cardPay: cardPay ?? this.cardPay,
       price: price ?? this.price,
       total: total ?? this.total,
+      percentage: percentage ?? this.percentage,
     );
   }
 
@@ -1560,6 +1597,9 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
     if (total.present) {
       map['total'] = Variable<double>(total.value);
     }
+    if (percentage.present) {
+      map['percentage'] = Variable<double>(percentage.value);
+    }
     return map;
   }
 
@@ -1580,7 +1620,8 @@ class DbDataItemsCompanion extends UpdateCompanion<DbDataItem> {
           ..write('date: $date, ')
           ..write('cardPay: $cardPay, ')
           ..write('price: $price, ')
-          ..write('total: $total')
+          ..write('total: $total, ')
+          ..write('percentage: $percentage')
           ..write(')'))
         .toString();
   }

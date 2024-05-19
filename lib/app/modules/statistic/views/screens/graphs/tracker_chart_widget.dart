@@ -42,7 +42,6 @@ class TrackerChart extends StatelessWidget {
             );
           }
 
-          log('Data: ${snapshot.data}');
           return Container(
               child: SfCartesianChart(
                   primaryXAxis: DateTimeAxis(),

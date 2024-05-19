@@ -40,6 +40,7 @@ class DbDataItems extends Table {
   BoolColumn get cardPay => boolean().nullable()();
   RealColumn get price => real().nullable()();
   RealColumn get total => real().nullable()();
+  RealColumn get percentage => real().nullable()();
 }
 
 class DbCosts extends Table {

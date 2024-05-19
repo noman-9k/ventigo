@@ -29,6 +29,7 @@ class AddCostView extends GetView<AddCostController> {
             children: [
               10.verticalSpace,
               TextField(
+                textCapitalization: TextCapitalization.sentences,
                 controller: controller.nameController,
                 decoration: InputDecoration(
                   hintText: 'Name ',
