@@ -7,6 +7,7 @@ import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 
 import '../../../../db/drift_db.dart';
+import '../../../dialog/dialog_functions.dart';
 
 class ReportsTable extends StatelessWidget {
   const ReportsTable({super.key, required this.stream});
@@ -107,6 +108,8 @@ class ReportsTable extends StatelessWidget {
               rows: tableItems
                   .map(
                     (tableItem) => DataRow(
+                      onLongPress: () =>
+                          pushShowReportsBottomSheet(context, tableItem),
                       color: MaterialStateProperty.resolveWith<Color?>(
                           (Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected))
@@ -165,11 +168,14 @@ class ReportsTable extends StatelessWidget {
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(tableItem.price!
-                                .percentageOf(tableItem.percentage)),
+                            FittedBox(
+                              child: Text(tableItem.price!
+                                  .percentageOf(tableItem.percentage)),
+                            ),
                             Divider(height: 4, endIndent: 8, indent: 8),
-                            Text(tableItem.total!
-                                .percentageOf(tableItem.percentage)),
+                            FittedBox(
+                                child: Text(tableItem.total!
+                                    .percentageOf(tableItem.percentage))),
                           ],
                         )),
                       ],

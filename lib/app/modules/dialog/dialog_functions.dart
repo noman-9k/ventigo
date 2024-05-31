@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:ventigo/config/app_text.dart';
 
 import '../../db/drift_db.dart';
 import 'dialogs/change_admin_pass_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
 import 'dialogs/edit_category_dialog.dart';
 import 'dialogs/edit_service_dialog.dart';
+import 'sheets/data_item_bottom_sheet.dart';
+
+pushShowReportsBottomSheet(
+  BuildContext context,
+  DbDataItem tableItem, {
+  Function(DbDataItem)? onEdit,
+  Function(DbDataItem)? onDelete,
+}) {
+  showModalBottomSheet(
+    context: context,
+    showDragHandle: true,
+    scrollControlDisabledMaxHeightRatio: 0.6,
+    builder: (context) =>
+        DataItemBottomSheet(tableItem, onEdit: onEdit, onDelete: onDelete),
+  );
+}
 
 pushEditServiceDialog(
     BuildContext context, DbService service, Function(String?) onDone) {
@@ -31,14 +48,14 @@ pushConfirmDialog(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('Cancel'),
+          child: AppText.mediumBoldText('Cancel'),
         ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);
             onDone();
           },
-          child: Text('Confirm'),
+          child: AppText.boldText('Confirm'),
         ),
       ],
     ),

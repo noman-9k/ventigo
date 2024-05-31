@@ -6,6 +6,7 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/modules/filters/db_filter/costs_filter.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../modules/filters/db_filter/user_data_filter.dart';
@@ -43,8 +44,17 @@ class AppDb extends _$AppDb {
     return id;
   }
 
-  Stream<List<DbEmployee>> getAllEmployees() => select(dbEmployees).watch();
-  Future<List<DbEmployee>> getAllEmployeesList() => select(dbEmployees).get();
+  Stream<List<DbEmployee>> getAllEmployees() => (select(dbEmployees)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
+        ]))
+      .watch();
+
+  Future<List<DbEmployee>> getAllEmployeesList() => (select(dbEmployees)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
+        ]))
+      .get();
 
   // Categories
   Future insertNewCategory(DbCategory category) =>
@@ -63,8 +73,17 @@ class AppDb extends _$AppDb {
     return category.id;
   }
 
-  Stream<List<DbCategory>> getAllCategories() => select(dbCategories).watch();
-  Future<List<DbCategory>> getAllCategoriesF() => select(dbCategories).get();
+  Stream<List<DbCategory>> getAllCategories() => (select(dbCategories)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
+        ]))
+      .watch();
+
+  Future<List<DbCategory>> getAllCategoriesF() => (select(dbCategories)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
+        ]))
+      .get();
 
   Future<List<DbCategory>?> getCategoriesByIDs(List<String> categories) async {
     final ids = categories.map((e) => int.parse(e)).toList();
@@ -164,7 +183,11 @@ class AppDb extends _$AppDb {
   Future updateDataItem(DbDataItem dataItem) =>
       update(dbDataItems).replace(dataItem);
 
-  Stream<List<DbDataItem>> getAllDataItems() => select(dbDataItems).watch();
+  Stream<List<DbDataItem>> getAllDataItems() => (select(dbDataItems)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+        ]))
+      .watch();
   Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
       (select(dbDataItems)
             ..where((tbl) => tbl.employeeId.equals(id))
@@ -234,7 +257,11 @@ class AppDb extends _$AppDb {
     into(dbCosts).insert(cost);
   }
 
-  Stream<List<DbCost>> getAllCosts() => select(dbCosts).watch();
+  Stream<List<DbCost>> getAllCosts() => (select(dbCosts)
+        ..orderBy([
+          (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+        ]))
+      .watch();
 
   Future<int> count(String tableName, {String? whereClause}) {
     final table = getTable(tableName);
@@ -347,6 +374,38 @@ class AppDb extends _$AppDb {
 ''';
 
     return DbController.to.appDb.customSelect(query).get();
+  }
+
+  Stream<List<DbCost>> getFilteredCosts(CostsFilter? filter) {
+    final query = select(dbCosts);
+
+    if (filter?.minPrice != null) {
+      query.where((tbl) => tbl.price.isBiggerOrEqualValue(filter!.minPrice!));
+    }
+    if (filter?.maxPrice != null) {
+      query.where((tbl) => tbl.price.isSmallerOrEqualValue(filter!.maxPrice!));
+    }
+    if (filter?.name?.isNotEmpty ?? false) {
+      query.where((tbl) => tbl.name.like('%${filter!.name}%'));
+      log('filter.name: ${filter?.name}');
+    }
+    if (filter?.deductFromTax != null) {
+      query.where((tbl) => tbl.isDeductFromTax.equals(filter!.deductFromTax!));
+    }
+    if (filter?.systematicExpenditure != null) {
+      query.where(
+          (tbl) => tbl.isSystematic.equals(filter!.systematicExpenditure!));
+    }
+    if (filter?.repetitionInterval?.isNotEmpty ?? false) {
+      query.where(
+          (tbl) => tbl.repetitionInterval.equals(filter!.repetitionInterval!));
+    }
+    if (filter?.unitOfMeasurements?.isNotEmpty ?? false) {
+      query.where(
+          (tbl) => tbl.unitsOfMeasurement.equals(filter!.unitOfMeasurements!));
+    }
+
+    return query.watch();
   }
 }
 

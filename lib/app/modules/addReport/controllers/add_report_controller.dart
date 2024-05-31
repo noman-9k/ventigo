@@ -91,7 +91,7 @@ class AddReportController extends GetxController {
         selectedService?.name ?? 'No service',
         newCustomer ?? false,
         regCustomer ?? false,
-        DateTime.now().onlyDate(),
+        DateTime.now().add(Duration(days: 0)).onlyDate(),
         cardPay ?? false,
         price,
         (total + price),

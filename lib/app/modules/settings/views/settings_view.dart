@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
+import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
@@ -14,12 +15,12 @@ class SettingsView extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(leading: LogoutButton()),
       body: Column(
         children: [
           Padding(
             padding: AppConstants.defaultPadding,
             child: Column(children: [
-              20.verticalSpace,
               Image.asset('assets/icon/settings.png', height: 80.h),
               10.verticalSpace,
               // AppText.boldText('General Settings'),
@@ -62,6 +63,7 @@ class SettingsView extends GetView<SettingsController> {
               ),
             ]),
           ),
+          30.verticalSpace,
           Container(
             alignment: Alignment.centerLeft,
             color: AppColors.veryLightBlue,

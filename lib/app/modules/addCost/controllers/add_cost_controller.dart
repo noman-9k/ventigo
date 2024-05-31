@@ -77,10 +77,11 @@ class AddCostController extends GetxController {
       systematicExpenditure,
       retrievalInterval!,
       numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
-      price,
+      price *
+          (numberOfUnits.text.isEmpty ? 1 : int.tryParse(numberOfUnits.text)!),
       unitsOfMeasurement,
       categories,
-      DateTime.now().onlyDate(),
+      DateTime.now().add(Duration(days: 0)).onlyDate(),
     );
     Get.back();
     Get.snackbar('Success', 'Cost added successfully');

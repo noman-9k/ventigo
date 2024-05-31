@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -7,12 +6,12 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/drift_db.dart';
+import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../common/app_search_field.dart';
-import '../../common/back_button.dart';
 import '../../dialog/dialog_functions.dart';
 import '../controllers/services_controller.dart';
 
@@ -22,7 +21,7 @@ class ServicesView extends GetView<ServicesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: AppBackButton(),
+        leading: LogoutButton(),
         title: AppText.boldText('Services', fontSize: 20.sp),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -67,6 +66,7 @@ class ServicesView extends GetView<ServicesController> {
 
             return snapshot.hasData
                 ? SingleChildScrollView(
+                    controller: controller.scrollController,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

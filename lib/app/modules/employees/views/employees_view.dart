@@ -1,16 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
+import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../config/app_text.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_search_field.dart';
-import '../../common/back_button.dart';
 import '../controllers/employees_controller.dart';
 
 class EmployeesView extends GetView<EmployeesController> {
@@ -27,7 +26,7 @@ class EmployeesView extends GetView<EmployeesController> {
         ),
       ),
       appBar: AppBar(
-        leading: AppBackButton(),
+        leading: LogoutButton(),
         title: AppText.boldText('Employees', fontSize: 20),
         automaticallyImplyLeading: false,
       ),

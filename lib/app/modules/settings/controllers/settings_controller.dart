@@ -28,6 +28,19 @@ class SettingsController extends GetxController {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(p.join(dbFolder.path, 'ventigo.sqlite'));
 
+    // try {
+    //   final fileName = DateTime.now().toString().split(' ')[0];
+
+    //   final bytes = await file.readAsBytes();
+
+    //   await FileStorage.writeCounter(
+    //       bytes as String, 'backup_$fileName.sqlite');
+    //   Get.snackbar('Exported', 'Check your file in the Downloads folder');
+    // } catch (e) {
+    //   log('Error ' + e.toString());
+    //   return;
+    // }
+
     var downloadUrl =
         await FireBaseStorageRepo().uploadFile(Get.context!, file, 'database');
 
@@ -116,7 +129,7 @@ class SettingsController extends GetxController {
 
       final fileName = DateTime.now().toString().split(' ')[0];
 
-      FileStorage.writeCounter(csv, 'fileName.csv');
+      await FileStorage.writeCounter(csv, '$fileName.csv');
       Get.snackbar('Exported', 'Check your file in the Downloads folder');
     });
   }

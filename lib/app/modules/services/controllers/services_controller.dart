@@ -1,10 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/db/tables/tables.dart';
 
 import '../../../db/db_controller.dart';
-import '../../../models/caregory.dart';
+import '../../../db/drift_db.dart';
 
 class ServicesController extends GetxController {
   ScrollController scrollController = ScrollController();
@@ -16,18 +18,27 @@ class ServicesController extends GetxController {
   List<DbCategories> dbCategories = [];
 
   Future<List> fetchData() async {
-    await Future.delayed(Duration(milliseconds: 1));
-    return getservicesSearchList();
+    List<SearchItem> list = [];
+
+    await DbController.to.appDb.getAllCategoriesF().then((value) {
+      log('fetchData: ${value.length}');
+      value.forEach((element) {
+        list.add(SearchItem(label: element.name!, value: element));
+      });
+    });
+
+    return list;
   }
 
   List<SearchItem> getservicesSearchList() {
-    return [];
-    // CategoryService.to.servicesCategories
-    //     .map((e) => SearchItem(label: e.name, value: e))
-    //     .toList();
+    List<SearchItem> list = [];
+    for (var item in CategoryService.to.servicesCategories) {
+      list.add(SearchItem(label: item.name!, value: item));
+    }
+    return list;
   }
 
-  scrollToValue(Category? service, {double height = 50.0}) {
+  scrollToValue(DbCategory? service, {double height = 50.0}) {
     if (service == null) return;
     int index = CategoryService.to.servicesCategories.indexOf(service);
     scrollController.animateTo(index * height,
@@ -45,7 +56,7 @@ class ServicesController extends GetxController {
 
 class SearchItem {
   String label;
-  Category value;
+  DbCategory value;
   SearchItem({required this.label, required this.value});
 
   factory SearchItem.fromJson(Map<String, dynamic> json) {

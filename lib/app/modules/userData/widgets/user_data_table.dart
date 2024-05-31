@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ventigo/app/app_services/employee_service.dart';
-import 'package:ventigo/app/db/db_controller.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 
 import '../../../db/drift_db.dart';
-import '../../common/app_shimmer.dart';
 
 class UserDataTable extends StatelessWidget {
   const UserDataTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
+  final TextStyle headerStyle =
+      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -40,35 +41,42 @@ class UserDataTable extends StatelessWidget {
                 return AppColors.lightYellow;
               }),
               columns: [
-                DataColumn2(label: Text('Reg\nCus'), size: ColumnSize.S),
-                DataColumn2(label: Text('Card\nPay'), size: ColumnSize.S),
                 DataColumn2(
-                    label: Text('Customer\nData', textAlign: TextAlign.center),
+                    label: Text('Reg\nCus', style: headerStyle),
+                    size: ColumnSize.S),
+                DataColumn2(
+                    label: Text('Card\nPay', style: headerStyle),
+                    size: ColumnSize.S),
+                DataColumn2(
+                    label: Text('Customer\nData',
+                        style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
-                    label: Center(child: Text('Date')), fixedWidth: 100),
+                    label: Center(child: Text('Date', style: headerStyle)),
+                    fixedWidth: 100),
                 DataColumn2(
                     label: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Category'),
+                        Text('Category', style: headerStyle),
                         Divider(height: 1),
-                        Text('Service'),
+                        Text('Service', style: headerStyle),
                       ],
                     ),
                     size: ColumnSize.M),
                 DataColumn2(
-                    label: Text('New\nCus', textAlign: TextAlign.center),
+                    label: Text('New\nCus',
+                        style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
                     label: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Price'),
+                          Text('Price', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total'),
+                          Text('Total', style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -77,9 +85,9 @@ class UserDataTable extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('%'),
+                          Text('%', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total'),
+                          Text('Total', style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -130,9 +138,9 @@ class UserDataTable extends StatelessWidget {
                         DataCell(Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text('${tableItem.price}'),
+                            FittedBox(child: Text('${tableItem.price}')),
                             Divider(height: 4, endIndent: 8, indent: 8),
-                            Text('${tableItem.total}'),
+                            FittedBox(child: Text('${tableItem.total}')),
 
                             // FutureBuilder(
                             //     future: DbController.to.appDb

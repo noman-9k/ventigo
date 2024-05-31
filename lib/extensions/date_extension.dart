@@ -12,6 +12,10 @@ extension SmallDate on DateTime {
     return DateFormat('dd.MM.yyyy').format(this);
   }
 
+  String formateDate() {
+    return DateFormat('dd MMMM, yyyy').format(this);
+  }
+
   String smallDateWithTime() {
     return DateFormat('dd MMMM yyyy HH:mm').format(this);
   }
@@ -33,8 +37,6 @@ extension SmallDate on DateTime {
     return DateTime(this.year, this.month, this.day);
   }
 
-  // write extension that return diferent color for each day number from 1- 31 have different color not using switch case
-
   Color getDayColor() {
     final day = int.parse(DateFormat('dd').format(this));
     final colors = [
@@ -48,16 +50,16 @@ extension SmallDate on DateTime {
       Colors.teal.withOpacity(0.2),
       Colors.brown.withOpacity(0.2),
       Colors.cyan.withOpacity(0.2),
+      Colors.grey.withOpacity(0.2),
       Colors.indigo.withOpacity(0.2),
       Colors.lime.withOpacity(0.2),
-      Colors.amber.withOpacity(0.2),
       Colors.deepOrange.withOpacity(0.2),
+      Colors.amber.withOpacity(0.2),
       Colors.deepPurple.withOpacity(0.2),
-      Colors.lightBlue.withOpacity(0.2),
-      Colors.lightGreen.withOpacity(0.2),
-      Colors.grey.withOpacity(0.2),
-      Colors.blueGrey.withOpacity(0.2),
       Colors.black.withOpacity(0.2),
+      Colors.lightGreen.withOpacity(0.2),
+      Colors.lightBlue.withOpacity(0.2),
+      Colors.blueGrey.withOpacity(0.2),
       Colors.white.withOpacity(0.2),
     ];
     return colors[day - 1];

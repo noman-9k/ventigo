@@ -9,6 +9,7 @@ import 'package:ventigo/extensions/elevated_button_extension.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../constants/app_constants.dart';
+import '../../common/app_close_button.dart';
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
@@ -20,20 +21,26 @@ class LoginView extends GetView<LoginController> {
         child: Padding(
           padding: AppConstants.defaultPadding,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              70.verticalSpace,
+              40.verticalSpace,
+              AppCloseButton(),
+              40.verticalSpace,
               Image.asset(AppImages.logo),
-              50.verticalSpace,
-              AppText.boldText('Login',
-                  color: AppColors.blueColor, fontSize: 24.sp),
+              40.verticalSpace,
+              Center(
+                  child: AppText.boldText('Login',
+                      color: AppColors.blueColor, fontSize: 24.sp)),
               4.verticalSpace,
-              Container(
-                  decoration: BoxDecoration(
-                      color: AppColors.blueColor,
-                      borderRadius: BorderRadius.circular(5)),
-                  height: 5,
-                  width: 50),
-              50.verticalSpace,
+              Center(
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: AppColors.blueColor,
+                        borderRadius: BorderRadius.circular(5)),
+                    height: 5,
+                    width: 50),
+              ),
+              40.verticalSpace,
               TextField(
                 controller: controller.loginController,
                 decoration: InputDecoration(
@@ -50,7 +57,7 @@ class LoginView extends GetView<LoginController> {
                       Icon(Icons.lock_outlined, color: AppColors.primaryColor),
                 ),
               ).withLabel('Password'),
-              50.verticalSpace,
+              40.verticalSpace,
               Obx(() {
                 return ElevatedButton(
                     onPressed: controller.login,
@@ -58,7 +65,7 @@ class LoginView extends GetView<LoginController> {
                         ? CircularProgressIndicator()
                         : AppText.mediumText('Login'));
               }),
-              50.verticalSpace,
+              40.verticalSpace,
               Row(
                 children: [
                   Expanded(
@@ -92,19 +99,19 @@ class LoginView extends GetView<LoginController> {
                     ],
                   )).alterP(isTransparent: true),
               20.verticalSpace,
-              ElevatedButton(
-                  onPressed: () => controller.adminLogin(isCost: true),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                          width: 50,
-                          height: 50,
-                          child: Image.asset(AppImages.admin_cost)),
-                      10.horizontalSpace,
-                      AppText.mediumText('Admin Cost'),
-                    ],
-                  )).alterP(isTransparent: true),
+              // ElevatedButton(
+              //     onPressed: () => controller.adminLogin(isCost: true),
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         SizedBox(
+              //             width: 50,
+              //             height: 50,
+              //             child: Image.asset(AppImages.admin_cost)),
+              //         10.horizontalSpace,
+              //         AppText.mediumText('Admin Cost'),
+              //       ],
+              //     )).alterP(isTransparent: true),
             ],
           ),
         ),

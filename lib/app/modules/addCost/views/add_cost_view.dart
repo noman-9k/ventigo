@@ -20,6 +20,7 @@ class AddCostView extends GetView<AddCostController> {
         leading: AppBackButton(),
         title: AppText.boldText('Add Cost'),
         centerTitle: true,
+        // actions: [LogoutButton()],
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -37,8 +37,10 @@ class FiltersController extends GetxController {
 
   Stream<List<DbDataItem>>? filterStream;
 
+  UserDataFilter? filter;
+
   applyFilters() {
-    var filter = UserDataFilter(
+    filter = UserDataFilter(
       asc: true,
       orderingColumn: 'name',
       selectQuery: 'SELECT * FROM db_employees',
@@ -54,6 +56,8 @@ class FiltersController extends GetxController {
       isCustomerCard: isCustomerCard,
       isNewCustomer: isNewCustomer,
     );
+
+    update();
 
     // MainController.to.getReports(stream: filterStream);
     MainController.to.getFilteredDataItems(filter: filter);
@@ -78,8 +82,10 @@ class FiltersController extends GetxController {
     isNewCustomer = null;
 
     filterStream = null;
+    filter = null;
     MainController.to.getFilteredDataItems();
     update();
+    Get.back();
   }
 
   selectDate(BuildContext context, {bool isFromDate = false}) {
@@ -97,26 +103,20 @@ class FiltersController extends GetxController {
 
   getCount() async {
     var count = await DbController.to.appDb.count('db_employees');
-    // DbController.to.tables.forEach((element) {
-    //   log('Table: ${element.actualTableName}');
-    // });
 
     log('Count: $count');
   }
 
-  getCustomQuery() async {
-    var data = await DbController.to.appDb
-        .customSelectFuture('SELECT * FROM db_employees')
-        .then((value) => value
-            .map((e) => e.entries
-                .map((e) => '${e.key}: ${e.value}')
-                .toList()
-                .join('\n'))
-            .toList());
-
-    // DbController.to.appDb
-    //     .customSelectFuture('SELECT * FROM db_employees WHERE name = op');
-  }
+  // getCustomQuery() async {
+  //   var data = await DbController.to.appDb
+  //       .customSelectFuture('SELECT * FROM db_employees')
+  //       .then((value) => value
+  //           .map((e) => e.entries
+  //               .map((e) => '${e.key}: ${e.value}')
+  //               .toList()
+  //               .join('\n'))
+  //           .toList());
+  // }
 
   ifSelectedMaster(String s) {
     return selectedMaster.contains(s);

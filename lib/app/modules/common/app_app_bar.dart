@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:ventigo/app/modules/common/logout_button.dart';
 
 import '../../../config/app_text.dart';
-import 'back_button.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AppAppBar({super.key, required this.title, this.onBack});
@@ -12,9 +12,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: AppBackButton(
-        onBack: onBack,
-      ),
+      leading: LogoutButton(),
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 10),

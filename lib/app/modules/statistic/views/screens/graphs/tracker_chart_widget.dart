@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:ventigo/config/app_text.dart';
@@ -44,14 +42,22 @@ class TrackerChart extends StatelessWidget {
 
           return Container(
               child: SfCartesianChart(
-                  primaryXAxis: DateTimeAxis(),
+                  primaryXAxis: DateTimeAxis(
+                      // intervalType: DateTimeIntervalType.days,
+                      // minimum:
+                      //     DateTime.now().subtract(const Duration(days: 365 * 2)),
+                      ),
                   primaryYAxis: NumericAxis(
                     // interval: 5,
-                    labelFormat: '{value} \$',
+                    labelFormat: '{value} /=',
                   ),
                   series: <CartesianSeries>[
                 LineSeries<SalesData, DateTime>(
-                  dataSource: snapshot.data ?? [],
+                  dataSource: snapshot.data ??
+                      [
+                        SalesData(DateTime.now(), 0),
+                        SalesData(DateTime.now(), 0)
+                      ],
                   xValueMapper: (SalesData sales, _) => sales.year,
                   yValueMapper: (SalesData sales, _) => sales.sales,
                 )

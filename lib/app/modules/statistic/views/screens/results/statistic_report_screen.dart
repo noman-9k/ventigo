@@ -99,6 +99,8 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                               .getStatisticsReports(
                                   fromDate: fromDate, toDate: toDate);
                           setState(() {});
+
+                          isExpanded = false;
                         },
                         child: AppText.mediumBoldText('Apply Filters',
                             color: Colors.white)),
@@ -208,15 +210,10 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                     DateTime? date = DateTime.fromMillisecondsSinceEpoch(
                         row.read<int>('date') * 1000);
 
-                    if (fromDate == null) {
-                      fromDate = DateTime.now().subtract(Duration(days: 20000));
-                    }
-
-                    if (toDate == null) {
-                      toDate = DateTime.now().add(Duration(days: 20000));
-                    }
-
-                    if (date.isAfter(toDate!) || date.isBefore(fromDate!)) {
+                    if (date.isAfter(toDate ??
+                            DateTime.now().add(Duration(days: 20000))) ||
+                        date.isBefore(fromDate ??
+                            DateTime.now().subtract(Duration(days: 20000)))) {
                       return DataRow(
                           cells: List.generate(5, (index) {
                         return DataCell(SizedBox.shrink());

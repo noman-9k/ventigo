@@ -21,7 +21,7 @@ class MainView extends GetView<MainController> {
       body: TwoTabsView(
         topCenterWidget: DateWidget(),
         onFilterPressed: (p0) {
-          // if (p0 == 0) Get.toNamed(Routes.FILTERS);
+          if (p0 == 0) Get.toNamed(Routes.COSTS_FILTER);
           if (p0 == 1) Get.toNamed(Routes.FILTERS);
         },
         showFilter: true,
