@@ -369,7 +369,7 @@ class AppDb extends _$AppDb {
           ]))
         .get();
 
-    final list = await query.map((e) async {
+    final list = query.map((e) async {
       final employeeName = e.read(dbEmployees.name);
 
       final totalPrice = await customSelect(
