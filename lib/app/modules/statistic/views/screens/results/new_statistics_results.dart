@@ -11,6 +11,7 @@ import '../../../../../../config/app_colors.dart';
 import '../../../../../../config/app_styles.dart';
 import '../../../../../../config/app_text.dart';
 import '../../../../../db/db_controller.dart';
+import '../../../../../models/stats_result_model.dart';
 import '../../../../dialog/dialog_functions.dart';
 
 class NewStatisticsResults extends StatefulWidget {
@@ -22,7 +23,7 @@ class NewStatisticsResults extends StatefulWidget {
 
 class _NewStatisticsResultsState extends State<NewStatisticsResults> {
   bool isExpanded = false;
-  Future<List<drift.QueryRow>>? filterFuture;
+  Future<List<StatResultModel>>? filterFuture;
 
   DateTime? fromDate;
   DateTime? toDate;
@@ -30,31 +31,21 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: kDebugMode
-          ? Padding(
-              padding: const EdgeInsets.only(bottom: 90),
-              child: FloatingActionButton(
-                onPressed: () {
-                  DbController.to.appDb.getNewStatisticsReports();
-                },
-                child: Icon(Icons.abc),
-              ),
-            )
-          : Padding(
-              padding: const EdgeInsets.only(bottom: 80),
-              child: FloatingActionButton(
-                onPressed: () {
-                  setState(() {
-                    filterFuture = null;
-                    fromDate = null;
-                    toDate = null;
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 80),
+        child: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              filterFuture = null;
+              fromDate = null;
+              toDate = null;
 
-                    isExpanded = !isExpanded;
-                  });
-                },
-                child: Icon(isExpanded ? Icons.close : Icons.filter_list),
-              ),
-            ),
+              isExpanded = !isExpanded;
+            });
+          },
+          child: Icon(isExpanded ? Icons.close : Icons.filter_list),
+        ),
+      ),
       bottomSheet: !isExpanded
           ? null
           : Container(
@@ -107,7 +98,7 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                     child: ElevatedButton(
                         onPressed: () {
                           filterFuture = DbController.to.appDb
-                              .getStatisticsReports(
+                              .getNewStatisticsReports(
                                   fromDate: fromDate, toDate: toDate);
                           setState(() {});
 
@@ -120,8 +111,9 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
               ),
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: FutureBuilder<List<drift.QueryRow?>>(
-          future: filterFuture ?? DbController.to.appDb.getStatisticsReports(),
+      body: FutureBuilder<List<StatResultModel>?>(
+          future:
+              filterFuture ?? DbController.to.appDb.getNewStatisticsReports(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -158,7 +150,7 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                     child: FittedBox(
                         fit: BoxFit.fitWidth,
                         child: Text(
-                          'New\nClient',
+                          'Master\nName',
                           style: AppStyles.lightStyle(fontSize: 13),
                           textAlign: TextAlign.center,
                         )),
@@ -170,7 +162,7 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Reg\nClient',
+                            'No. Reg\nClient',
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -181,7 +173,7 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Num. of\nServices',
+                            'No. New\nClient',
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -192,7 +184,7 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'costs',
+                            'No of\nservices',
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -203,68 +195,104 @@ class _NewStatisticsResultsState extends State<NewStatisticsResults> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Sales',
+                            'Cost',
+                            style: AppStyles.lightStyle(fontSize: 13),
+                            textAlign: TextAlign.center,
+                          )),
+                    ),
+                    size: ColumnSize.S),
+                DataColumn2(
+                    label: Center(
+                      child: FittedBox(
+                          fit: BoxFit.fitWidth,
+                          child: Text(
+                            'Price',
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
                     ),
                     size: ColumnSize.S),
               ],
-              rows: snapshot.data?.map((row) {
-                    if (row == null) {
-                      return DataRow(
-                          cells: List.generate(5, (index) {
-                        return DataCell(SizedBox());
-                      }));
-                    }
-
-                    DateTime? date = DateTime.fromMillisecondsSinceEpoch(
-                        row.read<int>('date') * 1000);
-
-                    if (date.isAfter(toDate ??
-                            DateTime.now().add(Duration(days: 20000))) ||
-                        date.isBefore(fromDate ??
-                            DateTime.now().subtract(Duration(days: 20000)))) {
-                      return DataRow(
-                          cells: List.generate(5, (index) {
-                        return DataCell(SizedBox.shrink());
-                      }));
-                    }
-
-                    return DataRow(cells: [
-                      DataCell(Center(
-                          child: Text(
-                        row.read<int>('newClient').toString(),
-                        style: AppStyles.lightStyle(fontSize: 13),
-                      ))),
-                      DataCell(Center(
-                          child: Text(
-                        row.read<int>('regularClient').toString(),
-                        style: AppStyles.lightStyle(fontSize: 13),
-                      ))),
-                      DataCell(Center(
-                          child: Text(
-                        row.read<int>('numberOfServices').toString(),
-                        style: AppStyles.lightStyle(fontSize: 13),
-                      ))),
-                      DataCell(FutureBuilder<double>(
-                          future: DbController.to.appDb.getCostsByDate(date),
-                          builder: (context, snapshot) {
-                            return Center(
-                              child: Text(
-                                snapshot.data.toString(),
-                                style: AppStyles.lightStyle(fontSize: 13),
+              rows: List<DataRow>.generate(
+                  snapshot.data!.length,
+                  (index) => DataRow(
+                          cells: [
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].employeeName
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
                               ),
-                            );
+                            ),
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].noRegCustomer
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                            ),
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].noNewCustomer
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                            ),
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].totalServices
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                            ),
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].totalCost
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                            ),
+                            DataCell(
+                              Center(
+                                child: FittedBox(
+                                    fit: BoxFit.fitWidth,
+                                    child: Text(
+                                      snapshot.data![index].totalPrice
+                                          .toString(),
+                                      style: AppStyles.lightStyle(fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ),
+                            ),
+                          ],
+                          onSelectChanged: (value) {
+                            log('Selected');
                           })),
-                      DataCell(Center(
-                          child: Text(
-                        '${row.read<double?>('sales') ?? 0.0}',
-                        style: AppStyles.lightStyle(fontSize: 13),
-                      ))),
-                    ]);
-                  }).toList() ??
-                  [],
             );
           }),
     );

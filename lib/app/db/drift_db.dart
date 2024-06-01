@@ -343,7 +343,7 @@ class AppDb extends _$AppDb {
     return costs.map((e) => e.price).toList().sumAll();
   }
 
-  Future<List<Future<StatResultModel>>> getNewStatisticsReports(
+  Future<List<StatResultModel>> getNewStatisticsReports(
       {DateTime? fromDate, DateTime? toDate}) async {
     fromDate = fromDate ?? DateTime.now().subtract(Duration(days: 3600));
     toDate = toDate ?? DateTime.now().add(Duration(days: 3600));
@@ -369,13 +369,14 @@ class AppDb extends _$AppDb {
           ]))
         .get();
 
-    final list = query.map((e) async {
-      final employeeName = e.read(dbEmployees.name);
+    List<StatResultModel> list = [];
 
+    final results = await query;
+    for (final e in results) {
+      final employeeName = e.read(dbEmployees.name);
       final totalPrice = await customSelect(
           'SELECT SUM(price) as totalPrice FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
-
       final totalRegCus = await customSelect(
           'SELECT COUNT(*) as newCus FROM db_data_items WHERE reg_customer = 1 AND employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
@@ -399,26 +400,26 @@ class AppDb extends _$AppDb {
           .toList()
           .cast<int>();
       final sumAllTheCosts = await sumAllPrices(allServicesIdsList);
+      //   log('Date: ${date}');
+      //   log('EmployeeName: ${employeeName}');
+      //   log('totalPrice: ${totalPrice.data['totalPrice']}');
+      //   log('isRegCustomer: ${totalRegCus.data['newCus']}');
+      //   log('isNewCustomer: ${totalNewCus.data['newCus']}');
+      //   log('totalServices: ${totalServices.data['totalServices']}');
+      //   log('allServicesIdsList: ${allServicesIdsList}');
+      //   log('sumAllTheCosts: ${sumAllTheCosts}');
 
-      log('Date: ${date}');
-      log('EmployeeName: ${employeeName}');
-      log('totalPrice: ${totalPrice.data['totalPrice']}');
-      log('isRegCustomer: ${totalRegCus.data['newCus']}');
-      log('isNewCustomer: ${totalNewCus.data['newCus']}');
-      log('totalServices: ${totalServices.data['totalServices']}');
-      log('allServicesIdsList: ${allServicesIdsList}');
-      log('sumAllTheCosts: ${sumAllTheCosts}');
-
-      return StatResultModel(
+      list.add(StatResultModel(
           employeeName: employeeName ?? '',
           totalPrice: totalPrice.data['totalPrice'] ?? 0,
-          isRegCustomer: totalRegCus.data['newCus'] > 0,
-          isNewCustomer: totalNewCus.data['newCus'] > 0,
+          noRegCustomer: totalRegCus.data['newCus'],
+          noNewCustomer: totalNewCus.data['newCus'],
           totalServices: totalServices.data['totalServices'],
           totalCost: sumAllTheCosts,
-          date: date);
-    }).toList();
+          date: date));
+    }
 
+    log('list: $list');
     return list;
   }
 
