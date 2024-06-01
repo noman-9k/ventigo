@@ -44,4 +44,17 @@ class FileStorage {
     // Write the data in the file you have created
     return file.writeAsString(bytes);
   }
+
+  static Future<File> writeCounterBytes(List<int> bytes, String name) async {
+    final path = await _localPath;
+    // Create a file for the path of
+    // device and file name with extension
+    File file = File('$path/$name');
+
+    print("Save file");
+
+    // Write the data in the file you have created
+    file.writeAsBytesSync(bytes);
+    return file;
+  }
 }

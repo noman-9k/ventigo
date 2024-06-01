@@ -73,7 +73,7 @@ class AddEmployeeController extends GetxController {
     );
   }
 
-  saveEmployee() {
+  saveEmployee() async {
     if (isEdit.value) {
       DbController.to.appDb.updateEmployee(
         DbEmployee(
@@ -94,7 +94,10 @@ class AddEmployeeController extends GetxController {
     List<String> categoryIds = [];
 
     categoryIds = selectedCategories.map((e) => e.id.toString()).toList();
-    log('categoryIds: $categoryIds');
+
+    if (categoryIds.length == await CategoryService.to.getCategoriesCount()) {
+      categoriesController.text = 'All';
+    }
 
     DbController.to.appDb.insertNewCompanionEmployee(
       nameController.text,

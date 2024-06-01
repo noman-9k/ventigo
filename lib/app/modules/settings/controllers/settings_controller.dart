@@ -2,8 +2,11 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:csv/csv.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
@@ -19,38 +22,83 @@ class SettingsController extends GetxController {
   RxBool isLoading = false.obs;
 
   Future<void> createData() async {
-    Get.showSnackbar(GetSnackBar(
-        message: 'Creating database...',
-        showProgressIndicator: true,
-        isDismissible: false,
-        snackPosition: SnackPosition.BOTTOM));
+    try {
+      Get.showSnackbar(GetSnackBar(
+          message: 'Creating database...',
+          showProgressIndicator: true,
+          isDismissible: false,
+          snackPosition: SnackPosition.BOTTOM));
 
-    final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'ventigo.sqlite'));
+      final dbFolder = await getApplicationDocumentsDirectory();
+      final file = File(p.join(dbFolder.path, 'ventigo.sqlite'));
 
-    // try {
-    //   final fileName = DateTime.now().toString().split(' ')[0];
+      final fileName = DateTime.now().toString().split(' ')[0];
 
-    //   final bytes = await file.readAsBytes();
+      final bytes = await file.readAsBytesSync();
 
-    //   await FileStorage.writeCounter(
-    //       bytes as String, 'backup_$fileName.sqlite');
-    //   Get.snackbar('Exported', 'Check your file in the Downloads folder');
-    // } catch (e) {
-    //   log('Error ' + e.toString());
-    //   return;
-    // }
+      await FileStorage.writeCounterBytes(bytes, 'backup_$fileName.sqlite');
+      Get.snackbar('Exported', 'Check your file in the Downloads folder');
+    } catch (e) {
+      log('Error ' + e.toString());
+      return;
+    } finally {
+      Get.closeAllSnackbars();
+    }
 
-    var downloadUrl =
-        await FireBaseStorageRepo().uploadFile(Get.context!, file, 'database');
+    // var downloadUrl =
+    //     await FireBaseStorageRepo().uploadFile(Get.context!, file, 'database');
 
-    DatabaseModel database =
-        DatabaseModel(url: downloadUrl, createdAt: DateTime.now());
-    FireStoreRepository().addData(
-        FireStoreRepository().collectionReference('database'),
-        database.toMap());
+    // DatabaseModel database =
+    //     DatabaseModel(url: downloadUrl, createdAt: DateTime.now());
+    // FireStoreRepository().addData(
+    //     FireStoreRepository().collectionReference('database'),
+    //     database.toMap());
+  }
 
-    Get.closeAllSnackbars();
+  Future<void> newRestoreData(BuildContext context) async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        dialogTitle: 'Select the backup file',
+      );
+
+      if (result != null) {
+        if (!result.files.first.xFile.name.contains('sqlite')) {
+          Get.showSnackbar(GetSnackBar(
+              message: 'Invalid file format',
+              duration: Duration(seconds: 2),
+              snackPosition: SnackPosition.BOTTOM));
+          return;
+        }
+
+        final dbFolder = await getApplicationDocumentsDirectory();
+        final file = File(p.join(dbFolder.path, 'ventigo.sqlite'));
+        final bytes = await result.files.first.xFile.readAsBytes();
+        await file.writeAsBytes(bytes);
+
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: const Text('Backup restored successfully!'),
+          duration: const Duration(seconds: 1),
+          action: SnackBarAction(
+            label: 'Reload App',
+            onPressed: () {
+              Get.offAllNamed(Routes.LOGIN);
+              SystemNavigator.pop();
+            },
+          ),
+        ));
+
+        // await Future.delayed(Duration(seconds: 2), () {
+        //   Get.offAllNamed(Routes.LOGIN);
+        //   SystemNavigator.pop();
+        // });
+      } else {
+        log('No file selected');
+      }
+    } catch (e) {
+      log('Error ' + e.toString());
+    } finally {
+      Get.closeAllSnackbars();
+    }
   }
 
   pushRestoreDialog() async {

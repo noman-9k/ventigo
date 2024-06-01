@@ -6,6 +6,7 @@ class CostsFilter {
   String? unitOfMeasurements;
   double? minPrice;
   double? maxPrice;
+  List<String>? categories;
 
   CostsFilter({
     this.name,
@@ -15,6 +16,7 @@ class CostsFilter {
     this.unitOfMeasurements,
     this.minPrice,
     this.maxPrice,
+    this.categories,
   });
 
   @override

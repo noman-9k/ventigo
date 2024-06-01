@@ -12,6 +12,10 @@ class CategoryService extends GetxService {
     return await DbController.to.appDb.getCategoriesAsList();
   }
 
+  Future<int> getCategoriesCount() async {
+    return await DbController.to.appDb.getCategoriesCount();
+  }
+
   List<DbCategory> getEmployeeCategories() {
     // var employeeCategories;
     // employeeCategories = await DbController.to.appDb

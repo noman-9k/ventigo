@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/db/tables/tables.dart';
 
 import '../../../db/db_controller.dart';
@@ -16,31 +13,53 @@ class ServicesController extends GetxController {
   static ServicesController get to => Get.find();
 
   List<DbCategories> dbCategories = [];
+  DbCategory? selectedCategory;
 
   Future<List> fetchData() async {
     List<SearchItem> list = [];
 
-    await DbController.to.appDb.getAllCategoriesF().then((value) {
-      log('fetchData: ${value.length}');
-      value.forEach((element) {
-        list.add(SearchItem(label: element.name!, value: element));
-      });
+    List<DbCategory> categories =
+        await DbController.to.appDb.getAllCategoriesF();
+    List<DbService> services = await DbController.to.appDb.getAllServicesF();
+
+    categories.forEach((element) {
+      list.add(SearchItem(label: element.name!, value: element.name!));
     });
 
+    // services.forEach((element) {
+    //   list.add(SearchItem(label: element.name!, value: element.name!));
+    // });
+
     return list;
   }
 
-  List<SearchItem> getservicesSearchList() {
-    List<SearchItem> list = [];
-    for (var item in CategoryService.to.servicesCategories) {
-      list.add(SearchItem(label: item.name!, value: item));
+  scrollToValue(String? query, {double height = 80.0}) async {
+    if (query == null) return;
+
+    int index = 0;
+    try {
+      index =
+          await DbController.to.appDb.getAllCategoriesF().then((value) async {
+        int tempIndex = value.indexWhere((element) => element.name == query);
+
+        if (tempIndex == -1) {
+          DbService service =
+              await DbController.to.appDb.getServiceByServiceName(query);
+
+          DbCategory category =
+              await DbController.to.appDb.getCategoryByService(service);
+
+          tempIndex = value.indexWhere((element) => element.id == category.id);
+        }
+
+        return tempIndex;
+      });
+    } catch (e) {
+      index = 0;
     }
-    return list;
-  }
+    selectedCategory = await DbController.to.appDb.getCategoryById(index);
+    update();
 
-  scrollToValue(DbCategory? service, {double height = 50.0}) {
-    if (service == null) return;
-    int index = CategoryService.to.servicesCategories.indexOf(service);
     scrollController.animateTo(index * height,
         duration: Duration(milliseconds: 500), curve: Curves.easeIn);
   }
@@ -56,7 +75,7 @@ class ServicesController extends GetxController {
 
 class SearchItem {
   String label;
-  DbCategory value;
+  String value;
   SearchItem({required this.label, required this.value});
 
   factory SearchItem.fromJson(Map<String, dynamic> json) {

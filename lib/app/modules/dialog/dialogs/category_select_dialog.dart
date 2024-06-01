@@ -32,20 +32,36 @@ class _CategorySelectDialogState extends State<CategorySelectDialog> {
       title: const Text('Select Categories'),
       content: SingleChildScrollView(
         child: Column(
-          children: widget.categories.map((category) {
-            return CheckboxListTile(
-              title: Text(category.name!),
-              value: selectedCategories.contains(category),
+          children: [
+            CheckboxListTile(
+              title: Text('All'),
+              value: selectedCategories.length == widget.categories.length,
               onChanged: (value) {
                 if (value!) {
-                  selectedCategories.add(category);
+                  selectedCategories = widget.categories;
                 } else {
-                  selectedCategories.remove(category);
+                  selectedCategories = [];
                 }
                 setState(() {});
               },
-            );
-          }).toList(),
+            ),
+            Column(
+              children: widget.categories.map((category) {
+                return CheckboxListTile(
+                  title: Text(category.name!),
+                  value: selectedCategories.contains(category),
+                  onChanged: (value) {
+                    if (value!) {
+                      selectedCategories.add(category);
+                    } else {
+                      selectedCategories.remove(category);
+                    }
+                    setState(() {});
+                  },
+                );
+              }).toList(),
+            ),
+          ],
         ),
       ),
       actions: [

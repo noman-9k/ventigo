@@ -89,7 +89,7 @@ class SettingsView extends GetView<SettingsController> {
                     ),
                   ),
                   ListTile(
-                    onTap: () => controller.pushRestoreDialog(),
+                    onTap: () => controller.newRestoreData(context),
                     title: AppText.boldText('Restore Data'),
                     leading: Image.asset(
                       'assets/icon/restore_db.png',

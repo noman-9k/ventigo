@@ -259,7 +259,8 @@ class AppDb extends _$AppDb {
 
   Stream<List<DbCost>> getAllCosts() => (select(dbCosts)
         ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+          (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc),
+          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
         ]))
       .watch();
 
@@ -340,6 +341,63 @@ class AppDb extends _$AppDb {
 
     return costs.map((e) => e.price).toList().sumAll();
   }
+  // .where((tbl) => tbl.date.isNotNull())
+  //       .where((tbl) => tbl.date.isBiggerOrEqualValue(fromDate!))
+  //       .where((tbl) => tbl.date.isSmallerOrEqualValue(toDate!))
+
+  getNewStatisticsReports({DateTime? fromDate, DateTime? toDate}) async {
+    final joins = [
+      innerJoin(dbServices, dbServices.id.equalsExp(dbDataItems.serviceId)),
+      innerJoin(dbEmployees, dbEmployees.id.equalsExp(dbDataItems.employeeId)),
+    ];
+
+    final query = (select(dbDataItems).join(joins)
+      ..addColumns([dbDataItems.price.sum()])
+      ..groupBy([dbEmployees.id])
+      ..orderBy(
+          [OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)]));
+    final result = await query.get();
+
+    return result.map((e) async {
+      final employeeName = e.read(dbEmployees.name);
+      final totalPrice = e.read(dbDataItems.price.sum());
+      final totalRegCus = await customSelect(
+          'SELECT COUNT(*) as newCus FROM db_data_items WHERE reg_customer = 1 AND employee_id = ${e.read(dbEmployees.id)}',
+          readsFrom: {dbDataItems}).getSingle();
+
+      final totalNewCus = await customSelect(
+          'SELECT COUNT(*) as newCus FROM db_data_items WHERE new_customer = 1 AND employee_id = ${e.read(dbEmployees.id)}',
+          readsFrom: {dbDataItems}).getSingle();
+
+      final totalServices = await customSelect(
+          'SELECT COUNT(*) as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)}',
+          readsFrom: {dbDataItems}).getSingle();
+
+      final allServicesIds = await customSelect(
+          'SELECT service_id as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)}',
+          readsFrom: {dbDataItems}).get();
+
+      final price = e.read(dbDataItems.price);
+      final date = e.read(dbDataItems.date);
+
+      final List<int> allServicesIdsList = allServicesIds
+          .map((e) => e.data['totalServices'])
+          .toList()
+          .cast<int>();
+      log('Date: ${date}');
+      log('EmployeeName: ${employeeName}');
+      log('totalPrice: $totalPrice');
+      log('isRegCustomer: ${totalRegCus.data['newCus']}');
+      log('isNewCustomer: ${totalNewCus.data['newCus']}');
+      log('totalServices: ${totalServices.data['totalServices']}');
+      log('allServicesIdsList: ${allServicesIdsList}');
+
+      return {
+        'date': date,
+        'price': price,
+      };
+    }).toList();
+  }
 
   Future<List<QueryRow>> getStatisticsReports(
       {DateTime? fromDate, DateTime? toDate}) async {
@@ -404,8 +462,34 @@ class AppDb extends _$AppDb {
       query.where(
           (tbl) => tbl.unitsOfMeasurement.equals(filter!.unitOfMeasurements!));
     }
+    if (filter?.categories?.isNotEmpty ?? false) {
+      query.where((tbl) =>
+          tbl.categories.contains('All') |
+          tbl.categories.like('%${filter!.categories.toString()}%'));
+      ;
+    }
 
     return query.watch();
+  }
+
+  getCategoriesCount() {
+    return count('db_categories');
+  }
+
+  getServiceByServiceName(String query) {
+    return (select(dbServices)..where((tbl) => tbl.name.equals(query)))
+        .getSingle();
+  }
+
+  getCategoryByService(DbService service) {
+    return (select(dbCategories)
+          ..where((tbl) => tbl.id.equals(service.categoryId)))
+        .getSingle();
+  }
+
+  getCategoryById(int index) {
+    return (select(dbCategories)..where((tbl) => tbl.id.equals(index)))
+        .getSingle();
   }
 }
 

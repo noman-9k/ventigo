@@ -5,6 +5,7 @@ import 'package:ventigo/app/modules/statistic/controllers/statistic_controller.d
 
 import '../../../../common/date_widget.dart';
 import '../../../../common/two_tabs_view.dart';
+import 'new_statistics_results.dart';
 import 'statistic_cost_screen.dart';
 import 'statistic_report_screen.dart';
 
@@ -13,7 +14,8 @@ class ResultsScreen extends GetView<StatisticController> {
 
   @override
   Widget build(BuildContext context) {
-    return StatisticReportScreen();
+    return NewStatisticsResults();
+    // return StatisticReportScreen();
     TwoTabsView(
       isSmall: true,
       tabNames: ["Costs", "Reports"],

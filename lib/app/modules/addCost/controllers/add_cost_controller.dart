@@ -36,7 +36,7 @@ class AddCostController extends GetxController {
     );
   }
 
-  onSubmitted() {
+  onSubmitted() async {
     if (nameController.text.isEmpty) {
       Get.snackbar('Error', 'Name cannot be empty');
       return;
@@ -70,6 +70,11 @@ class AddCostController extends GetxController {
     }
 
     List<String>? categories = selectedCategories.map((e) => e.name!).toList();
+
+    if (categories.length == await CategoryService.to.getCategoriesCount()) {
+      categories = ['All'];
+      categoriesController.text = 'All';
+    }
 
     DbController.to.appDb.insertCost(
       nameController.text,
