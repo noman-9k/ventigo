@@ -9,6 +9,7 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/filters/db_filter/costs_filter.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../models/stats_result_model.dart';
 import '../modules/filters/db_filter/user_data_filter.dart';
 import 'tables/tables.dart';
 
@@ -341,62 +342,91 @@ class AppDb extends _$AppDb {
 
     return costs.map((e) => e.price).toList().sumAll();
   }
-  // .where((tbl) => tbl.date.isNotNull())
-  //       .where((tbl) => tbl.date.isBiggerOrEqualValue(fromDate!))
-  //       .where((tbl) => tbl.date.isSmallerOrEqualValue(toDate!))
 
-  getNewStatisticsReports({DateTime? fromDate, DateTime? toDate}) async {
+  Future<List<Future<StatResultModel>>> getNewStatisticsReports(
+      {DateTime? fromDate, DateTime? toDate}) async {
+    fromDate = fromDate ?? DateTime.now().subtract(Duration(days: 3600));
+    toDate = toDate ?? DateTime.now().add(Duration(days: 3600));
+
+    int from = fromDate.millisecondsSinceEpoch ~/ 1000;
+    int to = toDate.millisecondsSinceEpoch ~/ 1000;
+
     final joins = [
       innerJoin(dbServices, dbServices.id.equalsExp(dbDataItems.serviceId)),
       innerJoin(dbEmployees, dbEmployees.id.equalsExp(dbDataItems.employeeId)),
     ];
 
-    final query = (select(dbDataItems).join(joins)
-      ..addColumns([dbDataItems.price.sum()])
-      ..groupBy([dbEmployees.id])
-      ..orderBy(
-          [OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)]));
-    final result = await query.get();
+    final query = await (select(dbDataItems).join(joins)
+          ..addColumns([
+            dbDataItems.price.sum(),
+            dbDataItems.regCustomer.count(),
+          ])
+          ..where(dbDataItems.date.isBiggerOrEqualValue(fromDate))
+          ..where(dbDataItems.date.isSmallerOrEqualValue(toDate))
+          ..groupBy([dbEmployees.id])
+          ..orderBy([
+            OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)
+          ]))
+        .get();
 
-    return result.map((e) async {
+    final list = await query.map((e) async {
       final employeeName = e.read(dbEmployees.name);
-      final totalPrice = e.read(dbDataItems.price.sum());
+
+      final totalPrice = await customSelect(
+          'SELECT SUM(price) as totalPrice FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
+          readsFrom: {dbDataItems}).getSingle();
+
       final totalRegCus = await customSelect(
-          'SELECT COUNT(*) as newCus FROM db_data_items WHERE reg_customer = 1 AND employee_id = ${e.read(dbEmployees.id)}',
+          'SELECT COUNT(*) as newCus FROM db_data_items WHERE reg_customer = 1 AND employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
 
       final totalNewCus = await customSelect(
-          'SELECT COUNT(*) as newCus FROM db_data_items WHERE new_customer = 1 AND employee_id = ${e.read(dbEmployees.id)}',
+          'SELECT COUNT(*) as newCus FROM db_data_items WHERE new_customer = 1 AND employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
 
       final totalServices = await customSelect(
-          'SELECT COUNT(*) as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)}',
+          'SELECT COUNT(*) as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
 
       final allServicesIds = await customSelect(
-          'SELECT service_id as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)}',
+          'SELECT service_id as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).get();
 
-      final price = e.read(dbDataItems.price);
       final date = e.read(dbDataItems.date);
 
       final List<int> allServicesIdsList = allServicesIds
           .map((e) => e.data['totalServices'])
           .toList()
           .cast<int>();
+      final sumAllTheCosts = await sumAllPrices(allServicesIdsList);
+
       log('Date: ${date}');
       log('EmployeeName: ${employeeName}');
-      log('totalPrice: $totalPrice');
+      log('totalPrice: ${totalPrice.data['totalPrice']}');
       log('isRegCustomer: ${totalRegCus.data['newCus']}');
       log('isNewCustomer: ${totalNewCus.data['newCus']}');
       log('totalServices: ${totalServices.data['totalServices']}');
       log('allServicesIdsList: ${allServicesIdsList}');
+      log('sumAllTheCosts: ${sumAllTheCosts}');
 
-      return {
-        'date': date,
-        'price': price,
-      };
+      return StatResultModel(
+          employeeName: employeeName ?? '',
+          totalPrice: totalPrice.data['totalPrice'] ?? 0,
+          isRegCustomer: totalRegCus.data['newCus'] > 0,
+          isNewCustomer: totalNewCus.data['newCus'] > 0,
+          totalServices: totalServices.data['totalServices'],
+          totalCost: sumAllTheCosts,
+          date: date);
     }).toList();
+
+    return list;
+  }
+
+  Future<double> sumAllPrices(List<int> ids) async {
+    final query =
+        await (select(dbServices)..where((tbl) => tbl.id.isIn(ids))).get();
+
+    return query.map((e) => e.price).toList().sumAll();
   }
 
   Future<List<QueryRow>> getStatisticsReports(

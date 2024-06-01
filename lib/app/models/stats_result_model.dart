@@ -5,7 +5,8 @@ class StatResultModel {
     required this.isRegCustomer,
     required this.isNewCustomer,
     required this.totalServices,
-    required this.allServicesIdsList,
+    required this.totalCost,
+    // required this.allServicesIdsList,
     this.date,
   });
 
@@ -14,6 +15,7 @@ class StatResultModel {
   final bool isRegCustomer;
   final bool isNewCustomer;
   final int totalServices;
-  final List<int> allServicesIdsList;
+  final double totalCost;
+  // final List<int> allServicesIdsList;
   final DateTime? date;
 }
