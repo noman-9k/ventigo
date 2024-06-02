@@ -2,17 +2,18 @@ import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 
 import '../../../../db/drift_db.dart';
 import '../../../dialog/dialog_functions.dart';
+import '../../controllers/main_controller.dart';
 
-class ReportsTable extends StatelessWidget {
+class ReportsTable extends GetView<MainController> {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
-  // DateTime currentDate = DateTime.now();
   final TextStyle headerStyle =
       const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
@@ -108,8 +109,16 @@ class ReportsTable extends StatelessWidget {
               rows: tableItems
                   .map(
                     (tableItem) => DataRow(
-                      onLongPress: () =>
-                          pushShowReportsBottomSheet(context, tableItem),
+                      onLongPress: () => pushShowReportsBottomSheet(
+                          context, tableItem, onDelete: () {
+                        Navigator.pop(context);
+                        controller.deleteItem(context, tableItem.id);
+                        Get.snackbar('Deleted', 'Item deleted');
+                      }, onEdit: () {
+                        Navigator.pop(context);
+
+                        controller.editItem(tableItem);
+                      }),
                       color: MaterialStateProperty.resolveWith<Color?>(
                           (Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected))

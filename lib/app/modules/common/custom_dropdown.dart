@@ -46,7 +46,6 @@ class _CustomDropDownState extends State<CustomDropDown> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
               color: AppColors.veryLightGrey),
-          // elevation: 2,
         ),
         iconStyleData: const IconStyleData(
             icon: Icon(Icons.arrow_forward_ios_outlined), iconSize: 14),

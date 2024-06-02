@@ -72,12 +72,12 @@ class CostsFilterView extends GetView<CostsFilterController> {
               20.verticalSpace,
               CustomDropDown(
                 items: [
+                  'Do Not Repeat',
                   'Every Day',
                   'Every Week',
                   'Every Month',
                   'Every Quarter',
-                  'Every Year',
-                  'Do Not Repeat'
+                  'Every Year'
                 ],
                 title: 'Repetition Interval',
                 onChanged: (p0) {

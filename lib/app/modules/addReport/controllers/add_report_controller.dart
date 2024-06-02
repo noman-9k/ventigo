@@ -28,6 +28,7 @@ class AddReportController extends GetxController {
   @override
   void onInit() {
     categories = CategoryService.to.getEmployeeCategories();
+
     update();
     super.onInit();
   }
@@ -50,20 +51,6 @@ class AddReportController extends GetxController {
             .getTodayTotalByEmployeeId(EmployeeService.to.employee!.value.id) ??
         0.0;
 
-    log('Total: $total');
-    // DbController.to.appDb.getAllDataItems().asBroadcastStream().listen((event) {
-    //   event.forEach((element) {
-    //     log('Event: ${element.date?.day}');
-    //     log('Id: ${element.employeeId}');
-    //     log('Service Id: ${EmployeeService.to.employee!.value.id}');
-    //   });
-    // });
-
-    // log(DateTime.now().day.toString());
-
-    // // log(DbController.to.appDb.getAllDataItems().toString());
-
-    // return;
     isLoading.value = true;
     int categoryId = selectedCategory!.id;
     int serviceId = selectedService!.id;
@@ -71,14 +58,8 @@ class AddReportController extends GetxController {
     String name =
         nameController.text.trim() + ' ' + lastNameController.text.trim();
     String phone = phoneController.text.trim();
-    // bool newCustomer = this.newCustomer ?? false;
-    // bool regCustomer = this.regCustomer ?? false;
-    // bool cardPay = this.cardPay ?? false;
-    double price = double.parse(priceController.text.trim());
 
-    log('Name: $name, Phone: $phone, EmployeeId: $employeeId, CategoryId: $categoryId, ServiceId: $serviceId, NewCustomer: $newCustomer, RegCustomer: $regCustomer, CardPay: $cardPay, Price: $price'
-        .toString()
-        .toUpperCase());
+    double price = double.parse(priceController.text.trim());
 
     await DbController.to.appDb.insertNewCompanionDataItem(
         name,

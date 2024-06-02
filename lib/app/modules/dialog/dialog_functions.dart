@@ -6,13 +6,29 @@ import 'dialogs/change_admin_pass_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
 import 'dialogs/edit_category_dialog.dart';
 import 'dialogs/edit_service_dialog.dart';
+import 'dialogs/reset_Password_dialog.dart';
+import 'dialogs/security_questions_dialog.dart';
 import 'sheets/data_item_bottom_sheet.dart';
+
+pushChangeSecurityQuestionsDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => SecurityQuestionsDialog(),
+  );
+}
+
+pushResetPasswordDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => ResetPasswordDialog(),
+  );
+}
 
 pushShowReportsBottomSheet(
   BuildContext context,
   DbDataItem tableItem, {
-  Function(DbDataItem)? onEdit,
-  Function(DbDataItem)? onDelete,
+  Function()? onEdit,
+  Function()? onDelete,
 }) {
   showModalBottomSheet(
     context: context,

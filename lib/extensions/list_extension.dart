@@ -23,6 +23,7 @@ extension ListExtension on List<StatResultModel> {
         noNewCustomer: 0,
         totalServices: 0,
         totalCost: 0.0,
+        percentage: 0.0,
         date: null,
       ),
       (totals, item) {

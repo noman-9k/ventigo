@@ -8,6 +8,7 @@ import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/filters/db_filter/costs_filter.dart';
 import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/list_extension.dart';
 
 import '../models/stats_result_model.dart';
 import '../modules/filters/db_filter/user_data_filter.dart';
@@ -86,11 +87,21 @@ class AppDb extends _$AppDb {
         ]))
       .get();
 
-  Future<List<DbCategory>?> getCategoriesByIDs(List<String> categories) async {
+  Future<List<DbCategory>?> getCategoriesByEmpIDs(
+      List<String> categories) async {
     final ids = categories.map((e) => int.parse(e)).toList();
     final categoriesList =
         await (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
     return categoriesList;
+  }
+
+  Future<List<DbCategory>?> getCategoryByEmpId(int id) async {
+    final employee = await (select(dbEmployees)
+          ..where((tbl) => tbl.id.equals(id)))
+        .getSingle();
+
+    final categories = await getCategoriesByEmpIDs(employee.categories);
+    return categories;
   }
 
   Future<List<DbCategory>> getCategoriesAsList() => select(dbCategories).get();
@@ -374,6 +385,7 @@ class AppDb extends _$AppDb {
     final results = await query;
     for (final e in results) {
       final employeeName = e.read(dbEmployees.name);
+      final employeePercentage = e.read(dbEmployees.percentage);
       final totalPrice = await customSelect(
           'SELECT SUM(price) as totalPrice FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
@@ -409,6 +421,8 @@ class AppDb extends _$AppDb {
       //   log('allServicesIdsList: ${allServicesIdsList}');
       //   log('sumAllTheCosts: ${sumAllTheCosts}');
 
+      // log('employeePercentage: $employeePercentage');
+
       list.add(StatResultModel(
           employeeName: employeeName ?? '',
           totalPrice: totalPrice.data['totalPrice'] ?? 0,
@@ -416,8 +430,10 @@ class AppDb extends _$AppDb {
           noNewCustomer: totalNewCus.data['newCus'],
           totalServices: totalServices.data['totalServices'],
           totalCost: sumAllTheCosts,
+          percentage: employeePercentage,
           date: date));
     }
+    list.add(list.total);
 
     log('list: $list');
     return list;
@@ -521,6 +537,15 @@ class AppDb extends _$AppDb {
   getCategoryById(int index) {
     return (select(dbCategories)..where((tbl) => tbl.id.equals(index)))
         .getSingle();
+  }
+
+  void deleteDataItem(int id) {
+    (delete(dbDataItems)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
+  getCategoriesByIDs(List<String> categories) {
+    final ids = categories.map((e) => int.parse(e)).toList();
+    return (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
   }
 }
 

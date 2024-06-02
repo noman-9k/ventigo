@@ -16,110 +16,106 @@ class SettingsView extends GetView<SettingsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(leading: LogoutButton()),
-      body: Column(
-        children: [
-          Padding(
-            padding: AppConstants.defaultPadding,
-            child: Column(children: [
-              Image.asset('assets/icon/settings.png', height: 80.h),
-              10.verticalSpace,
-              // AppText.boldText('General Settings'),
-              20.verticalSpace,
-              ListTile(
-                title: AppText.boldText('Change Admin Password'),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  pushChangeAdminPassDialog(context);
-                },
-              ),
-              // ListTile(
-              //   title: AppText.boldText('Currency'),
-              //   trailing: Icon(Icons.arrow_forward_ios),
-              //   onTap: () {
-              //     // Get.toNamed('/currency');
-              //   },
-              // ),
-              ListTile(
-                title: AppText.boldText('Export to file'),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  controller.exportToCSVFile();
-                },
-              ),
-              // about section
-              ListTile(
-                title: AppText.boldText('About'),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  // Get.toNamed('/about');
-                },
-              ),
-              ListTile(
-                title: AppText.boldText('Privacy Policy'),
-                trailing: Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  // Get.toNamed('/privacy');
-                },
-              ),
-            ]),
-          ),
-          30.verticalSpace,
-          Container(
-            alignment: Alignment.centerLeft,
-            color: AppColors.veryLightBlue,
-            padding: EdgeInsets.only(left: 40),
-            width: 1.sw,
-            height: 70.h,
-            child: AppText.boldText('Data Backup'),
-          ),
-          GetBuilder<SettingsController>(builder: (controller) {
-            return Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: Column(
-                children: [
-                  10.verticalSpace,
-                  ListTile(
-                    onTap: () => controller.createData(),
-                    title: AppText.boldText('BackUp Data'),
-                    leading: Image.asset(
-                      'assets/icon/create_db.png',
-                      color: AppColors.primaryColor,
-                      height: 30.h,
-                      width: 30.h,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: AppConstants.defaultPadding,
+              child: Column(children: [
+                Image.asset('assets/icon/settings.png', height: 80.h),
+                10.verticalSpace,
+                20.verticalSpace,
+                ListTile(
+                  title: AppText.boldText('Change Admin Password'),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    pushChangeAdminPassDialog(context);
+                  },
+                ),
+
+                ListTile(
+                  title: AppText.boldText('Export to file'),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    controller.exportToCSVFile();
+                  },
+                ),
+                // about section
+                ListTile(
+                  title: AppText.boldText('Security Questions'),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    pushChangeSecurityQuestionsDialog(context);
+                  },
+                ),
+
+                ListTile(
+                  title: AppText.boldText('Privacy Policy'),
+                  trailing: Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    // Get.toNamed('/privacy');
+                  },
+                ),
+              ]),
+            ),
+            30.verticalSpace,
+            Container(
+              alignment: Alignment.centerLeft,
+              color: AppColors.veryLightBlue,
+              padding: EdgeInsets.only(left: 40),
+              width: 1.sw,
+              height: 70.h,
+              child: AppText.boldText('Data Backup'),
+            ),
+            GetBuilder<SettingsController>(builder: (controller) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Column(
+                  children: [
+                    10.verticalSpace,
+                    ListTile(
+                      onTap: () => controller.createData(),
+                      title: AppText.boldText('BackUp Data'),
+                      leading: Image.asset(
+                        'assets/icon/create_db.png',
+                        color: AppColors.primaryColor,
+                        height: 30.h,
+                        width: 30.h,
+                      ),
                     ),
-                  ),
-                  ListTile(
-                    onTap: () => controller.newRestoreData(context),
-                    title: AppText.boldText('Restore Data'),
-                    leading: Image.asset(
-                      'assets/icon/restore_db.png',
-                      color: AppColors.primaryColor,
-                      height: 30.h,
-                      width: 30.h,
+                    ListTile(
+                      onTap: () => controller.newRestoreData(context),
+                      title: AppText.boldText('Restore Data'),
+                      leading: Image.asset(
+                        'assets/icon/restore_db.png',
+                        color: AppColors.primaryColor,
+                        height: 30.h,
+                        width: 30.h,
+                      ),
                     ),
-                  ),
-                  ListTile(
-                    onTap: () => pushConfirmDialog(
-                      context,
-                      title: 'Clear Data',
-                      message: 'Are you sure you want to clear all data?',
-                      onDone: () => controller.clearData(),
+                    ListTile(
+                      onTap: () => pushConfirmDialog(
+                        context,
+                        title: 'Clear Data',
+                        message: 'Are you sure you want to clear all data?',
+                        onDone: () => controller.clearData(),
+                      ),
+                      title: AppText.boldText('Clear Data'),
+                      leading: Image.asset(
+                        'assets/icon/clear_db.png',
+                        color: AppColors.primaryColor,
+                        height: 30.h,
+                        width: 30.h,
+                      ),
                     ),
-                    title: AppText.boldText('Clear Data'),
-                    leading: Image.asset(
-                      'assets/icon/clear_db.png',
-                      color: AppColors.primaryColor,
-                      height: 30.h,
-                      width: 30.h,
-                    ),
-                  ),
-                  20.verticalSpace,
-                ],
-              ),
-            );
-          }),
-          50.verticalSpace
-        ],
+                    20.verticalSpace,
+                  ],
+                ),
+              );
+            }),
+            50.verticalSpace
+          ],
+        ),
       ),
     );
   }

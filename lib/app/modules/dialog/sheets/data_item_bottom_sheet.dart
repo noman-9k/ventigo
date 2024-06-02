@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../config/app_styles.dart';
@@ -11,8 +12,8 @@ class DataItemBottomSheet extends StatelessWidget {
   const DataItemBottomSheet(this.tableItem,
       {super.key, required, this.onEdit, this.onDelete});
   final DbDataItem tableItem;
-  final Function(DbDataItem)? onEdit;
-  final Function(DbDataItem)? onDelete;
+  final Function()? onEdit;
+  final Function()? onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,15 @@ class DataItemBottomSheet extends StatelessWidget {
                   AppText.boldText('Report: '),
                   AppText.boldText(tableItem.id.toString()),
                   Spacer(),
+                  IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () => onEdit?.call(),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.delete_forever_outlined,
+                        color: AppColors.redColor),
+                    onPressed: () => onDelete?.call(),
+                  ),
                   IconButton(
                     icon: Icon(Icons.close),
                     onPressed: () => Navigator.pop(context),

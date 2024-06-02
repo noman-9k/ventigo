@@ -37,7 +37,7 @@ class AdminAuthController extends GetxController {
       pin += element.text;
     });
 
-    if (pin == (MySharedPref.getFromDisk('admin_pin') ?? '1234')) {
+    if (pin == (MySharedPref.getFromDisk('admin_pin'))) {
       isCost ? Get.offNamed(Routes.ADD_COST) : Get.offNamed(Routes.DASHBOARD);
     } else {
       Get.snackbar('Error', 'Invalid pin');

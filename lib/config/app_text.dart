@@ -36,9 +36,16 @@ class AppText {
             fontSize: fontSize ?? 14));
   }
 
-  static lightBoldText(String s, {Color? color, double? fontSize}) {
-    return Text(s,
-        style: AppStyles.lightStyle(
-            fontSize: fontSize ?? 13, fontWeight: FontWeight.w600));
+  static lightBoldText(String s,
+      {Color? color, double? fontSize, TextAlign? align}) {
+    return Text(
+      s,
+      style: AppStyles.lightStyle(
+        fontSize: fontSize ?? 13,
+        fontWeight: FontWeight.w600,
+        color: color,
+      ),
+      textAlign: align,
+    );
   }
 }

@@ -20,7 +20,6 @@ class AddCostView extends GetView<AddCostController> {
         leading: AppBackButton(),
         title: AppText.boldText('Add Cost'),
         centerTitle: true,
-        // actions: [LogoutButton()],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -61,12 +60,12 @@ class AddCostView extends GetView<AddCostController> {
               SizedBox(height: 5),
               CustomDropDown(
                 items: [
+                  'Do Not Repeat',
                   'Every Day',
                   'Every Week',
                   'Every Month',
                   'Every Quarter',
-                  'Every Year',
-                  'Do Not Repeat'
+                  'Every Year'
                 ],
                 title: 'Repetition Interval',
                 onChanged: (p0) {
@@ -79,6 +78,7 @@ class AddCostView extends GetView<AddCostController> {
                 decoration: InputDecoration(
                   hintText: 'Number of Units',
                 ),
+                keyboardType: TextInputType.number,
               ).withLabel('Number of Units'),
               20.verticalSpace,
               TextField(
@@ -86,6 +86,7 @@ class AddCostView extends GetView<AddCostController> {
                 decoration: InputDecoration(
                   hintText: 'Unit Price',
                 ),
+                keyboardType: TextInputType.number,
               ).withLabel('Unit Price'),
               20.verticalSpace,
               AppText.lightBoldText('Unit of measurements'),

@@ -6,6 +6,7 @@ class StatResultModel {
     required this.noNewCustomer,
     required this.totalServices,
     required this.totalCost,
+    required this.percentage,
     // required this.allServicesIdsList,
     this.date,
   });
@@ -18,6 +19,7 @@ class StatResultModel {
   double totalCost;
   // final List<int> allServicesIdsList;
   DateTime? date;
+  double? percentage;
 
   @override
   String toString() {

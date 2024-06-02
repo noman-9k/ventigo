@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:ventigo/app/app_services/local_storage_service.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../../constants/app_images.dart';
+import '../../dialog/dialog_functions.dart';
 import '../controllers/admin_auth_controller.dart';
 
 class AdminAuthView extends GetView<AdminAuthController> {
@@ -20,6 +22,13 @@ class AdminAuthView extends GetView<AdminAuthController> {
           40.verticalSpace,
           AppText.boldText('Admin Login', fontSize: 20.sp),
           40.verticalSpace,
+          if (MySharedPref.getFromDisk('admin_pin') == null)
+            TextButton(
+                onPressed: () {
+                  pushChangeAdminPassDialog(context);
+                },
+                child: AppText.lightBoldText('Set Admin Password ',
+                    color: Colors.red, fontSize: 20.sp)),
           AppText.boldText('Enter password here', fontSize: 20.sp),
           20.verticalSpace,
           Padding(
@@ -64,21 +73,20 @@ class AdminAuthView extends GetView<AdminAuthController> {
               }),
             ),
           ),
-          // Obx(
-          //   () => controller.isSupported.value
-          //       ? const Center(
-          //           child: Text(
-          //             'Local auth is supported',
-          //             style: TextStyle(fontSize: 20),
-          //           ),
-          //         )
-          //       : const Center(
-          //           child: Text(
-          //             'Local auth is not supported',
-          //             style: TextStyle(fontSize: 20),
-          //           ),
-          //         ),
-          // ),
+          40.verticalSpace,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppText.boldText('Forgot password?'),
+              10.horizontalSpace,
+              GestureDetector(
+                onTap: () {
+                  pushResetPasswordDialog(context);
+                },
+                child: AppText.boldText('Reset here', color: Colors.blue),
+              ),
+            ],
+          ),
         ],
       ),
     );

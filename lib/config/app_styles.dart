@@ -30,10 +30,11 @@ class AppStyles {
         color: color);
   }
 
-  static TextStyle boldStyle({Color? color, double? fontSize}) {
+  static TextStyle boldStyle(
+      {Color? color, double? fontSize, FontWeight? fontWeight}) {
     return GoogleFonts.poppins(
         fontSize: fontSize ?? 16.sp,
-        fontWeight: FontWeight.bold,
+        fontWeight: fontWeight ?? FontWeight.bold,
         color: color ?? AppColors.primaryColor);
   }
 }

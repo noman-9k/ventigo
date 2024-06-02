@@ -1,10 +1,13 @@
 import 'dart:developer';
 
 import 'package:data_table_2/data_table_2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/double_extensions.dart';
+import 'package:ventigo/extensions/list_extension.dart';
 
 import '../../../../../../config/app_colors.dart';
 import '../../../../../../config/app_styles.dart';
@@ -15,6 +18,8 @@ import 'controler/new_statistics_results_controller.dart';
 
 class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
   const NewStatisticsResults({super.key});
+  final TextStyle headerStyle =
+      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +112,6 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
       body: GetBuilder<NewStatisticsResultsController>(builder: (controller) {
         return FutureBuilder<List<StatResultModel>?>(
             future: controller.filterFuture,
-            // getFilteredStream(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(child: CircularProgressIndicator());
@@ -145,7 +149,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                           fit: BoxFit.fitWidth,
                           child: Text(
                             'Master\nName',
-                            style: AppStyles.lightStyle(fontSize: 13),
+                            style: headerStyle,
                             textAlign: TextAlign.center,
                           )),
                     ),
@@ -157,8 +161,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               'No. Reg\nClient',
-                              style: AppStyles.lightStyle(fontSize: 13),
-                              textAlign: TextAlign.center,
+                              style: headerStyle,
                             )),
                       ),
                       size: ColumnSize.S),
@@ -168,8 +171,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               'No. New\nClient',
-                              style: AppStyles.lightStyle(fontSize: 13),
-                              textAlign: TextAlign.center,
+                              style: headerStyle,
                             )),
                       ),
                       size: ColumnSize.S),
@@ -177,11 +179,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       label: Center(
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text(
-                              'No of\nservices',
-                              style: AppStyles.lightStyle(fontSize: 13),
-                              textAlign: TextAlign.center,
-                            )),
+                            child: Text('No of\nservices', style: headerStyle)),
                       ),
                       size: ColumnSize.S),
                   DataColumn2(
@@ -190,7 +188,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               'Cost',
-                              style: AppStyles.lightStyle(fontSize: 13),
+                              style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
                       ),
@@ -201,90 +199,210 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               'Price',
-                              style: AppStyles.lightStyle(fontSize: 13),
+                              style: headerStyle,
+                              textAlign: TextAlign.center,
+                            )),
+                      ),
+                      size: ColumnSize.S),
+                  DataColumn2(
+                      label: Center(
+                        child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              '%',
+                              style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
                       ),
                       size: ColumnSize.S),
                 ],
                 rows: List<DataRow>.generate(
-                    snapshot.data!.length,
-                    (index) => DataRow(
-                          cells: [
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].employeeName
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                  snapshot.data!.length,
+                  (index) {
+                    if (snapshot.data![index].employeeName == 'Total') {
+                      return DataRow(
+                        cells: [
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].employeeName
+                                        .toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].noRegCustomer
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].noRegCustomer
+                                        .toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].noNewCustomer
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].noNewCustomer
+                                        .toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].totalServices
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].totalServices
+                                        .toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].totalCost
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].totalCost.toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                            DataCell(
-                              Center(
-                                child: FittedBox(
-                                    fit: BoxFit.fitWidth,
-                                    child: Text(
-                                      snapshot.data![index].totalPrice
-                                          .toString(),
-                                      style: AppStyles.lightStyle(fontSize: 13),
-                                      textAlign: TextAlign.center,
-                                    )),
-                              ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].totalPrice.toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
                             ),
-                          ],
-                        )),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].percentage.toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+
+                    return DataRow(
+                      cells: [
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].employeeName.toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].noRegCustomer
+                                      .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].noNewCustomer
+                                      .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].totalServices
+                                      .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].totalCost.toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].totalPrice.toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  snapshot.data![index].totalPrice
+                                      .percentageOf(
+                                          snapshot.data![index].percentage)
+                                      .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               );
             });
       }),

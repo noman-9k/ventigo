@@ -14,6 +14,8 @@ import '../modules/costsFilter/bindings/costs_filter_binding.dart';
 import '../modules/costsFilter/views/costs_filter_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/editReport/bindings/edit_report_binding.dart';
+import '../modules/editReport/views/edit_report_view.dart';
 import '../modules/employees/bindings/employees_binding.dart';
 import '../modules/employees/views/employees_view.dart';
 import '../modules/filters/bindings/filters_binding.dart';
@@ -121,6 +123,11 @@ class AppPages {
       name: _Paths.ADMIN_AUTH,
       page: () => const AdminAuthView(),
       binding: AdminAuthBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_REPORT,
+      page: () => const EditReportView(),
+      binding: EditReportBinding(),
     ),
   ];
 }
