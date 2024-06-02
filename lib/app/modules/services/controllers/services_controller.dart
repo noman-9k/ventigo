@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ventigo/app/db/tables/tables.dart';
 
 import '../../../db/db_controller.dart';
 import '../../../db/drift_db.dart';
@@ -26,9 +25,9 @@ class ServicesController extends GetxController {
       list.add(SearchItem(label: element.name!, value: element.name!));
     });
 
-    // services.forEach((element) {
-    //   list.add(SearchItem(label: element.name!, value: element.name!));
-    // });
+    services.forEach((element) {
+      list.add(SearchItem(label: element.name!, value: element.name!));
+    });
 
     return list;
   }
@@ -41,27 +40,16 @@ class ServicesController extends GetxController {
 
     index = dbCategories.indexWhere((element) => element.name == query);
 
-    // try {
-    //   index =
-    //       await DbController.to.appDb.getAllCategoriesF().then((value) async {
-    //     int tempIndex = value.indexWhere((element) => element.name == query);
+    if (index == -1) {
+      DbService service =
+          await DbController.to.appDb.getServiceByServiceName(query);
 
-    //     if (tempIndex == -1) {
-    //       DbService service =
-    //           await DbController.to.appDb.getServiceByServiceName(query);
+      DbCategory category =
+          await DbController.to.appDb.getCategoryByService(service);
 
-    //       DbCategory category =
-    //           await DbController.to.appDb.getCategoryByService(service);
-
-    //       tempIndex = value.indexWhere((element) => element.id == category.id);
-    //     }
-
-    //     return tempIndex;
-    //   });
-    // } catch (e) {
-    //   index = 0;
-    // }
-    // selectedCategory = await DbController.to.appDb.getCategoryById(index);
+      index = dbCategories.indexWhere((element) => element.id == category.id);
+    }
+    selectCategory(index);
     update();
 
     scrollController.animateTo(index * height,
@@ -74,6 +62,11 @@ class ServicesController extends GetxController {
 
   deleteCategory(int id) {
     DbController.to.appDb.deleteCategory(id);
+  }
+
+  void selectCategory(int index) {
+    selectedCategory = dbCategories[index];
+    update();
   }
 }
 

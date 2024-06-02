@@ -99,7 +99,11 @@ class ServicesView extends GetView<ServicesController> {
                                   splashFactory: NoSplash.splashFactory,
                                 ),
                                 child: CustomExpansionTile(
-                                    category: snapshot.data![index]),
+                                    key: ValueKey(snapshot.data![index].id),
+                                    category: snapshot.data![index],
+                                    isSelected: selectedCat != null &&
+                                        selectedCat.id ==
+                                            snapshot.data![index].id),
                               );
                             },
                           );
@@ -126,13 +130,16 @@ class CustomExpansionTile extends StatelessWidget {
     return GetBuilder<ServicesController>(builder: (controller) {
       return ExpansionTile(
         key: ValueKey(category.id),
+        initiallyExpanded: isSelected,
         title: AppText.mediumBoldText(category.name!),
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         childrenPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        backgroundColor: AppColors.veryLightPrimaryColor.withOpacity(0.1),
+        backgroundColor: isSelected
+            ? AppColors.veryLightPrimaryColor.withOpacity(0.3)
+            : AppColors.veryLightPrimaryColor.withOpacity(0.1),
         collapsedBackgroundColor: isSelected
-            ? Colors.red
+            ? AppColors.veryLightPrimaryColor.withOpacity(0.4)
             : AppColors.veryLightPrimaryColor.withOpacity(0.2),
         collapsedShape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -141,7 +148,7 @@ class CustomExpansionTile extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () => pushEditCategoryDialog(context, category),
-              icon: Icon(Icons.edit, color: AppColors.primaryColor),
+              icon: Icon(Icons.edit, color: AppColors.primaryColor, size: 20),
             ),
             5.horizontalSpace,
             IconButton(
@@ -152,7 +159,7 @@ class CustomExpansionTile extends StatelessWidget {
                 onDone: () => controller.deleteCategory(category.id),
               ),
               icon: Icon(Icons.delete_outline_outlined,
-                  color: AppColors.redColor),
+                  size: 20, color: AppColors.redColor),
             ),
             5.horizontalSpace,
             Icon(Icons.keyboard_arrow_down_rounded)
@@ -189,9 +196,9 @@ class CustomExpansionTile extends StatelessWidget {
                                 onPressed: () => pushEditServiceDialog(
                                     context, snapshot.data![i], (value) {}),
                                 icon: Icon(Icons.edit,
-                                    size: 20, color: AppColors.primaryColor),
+                                    size: 18, color: AppColors.primaryColor),
                               ),
-                              5.horizontalSpace,
+                              1.horizontalSpace,
                               IconButton(
                                 onPressed: () => pushConfirmDialog(
                                   context,
@@ -202,7 +209,7 @@ class CustomExpansionTile extends StatelessWidget {
                                       .deleteService(snapshot.data![i].id),
                                 ),
                                 icon: Icon(Icons.delete_outline_outlined,
-                                    size: 20, color: AppColors.redColor),
+                                    size: 18, color: AppColors.redColor),
                               ),
                             ],
                           ));

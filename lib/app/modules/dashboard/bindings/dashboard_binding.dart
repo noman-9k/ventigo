@@ -15,7 +15,7 @@ class DashboardBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<DashboardController>(() => DashboardController());
-    Get.lazyPut<ServicesController>(() => ServicesController());
+    Get.put<ServicesController>(ServicesController());
     Get.lazyPut<FiltersController>(() => FiltersController());
     Get.lazyPut<StatisticController>(() => StatisticController());
     Get.lazyPut<EmployeesController>(() => EmployeesController());
