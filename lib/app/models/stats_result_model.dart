@@ -10,14 +10,14 @@ class StatResultModel {
     this.date,
   });
 
-  final String employeeName;
-  final double totalPrice;
-  final int noRegCustomer;
-  final int noNewCustomer;
-  final int totalServices;
-  final double totalCost;
+  String employeeName;
+  double totalPrice;
+  int noRegCustomer;
+  int noNewCustomer;
+  int totalServices;
+  double totalCost;
   // final List<int> allServicesIdsList;
-  final DateTime? date;
+  DateTime? date;
 
   @override
   String toString() {

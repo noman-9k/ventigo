@@ -8,6 +8,7 @@ import 'package:ventigo/app/modules/settings/controllers/settings_controller.dar
 import 'package:ventigo/app/modules/main/controllers/main_controller.dart';
 import 'package:ventigo/app/modules/statistic/controllers/statistic_controller.dart';
 
+import '../../statistic/views/screens/results/controler/new_statistics_results_controller.dart';
 import '../controllers/dashboard_controller.dart';
 
 class DashboardBinding extends Bindings {
@@ -21,6 +22,7 @@ class DashboardBinding extends Bindings {
     Get.put<SettingsController>(SettingsController());
     Get.put<CostsFilterController>(CostsFilterController());
     Get.put<MainController>(MainController());
+    Get.put<NewStatisticsResultsController>(NewStatisticsResultsController());
 
     /// Services
     ///
