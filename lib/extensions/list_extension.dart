@@ -32,6 +32,7 @@ extension ListExtension on List<StatResultModel> {
         totals.noNewCustomer += item.noNewCustomer;
         totals.totalServices += item.totalServices;
         totals.totalCost += item.totalCost;
+        totals.percentage += item.percentage;
         return totals;
       },
     );

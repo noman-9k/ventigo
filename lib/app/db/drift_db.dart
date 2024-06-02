@@ -8,6 +8,7 @@ import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/filters/db_filter/costs_filter.dart';
 import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/double_extensions.dart';
 import 'package:ventigo/extensions/list_extension.dart';
 
 import '../models/stats_result_model.dart';
@@ -276,6 +277,20 @@ class AppDb extends _$AppDb {
         ]))
       .watch();
 
+  Future<bool> ifAllSameDate({bool isCostTable = true}) async {
+    if (isCostTable) {
+      final query = select(dbCosts);
+      final dataItems = await query.get();
+      final dates = dataItems.map((e) => e.date).toSet();
+      return dates.length == 1;
+    } else {
+      final query = select(dbDataItems);
+      final dataItems = await query.get();
+      final dates = dataItems.map((e) => e.date).toSet();
+      return dates.length == 1;
+    }
+  }
+
   Future<int> count(String tableName, {String? whereClause}) {
     final table = getTable(tableName);
     if (table == null) return Future.value(0);
@@ -420,8 +435,11 @@ class AppDb extends _$AppDb {
       //   log('totalServices: ${totalServices.data['totalServices']}');
       //   log('allServicesIdsList: ${allServicesIdsList}');
       //   log('sumAllTheCosts: ${sumAllTheCosts}');
+      log('employeePercentage: $employeePercentage');
 
-      // log('employeePercentage: $employeePercentage');
+      log('totalPrice: ${totalPrice.data['totalPrice']}');
+
+      log('percentage: ${double.tryParse((double.tryParse(totalPrice.data['totalPrice'].toString()) ?? 0).percentageOf(employeePercentage))}');
 
       list.add(StatResultModel(
           employeeName: employeeName ?? '',
@@ -430,12 +448,15 @@ class AppDb extends _$AppDb {
           noNewCustomer: totalNewCus.data['newCus'],
           totalServices: totalServices.data['totalServices'],
           totalCost: sumAllTheCosts,
-          percentage: employeePercentage,
+          percentage: double.tryParse(
+                  (double.tryParse(totalPrice.data['totalPrice'].toString()) ??
+                          0)
+                      .percentageOf(employeePercentage)) ??
+              0,
           date: date));
     }
     list.add(list.total);
 
-    log('list: $list');
     return list;
   }
 
@@ -546,6 +567,10 @@ class AppDb extends _$AppDb {
   getCategoriesByIDs(List<String> categories) {
     final ids = categories.map((e) => int.parse(e)).toList();
     return (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
+  }
+
+  deleteCost(int id) {
+    (delete(dbCosts)..where((tbl) => tbl.id.equals(id))).go();
   }
 }
 

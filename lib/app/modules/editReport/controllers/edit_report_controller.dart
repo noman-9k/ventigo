@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../app_services/category_service.dart';
 import '../../../db/db_controller.dart';
 import '../../../db/drift_db.dart';
 

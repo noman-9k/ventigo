@@ -12,7 +12,7 @@ class ServicesController extends GetxController {
 
   static ServicesController get to => Get.find();
 
-  List<DbCategories> dbCategories = [];
+  List<DbCategory> dbCategories = [];
   DbCategory? selectedCategory;
 
   Future<List> fetchData() async {
@@ -37,27 +37,31 @@ class ServicesController extends GetxController {
     if (query == null) return;
 
     int index = 0;
-    try {
-      index =
-          await DbController.to.appDb.getAllCategoriesF().then((value) async {
-        int tempIndex = value.indexWhere((element) => element.name == query);
+    dbCategories = await DbController.to.appDb.getAllCategoriesF();
 
-        if (tempIndex == -1) {
-          DbService service =
-              await DbController.to.appDb.getServiceByServiceName(query);
+    index = dbCategories.indexWhere((element) => element.name == query);
 
-          DbCategory category =
-              await DbController.to.appDb.getCategoryByService(service);
+    // try {
+    //   index =
+    //       await DbController.to.appDb.getAllCategoriesF().then((value) async {
+    //     int tempIndex = value.indexWhere((element) => element.name == query);
 
-          tempIndex = value.indexWhere((element) => element.id == category.id);
-        }
+    //     if (tempIndex == -1) {
+    //       DbService service =
+    //           await DbController.to.appDb.getServiceByServiceName(query);
 
-        return tempIndex;
-      });
-    } catch (e) {
-      index = 0;
-    }
-    selectedCategory = await DbController.to.appDb.getCategoryById(index);
+    //       DbCategory category =
+    //           await DbController.to.appDb.getCategoryByService(service);
+
+    //       tempIndex = value.indexWhere((element) => element.id == category.id);
+    //     }
+
+    //     return tempIndex;
+    //   });
+    // } catch (e) {
+    //   index = 0;
+    // }
+    // selectedCategory = await DbController.to.appDb.getCategoryById(index);
     update();
 
     scrollController.animateTo(index * height,

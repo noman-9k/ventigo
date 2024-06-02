@@ -28,8 +28,10 @@ class GraphicsScreen extends GetView<StatisticController> {
                   10.verticalSpace,
                   SizedBox(
                     height: 220,
-                    child:
-                        TrackerChart(stream: controller.getReportsChartData()),
+                    child: TrackerChart(
+                      stream: controller.getReportsChartData(),
+                      isCostsTable: false,
+                    ),
                   ),
                   AppText.boldText('Reports/Sales Tracker'),
                   10.verticalSpace,
@@ -48,7 +50,10 @@ class GraphicsScreen extends GetView<StatisticController> {
                   10.verticalSpace,
                   SizedBox(
                     height: 220,
-                    child: TrackerChart(stream: controller.getSalesChartData()),
+                    child: TrackerChart(
+                      stream: controller.getCostsChartData(),
+                      isCostsTable: true,
+                    ),
                   ),
                   AppText.boldText('Costs Tracker'),
                   10.verticalSpace,

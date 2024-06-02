@@ -1,4 +1,3 @@
-import 'package:drift/drift.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 
@@ -10,7 +9,7 @@ class StatisticController extends GetxController {
     Get.offAllNamed(Routes.LOGIN);
   }
 
-  Stream<List<SalesData>?> getSalesChartData() async* {
+  Stream<List<SalesData>?> getCostsChartData() async* {
     var allCosts = DbController.to.appDb.getAllCosts();
 
     await for (var costs in allCosts) {
@@ -23,13 +22,12 @@ class StatisticController extends GetxController {
   }
 
   Stream<List<SalesData>?> getReportsChartData() {
-    var allServices = DbController.to.appDb.getAllDataItems();
+    var allSales = DbController.to.appDb.getAllDataItems();
 
-    return allServices.map((services) {
+    return allSales.map((sales) {
       var salesData = <SalesData>[];
-      for (var service in services) {
-        salesData
-            .add(SalesData(service.date ?? DateTime.now(), service.price!));
+      for (var sale in sales) {
+        salesData.add(SalesData(sale.date ?? DateTime.now(), sale.price!));
       }
       return salesData;
     });

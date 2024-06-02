@@ -221,6 +221,15 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   (index) {
                     if (snapshot.data![index].employeeName == 'Total') {
                       return DataRow(
+                        color: MaterialStateProperty.resolveWith<Color?>(
+                            (Set<MaterialState> states) {
+                          if (states.contains(MaterialState.selected))
+                            return Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withOpacity(0.08);
+                          return AppColors.lightYellow;
+                        }),
                         cells: [
                           DataCell(
                             Center(
@@ -315,6 +324,15 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                     }
 
                     return DataRow(
+                      // color: MaterialStateProperty.resolveWith<Color?>(
+                      //     (Set<MaterialState> states) {
+                      //   if (states.contains(MaterialState.disabled))
+                      //     return Theme.of(context)
+                      //         .colorScheme
+                      //         .primary
+                      //         .withOpacity(0.08);
+                      //   return AppColors.lightYellow;
+                      // }),
                       cells: [
                         DataCell(
                           Center(
@@ -390,10 +408,10 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].totalPrice
-                                      .percentageOf(
-                                          snapshot.data![index].percentage)
-                                      .toString(),
+                                  snapshot.data![index].percentage.toString(),
+                                  // .percentageOf(
+                                  //     snapshot.data![index].percentage)
+                                  // .toString(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),

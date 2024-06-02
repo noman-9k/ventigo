@@ -34,6 +34,8 @@ extension SmallDate on DateTime {
   }
 
   DateTime onlyDate() {
+    return this;
+
     return DateTime(this.year, this.month, this.day);
   }
 
@@ -45,22 +47,22 @@ extension SmallDate on DateTime {
       Colors.green.withOpacity(0.2),
       Colors.yellow.withOpacity(0.2),
       Colors.purple.withOpacity(0.2),
-      Colors.orange.withOpacity(0.2),
-      Colors.pink.withOpacity(0.2),
-      Colors.teal.withOpacity(0.2),
-      Colors.brown.withOpacity(0.2),
-      Colors.cyan.withOpacity(0.2),
-      Colors.grey.withOpacity(0.2),
-      Colors.indigo.withOpacity(0.2),
-      Colors.lime.withOpacity(0.2),
-      Colors.deepOrange.withOpacity(0.2),
-      Colors.amber.withOpacity(0.2),
-      Colors.deepPurple.withOpacity(0.2),
-      Colors.black.withOpacity(0.2),
-      Colors.lightGreen.withOpacity(0.2),
-      Colors.lightBlue.withOpacity(0.2),
-      Colors.blueGrey.withOpacity(0.2),
-      Colors.white.withOpacity(0.2),
+      Colors.red.withOpacity(0.2),
+      Colors.blue.withOpacity(0.2),
+      Colors.green.withOpacity(0.2),
+      Colors.yellow.withOpacity(0.2),
+      Colors.purple.withOpacity(0.2),
+      Colors.red.withOpacity(0.2),
+      Colors.blue.withOpacity(0.2),
+      Colors.green.withOpacity(0.2),
+      Colors.yellow.withOpacity(0.2),
+      Colors.purple.withOpacity(0.2),
+      Colors.red.withOpacity(0.2),
+      Colors.blue.withOpacity(0.2),
+      Colors.green.withOpacity(0.2),
+      Colors.yellow.withOpacity(0.2),
+      Colors.purple.withOpacity(0.2),
+      Colors.red.withOpacity(0.2),
     ];
     return colors[day - 1];
   }
