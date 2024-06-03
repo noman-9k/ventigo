@@ -8,6 +8,9 @@ import '../../../../../../db/db_controller.dart';
 import '../../../../../../models/stats_result_model.dart';
 
 class NewStatisticsResultsController extends GetxController {
+  static NewStatisticsResultsController get to =>
+      Get.find<NewStatisticsResultsController>();
+
   Rx<DateTime?>? fromDate;
   Rx<DateTime?>? toDate;
 

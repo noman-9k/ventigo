@@ -23,10 +23,8 @@ class LoginView extends GetView<LoginController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              40.verticalSpace,
-              AppCloseButton(),
-              40.verticalSpace,
-              Image.asset(AppImages.logo),
+              80.verticalSpace,
+              Center(child: Image.asset(AppImages.logo)),
               40.verticalSpace,
               Center(
                   child: AppText.boldText('Login',
@@ -99,19 +97,10 @@ class LoginView extends GetView<LoginController> {
                     ],
                   )).alterP(isTransparent: true),
               20.verticalSpace,
-              // ElevatedButton(
-              //     onPressed: () => controller.adminLogin(isCost: true),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         SizedBox(
-              //             width: 50,
-              //             height: 50,
-              //             child: Image.asset(AppImages.admin_cost)),
-              //         10.horizontalSpace,
-              //         AppText.mediumText('Admin Cost'),
-              //       ],
-              //     )).alterP(isTransparent: true),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [AppCloseButton()],
+              )
             ],
           ),
         ),

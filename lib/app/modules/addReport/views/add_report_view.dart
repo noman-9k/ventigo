@@ -48,9 +48,8 @@ class AddReportView extends GetView<AddReportController> {
                     .withLabel('Last Name'),
                 16.verticalSpace,
                 TextField(
-                        controller: controller.phoneController,
-                        decoration: InputDecoration(labelText: 'Phone Number'))
-                    .withLabel('Phone Number'),
+                  controller: controller.phoneController,
+                ).withLabel('Phone Number'),
                 16.verticalSpace,
                 YesNoButton(
                     title: 'New Customer',

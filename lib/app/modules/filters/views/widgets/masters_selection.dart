@@ -22,6 +22,8 @@ class MastersSelection extends GetView<FiltersController> {
           var employees = snapshot.data;
 
           return ExpansionTile(
+            iconColor: AppColors.primaryColor,
+            collapsedIconColor: AppColors.primaryColor,
             initiallyExpanded: true,
             collapsedBackgroundColor: AppColors.veryLightGrey,
             collapsedShape: RoundedRectangleBorder(

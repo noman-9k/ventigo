@@ -28,6 +28,7 @@ class AdminAuthController extends GetxController {
     } catch (e) {
       log(e.toString());
     }
+
     super.onInit();
   }
 

@@ -23,6 +23,8 @@ class CategoriesSection extends GetView<FiltersController> {
           var categories = snapshot.data;
 
           return ExpansionTile(
+            iconColor: AppColors.primaryColor,
+            collapsedIconColor: AppColors.primaryColor,
             collapsedBackgroundColor: AppColors.veryLightGrey,
             collapsedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12), side: BorderSide.none),

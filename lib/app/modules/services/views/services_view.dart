@@ -13,7 +13,9 @@ import 'package:ventigo/app/routes/app_pages.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../constants/app_images.dart';
 import '../../common/app_search_field.dart';
+import '../../common/svg_icon.dart';
 import '../../dialog/dialog_functions.dart';
 import '../controllers/services_controller.dart';
 
@@ -130,6 +132,8 @@ class CustomExpansionTile extends StatelessWidget {
     return GetBuilder<ServicesController>(builder: (controller) {
       return ExpansionTile(
         key: ValueKey(category.id),
+        iconColor: AppColors.primaryColor,
+        collapsedIconColor: AppColors.primaryColor,
         initiallyExpanded: isSelected,
         title: AppText.mediumBoldText(category.name!),
         expandedCrossAxisAlignment: CrossAxisAlignment.start,
@@ -148,7 +152,8 @@ class CustomExpansionTile extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () => pushEditCategoryDialog(context, category),
-              icon: Icon(Icons.edit, color: AppColors.primaryColor, size: 20),
+              icon: SvgIcon(icon: AppImages.edit_ic, size: 23),
+              // Icon(Icons.edit, color: AppColors.primaryColor, size: 20),
             ),
             5.horizontalSpace,
             IconButton(
@@ -158,8 +163,9 @@ class CustomExpansionTile extends StatelessWidget {
                 message: 'Are you sure you want to delete this category?',
                 onDone: () => controller.deleteCategory(category.id),
               ),
-              icon: Icon(Icons.delete_outline_outlined,
-                  size: 20, color: AppColors.redColor),
+              icon: SvgIcon(icon: AppImages.delete, size: 22),
+              // Icon(Icons.delete_outline_outlined,
+              //     size: 20, color: AppColors.redColor),
             ),
             5.horizontalSpace,
             Icon(Icons.keyboard_arrow_down_rounded)
@@ -195,8 +201,10 @@ class CustomExpansionTile extends StatelessWidget {
                               IconButton(
                                 onPressed: () => pushEditServiceDialog(
                                     context, snapshot.data![i], (value) {}),
-                                icon: Icon(Icons.edit,
-                                    size: 18, color: AppColors.primaryColor),
+                                icon:
+                                    SvgIcon(icon: AppImages.edit_ic, size: 23),
+                                // Icon(Icons.edit,
+                                //     size: 18, color: AppColors.primaryColor),
                               ),
                               1.horizontalSpace,
                               IconButton(
@@ -208,8 +216,9 @@ class CustomExpansionTile extends StatelessWidget {
                                   onDone: () => controller
                                       .deleteService(snapshot.data![i].id),
                                 ),
-                                icon: Icon(Icons.delete_outline_outlined,
-                                    size: 18, color: AppColors.redColor),
+                                icon: SvgIcon(icon: AppImages.delete),
+                                //  Icon(Icons.delete_outline_outlined,
+                                //     size: 18, color: AppColors.redColor),
                               ),
                             ],
                           ));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../../../../db/db_controller.dart';
@@ -77,13 +78,25 @@ class TrackerChart extends StatelessWidget {
                 return Container(
                     child: SfCartesianChart(
                         primaryXAxis: DateTimeAxis(
-                            // intervalType: DateTimeIntervalType.days,
-                            // minimum:
-                            //     DateTime.now().subtract(const Duration(days: 365 * 2)),
-                            ),
+                          title: AxisTitle(
+                              text: 'Date',
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: AppColors.primaryColor)),
+                          // name: 'Date',
+                          // intervalType: DateTimeIntervalType.days,
+                          // minimum:
+                          //     DateTime.now().subtract(const Duration(days: 365 * 2)),
+                        ),
                         primaryYAxis: NumericAxis(
-                          // interval: 5,
-                          labelFormat: '{value} /=',
+                          title: AxisTitle(
+                              text: isCostsTable ? 'Cost' : 'Price',
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: AppColors.primaryColor)),
+                          labelFormat: '{value}',
                         ),
                         series: <CartesianSeries>[
                       LineSeries<SalesData, DateTime>(

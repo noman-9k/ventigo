@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ventigo/app/modules/common/svg_icon.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../config/app_styles.dart';
 import '../../../../config/app_text.dart';
+import '../../../constants/app_images.dart';
 import '../../../db/drift_db.dart';
 import '../../main/views/widgets/reports_table.dart';
 
@@ -33,12 +35,14 @@ class DataItemBottomSheet extends StatelessWidget {
                   AppText.boldText(tableItem.id.toString()),
                   Spacer(),
                   IconButton(
-                    icon: Icon(Icons.edit),
+                    icon: SvgIcon(icon: AppImages.edit_ic),
+                    //  Icon(Icons.edit),
                     onPressed: () => onEdit?.call(),
                   ),
                   IconButton(
-                    icon: Icon(Icons.delete_forever_outlined,
-                        color: AppColors.redColor),
+                    icon: SvgIcon(icon: AppImages.delete),
+                    // Icon(Icons.delete_forever_outlined,
+                    //     color: AppColors.redColor),
                     onPressed: () => onDelete?.call(),
                   ),
                   IconButton(

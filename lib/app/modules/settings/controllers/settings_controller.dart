@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
+import 'package:ventigo/app/app_services/local_storage_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/settings/controllers/file_storage.dart';
 import 'package:ventigo/app/modules/settings/views/restore_dialog.dart';
@@ -153,6 +154,7 @@ class SettingsController extends GetxController {
   }
 
   void clearData() {
+    MySharedPref.clearDisk();
     DbController.to.appDb.deleteDatabase();
   }
 

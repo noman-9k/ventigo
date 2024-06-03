@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
@@ -24,7 +25,11 @@ class _ChangeAdminPassDialogState extends State<ChangeAdminPassDialog> {
         AppText.boldText('Change Admin Password'),
         16.verticalSpace,
         TextField(
-          textCapitalization: TextCapitalization.sentences,
+          inputFormatters: [
+            LengthLimitingTextInputFormatter(4),
+            FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+          ],
+          keyboardType: TextInputType.number,
           controller: _controller,
           decoration: InputDecoration(border: InputBorder.none),
         ).withLabel('New Password'),

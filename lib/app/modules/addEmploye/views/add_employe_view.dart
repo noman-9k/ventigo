@@ -16,7 +16,10 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          leading: AppBackButton(),
+          leading: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: AppBackButton(),
+          ),
           title: AppText.boldText('Add Employee'),
           centerTitle: true,
         ),

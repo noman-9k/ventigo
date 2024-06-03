@@ -23,8 +23,6 @@ class MainReportsView extends GetView<MainController> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppText.mediumBoldText('Press an Hold Item to View Details',
-                  color: Colors.grey[500]),
               // GetBuilder<FiltersController>(builder: (controller) {
               //   return Expanded(
               //     child: Builder(builder: (context) {

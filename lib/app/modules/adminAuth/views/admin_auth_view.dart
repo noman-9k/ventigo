@@ -74,19 +74,20 @@ class AdminAuthView extends GetView<AdminAuthController> {
             ),
           ),
           40.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AppText.boldText('Forgot password?'),
-              10.horizontalSpace,
-              GestureDetector(
-                onTap: () {
-                  pushResetPasswordDialog(context);
-                },
-                child: AppText.boldText('Reset here', color: Colors.blue),
-              ),
-            ],
-          ),
+          if (MySharedPref.getFromDisk('question') != null)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppText.boldText('Forgot password?'),
+                10.horizontalSpace,
+                GestureDetector(
+                  onTap: () {
+                    pushResetPasswordDialog(context);
+                  },
+                  child: AppText.boldText('Reset here', color: Colors.blue),
+                ),
+              ],
+            ),
         ],
       ),
     );

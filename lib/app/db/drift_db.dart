@@ -196,11 +196,19 @@ class AppDb extends _$AppDb {
   Future updateDataItem(DbDataItem dataItem) =>
       update(dbDataItems).replace(dataItem);
 
-  Stream<List<DbDataItem>> getAllDataItems() => (select(dbDataItems)
-        ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
-        ]))
-      .watch();
+  Stream<List<DbDataItem>> getAllDataItems(
+          {DateTime? fromDate, DateTime? toDate}) =>
+      (select(dbDataItems)
+            ..orderBy([
+              (tbl) =>
+                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+            ])
+            ..where((tbl) =>
+                tbl.date.isBiggerOrEqualValue(
+                    fromDate ?? DateTime.now().subtract(Duration(days: 3600))) &
+                tbl.date.isSmallerOrEqualValue(
+                    toDate ?? DateTime.now().add(Duration(days: 3600)))))
+          .watch();
   Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
       (select(dbDataItems)
             ..where((tbl) => tbl.employeeId.equals(id))
@@ -426,6 +434,8 @@ class AppDb extends _$AppDb {
           .map((e) => e.data['totalServices'])
           .toList()
           .cast<int>();
+
+      log('allServicesIdsList: $allServicesIdsList');
       final sumAllTheCosts = await sumAllPrices(allServicesIdsList);
       //   log('Date: ${date}');
       //   log('EmployeeName: ${employeeName}');
@@ -435,11 +445,11 @@ class AppDb extends _$AppDb {
       //   log('totalServices: ${totalServices.data['totalServices']}');
       //   log('allServicesIdsList: ${allServicesIdsList}');
       //   log('sumAllTheCosts: ${sumAllTheCosts}');
-      log('employeePercentage: $employeePercentage');
+      // log('employeePercentage: $employeePercentage');
 
-      log('totalPrice: ${totalPrice.data['totalPrice']}');
+      // log('totalPrice: ${totalPrice.data['totalPrice']}');
 
-      log('percentage: ${double.tryParse((double.tryParse(totalPrice.data['totalPrice'].toString()) ?? 0).percentageOf(employeePercentage))}');
+      // log('percentage: ${double.tryParse((double.tryParse(totalPrice.data['totalPrice'].toString()) ?? 0).percentageOf(employeePercentage))}');
 
       list.add(StatResultModel(
           employeeName: employeeName ?? '',
@@ -461,10 +471,16 @@ class AppDb extends _$AppDb {
   }
 
   Future<double> sumAllPrices(List<int> ids) async {
-    final query =
-        await (select(dbServices)..where((tbl) => tbl.id.isIn(ids))).get();
+    List<double?> prices = [];
 
-    return query.map((e) => e.price).toList().sumAll();
+    for (final id in ids) {
+      final query = await (select(dbServices)
+            ..where((tbl) => tbl.id.equals(id)))
+          .getSingle();
+      prices.add(query.price);
+    }
+
+    return prices.sumAll();
   }
 
   Future<List<QueryRow>> getStatisticsReports(
@@ -571,6 +587,13 @@ class AppDb extends _$AppDb {
 
   deleteCost(int id) {
     (delete(dbCosts)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
+  Future<double> getPriceByServiceId(int serviceId) async {
+    final query = await (select(dbServices)
+          ..where((tbl) => tbl.id.equals(serviceId)))
+        .getSingle();
+    return query.price ?? 0.0;
   }
 }
 

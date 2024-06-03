@@ -33,9 +33,9 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
           Text('Security Questions', style: AppStyles.boldStyle()),
           10.verticalSpace,
           if (MySharedPref.getFromDisk('question') != null ||
-              MySharedPref.getFromDisk('question') != '')
+              MySharedPref.getFromDisk('question') == '')
             AppText.lightBoldText(
-                'Previous Question:\n${MySharedPref.getFromDisk('question')}',
+                'Previous Question:\n${MySharedPref.getFromDisk('question') ?? ''}',
                 align: TextAlign.center),
           10.verticalSpace,
           CustomDropDown(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:ventigo/app/constants/app_images.dart';
 import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 
 import '../../../config/app_colors.dart';
 import '../../routes/app_pages.dart';
+import 'svg_icon.dart';
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({super.key});
@@ -14,10 +15,12 @@ class LogoutButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
       child: CircleAvatar(
-        radius: 25,
-        backgroundColor: AppColors.blueColor,
+        radius: 22,
+        backgroundColor: Colors.transparent,
         child: IconButton(
-          icon: const FaIcon(Icons.logout_outlined, color: Colors.white),
+          // icon: SvgIcon(icon: AppImages.logout_ic),
+          icon: SvgIcon(icon: AppImages.logout_ic),
+          //  const FaIcon(Icons.logout_outlined, color: Colors.white),
           onPressed: () => pushConfirmDialog(
             context,
             title: 'Logout',
