@@ -41,9 +41,8 @@ class EditReportView extends GetView<EditReportController> {
                     .withLabel('Last Name'),
                 16.verticalSpace,
                 TextField(
-                        controller: controller.phoneController,
-                        decoration: InputDecoration(labelText: 'Phone Number'))
-                    .withLabel('Phone Number'),
+                  controller: controller.phoneController,
+                ).withLabel('Phone Number'),
                 16.verticalSpace,
                 YesNoButton(
                     title: 'New Customer',
@@ -79,20 +78,21 @@ class EditReportView extends GetView<EditReportController> {
                         categoryId: controller.selectedCategory?.id,
                         onChanged: controller.onServiceChanged),
                 16.verticalSpace,
-                TextField(
-                    controller: controller.priceController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      hintText: 'Price of Service',
-                    )).withLabel('Price'),
-                16.verticalSpace,
+                // TextField(
+                //     controller: controller.priceController,
+                //     keyboardType: TextInputType.number,
+                //     decoration: InputDecoration(
+                //       hintText: 'Price of Service',
+                //     )).withLabel('Price'),
+                // 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(
                       onPressed: controller.editReport,
                       child: controller.isLoading.isTrue
                           ? CircularProgressIndicator()
                           : AppText.boldText('Submit', color: Colors.white));
-                })
+                }),
+                16.verticalSpace,
               ],
             );
           }),

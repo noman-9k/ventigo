@@ -8,7 +8,6 @@ class EditReportController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  TextEditingController priceController = TextEditingController();
   bool? newCustomer;
   bool? regCustomer;
   bool? cardPay;
@@ -29,10 +28,9 @@ class EditReportController extends GetxController {
     services =
         await DbController.to.appDb.getServicesByCategoryId(item.categoryId);
 
-    nameController.text = item.name?.split('').first ?? '';
-    lastNameController.text = item.name?.split('').last ?? '';
+    nameController.text = item.name?.split(' ').first ?? '';
+    lastNameController.text = item.name?.split(' ').last ?? '';
     phoneController.text = item.phone ?? '';
-    priceController.text = item.price.toString();
     newCustomer = item.newCustomer;
     regCustomer = item.regCustomer;
     cardPay = item.cardPay;
@@ -56,8 +54,7 @@ class EditReportController extends GetxController {
   void editReport() {
     if (nameController.text.isEmpty ||
         lastNameController.text.isEmpty ||
-        phoneController.text.isEmpty ||
-        priceController.text.isEmpty) {
+        phoneController.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all fields');
       return;
     }
@@ -70,7 +67,8 @@ class EditReportController extends GetxController {
       id: item.id,
       name: nameController.text + ' ' + lastNameController.text,
       phone: phoneController.text,
-      price: double.parse(priceController.text),
+      // price: double.parse(priceController.text),
+      price: item.price,
       newCustomer: newCustomer ?? item.newCustomer,
       regCustomer: regCustomer ?? item.regCustomer,
       cardPay: cardPay ?? item.cardPay,
@@ -81,8 +79,9 @@ class EditReportController extends GetxController {
       serviceName: selectedService?.name ?? item.serviceName,
       employeeName: item.employeeName,
       percentage: item.percentage,
-      total: ((item.total ?? 0.0) - (item.price ?? 0.0)) +
-          double.parse(priceController.text),
+      total: item.total,
+      // total: ((item.total ?? 0.0) - (item.price ?? 0.0)) +
+      //     double.parse(priceController.text),
       date: item.date,
     );
 

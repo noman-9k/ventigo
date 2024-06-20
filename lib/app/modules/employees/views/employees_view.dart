@@ -68,6 +68,7 @@ class EmployeesView extends GetView<EmployeesController> {
                     ),
                     10.verticalSpace,
                     ListView.separated(
+                      controller: controller.scrollController,
                       separatorBuilder: (context, index) =>
                           Divider(indent: 20, endIndent: 20, height: 5),
                       shrinkWrap: true,

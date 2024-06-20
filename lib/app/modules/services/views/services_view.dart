@@ -203,8 +203,6 @@ class CustomExpansionTile extends StatelessWidget {
                                     context, snapshot.data![i], (value) {}),
                                 icon:
                                     SvgIcon(icon: AppImages.edit_ic, size: 23),
-                                // Icon(Icons.edit,
-                                //     size: 18, color: AppColors.primaryColor),
                               ),
                               1.horizontalSpace,
                               IconButton(
@@ -216,9 +214,7 @@ class CustomExpansionTile extends StatelessWidget {
                                   onDone: () => controller
                                       .deleteService(snapshot.data![i].id),
                                 ),
-                                icon: SvgIcon(icon: AppImages.delete),
-                                //  Icon(Icons.delete_outline_outlined,
-                                //     size: 18, color: AppColors.redColor),
+                                icon: SvgIcon(icon: AppImages.delete, size: 25),
                               ),
                             ],
                           ));
