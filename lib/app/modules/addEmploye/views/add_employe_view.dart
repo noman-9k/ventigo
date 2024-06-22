@@ -7,6 +7,7 @@ import 'package:ventigo/config/app_enums.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../controllers/add_employe_controller.dart';
 
@@ -20,7 +21,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
             padding: const EdgeInsets.all(16.0),
             child: AppBackButton(),
           ),
-          title: AppText.boldText('Add Employee'),
+          title: AppText.boldText(S.of(context).addEmployee),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -32,9 +33,9 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   TextField(
                           textCapitalization: TextCapitalization.sentences,
                           controller: controller.nameController,
-                          decoration:
-                              InputDecoration(hintText: 'Enter your name'))
-                      .withLabel('Name'),
+                          decoration: InputDecoration(
+                              hintText: S.of(context).enterYourName))
+                      .withLabel(S.of(context).name),
                   10.verticalSpace,
                   TextField(
                       textCapitalization: TextCapitalization.sentences,

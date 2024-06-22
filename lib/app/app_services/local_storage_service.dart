@@ -52,4 +52,12 @@ class MySharedPref {
   static void clearDisk() {
     _sharedPreferences.clear();
   }
+
+  static void setLanguage(String s) {
+    _sharedPreferences.setString('language', s);
+  }
+
+  static String getLanguage() {
+    return _sharedPreferences.getString('language') ?? 'en';
+  }
 }

@@ -17,6 +17,7 @@ import 'package:ventigo/app/routes/app_pages.dart';
 
 import '../../../../firebase/firebase_storage_repo.dart';
 import '../../../../firebase/firestore_repositery.dart';
+import '../../../../generated/l10n.dart';
 
 class SettingsController extends GetxController {
   List<DatabaseModel> databases = [];

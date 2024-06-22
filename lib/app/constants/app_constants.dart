@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import '../models/language_model.dart';
+
 class AppConstants {
   AppConstants._();
 
@@ -13,5 +15,16 @@ class AppConstants {
     'What is your favorite food?',
     'What is your favorite song?',
     'What is your favorite color?',
+  ];
+
+  static List<Language> languages = [
+    Language(language: 'English', countryFlag: '🇺🇸', languageCode: 'en'),
+    Language(language: 'Ukrainian', countryFlag: '🇺🇦', languageCode: 'uk'),
+    Language(language: 'Polish', countryFlag: '🇵🇱', languageCode: 'pl'),
+    Language(language: 'Bulgarian', countryFlag: '🇧🇬', languageCode: 'bg'),
+    Language(language: 'Spanish', countryFlag: '🇪🇸', languageCode: 'es'),
+    Language(language: 'German', countryFlag: '🇩🇪', languageCode: 'de'),
+    Language(language: 'Czech', countryFlag: '🇨🇿', languageCode: 'cs'),
+    Language(language: 'Russian', countryFlag: '🇷🇺', languageCode: 'ru'),
   ];
 }
