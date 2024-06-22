@@ -25,7 +25,7 @@ class LoginView extends GetView<LoginController> {
               icon: Icon(Icons.language_outlined),
               onPressed: () {
                 Get.dialog(AlertDialog(
-                  title: AppText.boldText('Select Language'),
+                  title: AppText.boldText(S.of(context).selectLanguage),
                   content: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: S.delegate.supportedLocales

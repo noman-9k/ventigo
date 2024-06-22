@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 
 import '../../../../../config/app_text.dart';
+import '../../../../../generated/l10n.dart';
 import '../../controllers/statistic_controller.dart';
 import 'graphs/tracker_chart_widget.dart';
 
@@ -33,7 +34,7 @@ class GraphicsScreen extends GetView<StatisticController> {
                       isCostsTable: false,
                     ),
                   ),
-                  AppText.boldText('Reports/Sales Tracker'),
+                  AppText.boldText(S.of(context).reportssalesTracker),
                   10.verticalSpace,
                 ],
               ),
@@ -55,7 +56,7 @@ class GraphicsScreen extends GetView<StatisticController> {
                       isCostsTable: true,
                     ),
                   ),
-                  AppText.boldText('Costs Tracker'),
+                  AppText.boldText(S.of(context).costsTracker),
                   10.verticalSpace,
                 ],
               ),

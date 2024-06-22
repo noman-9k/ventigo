@@ -22,57 +22,269 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accessLevel": MessageLookupByLibrary.simpleMessage("Zugriffsebene"),
         "addCost": MessageLookupByLibrary.simpleMessage("Kosten hinzufügen"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Mitarbeiter hinzufügen"),
-        "adminMaine": MessageLookupByLibrary.simpleMessage("Admin Maine"),
+        "addReport": MessageLookupByLibrary.simpleMessage("Bericht hinzufügen"),
+        "addService": MessageLookupByLibrary.simpleMessage("Dienst hinzufügen"),
+        "adminLogin":
+            MessageLookupByLibrary.simpleMessage("Administrator-Anmeldung"),
+        "adminMaine":
+            MessageLookupByLibrary.simpleMessage("Administrator Maine"),
+        "all": MessageLookupByLibrary.simpleMessage("Alle"),
+        "amountPercentagePerDay":
+            MessageLookupByLibrary.simpleMessage("Prozentsatzbetrag pro Tag"),
+        "anErrorOccurred":
+            MessageLookupByLibrary.simpleMessage("Ein Fehler ist aufgetreten"),
+        "answer": MessageLookupByLibrary.simpleMessage("Antworten"),
+        "answerTheSecurityQuestionsToLogin":
+            MessageLookupByLibrary.simpleMessage(
+                "Beantworten Sie die Sicherheitsfragen, um sich anzumelden"),
+        "applyFilter": MessageLookupByLibrary.simpleMessage("Filter anwenden"),
+        "applyFilters": MessageLookupByLibrary.simpleMessage("Filter anwenden"),
         "areYouSureYouWantToClearAllData": MessageLookupByLibrary.simpleMessage(
             "Sind Sie sicher, dass Sie alle Daten löschen möchten?"),
+        "areYouSureYouWantToDeleteThisCategory":
+            MessageLookupByLibrary.simpleMessage(
+                "Möchten Sie diese Kategorie wirklich löschen?"),
+        "areYouSureYouWantToDeleteThisCost":
+            MessageLookupByLibrary.simpleMessage(
+                "Möchten Sie diese Kosten wirklich löschen?"),
+        "areYouSureYouWantToDeleteThisService":
+            MessageLookupByLibrary.simpleMessage(
+                "Sind Sie sicher Sie möchten diesen Dienst löschen?"),
+        "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
+            "Sind Sie sicher? Sie möchten die App beenden."),
         "backupData": MessageLookupByLibrary.simpleMessage("Daten sichern"),
+        "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
+            "Backup erfolgreich wiederhergestellt!"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
+        "cardPay": MessageLookupByLibrary.simpleMessage("Kartenzahlung: "),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Card\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategorien"),
-        "changeAdminPassword":
-            MessageLookupByLibrary.simpleMessage("Admin-Passwort ändern"),
+        "category": MessageLookupByLibrary.simpleMessage("Kategorie: "),
+        "categoryName": MessageLookupByLibrary.simpleMessage("Kategoriename"),
+        "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
+            "Administratorkennwort ändern"),
+        "checkYourFileInTheDownloadsFolder":
+            MessageLookupByLibrary.simpleMessage(
+                "Überprüfen Sie Ihre Datei im Download-Ordner"),
+        "clear": MessageLookupByLibrary.simpleMessage("Löschen"),
         "clearData": MessageLookupByLibrary.simpleMessage("Daten löschen"),
+        "clearDates": MessageLookupByLibrary.simpleMessage("Daten löschen"),
+        "confirm": MessageLookupByLibrary.simpleMessage("Bestätigen"),
+        "cost": MessageLookupByLibrary.simpleMessage("Kosten"),
+        "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
+            "Materialkosten für diesen Dienst"),
+        "costs": MessageLookupByLibrary.simpleMessage("Kosten"),
+        "costsFilter": MessageLookupByLibrary.simpleMessage("Kostenfilter"),
+        "costsPriceRange":
+            MessageLookupByLibrary.simpleMessage("Kostenpreisspanne"),
+        "costsTracker": MessageLookupByLibrary.simpleMessage("Kosten-Tracker"),
+        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
+            "Kategorie erstellen oder auswählen"),
+        "customerndata": MessageLookupByLibrary.simpleMessage("Kundendaten"),
         "dataBackup": MessageLookupByLibrary.simpleMessage("Datensicherung"),
+        "date": MessageLookupByLibrary.simpleMessage("Datum : "),
+        "dates": MessageLookupByLibrary.simpleMessage("Daten"),
         "deductFromTax":
-            MessageLookupByLibrary.simpleMessage("Von der Steuer abziehen"),
+            MessageLookupByLibrary.simpleMessage("Von der STEUER abziehen"),
+        "deductednfromTax":
+            MessageLookupByLibrary.simpleMessage("Von der STEUER abgezogen"),
+        "deleteCategory":
+            MessageLookupByLibrary.simpleMessage("Kategorie löschen"),
+        "deleteCost": MessageLookupByLibrary.simpleMessage("Kosten löschen"),
+        "deleteService": MessageLookupByLibrary.simpleMessage("Dienst löschen"),
+        "deleted": MessageLookupByLibrary.simpleMessage("Gelöscht"),
         "doNotRepeat":
             MessageLookupByLibrary.simpleMessage("Nicht wiederholen"),
+        "done": MessageLookupByLibrary.simpleMessage("Fertig"),
+        "editCategory":
+            MessageLookupByLibrary.simpleMessage("Kategorie bearbeiten"),
+        "editReport":
+            MessageLookupByLibrary.simpleMessage("Bericht bearbeiten"),
+        "editService":
+            MessageLookupByLibrary.simpleMessage("Dienst bearbeiten"),
+        "employeeName":
+            MessageLookupByLibrary.simpleMessage("Mitarbeitername:"),
+        "employeePercentage":
+            MessageLookupByLibrary.simpleMessage("Mitarbeiterprozentsatz"),
+        "employeendata":
+            MessageLookupByLibrary.simpleMessage("Mitarbeiterdaten"),
+        "employees": MessageLookupByLibrary.simpleMessage("Mitarbeiter"),
+        "enterCategoryName":
+            MessageLookupByLibrary.simpleMessage("Kategorienamen eingeben"),
+        "enterPasswordHere":
+            MessageLookupByLibrary.simpleMessage("Kennwort hier eingeben"),
+        "enterPrice": MessageLookupByLibrary.simpleMessage("Preis eingeben"),
+        "enterServiceName":
+            MessageLookupByLibrary.simpleMessage("Dienstnamen eingeben"),
+        "enterYourLastName": MessageLookupByLibrary.simpleMessage(
+            "Geben Sie Ihren Nachnamen ein"),
+        "enterYourLogin": MessageLookupByLibrary.simpleMessage(
+            "Geben Sie Ihren Benutzernamen ein"),
         "enterYourName":
             MessageLookupByLibrary.simpleMessage("Geben Sie Ihren Namen ein"),
+        "enterYourPassword":
+            MessageLookupByLibrary.simpleMessage("Geben Sie Ihr Passwort ein"),
         "everyDay": MessageLookupByLibrary.simpleMessage("Jeden Tag"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Jeden Monat"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Jedes Quartal"),
         "everyWeek": MessageLookupByLibrary.simpleMessage("Jede Woche"),
         "everyYear": MessageLookupByLibrary.simpleMessage("Jedes Jahr"),
+        "exit": MessageLookupByLibrary.simpleMessage("Beenden"),
+        "exitApp": MessageLookupByLibrary.simpleMessage("App beenden"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("In Datei exportieren"),
-        "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "exported": MessageLookupByLibrary.simpleMessage("Exportiert"),
+        "filters": MessageLookupByLibrary.simpleMessage("Filter"),
+        "forgotPassword":
+            MessageLookupByLibrary.simpleMessage("Kennwort vergessen?"),
+        "from": MessageLookupByLibrary.simpleMessage("Von"),
+        "hello": MessageLookupByLibrary.simpleMessage("Hallo, "),
+        "incorrectAnswer":
+            MessageLookupByLibrary.simpleMessage("Falsche Antwort"),
+        "isRegularCus":
+            MessageLookupByLibrary.simpleMessage("Ist regulärer Kunde. : "),
+        "itemDeleted": MessageLookupByLibrary.simpleMessage("Artikel gelöscht"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
+        "lastNameOfClient":
+            MessageLookupByLibrary.simpleMessage("Nachname des Kunden"),
+        "limited": MessageLookupByLibrary.simpleMessage("Begrenzt"),
+        "login": MessageLookupByLibrary.simpleMessage("Anmelden"),
+        "masternname": MessageLookupByLibrary.simpleMessage("Master\\nName"),
+        "masters": MessageLookupByLibrary.simpleMessage("Master"),
+        "maxPrice": MessageLookupByLibrary.simpleMessage("Höchstpreis"),
+        "minPrice": MessageLookupByLibrary.simpleMessage("Mindestpreis"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nameOfClient": MessageLookupByLibrary.simpleMessage("Name des Kunden"),
+        "nameOfCost": MessageLookupByLibrary.simpleMessage("Name der Kosten"),
         "nameOfExpense":
             MessageLookupByLibrary.simpleMessage("Name der Ausgabe"),
+        "nameOfTheService":
+            MessageLookupByLibrary.simpleMessage("Name des Dienstes"),
+        "nameOfncost":
+            MessageLookupByLibrary.simpleMessage("Name der\\nKosten"),
+        "newCustomer": MessageLookupByLibrary.simpleMessage("Neukunde"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("Neues Passwort"),
+        "newnclient": MessageLookupByLibrary.simpleMessage("Neuer\\nClient"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Neuer\\nCus"),
+        "no": MessageLookupByLibrary.simpleMessage("Nein"),
+        "noData": MessageLookupByLibrary.simpleMessage("Keine Daten"),
+        "noDataFound":
+            MessageLookupByLibrary.simpleMessage("Keine Daten gefunden"),
+        "noEmployeeFoundnpleaseAddANewEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Kein Mitarbeiter gefunden\\nBitte fügen Sie einen neuen Mitarbeiter hinzu."),
+        "noNewnclient":
+            MessageLookupByLibrary.simpleMessage("Anzahl neuer\\nClients"),
+        "noOfnservices":
+            MessageLookupByLibrary.simpleMessage("Anzahl\\nDienste"),
+        "noRegnclient":
+            MessageLookupByLibrary.simpleMessage("Nein. Reg\\nClient"),
+        "noServicesFoundnpleaseAddANewService":
+            MessageLookupByLibrary.simpleMessage(
+                "Keine Dienste gefunden\\nBitte fügen Sie einen neuen Dienst hinzu"),
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Keine Maßeinheit"),
+        "notLimited": MessageLookupByLibrary.simpleMessage("Nicht begrenzt"),
+        "numOfnservices":
+            MessageLookupByLibrary.simpleMessage("Anzahl\\nDienste"),
+        "numberOfServiceForMonth": MessageLookupByLibrary.simpleMessage(
+            "Anzahl der Services für den Monat"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Anzahl der Einheiten"),
-        "orSignInAs": MessageLookupByLibrary.simpleMessage("Or sign in as"),
-        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
+            "Oder neue Kategorie erstellen"),
+        "orSignInAs": MessageLookupByLibrary.simpleMessage("Oder anmelden als"),
+        "password": MessageLookupByLibrary.simpleMessage("Kennwort"),
+        "paymentByCard":
+            MessageLookupByLibrary.simpleMessage("Zahlung per Karte"),
+        "percentage": MessageLookupByLibrary.simpleMessage("Prozentsatz"),
+        "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
+        "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
+            "Bitte füllen Sie das Antwortfeld aus"),
+        "pleaseSelectAQuestion": MessageLookupByLibrary.simpleMessage(
+            "Bitte wählen Sie eine Frage aus"),
+        "pleaseTryAgain": MessageLookupByLibrary.simpleMessage(
+            "Bitte versuchen Sie es erneut"),
+        "previousQuestion":
+            MessageLookupByLibrary.simpleMessage("Vorherige Frage"),
+        "price": MessageLookupByLibrary.simpleMessage("Preis"),
+        "priceOfService":
+            MessageLookupByLibrary.simpleMessage("Preis des Dienstes"),
+        "priceRange": MessageLookupByLibrary.simpleMessage("Preisspanne"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Datenschutzrichtlinie"),
+        "regnclient": MessageLookupByLibrary.simpleMessage("Reg\\nClient"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Reg\\nCus"),
+        "regularCustomer": MessageLookupByLibrary.simpleMessage("Stammkunde"),
+        "relatedncategories":
+            MessageLookupByLibrary.simpleMessage("Verwandte\\nKategorien"),
+        "reloadApp": MessageLookupByLibrary.simpleMessage("App neu laden"),
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Wiederholungsintervall"),
+        "report": MessageLookupByLibrary.simpleMessage("Bericht:"),
+        "reportssalesTracker":
+            MessageLookupByLibrary.simpleMessage("Berichte/Verkaufs-Tracker"),
+        "resetHere": MessageLookupByLibrary.simpleMessage("Hier zurücksetzen"),
         "restoreData":
             MessageLookupByLibrary.simpleMessage("Daten wiederherstellen"),
+        "restoringDatabase": MessageLookupByLibrary.simpleMessage(
+            "Datenbank wird wiederhergestellt..."),
+        "sales": MessageLookupByLibrary.simpleMessage("Verkäufe"),
         "save": MessageLookupByLibrary.simpleMessage("Speichern"),
+        "saveEmployee":
+            MessageLookupByLibrary.simpleMessage("Mitarbeiter speichern"),
+        "search": MessageLookupByLibrary.simpleMessage("Suchen"),
         "securityQuestions":
             MessageLookupByLibrary.simpleMessage("Sicherheitsfragen"),
         "selectCategories":
             MessageLookupByLibrary.simpleMessage("Kategorien auswählen"),
+        "selectCategoriesFromTheListnmaybeSeveral":
+            MessageLookupByLibrary.simpleMessage(
+                "Wählen Sie Kategorien aus der Liste\\n(eventuell mehrere)"),
+        "selectCategory":
+            MessageLookupByLibrary.simpleMessage("Kategorie auswählen"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Sprache auswählen"),
+        "selectQuestion":
+            MessageLookupByLibrary.simpleMessage("Frage auswählen"),
+        "selectService":
+            MessageLookupByLibrary.simpleMessage("Dienst auswählen"),
+        "selectTheDatabaseToRestore": MessageLookupByLibrary.simpleMessage(
+            "Wählen Sie die wiederherzustellende Datenbank aus"),
+        "service": MessageLookupByLibrary.simpleMessage("Dienst: "),
+        "serviceName": MessageLookupByLibrary.simpleMessage("Dienstname"),
+        "services": MessageLookupByLibrary.simpleMessage("Dienste"),
+        "setAdminPassword": MessageLookupByLibrary.simpleMessage(
+            "Administratorkennwort festlegen"),
+        "setPercentageOfIncome": MessageLookupByLibrary.simpleMessage(
+            "Legen Sie den Prozentsatz des Einkommens fest"),
+        "setPercentageOfIncomeIfNecessary":
+            MessageLookupByLibrary.simpleMessage(
+                "Legen Sie bei Bedarf den Prozentsatz des Einkommens fest"),
+        "showPhone": MessageLookupByLibrary.simpleMessage("Telefon anzeigen"),
+        "submit": MessageLookupByLibrary.simpleMessage("Senden"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Systematische Ausgabe"),
+        "systematicnexpenditure":
+            MessageLookupByLibrary.simpleMessage("Systemmatic\\nExpenditure"),
+        "to": MessageLookupByLibrary.simpleMessage("Bis"),
+        "total": MessageLookupByLibrary.simpleMessage("Gesamt"),
+        "totalPercentagePerMonth":
+            MessageLookupByLibrary.simpleMessage("Gesamtprozentsatz pro Monat"),
+        "totalPriceServicePerDay": MessageLookupByLibrary.simpleMessage(
+            "Gesamtpreis des Services pro Tag"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Maßeinheit"),
-        "unitPrice": MessageLookupByLibrary.simpleMessage("Einheitspreis"),
-        "userName": MessageLookupByLibrary.simpleMessage("User Name")
+        "unitPrice": MessageLookupByLibrary.simpleMessage("Stückpreis"),
+        "userName": MessageLookupByLibrary.simpleMessage("Benutzername"),
+        "visibilityLevelWithACrossFromTheList":
+            MessageLookupByLibrary.simpleMessage(
+                "Sichtbarkeitsstufe mit einem Kreuz aus der Liste"),
+        "yes": MessageLookupByLibrary.simpleMessage("Ja")
       };
 }

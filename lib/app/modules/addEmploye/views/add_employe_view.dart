@@ -41,74 +41,76 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       textCapitalization: TextCapitalization.sentences,
                       controller: controller.lastNameController,
                       decoration: InputDecoration(
-                        hintText: 'Enter your last name',
-                      )).withLabel('Last Name'),
+                        hintText: S.of(context).enterYourLastName,
+                      )).withLabel(S.of(context).lastName),
                   10.verticalSpace,
                   TextField(
                       controller: controller.loginController,
                       decoration: InputDecoration(
-                        hintText: 'Enter your login',
-                      )).withLabel('Login'),
+                        hintText: S.of(context).enterYourLogin,
+                      )).withLabel(S.of(context).login),
                   10.verticalSpace,
                   TextField(
                       controller: controller.passController,
                       decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                      )).withLabel('Password'),
+                        hintText: S.of(context).enterYourPassword,
+                      )).withLabel(S.of(context).password),
                   10.verticalSpace,
                   AppText.mediumText(
-                      'Select Categories from the list\n(maybe several)',
+                      S.of(context).selectCategoriesFromTheListnmaybeSeveral,
                       align: TextAlign.center),
                   10.verticalSpace,
                   TextField(
                           readOnly: true,
                           onTap: () => controller.categoryTab(context),
                           controller: controller.categoriesController,
-                          decoration:
-                              InputDecoration(hintText: 'Select categories'))
-                      .withLabel('Categories'),
+                          decoration: InputDecoration(
+                              hintText: S.of(context).selectCategories))
+                      .withLabel(S.of(context).categories),
                   10.verticalSpace,
-                  AppText.mediumText('Set percentage of income if necessary',
+                  AppText.mediumText(
+                      S.of(context).setPercentageOfIncomeIfNecessary,
                       align: TextAlign.center),
                   5.verticalSpace,
                   TextField(
                     controller: controller.percentageController,
                     keyboardType: TextInputType.number,
-                    decoration:
-                        InputDecoration(hintText: 'Set percentage of income'),
-                  ).withLabel('Percentage'),
+                    decoration: InputDecoration(
+                        hintText: S.of(context).setPercentageOfIncome),
+                  ).withLabel(S.of(context).percentage),
                   10.verticalSpace,
                   AppText.mediumText(
-                      ' Visibility level with a cross from the list',
+                      S.of(context).visibilityLevelWithACrossFromTheList,
                       align: TextAlign.center),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Employee Percentage',
+                      title: S.of(context).employeePercentage,
                       type: VisibilityFilter.percentage),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Total Percentage per month',
+                      title: S.of(context).totalPercentagePerMonth,
                       type: VisibilityFilter.percentageMonth),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Amount Percentage per day',
+                      title: S.of(context).amountPercentagePerDay,
                       type: VisibilityFilter.percentageDay),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Number of Service for month',
+                      title: S.of(context).numberOfServiceForMonth,
                       type: VisibilityFilter.numberOfServices),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Show Phone', type: VisibilityFilter.showPhone),
+                      title: S.of(context).showPhone,
+                      type: VisibilityFilter.showPhone),
                   10.verticalSpace,
                   _checkbox(
-                      title: 'Total Price Service per day',
+                      title: S.of(context).totalPriceServicePerDay,
                       type: VisibilityFilter.servicesPerDay),
                   24.verticalSpace,
                   ElevatedButton(
                     onPressed: () => controller.saveEmployee(),
-                    child:
-                        AppText.boldText('Save Employee', color: Colors.white),
+                    child: AppText.boldText(S.of(context).saveEmployee,
+                        color: Colors.white),
                   ),
                 ],
               );

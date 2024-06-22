@@ -6,6 +6,7 @@ import 'package:ventigo/app/modules/filters/controllers/filters_controller.dart'
 import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../../config/app_text.dart';
+import '../../../../../generated/l10n.dart';
 
 class MastersSelection extends GetView<FiltersController> {
   const MastersSelection({super.key});
@@ -29,7 +30,7 @@ class MastersSelection extends GetView<FiltersController> {
             collapsedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12), side: BorderSide.none),
             shape: RoundedRectangleBorder(side: BorderSide.none),
-            title: AppText.boldText('Masters'),
+            title: AppText.boldText(S.of(context).masters),
             children: employees!
                 .map(
                     (e) => GetBuilder<FiltersController>(builder: (controller) {

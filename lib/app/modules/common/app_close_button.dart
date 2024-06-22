@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 
+import '../../../generated/l10n.dart';
+
 class AppCloseButton extends StatelessWidget {
   const AppCloseButton({super.key});
 
@@ -15,13 +17,13 @@ class AppCloseButton extends StatelessWidget {
           TextButton(
             onPressed: () => pushConfirmDialog(
               context,
-              title: 'Exit',
-              message: 'Are you sure? You want to exit the app.',
+              title: S.of(context).exit,
+              message: S.of(context).areYouSureYouWantToExitTheApp,
               onDone: () {
                 SystemNavigator.pop();
               },
             ),
-            child: Text('Exit App', style: TextStyle(fontSize: 14)),
+            child: Text(S.of(context).exitApp, style: TextStyle(fontSize: 14)),
           ),
         ],
       ),

@@ -9,6 +9,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../controllers/filters_controller.dart';
 import 'widgets/categories_section.dart';
@@ -20,13 +21,14 @@ class FiltersView extends GetView<FiltersController> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        label: AppText.mediumBoldText('Apply Filters', color: Colors.white),
+        label: AppText.mediumBoldText(S.of(context).applyFilters,
+            color: Colors.white),
         backgroundColor: AppColors.primaryColor,
         onPressed: () => controller.applyFilters(),
       ),
       appBar: AppBar(
         leading: AppBackButton(),
-        title: AppText.boldText('Filters', fontSize: 20.sp),
+        title: AppText.boldText(S.of(context).filters, fontSize: 20.sp),
         centerTitle: true,
         actions: [
           TextButton(
@@ -34,7 +36,7 @@ class FiltersView extends GetView<FiltersController> {
               controller.clearFilters();
             },
             child: Row(children: [
-              AppText.mediumBoldText('Clear', color: Colors.red),
+              AppText.mediumBoldText(S.of(context).clear, color: Colors.red),
               5.horizontalSpace,
               Icon(Icons.close, color: Colors.red)
             ]),
@@ -53,26 +55,26 @@ class FiltersView extends GetView<FiltersController> {
                   onChanged: (value) {
                     controller.isRegularCustomer = value;
                   },
-                  title: 'Regular Customer'),
+                  title: S.of(context).regularCustomer),
               10.verticalSpace,
               YesNoButton(
                   defaultValue: controller.isCustomerCard,
                   onChanged: (value) {
                     controller.isCustomerCard = value;
                   },
-                  title: 'Card Pay'),
+                  title: S.of(context).cardPay),
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,
               TextField(
                       textCapitalization: TextCapitalization.sentences,
                       controller: controller.nameController,
                       decoration: InputDecoration())
-                  .withLabel('Name'),
+                  .withLabel(S.of(context).name),
               10.verticalSpace,
               TextField(
                       controller: controller.phoneController,
                       decoration: InputDecoration())
-                  .withLabel('Phone'),
+                  .withLabel(S.of(context).phone),
               10.verticalSpace,
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,
@@ -87,14 +89,15 @@ class FiltersView extends GetView<FiltersController> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText.boldText('Price Range', fontSize: 20.sp),
+                  AppText.boldText(S.of(context).priceRange, fontSize: 20.sp),
                   Row(
                     children: [
                       Expanded(
                         child: TextField(
                           controller: controller.minPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(labelText: 'Min Price'),
+                          decoration: InputDecoration(
+                              labelText: S.of(context).minPrice),
                         ),
                       ),
                       10.horizontalSpace,
@@ -102,7 +105,8 @@ class FiltersView extends GetView<FiltersController> {
                         child: TextField(
                           controller: controller.maxPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(labelText: 'Max Price'),
+                          decoration: InputDecoration(
+                              labelText: S.of(context).maxPrice),
                         ),
                       ),
                     ],
@@ -117,12 +121,12 @@ class FiltersView extends GetView<FiltersController> {
                   onChanged: (value) {
                     controller.isNewCustomer = value;
                   },
-                  title: 'New Customer'),
+                  title: S.of(context).newCustomer),
               20.verticalSpace,
               ElevatedButton(
                   onPressed: () => controller.applyFilters(),
-                  child:
-                      AppText.boldText('Apply Filters', color: Colors.white)),
+                  child: AppText.boldText(S.of(context).applyFilters,
+                      color: Colors.white)),
               40.verticalSpace,
             ],
           ),

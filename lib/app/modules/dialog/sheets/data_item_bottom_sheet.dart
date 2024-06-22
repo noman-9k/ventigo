@@ -6,6 +6,7 @@ import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../config/app_styles.dart';
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../../constants/app_images.dart';
 import '../../../db/drift_db.dart';
 import '../../main/views/widgets/reports_table.dart';
@@ -31,7 +32,7 @@ class DataItemBottomSheet extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AppText.boldText('Report: '),
+                  AppText.boldText(S.of(context).report),
                   AppText.boldText(tableItem.id.toString()),
                   Spacer(),
                   IconButton(
@@ -53,17 +54,24 @@ class DataItemBottomSheet extends StatelessWidget {
               ),
             ),
             TitleSubtitle(
-                title: 'Employee Name: ', subtitle: tableItem.employeeName),
+                title: S.of(context).employeeName,
+                subtitle: tableItem.employeeName),
             TitleSubtitle(
-                title: 'Is Regular Cus. : ', status: tableItem.regCustomer),
-            TitleSubtitle(title: 'Card Pay: ', status: tableItem.cardPay),
+                title: S.of(context).isRegularCus,
+                status: tableItem.regCustomer),
             TitleSubtitle(
-                title: 'Date : ', subtitle: tableItem.date?.formateDate()),
+                title: S.of(context).cardPay, status: tableItem.cardPay),
             TitleSubtitle(
-                title: 'Category: ', subtitle: tableItem.categoryName),
-            TitleSubtitle(title: 'Service: ', subtitle: tableItem.serviceName),
+                title: S.of(context).date,
+                subtitle: tableItem.date?.formateDate()),
             TitleSubtitle(
-                title: 'Price: ', subtitle: tableItem.price.toString()),
+                title: S.of(context).category,
+                subtitle: tableItem.categoryName),
+            TitleSubtitle(
+                title: S.of(context).service, subtitle: tableItem.serviceName),
+            TitleSubtitle(
+                title: S.of(context).price,
+                subtitle: tableItem.price.toString()),
             70.verticalSpace,
           ],
         ),

@@ -15,15 +15,15 @@ class ResultsScreen extends GetView<StatisticController> {
   @override
   Widget build(BuildContext context) {
     return NewStatisticsResults();
-    // return StatisticReportScreen();
-    TwoTabsView(
-      isSmall: true,
-      tabNames: ["Costs", "Reports"],
-      // topCenterWidget: kDebugMode
-      //     ? IconButton(
-      //         onPressed: () => controller.reportsData(), icon: Icon(Icons.abc))
-      //     : null,
-      widgets: [StatisticCostScreen(), StatisticReportScreen()],
-    );
+    // // return StatisticReportScreen();
+    // TwoTabsView(
+    //   isSmall: true,
+    //   tabNames: ["Costs", "Reports"],
+    //   // topCenterWidget: kDebugMode
+    //   //     ? IconButton(
+    //   //         onPressed: () => controller.reportsData(), icon: Icon(Icons.abc))
+    //   //     : null,
+    //   widgets: [StatisticCostScreen(), StatisticReportScreen()],
+    // );
   }
 }

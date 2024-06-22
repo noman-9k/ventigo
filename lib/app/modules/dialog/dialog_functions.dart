@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../generated/l10n.dart';
 import '../../db/drift_db.dart';
 import 'dialogs/change_admin_pass_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
@@ -64,14 +65,14 @@ pushConfirmDialog(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: AppText.mediumBoldText('Cancel'),
+          child: AppText.mediumBoldText(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);
             onDone();
           },
-          child: AppText.boldText('Confirm'),
+          child: AppText.boldText(S.of(context).confirm),
         ),
       ],
     ),

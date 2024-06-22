@@ -8,6 +8,7 @@ import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_search_field.dart';
 import '../controllers/employees_controller.dart';
@@ -27,7 +28,7 @@ class EmployeesView extends GetView<EmployeesController> {
       ),
       appBar: AppBar(
         leading: LogoutButton(),
-        title: AppText.boldText('Employees', fontSize: 20),
+        title: AppText.boldText(S.of(context).employees, fontSize: 20),
         automaticallyImplyLeading: false,
       ),
       body: Padding(
@@ -49,7 +50,7 @@ class EmployeesView extends GetView<EmployeesController> {
                     ),
                     20.verticalSpace,
                     AppText.mediumText(
-                        'No Employee Found\nPlease add a new employee.',
+                        S.of(context).noEmployeeFoundnpleaseAddANewEmployee,
                         align: TextAlign.center,
                         color: AppColors.lightGrey),
                     90.verticalSpace,
@@ -61,7 +62,7 @@ class EmployeesView extends GetView<EmployeesController> {
                   children: [
                     10.verticalSpace,
                     AppSearchField(
-                      label: 'Search',
+                      label: S.of(context).search,
                       fetchData: () => controller.getEmployeesSearchList(),
                       getSelectedValue: (EmployeeSearchItem value) =>
                           controller.scrollToValue(value.value),
@@ -91,7 +92,7 @@ class EmployeesView extends GetView<EmployeesController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  AppText.mediumText('Access Level',
+                                  AppText.mediumText(S.of(context).accessLevel,
                                       fontWeight: FontWeight.bold),
                                   Row(
                                     children: [
@@ -110,8 +111,8 @@ class EmployeesView extends GetView<EmployeesController> {
                                       5.horizontalSpace,
                                       AppText.mediumText(
                                           employee.visibility.length == 6
-                                              ? 'Not Limited'
-                                              : 'Limited'),
+                                              ? S.of(context).notLimited
+                                              : S.of(context).limited),
                                     ],
                                   ),
                                 ],

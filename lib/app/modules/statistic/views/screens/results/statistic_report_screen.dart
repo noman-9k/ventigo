@@ -11,6 +11,7 @@ import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../../../config/app_colors.dart';
 import '../../../../../../config/app_text.dart';
+import '../../../../../../generated/l10n.dart';
 
 class StatisticReportScreen extends StatefulWidget {
   const StatisticReportScreen({super.key});
@@ -55,13 +56,14 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   10.verticalSpace,
-                  AppText.boldText('Dates'),
+                  AppText.boldText(S.of(context).dates),
                   5.verticalSpace,
                   Row(
                     children: [
                       Expanded(
                         child: TextField(
-                          decoration: InputDecoration(labelText: 'From'),
+                          decoration:
+                              InputDecoration(labelText: S.of(context).from),
                           controller: TextEditingController(
                               text: fromDate?.smallDate()),
                           readOnly: true,
@@ -76,7 +78,8 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       const SizedBox(width: 10),
                       Expanded(
                         child: TextField(
-                          decoration: InputDecoration(labelText: 'To'),
+                          decoration:
+                              InputDecoration(labelText: S.of(context).to),
                           controller:
                               TextEditingController(text: toDate?.smallDate()),
                           readOnly: true,
@@ -102,7 +105,8 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
 
                           isExpanded = false;
                         },
-                        child: AppText.mediumBoldText('Apply Filters',
+                        child: AppText.mediumBoldText(
+                            S.of(context).applyFilters,
                             color: Colors.white)),
                   ),
                 ],
@@ -119,13 +123,13 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
             if (snapshot.hasError) {
               log(snapshot.error.toString());
               return Center(
-                child: Text('An error occurred'),
+                child: Text(S.of(context).anErrorOccurred),
               );
             }
 
             if (snapshot.data == null || snapshot.data!.isEmpty) {
               return Center(
-                child: Text('No data found'),
+                child: Text(S.of(context).noDataFound),
               );
             }
 
@@ -147,7 +151,7 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                     child: FittedBox(
                         fit: BoxFit.fitWidth,
                         child: Text(
-                          'New\nClient',
+                          S.of(context).newnclient,
                           style: AppStyles.lightStyle(fontSize: 13),
                           textAlign: TextAlign.center,
                         )),
@@ -159,7 +163,7 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Reg\nClient',
+                            S.of(context).regnclient,
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -170,7 +174,7 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Num. of\nServices',
+                            S.of(context).numOfnservices,
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -181,7 +185,7 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'costs',
+                            S.of(context).costs,
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),
@@ -192,7 +196,7 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Sales',
+                            S.of(context).sales,
                             style: AppStyles.lightStyle(fontSize: 13),
                             textAlign: TextAlign.center,
                           )),

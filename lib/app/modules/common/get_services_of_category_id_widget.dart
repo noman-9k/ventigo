@@ -5,6 +5,7 @@ import 'package:ventigo/app/db/drift_db.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../config/app_text.dart';
+import '../../../generated/l10n.dart';
 import '../../app_services/category_service.dart';
 
 class GetServiceOfCategoryById extends StatefulWidget {
@@ -33,7 +34,7 @@ class _GetServiceOfCategoryByIdState extends State<GetServiceOfCategoryById> {
               return DropdownButton2<String>(
                 isExpanded: true,
                 value: selectedValue,
-                hint: AppText.mediumText('Select Service'),
+                hint: AppText.mediumText(S.of(context).selectService),
                 items: items != null
                     ? items
                         .map((String item) => DropdownMenuItem<String>(

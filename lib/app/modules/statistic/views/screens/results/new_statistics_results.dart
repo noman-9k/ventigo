@@ -12,6 +12,7 @@ import 'package:ventigo/extensions/list_extension.dart';
 import '../../../../../../config/app_colors.dart';
 import '../../../../../../config/app_styles.dart';
 import '../../../../../../config/app_text.dart';
+import '../../../../../../generated/l10n.dart';
 import '../../../../../models/stats_result_model.dart';
 import '../../../../dialog/dialog_functions.dart';
 import 'controler/new_statistics_results_controller.dart';
@@ -52,13 +53,14 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          AppText.boldText('Dates'),
+                          AppText.boldText(S.of(context).dates),
                           30.verticalSpace,
                           TextButton(
                               onPressed: () {
                                 controller.clearFilters();
                               },
-                              child: AppText.mediumBoldText('Clear Dates',
+                              child: AppText.mediumBoldText(
+                                  S.of(context).clearDates,
                                   color: AppColors.redColor)),
                         ],
                       ),
@@ -67,7 +69,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         children: [
                           Expanded(
                             child: TextField(
-                              decoration: InputDecoration(labelText: 'From'),
+                              decoration: InputDecoration(
+                                  labelText: S.of(context).from),
                               controller: controller.fromDateController,
                               readOnly: true,
                               onTap: () {
@@ -80,7 +83,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: TextField(
-                              decoration: InputDecoration(labelText: 'To'),
+                              decoration:
+                                  InputDecoration(labelText: S.of(context).to),
                               controller: controller.toDateController,
                               readOnly: true,
                               onTap: () {
@@ -100,7 +104,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               controller.getFilteredStream();
                               controller.changeBottomSheet(value: false);
                             },
-                            child: AppText.mediumBoldText('Apply Filters',
+                            child: AppText.mediumBoldText(
+                                S.of(context).applyFilters,
                                 color: Colors.white)),
                       ),
                     ],
@@ -120,13 +125,13 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
               if (snapshot.hasError) {
                 log(snapshot.error.toString());
                 return Center(
-                  child: Text('An error occurred'),
+                  child: Text(S.of(context).anErrorOccurred),
                 );
               }
 
               if (snapshot.data == null || snapshot.data!.isEmpty) {
                 return Center(
-                  child: Text('No data found'),
+                  child: Text(S.of(context).noDataFound),
                 );
               }
 
@@ -148,7 +153,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       child: FittedBox(
                           fit: BoxFit.fitWidth,
                           child: Text(
-                            'Master\nName',
+                            S.of(context).masternname,
                             style: headerStyle,
                             textAlign: TextAlign.center,
                           )),
@@ -160,7 +165,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'No. Reg\nClient',
+                              S.of(context).noRegnclient,
                               style: headerStyle,
                             )),
                       ),
@@ -170,7 +175,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'No. New\nClient',
+                              S.of(context).noNewnclient,
                               style: headerStyle,
                             )),
                       ),
@@ -179,7 +184,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       label: Center(
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
-                            child: Text('No of\nservices', style: headerStyle)),
+                            child: Text(S.of(context).noOfnservices,
+                                style: headerStyle)),
                       ),
                       size: ColumnSize.S),
                   DataColumn2(
@@ -187,7 +193,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'Cost',
+                              S.of(context).cost,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
@@ -198,7 +204,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'Price',
+                              S.of(context).price,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),

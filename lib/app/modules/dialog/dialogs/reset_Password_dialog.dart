@@ -8,6 +8,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../routes/app_pages.dart';
 
 class ResetPasswordDialog extends StatefulWidget {
@@ -27,7 +28,8 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog> {
             child: Column(
               children: [
                 20.verticalSpace,
-                AppText.mediumBoldText('Answer the security questions to login',
+                AppText.mediumBoldText(
+                    S.of(context).answerTheSecurityQuestionsToLogin,
                     color: AppColors.primaryColor),
                 40.verticalSpace,
                 AppText.mediumBoldText(
@@ -35,7 +37,7 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog> {
                 20.verticalSpace,
                 TextField(
                   controller: answerController,
-                ).withLabel('Answer'),
+                ).withLabel(S.of(context).answer),
                 40.verticalSpace,
                 ElevatedButton(
                   onPressed: () {
@@ -47,14 +49,14 @@ class _ResetPasswordDialogState extends State<ResetPasswordDialog> {
                       Get.offAllNamed(Routes.DASHBOARD);
                     } else {
                       Get.showSnackbar(GetSnackBar(
-                        title: 'Incorrect answer',
-                        message: 'Please try again',
+                        title: S.of(context).incorrectAnswer,
+                        message: S.of(context).pleaseTryAgain,
                         duration: Duration(seconds: 2),
                         snackPosition: SnackPosition.TOP,
                       ));
                     }
                   },
-                  child: Text('Submit'),
+                  child: Text(S.of(context).submit),
                 )
               ],
             )));

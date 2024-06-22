@@ -7,6 +7,7 @@ import 'package:ventigo/app/modules/common/app_app_bar.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../app_services/employee_service.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/date_widget.dart';
@@ -20,7 +21,7 @@ class AddReportView extends GetView<AddReportController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-          title: 'Hello, ' +
+          title: S.of(context).hello +
               (EmployeeService.to.employee?.value.name ?? 'Walker!')),
       body: SingleChildScrollView(
         child: Padding(
@@ -32,33 +33,36 @@ class AddReportView extends GetView<AddReportController> {
                 20.verticalSpace,
                 DateWidget(),
                 20.verticalSpace,
-                Center(child: AppText.boldText('Add Report', fontSize: 20.sp)),
+                Center(
+                    child: AppText.boldText(S.of(context).addReport,
+                        fontSize: 20.sp)),
                 16.verticalSpace,
                 TextField(
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.nameController,
-                        decoration: InputDecoration(hintText: 'Name of Client'))
-                    .withLabel('Name'),
+                        decoration: InputDecoration(
+                            hintText: S.of(context).nameOfClient))
+                    .withLabel(S.of(context).name),
                 16.verticalSpace,
                 TextField(
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.lastNameController,
-                        decoration:
-                            InputDecoration(hintText: 'Last Name of Client'))
-                    .withLabel('Last Name'),
+                        decoration: InputDecoration(
+                            hintText: S.of(context).lastNameOfClient))
+                    .withLabel(S.of(context).lastName),
                 16.verticalSpace,
                 TextField(
                   controller: controller.phoneController,
-                ).withLabel('Phone Number'),
+                ).withLabel(S.of(context).phoneNumber),
                 16.verticalSpace,
                 YesNoButton(
-                    title: 'New Customer',
+                    title: S.of(context).newCustomer,
                     onChanged: (value) {
                       controller.newCustomer = value;
                     }),
                 16.verticalSpace,
                 YesNoButton(
-                    title: 'Regular Customer',
+                    title: S.of(context).regularCustomer,
                     // defaultValue: controller.newCustomer == null
                     //     ? null
                     //     : !controller.newCustomer!,
@@ -67,20 +71,20 @@ class AddReportView extends GetView<AddReportController> {
                     }),
                 16.verticalSpace,
                 YesNoButton(
-                    title: 'Payment by Card',
+                    title: S.of(context).paymentByCard,
                     onChanged: (value) {
                       controller.cardPay = value;
                     }),
                 16.verticalSpace,
-                AppText.mediumText('Select Category'),
+                AppText.mediumText(S.of(context).selectCategory),
                 5.verticalSpace,
                 CustomDropDown(
                   items: controller.categories.map((e) => e.name!).toList(),
                   onChanged: controller.onCategoryChanged,
-                  title: 'Select Category',
+                  title: newMethod,
                 ),
                 16.verticalSpace,
-                AppText.mediumText('Select Service'),
+                AppText.mediumText(S.of(context).selectService),
                 5.verticalSpace,
                 controller.selectedCategory == null
                     ? const SizedBox()
@@ -92,15 +96,16 @@ class AddReportView extends GetView<AddReportController> {
                     controller: controller.priceController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'Price of Service',
-                    )).withLabel('Price'),
+                      hintText: S.of(context).priceOfService,
+                    )).withLabel(S.of(context).price),
                 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(
                       onPressed: controller.submit,
                       child: controller.isLoading.isTrue
                           ? CircularProgressIndicator()
-                          : AppText.boldText('Submit', color: Colors.white));
+                          : AppText.boldText(S.of(context).submit,
+                              color: Colors.white));
                 })
               ],
             );
@@ -109,4 +114,6 @@ class AddReportView extends GetView<AddReportController> {
       ),
     );
   }
+
+  String get newMethod => 'Select Category';
 }

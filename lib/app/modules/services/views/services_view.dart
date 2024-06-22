@@ -13,6 +13,7 @@ import 'package:ventigo/app/routes/app_pages.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../constants/app_images.dart';
 import '../../common/app_search_field.dart';
 import '../../common/svg_icon.dart';
@@ -26,7 +27,7 @@ class ServicesView extends GetView<ServicesController> {
     return Scaffold(
       appBar: AppBar(
         leading: LogoutButton(),
-        title: AppText.boldText('Services', fontSize: 20.sp),
+        title: AppText.boldText(S.of(context).services, fontSize: 20.sp),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
@@ -59,7 +60,7 @@ class ServicesView extends GetView<ServicesController> {
                   20.verticalSpace,
                   Center(
                     child: AppText.mediumText(
-                        'No Services Found\nPlease add a new service',
+                        S.of(context).noServicesFoundnpleaseAddANewService,
                         align: TextAlign.center,
                         color: AppColors.lightGrey),
                   ),
@@ -76,13 +77,13 @@ class ServicesView extends GetView<ServicesController> {
                       children: [
                         20.verticalSpace,
                         AppSearchField(
-                          label: 'Search',
+                          label: S.of(context).search,
                           fetchData: () => controller.fetchData(),
                           getSelectedValue: (SearchItem value) =>
                               controller.scrollToValue(value.value),
                         ),
                         20.verticalSpace,
-                        AppText.boldText('Categories'),
+                        AppText.boldText(S.of(context).categories),
                         10.verticalSpace,
                         GetBuilder<ServicesController>(builder: (controller) {
                           DbCategory? selectedCat = controller.selectedCategory;
@@ -113,7 +114,7 @@ class ServicesView extends GetView<ServicesController> {
                       ],
                     ),
                   )
-                : Text('No data');
+                : Text(S.of(context).noData);
           },
         ),
       ),
@@ -159,8 +160,8 @@ class CustomExpansionTile extends StatelessWidget {
             IconButton(
               onPressed: () => pushConfirmDialog(
                 context,
-                title: 'Delete Category',
-                message: 'Are you sure you want to delete this category?',
+                title: S.of(context).deleteCategory,
+                message: S.of(context).areYouSureYouWantToDeleteThisCategory,
                 onDone: () => controller.deleteCategory(category.id),
               ),
               icon: SvgIcon(icon: AppImages.delete, size: 22),
@@ -189,10 +190,11 @@ class CustomExpansionTile extends StatelessWidget {
                           onLongPress: () => pushEditServiceDialog(
                               context, snapshot.data![i], (value) {}),
                           title: AppText.mediumText(
-                              'Name: ' + snapshot.data![i].name!,
+                              S.of(context).name + snapshot.data![i].name!,
                               fontSize: 14),
                           subtitle: AppText.mediumText(
-                            'Price: ' + snapshot.data![i].price.toString(),
+                            S.of(context).price +
+                                snapshot.data![i].price.toString(),
                             fontSize: 14,
                           ),
                           trailing: Row(
@@ -208,9 +210,10 @@ class CustomExpansionTile extends StatelessWidget {
                               IconButton(
                                 onPressed: () => pushConfirmDialog(
                                   context,
-                                  title: 'Delete Service',
-                                  message:
-                                      'Are you sure you want to delete this service?',
+                                  title: S.of(context).deleteService,
+                                  message: S
+                                      .of(context)
+                                      .areYouSureYouWantToDeleteThisService,
                                   onDone: () => controller
                                       .deleteService(snapshot.data![i].id),
                                 ),
@@ -220,7 +223,7 @@ class CustomExpansionTile extends StatelessWidget {
                           ));
                     },
                   )
-                : Text('No data'),
+                : Text(S.of(context).noData),
           ),
         ],
       );

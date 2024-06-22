@@ -35,23 +35,11 @@ class SettingsView extends GetView<SettingsController> {
                     },
                   ),
 
-                  // ExpansionTile(
-                  //   title: AppText.boldText('Language'),
-                  //   children: S.delegate.supportedLocales
-                  //       .map((e) => ListTile(
-                  //             title: AppText.boldText(e.languageCode),
-                  //             onTap: () {
-                  //               controller.changeLanguage(e);
-                  //             },
-                  //           ))
-                  //       .toList(),
-                  // ),
-
                   ListTile(
                     title: AppText.boldText(S.of(context).exportToFile),
                     trailing: Icon(Icons.arrow_forward_ios),
                     onTap: () {
-                      controller.exportToCSVFile();
+                      controller.exportToCSVFile(context);
                     },
                   ),
                   // about section
