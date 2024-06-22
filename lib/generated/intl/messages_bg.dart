@@ -64,7 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Архивирането е възстановено успешно!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отказ"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Плащане с карта: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\\n"),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\n"),
         "categories": MessageLookupByLibrary.simpleMessage("Категории"),
         "category": MessageLookupByLibrary.simpleMessage("Категория: "),
         "categoryName":
@@ -93,7 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
             "Създаване или избор на категория"),
         "customerndata":
-            MessageLookupByLibrary.simpleMessage("Клиентски\\nданни"),
+            MessageLookupByLibrary.simpleMessage("Клиентски\nданни"),
         "dataBackup":
             MessageLookupByLibrary.simpleMessage("Архивиране на данни"),
         "date": MessageLookupByLibrary.simpleMessage("Дата: "),
@@ -101,7 +101,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Приспадане от ДАНЪКА"),
         "deductednfromTax":
-            MessageLookupByLibrary.simpleMessage("Приспаднат\\nот ДАНЪКА"),
+            MessageLookupByLibrary.simpleMessage("Приспаднат\nот ДАНЪКА"),
         "deleteCategory":
             MessageLookupByLibrary.simpleMessage("Изтриване на категория"),
         "deleteCost":
@@ -122,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Процент на служителите"),
         "employeendata":
-            MessageLookupByLibrary.simpleMessage("Данни за \\nслужителя"),
+            MessageLookupByLibrary.simpleMessage("Данни за \nслужителя"),
         "employees": MessageLookupByLibrary.simpleMessage("Служители"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Въведете име на категория"),
@@ -167,7 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Фамилия на клиента"),
         "limited": MessageLookupByLibrary.simpleMessage("Ограничен"),
         "login": MessageLookupByLibrary.simpleMessage("Вход"),
-        "masternname": MessageLookupByLibrary.simpleMessage("Главно\\nиме"),
+        "masternname": MessageLookupByLibrary.simpleMessage("Главно\nиме"),
         "masters": MessageLookupByLibrary.simpleMessage("Майстори"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Максимална цена"),
         "minPrice": MessageLookupByLibrary.simpleMessage("Минимална цена"),
@@ -177,30 +177,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfExpense": MessageLookupByLibrary.simpleMessage("Име на разход"),
         "nameOfTheService":
             MessageLookupByLibrary.simpleMessage("Име на услугата"),
-        "nameOfncost": MessageLookupByLibrary.simpleMessage("Име на\\nЦена"),
+        "nameOfncost": MessageLookupByLibrary.simpleMessage("Име на\nЦена"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Нов клиент"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Нова парола"),
-        "newnclient": MessageLookupByLibrary.simpleMessage("Нов\\nклиент"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Нов\\nCus"),
+        "newnclient": MessageLookupByLibrary.simpleMessage("Нов\nклиент"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Нов\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("не не"),
         "noData": MessageLookupByLibrary.simpleMessage("Няма данни"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Няма намерени данни"),
         "noEmployeeFoundnpleaseAddANewEmployee":
             MessageLookupByLibrary.simpleMessage(
-                "Няма намерен служител\\nМоля, добавете нов служител."),
-        "noNewnclient":
-            MessageLookupByLibrary.simpleMessage("Не. Нов\\nклиент"),
-        "noOfnservices": MessageLookupByLibrary.simpleMessage("Брой\\nуслуги"),
-        "noRegnclient":
-            MessageLookupByLibrary.simpleMessage("No. Reg\\nClient"),
+                "Няма намерен служител\nМоля, добавете нов служител."),
+        "noNewnclient": MessageLookupByLibrary.simpleMessage("Не. Нов\nклиент"),
+        "noOfnservices": MessageLookupByLibrary.simpleMessage("Брой\nуслуги"),
+        "noRegnclient": MessageLookupByLibrary.simpleMessage("No. Reg\nClient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
-                "Няма намерени услуги\\nМоля, добавете нова услуга"),
+                "Няма намерени услуги\nМоля, добавете нова услуга"),
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Няма мерна единица"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Неограничено"),
-        "numOfnservices": MessageLookupByLibrary.simpleMessage("Брой\\nуслуги"),
+        "numOfnservices": MessageLookupByLibrary.simpleMessage("Брой\nуслуги"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Брой услуги за месеца"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Брой единици"),
@@ -228,12 +226,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Правила за поверителност"),
         "regnclient":
-            MessageLookupByLibrary.simpleMessage("Регистрационен\\nклиент"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Reg\\nCus"),
+            MessageLookupByLibrary.simpleMessage("Регистрационен\nклиент"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Reg\nCus"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Редовен клиент"),
         "relatedncategories":
-            MessageLookupByLibrary.simpleMessage("Свързани\\nкатегории"),
+            MessageLookupByLibrary.simpleMessage("Свързани\nкатегории"),
         "reloadApp": MessageLookupByLibrary.simpleMessage(
             "Презареждане на приложението"),
         "repetitionInterval":
@@ -257,7 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Избор на категории"),
         "selectCategoriesFromTheListnmaybeSeveral":
             MessageLookupByLibrary.simpleMessage(
-                "Изберете категории от списъка\\n(може няколко)"),
+                "Изберете категории от списъка\n(може няколко)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Изберете категория"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Избор на език"),
@@ -282,7 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Систематични разходи"),
         "systematicnexpenditure":
-            MessageLookupByLibrary.simpleMessage("Систmatic\\nРазходи"),
+            MessageLookupByLibrary.simpleMessage("Систmatic\nРазходи"),
         "to": MessageLookupByLibrary.simpleMessage("тото"),
         "total": MessageLookupByLibrary.simpleMessage("Общо"),
         "totalPercentagePerMonth":

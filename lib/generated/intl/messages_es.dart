@@ -61,7 +61,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "¡Copia de seguridad restaurada exitosamente!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Pago con Tarjeta: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Tarjeta\\nPagar"),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Tarjeta\nPagar"),
         "categories": MessageLookupByLibrary.simpleMessage("Categorías"),
         "category": MessageLookupByLibrary.simpleMessage("Categoría:"),
         "categoryName":
@@ -86,8 +86,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Rastreador de Costos"),
         "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
             "Crear o seleccionar una categoría"),
-        "customerndata":
-            MessageLookupByLibrary.simpleMessage("Cliente\\nDatos"),
+        "customerndata": MessageLookupByLibrary.simpleMessage("Cliente\nDatos"),
         "dataBackup":
             MessageLookupByLibrary.simpleMessage("Copia de seguridad de datos"),
         "date": MessageLookupByLibrary.simpleMessage("Fecha: "),
@@ -95,7 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Deducir del IMPUESTO"),
         "deductednfromTax":
-            MessageLookupByLibrary.simpleMessage("Deducido\\nDe IMPUESTOS"),
+            MessageLookupByLibrary.simpleMessage("Deducido\nDe IMPUESTOS"),
         "deleteCategory":
             MessageLookupByLibrary.simpleMessage("Eliminar categoría"),
         "deleteCost": MessageLookupByLibrary.simpleMessage("Eliminar Costo"),
@@ -113,7 +112,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Porcentaje de empleados"),
         "employeendata":
-            MessageLookupByLibrary.simpleMessage("Empleado\\nDatos"),
+            MessageLookupByLibrary.simpleMessage("Empleado\nDatos"),
         "employees": MessageLookupByLibrary.simpleMessage("Empleados"),
         "enterCategoryName": MessageLookupByLibrary.simpleMessage(
             "Ingrese el nombre de la categoría"),
@@ -157,7 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Apellido del Cliente"),
         "limited": MessageLookupByLibrary.simpleMessage("Limitado"),
         "login": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
-        "masternname": MessageLookupByLibrary.simpleMessage("Maestro\\nNombre"),
+        "masternname": MessageLookupByLibrary.simpleMessage("Maestro\nNombre"),
         "masters": MessageLookupByLibrary.simpleMessage("Maestros"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Precio máximo"),
         "minPrice": MessageLookupByLibrary.simpleMessage("Precio mínimo"),
@@ -170,32 +169,32 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfTheService":
             MessageLookupByLibrary.simpleMessage("Nombre del Servicio"),
         "nameOfncost":
-            MessageLookupByLibrary.simpleMessage("Nombre del\\nCosto"),
+            MessageLookupByLibrary.simpleMessage("Nombre del\nCosto"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Nuevo Cliente"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nueva Contraseña"),
-        "newnclient": MessageLookupByLibrary.simpleMessage("Nuevo\\nCliente"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Nuevo\\nCus"),
+        "newnclient": MessageLookupByLibrary.simpleMessage("Nuevo\nCliente"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Nuevo\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("no"),
         "noData": MessageLookupByLibrary.simpleMessage("Sin datos"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("No se encontraron datos"),
         "noEmployeeFoundnpleaseAddANewEmployee":
             MessageLookupByLibrary.simpleMessage(
-                "No se encontró ningún empleado\\nPor favor agregue un nuevo empleado."),
+                "No se encontró ningún empleado\nPor favor agregue un nuevo empleado."),
         "noNewnclient":
-            MessageLookupByLibrary.simpleMessage("Nº Nuevo\\nCliente"),
+            MessageLookupByLibrary.simpleMessage("Nº Nuevo\nCliente"),
         "noOfnservices":
-            MessageLookupByLibrary.simpleMessage("Nº de\\nservicios"),
+            MessageLookupByLibrary.simpleMessage("Nº de\nservicios"),
         "noRegnclient":
-            MessageLookupByLibrary.simpleMessage("No. Reg\\nCliente"),
+            MessageLookupByLibrary.simpleMessage("No. Reg\nCliente"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
-                "No se encontraron servicios\\nPor favor agregue un nuevo servicio"),
+                "No se encontraron servicios\nPor favor agregue un nuevo servicio"),
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Sin unidad de medida"),
         "notLimited": MessageLookupByLibrary.simpleMessage("No limitado"),
         "numOfnservices":
-            MessageLookupByLibrary.simpleMessage("Núm. de\\nServicios"),
+            MessageLookupByLibrary.simpleMessage("Núm. de\nServicios"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Número de servicios por mes"),
         "numberOfUnits":
@@ -225,12 +224,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceRange": MessageLookupByLibrary.simpleMessage("Rango de precios"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Política de privacidad"),
-        "regnclient": MessageLookupByLibrary.simpleMessage("Reg\\nCliente"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Reg\\nCus"),
+        "regnclient": MessageLookupByLibrary.simpleMessage("Reg\nCliente"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Reg\nCus"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Cliente habitual"),
         "relatedncategories":
-            MessageLookupByLibrary.simpleMessage("Categorías\\nrelacionadas"),
+            MessageLookupByLibrary.simpleMessage("Categorías\nrelacionadas"),
         "reloadApp":
             MessageLookupByLibrary.simpleMessage("Recargar aplicación"),
         "repetitionInterval":
@@ -253,7 +252,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Seleccionar categorías"),
         "selectCategoriesFromTheListnmaybeSeveral":
             MessageLookupByLibrary.simpleMessage(
-                "Seleccione categorías de la lista\\n(tal vez varias)"),
+                "Seleccione categorías de la lista\n(tal vez varias)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Seleccionar categoría"),
         "selectLanguage":
@@ -280,7 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Gasto sistemático"),
         "systematicnexpenditure":
-            MessageLookupByLibrary.simpleMessage("Sistemamatic\\nGasto"),
+            MessageLookupByLibrary.simpleMessage("Sistemamatic\nGasto"),
         "to": MessageLookupByLibrary.simpleMessage("A"),
         "total": MessageLookupByLibrary.simpleMessage("total"),
         "totalPercentagePerMonth":

@@ -443,7 +443,7 @@ class S {
   /// `Select Categories from the list\n(maybe several)`
   String get selectCategoriesFromTheListnmaybeSeveral {
     return Intl.message(
-      'Select Categories from the list\\n(maybe several)',
+      'Select Categories from the list\n(maybe several)',
       name: 'selectCategoriesFromTheListnmaybeSeveral',
       desc: '',
       args: [],
@@ -1203,7 +1203,7 @@ class S {
   /// `No Employee Found\nPlease add a new employee.`
   String get noEmployeeFoundnpleaseAddANewEmployee {
     return Intl.message(
-      'No Employee Found\\nPlease add a new employee.',
+      'No Employee Found\nPlease add a new employee.',
       name: 'noEmployeeFoundnpleaseAddANewEmployee',
       desc: '',
       args: [],
@@ -1353,7 +1353,7 @@ class S {
   /// `Name of\nCost`
   String get nameOfncost {
     return Intl.message(
-      'Name of\\nCost',
+      'Name of\nCost',
       name: 'nameOfncost',
       desc: '',
       args: [],
@@ -1363,7 +1363,7 @@ class S {
   /// `Related\nCategories`
   String get relatedncategories {
     return Intl.message(
-      'Related\\nCategories',
+      'Related\nCategories',
       name: 'relatedncategories',
       desc: '',
       args: [],
@@ -1373,7 +1373,7 @@ class S {
   /// `Deducted\nFrom TAX`
   String get deductednfromTax {
     return Intl.message(
-      'Deducted\\nFrom TAX',
+      'Deducted\nFrom TAX',
       name: 'deductednfromTax',
       desc: '',
       args: [],
@@ -1383,7 +1383,7 @@ class S {
   /// `Systematic\nExpenditure`
   String get systematicnexpenditure {
     return Intl.message(
-      'Systematic\\nExpenditure',
+      'Systematic\nExpenditure',
       name: 'systematicnexpenditure',
       desc: '',
       args: [],
@@ -1423,7 +1423,7 @@ class S {
   /// `Reg\nCus`
   String get regncus {
     return Intl.message(
-      'Reg\\nCus',
+      'Reg\nCus',
       name: 'regncus',
       desc: '',
       args: [],
@@ -1433,7 +1433,7 @@ class S {
   /// `Card\nPay`
   String get cardnpay {
     return Intl.message(
-      'Card\\nPay',
+      'Card\nPay',
       name: 'cardnpay',
       desc: '',
       args: [],
@@ -1443,7 +1443,7 @@ class S {
   /// `Employee\nData`
   String get employeendata {
     return Intl.message(
-      'Employee\\nData',
+      'Employee\nData',
       name: 'employeendata',
       desc: '',
       args: [],
@@ -1453,7 +1453,7 @@ class S {
   /// `Customer\nData`
   String get customerndata {
     return Intl.message(
-      'Customer\\nData',
+      'Customer\nData',
       name: 'customerndata',
       desc: '',
       args: [],
@@ -1463,7 +1463,7 @@ class S {
   /// `New\nCus`
   String get newncus {
     return Intl.message(
-      'New\\nCus',
+      'New\nCus',
       name: 'newncus',
       desc: '',
       args: [],
@@ -1543,7 +1543,7 @@ class S {
   /// `No Services Found\nPlease add a new service`
   String get noServicesFoundnpleaseAddANewService {
     return Intl.message(
-      'No Services Found\\nPlease add a new service',
+      'No Services Found\nPlease add a new service',
       name: 'noServicesFoundnpleaseAddANewService',
       desc: '',
       args: [],
@@ -1663,7 +1663,7 @@ class S {
   /// `Master\nName`
   String get masternname {
     return Intl.message(
-      'Master\\nName',
+      'Master\nName',
       name: 'masternname',
       desc: '',
       args: [],
@@ -1673,7 +1673,7 @@ class S {
   /// `No. Reg\nClient`
   String get noRegnclient {
     return Intl.message(
-      'No. Reg\\nClient',
+      'No. Reg\nClient',
       name: 'noRegnclient',
       desc: '',
       args: [],
@@ -1683,7 +1683,7 @@ class S {
   /// `No. New\nClient`
   String get noNewnclient {
     return Intl.message(
-      'No. New\\nClient',
+      'No. New\nClient',
       name: 'noNewnclient',
       desc: '',
       args: [],
@@ -1693,7 +1693,7 @@ class S {
   /// `No of\nservices`
   String get noOfnservices {
     return Intl.message(
-      'No of\\nservices',
+      'No of\nservices',
       name: 'noOfnservices',
       desc: '',
       args: [],
@@ -1713,7 +1713,7 @@ class S {
   /// `New\nClient`
   String get newnclient {
     return Intl.message(
-      'New\\nClient',
+      'New\nClient',
       name: 'newnclient',
       desc: '',
       args: [],
@@ -1723,7 +1723,7 @@ class S {
   /// `Reg\nClient`
   String get regnclient {
     return Intl.message(
-      'Reg\\nClient',
+      'Reg\nClient',
       name: 'regnclient',
       desc: '',
       args: [],
@@ -1733,7 +1733,7 @@ class S {
   /// `Num. of\nServices`
   String get numOfnservices {
     return Intl.message(
-      'Num. of\\nServices',
+      'Num. of\nServices',
       name: 'numOfnservices',
       desc: '',
       args: [],

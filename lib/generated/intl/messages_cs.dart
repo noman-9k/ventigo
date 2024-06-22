@@ -60,7 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Záloha byla úspěšně obnovena!"),
         "cancel": MessageLookupByLibrary.simpleMessage("Zrušit"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Platba kartou: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\\nZaplatit"),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZaplatit"),
         "categories": MessageLookupByLibrary.simpleMessage("kategorie"),
         "category": MessageLookupByLibrary.simpleMessage("kategorie: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Název kategorie"),
@@ -84,14 +84,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sledování nákladů"),
         "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
             "Vytvořit nebo vybrat kategorii"),
-        "customerndata":
-            MessageLookupByLibrary.simpleMessage("Zákazník\\nData"),
+        "customerndata": MessageLookupByLibrary.simpleMessage("Zákazník\nData"),
         "dataBackup": MessageLookupByLibrary.simpleMessage("Zálohování dat"),
         "date": MessageLookupByLibrary.simpleMessage("Datum: "),
         "dates": MessageLookupByLibrary.simpleMessage("Data"),
         "deductFromTax": MessageLookupByLibrary.simpleMessage("Odečíst z DANĚ"),
         "deductednfromTax":
-            MessageLookupByLibrary.simpleMessage("Odečteno\\nZ DANĚ"),
+            MessageLookupByLibrary.simpleMessage("Odečteno\nZ DANĚ"),
         "deleteCategory":
             MessageLookupByLibrary.simpleMessage("Smazat kategorii"),
         "deleteCost": MessageLookupByLibrary.simpleMessage("Smazat cenu"),
@@ -108,7 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Procento zaměstnance"),
         "employeendata":
-            MessageLookupByLibrary.simpleMessage("Zaměstnanec\\nData"),
+            MessageLookupByLibrary.simpleMessage("Zaměstnanec\nData"),
         "employees": MessageLookupByLibrary.simpleMessage("Zaměstnanci"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Zadejte název kategorie"),
@@ -150,7 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Příjmení klienta"),
         "limited": MessageLookupByLibrary.simpleMessage("Limited"),
         "login": MessageLookupByLibrary.simpleMessage("Přihlásit se"),
-        "masternname": MessageLookupByLibrary.simpleMessage("Mistr\\nJméno"),
+        "masternname": MessageLookupByLibrary.simpleMessage("Mistr\nJméno"),
         "masters": MessageLookupByLibrary.simpleMessage("Mistři"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Maximální cena"),
         "minPrice": MessageLookupByLibrary.simpleMessage("Minimální cena"),
@@ -160,31 +159,29 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfExpense": MessageLookupByLibrary.simpleMessage("Název výdaje"),
         "nameOfTheService":
             MessageLookupByLibrary.simpleMessage("Název služby"),
-        "nameOfncost": MessageLookupByLibrary.simpleMessage("Název\\nCena"),
+        "nameOfncost": MessageLookupByLibrary.simpleMessage("Název\nCena"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Nový zákazník"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nové heslo"),
-        "newnclient": MessageLookupByLibrary.simpleMessage("Nový\\nKlient"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Nový\\nCus"),
+        "newnclient": MessageLookupByLibrary.simpleMessage("Nový\nKlient"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Nový\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("Ne"),
         "noData": MessageLookupByLibrary.simpleMessage("Žádná data"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Nebyla nalezena žádná data"),
         "noEmployeeFoundnpleaseAddANewEmployee":
             MessageLookupByLibrary.simpleMessage(
-                "Nenalezen žádný zaměstnanec\\nPřidejte prosím nového zaměstnance."),
+                "Nenalezen žádný zaměstnanec\nPřidejte prosím nového zaměstnance."),
         "noNewnclient":
-            MessageLookupByLibrary.simpleMessage("Ne. Nový\\nKlient"),
-        "noOfnservices": MessageLookupByLibrary.simpleMessage("Počet\\nslužeb"),
-        "noRegnclient":
-            MessageLookupByLibrary.simpleMessage("Ne. Reg\\nKlient"),
+            MessageLookupByLibrary.simpleMessage("Ne. Nový\nKlient"),
+        "noOfnservices": MessageLookupByLibrary.simpleMessage("Počet\nslužeb"),
+        "noRegnclient": MessageLookupByLibrary.simpleMessage("Ne. Reg\nKlient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
-                "Nenalezeny žádné služby\\nPřidejte prosím novou službu"),
+                "Nenalezeny žádné služby\nPřidejte prosím novou službu"),
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Žádná jednotka měření"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Bez omezení"),
-        "numOfnservices":
-            MessageLookupByLibrary.simpleMessage("Počet\\nSlužeb"),
+        "numOfnservices": MessageLookupByLibrary.simpleMessage("Počet\nSlužeb"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Počet služeb za měsíc"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Počet jednotek"),
@@ -210,12 +207,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceRange": MessageLookupByLibrary.simpleMessage("Cenový rozsah"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage(
             "Zásady ochrany osobních údajů"),
-        "regnclient": MessageLookupByLibrary.simpleMessage("Reg\\nKlient"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Reg\\nCus"),
+        "regnclient": MessageLookupByLibrary.simpleMessage("Reg\nKlient"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Reg\nCus"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Běžný zákazník"),
         "relatedncategories":
-            MessageLookupByLibrary.simpleMessage("Související\\nkategorie"),
+            MessageLookupByLibrary.simpleMessage("Související\nkategorie"),
         "reloadApp":
             MessageLookupByLibrary.simpleMessage("Znovu načíst aplikaci"),
         "repetitionInterval":
@@ -238,7 +235,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Vyberte kategorie"),
         "selectCategoriesFromTheListnmaybeSeveral":
             MessageLookupByLibrary.simpleMessage(
-                "Vyberte kategorie ze seznamu\\n(možná několik)"),
+                "Vyberte kategorie ze seznamu\n(možná několik)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Vyberte kategorii"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Vybrat jazyk"),
@@ -262,7 +259,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Systematické výdaje"),
         "systematicnexpenditure":
-            MessageLookupByLibrary.simpleMessage("Systmatic\\nVýdaje"),
+            MessageLookupByLibrary.simpleMessage("Systmatic\nVýdaje"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "total": MessageLookupByLibrary.simpleMessage("Celkem"),
         "totalPercentagePerMonth":
