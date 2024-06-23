@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Ниво на достъп"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Първо добавяне на категория"),
         "addCost": MessageLookupByLibrary.simpleMessage("Добавяне на цена"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Добавяне на служител"),
@@ -58,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Сигурни ли сте, че искате да изтриете тази услуга?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Сигурни ли сте? Искате да излезете от приложението."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Сигурни ли сте? Искате да излезете."),
         "backupData":
             MessageLookupByLibrary.simpleMessage("Архивиране на данни"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -139,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Въведете вашето име"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Въведете вашата парола"),
+        "error": MessageLookupByLibrary.simpleMessage("Грешка"),
         "everyDay": MessageLookupByLibrary.simpleMessage("Всеки ден"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Всеки месец"),
         "everyQuarter":
@@ -155,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забравена парола?"),
         "from": MessageLookupByLibrary.simpleMessage("От"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Графики"),
         "hello": MessageLookupByLibrary.simpleMessage(" Здравей, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправилен отговор"),
@@ -167,6 +173,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Фамилия на клиента"),
         "limited": MessageLookupByLibrary.simpleMessage("Ограничен"),
         "login": MessageLookupByLibrary.simpleMessage("Вход"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "Потребителското име или паролата са неправилни"),
+        "logout": MessageLookupByLibrary.simpleMessage("Изход"),
         "masternname": MessageLookupByLibrary.simpleMessage("Главно\nиме"),
         "masters": MessageLookupByLibrary.simpleMessage("Майстори"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Максимална цена"),
@@ -211,6 +220,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефонен номер"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Моля, първо добавете категория, за да добавите служител"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Моля, попълнете полето за отговор"),
         "pleaseSelectAQuestion":
@@ -237,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Интервал на повторение"),
         "report": MessageLookupByLibrary.simpleMessage("Доклад: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Отчети"),
         "reportssalesTracker": MessageLookupByLibrary.simpleMessage(
             "Отчети/Проследяване на продажби"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Нулирайте тук"),
@@ -244,6 +257,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Възстановяване на данни"),
         "restoringDatabase": MessageLookupByLibrary.simpleMessage(
             "Възстановява се база данни..."),
+        "results": MessageLookupByLibrary.simpleMessage("Резултати"),
         "sales": MessageLookupByLibrary.simpleMessage("Продажби"),
         "save": MessageLookupByLibrary.simpleMessage("Запазване"),
         "saveEmployee":

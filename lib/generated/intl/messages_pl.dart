@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Poziom dostępu"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Najpierw dodaj kategorię"),
         "addCost": MessageLookupByLibrary.simpleMessage("Dodaj koszt"),
         "addEmployee": MessageLookupByLibrary.simpleMessage("Dodaj pracownika"),
         "addReport": MessageLookupByLibrary.simpleMessage("Dodaj raport"),
@@ -54,6 +56,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Czy na pewno chcesz usunąć tę usługę?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Czy jesteś pewien? Chcesz wyjść z aplikacji."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Czy jesteś pewien? Chcesz się wylogować."),
         "backupData":
             MessageLookupByLibrary.simpleMessage("Kopia zapasowa danych"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -126,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wpisz swoje imię"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Wprowadź swoje hasło"),
+        "error": MessageLookupByLibrary.simpleMessage("Błąd"),
         "everyDay": MessageLookupByLibrary.simpleMessage("każdego dnia"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Co miesiąc"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Co kwartał"),
@@ -140,6 +145,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomniałeś hasła?"),
         "from": MessageLookupByLibrary.simpleMessage("od"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Grafika"),
         "hello": MessageLookupByLibrary.simpleMessage("cześć cześć, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Niepoprawna odpowiedź"),
@@ -151,6 +157,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwisko Klienta"),
         "limited": MessageLookupByLibrary.simpleMessage("ograniczony"),
         "login": MessageLookupByLibrary.simpleMessage("Zaloguj się"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "Login lub hasło są nieprawidłowe"),
+        "logout": MessageLookupByLibrary.simpleMessage("Wyloguj się"),
         "masternname": MessageLookupByLibrary.simpleMessage("Master\nNazwa"),
         "masters": MessageLookupByLibrary.simpleMessage("mistrzowie"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Cena maksymalna"),
@@ -221,12 +230,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Interwał powtórzeń"),
         "report": MessageLookupByLibrary.simpleMessage("Raport: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Raporty"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Monitor raportów/sprzedaży"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Zresetuj tutaj"),
         "restoreData": MessageLookupByLibrary.simpleMessage("Przywróć dane"),
         "restoringDatabase":
             MessageLookupByLibrary.simpleMessage("Przywracanie bazy danych..."),
+        "results": MessageLookupByLibrary.simpleMessage("Wyniki"),
         "sales": MessageLookupByLibrary.simpleMessage("sprzedaż"),
         "save": MessageLookupByLibrary.simpleMessage("Zapisz"),
         "saveEmployee":

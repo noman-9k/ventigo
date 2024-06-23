@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Access Level"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Add Category First"),
         "addCost": MessageLookupByLibrary.simpleMessage("Add Cost"),
         "addEmployee": MessageLookupByLibrary.simpleMessage("Add Employee"),
         "addReport": MessageLookupByLibrary.simpleMessage("Add Report"),
@@ -53,6 +55,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Are you sure you want to delete this service?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Are you sure? You want to exit the app."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure? You want to logout."),
         "backupData": MessageLookupByLibrary.simpleMessage("BackUp Data"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Backup restored successfully!"),
@@ -119,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your name"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
         "everyDay": MessageLookupByLibrary.simpleMessage("Every Day"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Every Month"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Every Quarter"),
@@ -132,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
         "from": MessageLookupByLibrary.simpleMessage("From"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Graphics"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Incorrect answer"),
@@ -143,6 +149,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Last Name of Client"),
         "limited": MessageLookupByLibrary.simpleMessage("Limited"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "Login or password is incorrect"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "masternname": MessageLookupByLibrary.simpleMessage("Master\nName"),
         "masters": MessageLookupByLibrary.simpleMessage("Masters"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Max Price"),
@@ -190,6 +199,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Percentage"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Please add a category first to add an employee"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Please fill in the answer field"),
         "pleaseSelectAQuestion":
@@ -213,12 +225,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Repetition Interval"),
         "report": MessageLookupByLibrary.simpleMessage("Report: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Reports"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Reports/Sales Tracker"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Reset here"),
         "restoreData": MessageLookupByLibrary.simpleMessage("Restore Data"),
         "restoringDatabase":
             MessageLookupByLibrary.simpleMessage("Restoring database..."),
+        "results": MessageLookupByLibrary.simpleMessage("Results"),
         "sales": MessageLookupByLibrary.simpleMessage("Sales"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "saveEmployee": MessageLookupByLibrary.simpleMessage("Save Employee"),

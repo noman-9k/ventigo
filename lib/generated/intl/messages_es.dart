@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Nivel de Acceso"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Agregar categoría primero"),
         "addCost": MessageLookupByLibrary.simpleMessage("Agregar Costo"),
         "addEmployee": MessageLookupByLibrary.simpleMessage("Agregar Empleado"),
         "addReport": MessageLookupByLibrary.simpleMessage("Agregar Informe"),
@@ -55,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "¿Está seguro de que desea eliminar este servicio?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "¿Estás seguro? Quieres salir de la aplicación."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "¿Estás seguro? Quieres cerrar sesión."),
         "backupData":
             MessageLookupByLibrary.simpleMessage("Datos de copia de seguridad"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -129,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ingresa tu nombre"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Ingrese su contraseña"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
         "everyDay": MessageLookupByLibrary.simpleMessage("todo el dia"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Cada mes"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Cada trimestre"),
@@ -144,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("¿Olvidaste tu contraseña?"),
         "from": MessageLookupByLibrary.simpleMessage("De"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Gráficos"),
         "hello": MessageLookupByLibrary.simpleMessage("Hola hola"),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Respuesta incorrecta"),
@@ -156,6 +162,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Apellido del Cliente"),
         "limited": MessageLookupByLibrary.simpleMessage("Limitado"),
         "login": MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "El inicio de sesión o la contraseña son incorrectos"),
+        "logout": MessageLookupByLibrary.simpleMessage("Cerrar sesión"),
         "masternname": MessageLookupByLibrary.simpleMessage("Maestro\nNombre"),
         "masters": MessageLookupByLibrary.simpleMessage("Maestros"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Precio máximo"),
@@ -210,6 +219,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "phoneNumber":
             MessageLookupByLibrary.simpleMessage("Número de teléfono"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Agregue primero una categoría para agregar un empleado"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Por favor complete el campo de respuesta"),
         "pleaseSelectAQuestion": MessageLookupByLibrary.simpleMessage(
@@ -235,12 +247,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Intervalo de repetición"),
         "report": MessageLookupByLibrary.simpleMessage("Informe: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Informes"),
         "reportssalesTracker": MessageLookupByLibrary.simpleMessage(
             "Reportes/Rastreador de Ventas"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Restablecer aquí"),
         "restoreData": MessageLookupByLibrary.simpleMessage("Restaurar datos"),
         "restoringDatabase": MessageLookupByLibrary.simpleMessage(
             "Restaurando base de datos..."),
+        "results": MessageLookupByLibrary.simpleMessage("Resultados"),
         "sales": MessageLookupByLibrary.simpleMessage("Ventas"),
         "save": MessageLookupByLibrary.simpleMessage("Guardar"),
         "saveEmployee":

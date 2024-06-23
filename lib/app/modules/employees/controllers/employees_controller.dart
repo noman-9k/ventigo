@@ -52,6 +52,11 @@ class EmployeesController extends GetxController {
   viewEmployee(DbEmployee employee) async {
     Get.toNamed(Routes.ADD_EMPLOYE, arguments: employee);
   }
+
+  isCategoryPresent() async {
+    bool isPresent = await DbController.to.appDb.isCategoryPresent();
+    return isPresent;
+  }
 }
 
 class EmployeeSearchItem {

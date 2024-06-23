@@ -65,7 +65,7 @@ class EditReportController extends GetxController {
 
     DbDataItem newItem = DbDataItem(
       id: item.id,
-      name: nameController.text + ' ' + lastNameController.text,
+      name: nameController.text + '\n' + lastNameController.text,
       phone: phoneController.text,
       // price: double.parse(priceController.text),
       price: item.price,

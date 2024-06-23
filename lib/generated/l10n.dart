@@ -1759,6 +1759,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Please add a category first to add an employee`
+  String get pleaseAddACategoryFirstToAddAnEmployee {
+    return Intl.message(
+      'Please add a category first to add an employee',
+      name: 'pleaseAddACategoryFirstToAddAnEmployee',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Category First`
+  String get addCategoryFirst {
+    return Intl.message(
+      'Add Category First',
+      name: 'addCategoryFirst',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure? You want to logout.`
+  String get areYouSureYouWantToLogout {
+    return Intl.message(
+      'Are you sure? You want to logout.',
+      name: 'areYouSureYouWantToLogout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Graphics`
+  String get graphics {
+    return Intl.message(
+      'Graphics',
+      name: 'graphics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Results`
+  String get results {
+    return Intl.message(
+      'Results',
+      name: 'results',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get reports {
+    return Intl.message(
+      'Reports',
+      name: 'reports',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login or password is incorrect`
+  String get loginOrPasswordIsIncorrect {
+    return Intl.message(
+      'Login or password is incorrect',
+      name: 'loginOrPasswordIsIncorrect',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

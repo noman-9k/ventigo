@@ -39,7 +39,7 @@ class UserDataView extends GetView<UserDataController> {
       //   add: () => Get.toNamed(Routes.ADD_REPORT),
       // ),
       appBar: AppAppBar(
-        onBack: () => controller.logout(context),
+        // onBack: () => controller.logout(context),
         title:
             'Hello, ' + (EmployeeService.to.employee?.value.name ?? 'Walker!'),
       ),

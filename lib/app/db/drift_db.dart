@@ -196,6 +196,10 @@ class AppDb extends _$AppDb {
   Future updateDataItem(DbDataItem dataItem) =>
       update(dbDataItems).replace(dataItem);
 
+  Future<List<DbDataItem>> getAllDataItemsF() => select(dbDataItems).get();
+  Future<DbDataItem> getDataItemById(int id) =>
+      (select(dbDataItems)..where((tbl) => tbl.id.equals(id))).getSingle();
+
   Stream<List<DbDataItem>> getAllDataItems(
           {DateTime? fromDate, DateTime? toDate}) =>
       (select(dbDataItems)
@@ -209,6 +213,7 @@ class AppDb extends _$AppDb {
                 tbl.date.isSmallerOrEqualValue(
                     toDate ?? DateTime.now().add(Duration(days: 3600)))))
           .watch();
+
   Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
       (select(dbDataItems)
             ..where((tbl) => tbl.employeeId.equals(id))
@@ -377,6 +382,18 @@ class AppDb extends _$AppDb {
     return costs.map((e) => e.price).toList().sumAll();
   }
 
+  Future<double> getCostsByDateRange(
+      DateTime? fromDate, DateTime? toDate) async {
+    if (fromDate == null || toDate == null) return 0;
+    final costs = await (select(dbCosts)
+          ..where((tbl) =>
+              tbl.date.isBiggerOrEqualValue(fromDate) &
+              tbl.date.isSmallerOrEqualValue(toDate)))
+        .get();
+
+    return costs.map((e) => e.price).toList().sumAll();
+  }
+
   Future<List<StatResultModel>> getNewStatisticsReports(
       {DateTime? fromDate, DateTime? toDate}) async {
     fromDate = fromDate ?? DateTime.now().subtract(Duration(days: 3600));
@@ -428,6 +445,8 @@ class AppDb extends _$AppDb {
           'SELECT service_id as totalServices FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).get();
 
+      final shopCost = await getCostsByDateRange(fromDate, toDate);
+
       final date = e.read(dbDataItems.date);
 
       final List<int> allServicesIdsList = allServicesIds
@@ -435,8 +454,8 @@ class AppDb extends _$AppDb {
           .toList()
           .cast<int>();
 
-      log('allServicesIdsList: $allServicesIdsList');
       final sumAllTheCosts = await sumAllPrices(allServicesIdsList);
+
       //   log('Date: ${date}');
       //   log('EmployeeName: ${employeeName}');
       //   log('totalPrice: ${totalPrice.data['totalPrice']}');
@@ -457,6 +476,7 @@ class AppDb extends _$AppDb {
           noRegCustomer: totalRegCus.data['newCus'],
           noNewCustomer: totalNewCus.data['newCus'],
           totalServices: totalServices.data['totalServices'],
+          shopCost: shopCost,
           totalCost: sumAllTheCosts,
           percentage: double.tryParse(
                   (double.tryParse(totalPrice.data['totalPrice'].toString()) ??
@@ -594,6 +614,13 @@ class AppDb extends _$AppDb {
           ..where((tbl) => tbl.id.equals(serviceId)))
         .getSingle();
     return query.price ?? 0.0;
+  }
+
+  Future<bool> isCategoryPresent() {
+    return dbCategories.count().getSingle().then((value) {
+      log('value: $value');
+      return value > 0;
+    });
   }
 }
 

@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Уровень доступа"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Сначала добавьте категорию"),
         "addCost": MessageLookupByLibrary.simpleMessage("Добавить стоимость"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Добавить сотрудника"),
@@ -56,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Вы уверены, что хотите удалить эту службу?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Вы уверены? Вы хотите выйти из приложения."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Вы уверены? Вы хотите выйти из системы."),
         "backupData": MessageLookupByLibrary.simpleMessage("Резервные данные"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервная копия успешно восстановлена!"),
@@ -131,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введите свое имя"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Введите свой пароль"),
+        "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "everyDay": MessageLookupByLibrary.simpleMessage("каждый день"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Каждый месяц"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Каждый квартал"),
@@ -145,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("От"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Графика"),
         "hello": MessageLookupByLibrary.simpleMessage("привет, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильный ответ"),
@@ -156,6 +162,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Фамилия клиента"),
         "limited": MessageLookupByLibrary.simpleMessage("Ограничено"),
         "login": MessageLookupByLibrary.simpleMessage("Войти"),
+        "loginOrPasswordIsIncorrect":
+            MessageLookupByLibrary.simpleMessage("Логин или пароль неверен"),
+        "logout": MessageLookupByLibrary.simpleMessage("Выход"),
         "masternname": MessageLookupByLibrary.simpleMessage("Мастер\nИмя"),
         "masters": MessageLookupByLibrary.simpleMessage("Мастера"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Максимальная цена"),
@@ -205,6 +214,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Чтобы добавить сотрудника, сначала добавьте категорию"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, заполните поле ответа"),
         "pleaseSelectAQuestion":
@@ -229,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Интервал повторения"),
         "report": MessageLookupByLibrary.simpleMessage("Отчет: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Отчеты"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Отчеты/Отслеживание продаж"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Сбросить здесь"),
@@ -236,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Восстановить данные"),
         "restoringDatabase": MessageLookupByLibrary.simpleMessage(
             "Восстановление базы данных..."),
+        "results": MessageLookupByLibrary.simpleMessage("Результаты"),
         "sales": MessageLookupByLibrary.simpleMessage("Продажи"),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "saveEmployee":

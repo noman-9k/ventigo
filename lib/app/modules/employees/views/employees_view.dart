@@ -22,14 +22,20 @@ class EmployeesView extends GetView<EmployeesController> {
         padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
-          onPressed: () => Get.toNamed(Routes.ADD_EMPLOYE),
+          onPressed: () async {
+            bool isCategoryPresent = await controller.isCategoryPresent();
+            isCategoryPresent
+                ? Get.toNamed(Routes.ADD_EMPLOYE)
+                : Get.snackbar(S.of(context).addCategoryFirst,
+                    S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
+          },
           child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),
       ),
       appBar: AppBar(
-        leading: LogoutButton(),
         title: AppText.boldText(S.of(context).employees, fontSize: 20),
         automaticallyImplyLeading: false,
+        actions: [LogoutButton()],
       ),
       body: Padding(
         padding: AppConstants.defaultPadding,
@@ -59,8 +65,11 @@ class EmployeesView extends GetView<EmployeesController> {
               }
               return SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     10.verticalSpace,
+                    AppText.lightBoldText(S.of(context).search),
+                    SizedBox(height: 5),
                     AppSearchField(
                       label: S.of(context).search,
                       fetchData: () => controller.getEmployeesSearchList(),

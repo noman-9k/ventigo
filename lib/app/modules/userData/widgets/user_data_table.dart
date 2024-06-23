@@ -54,6 +54,12 @@ class UserDataTable extends StatelessWidget {
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
+                      child: Text(S.of(context).phone,
+                          style: headerStyle, textAlign: TextAlign.center),
+                    ),
+                    size: ColumnSize.L),
+                DataColumn2(
+                    label: Center(
                         child: Text(S.of(context).date, style: headerStyle)),
                     fixedWidth: 100),
                 DataColumn2(
@@ -111,6 +117,12 @@ class UserDataTable extends StatelessWidget {
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
                         DataCell(Text(tableItem.name ?? S.of(context).noData)),
+                        DataCell(FittedBox(
+                            fit: BoxFit.fitHeight,
+                            child: Text('__' +
+                                tableItem.phone.toString().substring(
+                                    tableItem.phone.toString().length - 3,
+                                    tableItem.phone.toString().length)))),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -143,28 +155,6 @@ class UserDataTable extends StatelessWidget {
                             FittedBox(child: Text('${tableItem.price}')),
                             Divider(height: 4, endIndent: 8, indent: 8),
                             FittedBox(child: Text('${tableItem.total}')),
-
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           snapshot.data.toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                         DataCell(Column(
@@ -175,37 +165,6 @@ class UserDataTable extends StatelessWidget {
                             Divider(height: 4, endIndent: 8, indent: 8),
                             Text(tableItem.total!
                                 .percentageOf(tableItem.percentage)),
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.price)
-                            //     .toString()),
-                            // Divider(height: 4, endIndent: 8, indent: 8),
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.total)
-                            //     .toString()),
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           EmployeeService.to
-                            //               .getEmployeePercentageOf(
-                            //                   snapshot.data)
-                            //               .toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                       ],

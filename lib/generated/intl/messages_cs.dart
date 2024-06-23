@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Úroveň přístupu"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Nejprve přidat kategorii"),
         "addCost": MessageLookupByLibrary.simpleMessage("Přidat cenu"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Přidat zaměstnance"),
@@ -55,6 +57,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Opravdu chcete smazat tuto službu?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Jste si jistý? Chcete aplikaci ukončit."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Jste si jistý? Chcete se odhlásit."),
         "backupData": MessageLookupByLibrary.simpleMessage("Zálohování dat"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Záloha byla úspěšně obnovena!"),
@@ -124,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zadejte své jméno"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Zadejte své heslo"),
+        "error": MessageLookupByLibrary.simpleMessage("Chyba"),
         "everyDay": MessageLookupByLibrary.simpleMessage("Každý den"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Každý měsíc"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Každé čtvrtletí"),
@@ -138,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Zapomněli jste heslo?"),
         "from": MessageLookupByLibrary.simpleMessage("Od"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Graphics"),
         "hello": MessageLookupByLibrary.simpleMessage("Ahoj ahoj, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Nesprávná odpověď"),
@@ -149,6 +155,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Příjmení klienta"),
         "limited": MessageLookupByLibrary.simpleMessage("Limited"),
         "login": MessageLookupByLibrary.simpleMessage("Přihlásit se"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "Přihlašovací jméno nebo heslo je nesprávné"),
+        "logout": MessageLookupByLibrary.simpleMessage("Odhlásit se"),
         "masternname": MessageLookupByLibrary.simpleMessage("Mistr\nJméno"),
         "masters": MessageLookupByLibrary.simpleMessage("Mistři"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Maximální cena"),
@@ -194,6 +203,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Procento"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonní číslo"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Pro přidání zaměstnance nejprve přidejte kategorii"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Vyplňte prosím pole pro odpověď"),
         "pleaseSelectAQuestion":
@@ -218,12 +230,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Interval opakování"),
         "report": MessageLookupByLibrary.simpleMessage("Report: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Reports"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Sledování přehledů/prodejů"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Resetovat zde"),
         "restoreData": MessageLookupByLibrary.simpleMessage("Obnovit data"),
         "restoringDatabase":
             MessageLookupByLibrary.simpleMessage("Obnovuji databázi..."),
+        "results": MessageLookupByLibrary.simpleMessage("Výsledky"),
         "sales": MessageLookupByLibrary.simpleMessage("Prodej"),
         "save": MessageLookupByLibrary.simpleMessage("Uložit"),
         "saveEmployee":

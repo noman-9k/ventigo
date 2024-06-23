@@ -26,8 +26,8 @@ class LoginController extends GetxController {
       Get.offAllNamed(Routes.USER_DATA);
     } else {
       Get.showSnackbar(GetSnackBar(
-        title: 'Error',
-        message: 'Login or password is incorrect',
+        title: S.current.error,
+        message: S.current.loginOrPasswordIsIncorrect,
       ));
     }
 

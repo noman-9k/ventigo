@@ -146,6 +146,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   return AppColors.lightYellow;
                 }),
                 columnSpacing: 10,
+                minWidth: 550,
                 horizontalMargin: 10,
                 columns: <DataColumn2>[
                   DataColumn2(
@@ -216,6 +217,17 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               '%',
+                              style: headerStyle,
+                              textAlign: TextAlign.center,
+                            )),
+                      ),
+                      size: ColumnSize.S),
+                  DataColumn2(
+                      label: Center(
+                        child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              'Profit',
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
@@ -306,7 +318,9 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].totalPrice.toString(),
+                                    (snapshot.data![index].totalPrice -
+                                            snapshot.data![index].totalCost)
+                                        .toString(),
                                     style: AppStyles.boldStyle(
                                         fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
@@ -319,6 +333,22 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   fit: BoxFit.fitWidth,
                                   child: Text(
                                     snapshot.data![index].percentage.toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    (snapshot.data![index].totalPrice -
+                                            snapshot.data![index].percentage -
+                                            snapshot.data![index].totalCost -
+                                            snapshot.data![index].shopCost!)
+                                        .toString(),
                                     style: AppStyles.boldStyle(
                                         fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
@@ -418,6 +448,20 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   // .percentageOf(
                                   //     snapshot.data![index].percentage)
                                   // .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  (snapshot.data![index].totalPrice -
+                                          snapshot.data![index].percentage -
+                                          snapshot.data![index].totalCost)
+                                      .toString(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),

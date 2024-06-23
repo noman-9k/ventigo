@@ -5,14 +5,17 @@ import 'package:ventigo/app/modules/common/logout_button.dart';
 import '../../../config/app_text.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const AppAppBar({super.key, required this.title, this.onBack});
+  const AppAppBar({super.key, required this.title, this.leading});
   final String title;
-  final Function()? onBack;
+  final Widget? leading;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: LogoutButton(),
+      leading: leading,
+      actions: [
+        LogoutButton(),
+      ],
       centerTitle: true,
       title: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -20,10 +23,10 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Spacer(),
+            Spacer(),
             CircleAvatar(child: FaIcon(FontAwesomeIcons.users, size: 20)),
             const SizedBox(width: 10),
             AppText.boldText(title),
-            Spacer(),
             Spacer(),
           ],
         ),

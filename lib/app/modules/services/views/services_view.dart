@@ -26,10 +26,10 @@ class ServicesView extends GetView<ServicesController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: LogoutButton(),
         title: AppText.boldText(S.of(context).services, fontSize: 20.sp),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        actions: [LogoutButton()],
       ),
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 90),
@@ -76,6 +76,8 @@ class ServicesView extends GetView<ServicesController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         20.verticalSpace,
+                        AppText.lightBoldText(S.of(context).search),
+                        SizedBox(height: 5),
                         AppSearchField(
                           label: S.of(context).search,
                           fetchData: () => controller.fetchData(),

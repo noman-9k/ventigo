@@ -22,7 +22,13 @@ class LoginView extends GetView<LoginController> {
         appBar: AppBar(
           actions: [
             IconButton(
-              icon: Icon(Icons.language_outlined),
+              icon: Row(
+                children: [
+                  Icon(Icons.language_outlined),
+                  10.horizontalSpace,
+                  AppText.boldText(controller.getCurrentFlag(), fontSize: 25),
+                ],
+              ),
               onPressed: () {
                 Get.dialog(AlertDialog(
                   title: AppText.boldText(S.of(context).selectLanguage),
@@ -45,7 +51,6 @@ class LoginView extends GetView<LoginController> {
                 ));
               },
             ),
-            AppText.boldText(controller.getCurrentFlag(), fontSize: 25),
             20.horizontalSpace
           ],
         ),
@@ -55,7 +60,7 @@ class LoginView extends GetView<LoginController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                80.verticalSpace,
+                40.verticalSpace,
                 Center(child: Image.asset(AppImages.logo)),
                 40.verticalSpace,
                 Center(

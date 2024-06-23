@@ -24,6 +24,7 @@ extension ListExtension on List<StatResultModel> {
         totalServices: 0,
         totalCost: 0.0,
         percentage: 0.0,
+        shopCost: 0.0,
         date: null,
       ),
       (totals, item) {
@@ -33,6 +34,7 @@ extension ListExtension on List<StatResultModel> {
         totals.totalServices += item.totalServices;
         totals.totalCost += item.totalCost;
         totals.percentage += item.percentage;
+        totals.shopCost = item.shopCost;
         return totals;
       },
     );

@@ -33,6 +33,31 @@ class AddReportController extends GetxController {
     super.onInit();
   }
 
+  Future<List> fetchDataName() async {
+    List<SearchItem> list = [];
+
+    List<DbDataItem> dataItems = await DbController.to.appDb.getAllDataItemsF();
+
+    dataItems.forEach((element) {
+      list.add(SearchItem(label: element.name!, value: element.id.toString()));
+    });
+
+    return list;
+  }
+
+  Future<List> fetchDataPhone() async {
+    List<SearchItem> list = [];
+
+    List<DbDataItem> dataItems = await DbController.to.appDb.getAllDataItemsF();
+
+    dataItems.forEach((element) {
+      list.add(
+          SearchItem(label: element.phone ?? "", value: element.id.toString()));
+    });
+
+    return list;
+  }
+
   onCategoryChanged(String? p1) {
     selectedCategory = null;
     update();
@@ -56,7 +81,7 @@ class AddReportController extends GetxController {
     int serviceId = selectedService!.id;
     int employeeId = EmployeeService.to.employee!.value.id;
     String name =
-        nameController.text.trim() + ' ' + lastNameController.text.trim();
+        nameController.text.trim() + '\n' + lastNameController.text.trim();
     String phone = phoneController.text.trim();
 
     double price = double.parse(priceController.text.trim());
@@ -81,5 +106,30 @@ class AddReportController extends GetxController {
     isLoading.value = false;
 
     Get.back();
+  }
+
+  onSearchItemChanged(SearchItem value) async {
+    log('Search item changed');
+    log('Value: ${value.value}');
+    int? itemId = int.tryParse(value.value);
+    if (itemId == null) {
+      return;
+    }
+
+    DbDataItem dataItems = await DbController.to.appDb.getDataItemById(itemId);
+
+    nameController.text = dataItems.name?.split('\n').first ?? "";
+    phoneController.text = dataItems.phone ?? "";
+    lastNameController.text = dataItems.name?.split('\n').last ?? "";
+  }
+}
+
+class SearchItem {
+  String label;
+  String value;
+  SearchItem({required this.label, required this.value});
+
+  factory SearchItem.fromJson(Map<String, dynamic> json) {
+    return SearchItem(label: json['label'], value: json['value']);
   }
 }

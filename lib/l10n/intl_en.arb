@@ -169,5 +169,14 @@
   "regnclient": "Reg\nClient",
   "numOfnservices": "Num. of\nServices",
   "costs": "costs",
-  "sales": "Sales"
+  "sales": "Sales",
+  "pleaseAddACategoryFirstToAddAnEmployee": "Please add a category first to add an employee",
+  "addCategoryFirst": "Add Category First",
+  "logout": "Logout",
+  "areYouSureYouWantToLogout": "Are you sure? You want to logout.",
+  "graphics": "Graphics",
+  "results": "Results",
+  "reports": "Reports",
+  "error": "Error",
+  "loginOrPasswordIsIncorrect": "Login or password is incorrect"
 }

@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Рівень доступу"),
+        "addCategoryFirst":
+            MessageLookupByLibrary.simpleMessage("Додати категорію спочатку"),
         "addCost": MessageLookupByLibrary.simpleMessage("Додати вартість"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Додати співробітника"),
@@ -58,6 +60,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Ви впевнені, що хочете видалити цю службу?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Ви впевнені? Ви хочете вийти з програми."),
+        "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Ви впевнені? Ви хочете вийти."),
         "backupData":
             MessageLookupByLibrary.simpleMessage("Резервне копіювання даних"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
@@ -132,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введіть своє ім\'я"),
         "enterYourPassword":
             MessageLookupByLibrary.simpleMessage("Введіть свій пароль"),
+        "error": MessageLookupByLibrary.simpleMessage("Помилка"),
         "everyDay": MessageLookupByLibrary.simpleMessage("Щодня"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Кожного місяця"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Кожен квартал"),
@@ -146,6 +151,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забули пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("Від"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Графіка"),
         "hello": MessageLookupByLibrary.simpleMessage(" привіт, "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильна відповідь"),
@@ -157,6 +163,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Прізвище клієнта"),
         "limited": MessageLookupByLibrary.simpleMessage("Обмежено"),
         "login": MessageLookupByLibrary.simpleMessage("Вхід"),
+        "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
+            "Логін або пароль неправильні"),
+        "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
         "masternname": MessageLookupByLibrary.simpleMessage("Головне\nім\'я"),
         "masters": MessageLookupByLibrary.simpleMessage("Майстри"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Максимальна ціна"),
@@ -204,6 +213,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Відсоток"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),
+        "pleaseAddACategoryFirstToAddAnEmployee":
+            MessageLookupByLibrary.simpleMessage(
+                "Спочатку додайте категорію, щоб додати працівника"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Будь ласка, заповніть поле відповіді"),
         "pleaseSelectAQuestion": MessageLookupByLibrary.simpleMessage(
@@ -229,12 +241,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "repetitionInterval":
             MessageLookupByLibrary.simpleMessage("Інтервал повторення"),
         "report": MessageLookupByLibrary.simpleMessage("Звіт: "),
+        "reports": MessageLookupByLibrary.simpleMessage("Звіти"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Звіти/відстеження продажів"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Скинути тут"),
         "restoreData": MessageLookupByLibrary.simpleMessage("Відновити дані"),
         "restoringDatabase":
             MessageLookupByLibrary.simpleMessage("Відновлення бази даних..."),
+        "results": MessageLookupByLibrary.simpleMessage("Результати"),
         "sales": MessageLookupByLibrary.simpleMessage("Продажі"),
         "save": MessageLookupByLibrary.simpleMessage("Зберегти"),
         "saveEmployee":

@@ -62,6 +62,12 @@ class ReportsTable extends GetView<MainController> {
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
+                      child: Text(S.of(context).phone,
+                          style: headerStyle, textAlign: TextAlign.center),
+                    ),
+                    size: ColumnSize.L),
+                DataColumn2(
+                    label: Center(
                         child: Text(S.of(context).date,
                             style: headerStyle, textAlign: TextAlign.center)),
                     fixedWidth: 100),
@@ -138,12 +144,20 @@ class ReportsTable extends GetView<MainController> {
                                     S.of(context).noData)))),
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
+                        // DataCell(Text(tableItem.name ?? S.of(context).noData)),
                         DataCell(Center(
                           child: FittedBox(
                               child:
                                   Text(tableItem.name ?? S.of(context).noData)),
                         )),
+                        DataCell(FittedBox(
+                            fit: BoxFit.fitHeight,
+                            child: Text('__' +
+                                tableItem.phone.toString().substring(
+                                    tableItem.phone.toString().length - 3,
+                                    tableItem.phone.toString().length)))),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
+
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

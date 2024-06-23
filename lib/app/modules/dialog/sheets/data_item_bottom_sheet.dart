@@ -57,6 +57,9 @@ class DataItemBottomSheet extends StatelessWidget {
                 title: S.of(context).employeeName,
                 subtitle: tableItem.employeeName),
             TitleSubtitle(
+                title: S.of(context).phone,
+                subtitle: ' ' + tableItem.phone.toString()),
+            TitleSubtitle(
                 title: S.of(context).isRegularCus,
                 status: tableItem.regCustomer),
             TitleSubtitle(

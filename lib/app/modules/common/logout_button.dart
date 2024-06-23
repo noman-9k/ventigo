@@ -4,6 +4,7 @@ import 'package:ventigo/app/constants/app_images.dart';
 import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 
 import '../../../config/app_colors.dart';
+import '../../../generated/l10n.dart';
 import '../../routes/app_pages.dart';
 import 'svg_icon.dart';
 
@@ -23,8 +24,8 @@ class LogoutButton extends StatelessWidget {
           //  const FaIcon(Icons.logout_outlined, color: Colors.white),
           onPressed: () => pushConfirmDialog(
             context,
-            title: 'Logout',
-            message: 'Are you sure? You want to logout.',
+            title: S.of(context).logout,
+            message: S.of(context).areYouSureYouWantToLogout,
             onDone: () {
               Get.offAllNamed(Routes.LOGIN);
             },
