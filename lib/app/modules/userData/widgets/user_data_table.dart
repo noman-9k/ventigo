@@ -16,7 +16,7 @@ class UserDataTable extends StatelessWidget {
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
   final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+      const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {

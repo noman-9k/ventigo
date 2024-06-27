@@ -1,4 +1,3 @@
-import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_enums.dart';
 
 import '../db/drift_db.dart';

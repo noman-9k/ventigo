@@ -16,7 +16,7 @@ class SettingsView extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: LogoutButton()),
+      appBar: AppBar(actions: [LogoutButton()]),
       body: GetBuilder<SettingsController>(builder: (controller) {
         return SingleChildScrollView(
           child: Column(

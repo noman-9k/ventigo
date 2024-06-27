@@ -242,21 +242,25 @@ class AppDb extends _$AppDb {
   }
 
   Future<double?> getTodayTotalByEmployeeId(int employeeId) async {
-    final query = select(dbDataItems)
-      ..where((tbl) => tbl.employeeId.equals(employeeId));
+    try {
+      final query = select(dbDataItems)
+        ..where((tbl) => tbl.employeeId.equals(employeeId));
 
-    final dataItems = await query.get();
-    final total = dataItems
-        .map((e) {
-          if (e.date?.isToday() ?? false) {
-            return e.price;
-          }
-        })
-        .toList()
-        .cast<double?>()
-        .sumAll();
+      final dataItems = await query.get();
+      final total = dataItems
+          .map((e) {
+            if (e.date?.isToday() ?? false) {
+              return e.price;
+            }
+          })
+          .toList()
+          .cast<double?>()
+          .sumAll();
 
-    return total;
+      return total;
+    } catch (e) {
+      log('Error: $e');
+    }
   }
 
   void insertCost(

@@ -73,6 +73,7 @@ class EmployeesView extends GetView<EmployeesController> {
                     AppSearchField(
                       label: S.of(context).search,
                       fetchData: () => controller.getEmployeesSearchList(),
+                      controller: TextEditingController(),
                       getSelectedValue: (EmployeeSearchItem value) =>
                           controller.scrollToValue(value.value),
                     ),

@@ -16,7 +16,7 @@ class ReportsTable extends GetView<MainController> {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+      const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ReportsTable extends GetView<MainController> {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 620,
+              minWidth: 660,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
@@ -152,10 +152,7 @@ class ReportsTable extends GetView<MainController> {
                         )),
                         DataCell(FittedBox(
                             fit: BoxFit.fitHeight,
-                            child: Text('__' +
-                                tableItem.phone.toString().substring(
-                                    tableItem.phone.toString().length - 3,
-                                    tableItem.phone.toString().length)))),
+                            child: Text('__' + getLast3(tableItem.phone)))),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
 
                         DataCell(Column(
@@ -212,6 +209,11 @@ class ReportsTable extends GetView<MainController> {
           }
           return Center(child: Text(S.of(context).noData));
         });
+  }
+
+  String getLast3(String? text) {
+    if (text == null) return '';
+    return text.toString().substring(text.length - 3, text.length);
   }
 }
 

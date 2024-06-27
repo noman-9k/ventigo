@@ -17,9 +17,8 @@ class MainReportsView extends GetView<MainController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        20.verticalSpace,
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

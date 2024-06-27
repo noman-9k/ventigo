@@ -72,6 +72,27 @@ class AddReportController extends GetxController {
   }
 
   Future<void> submit() async {
+    if (nameController.text.isEmpty) {
+      Get.snackbar('Error', 'Name is required');
+      return;
+    }
+    if (phoneController.text.isEmpty) {
+      Get.snackbar('Error', 'Phone is required');
+      return;
+    }
+    if (priceController.text.isEmpty) {
+      Get.snackbar('Error', 'Price is required');
+      return;
+    }
+    if (selectedCategory == null) {
+      Get.snackbar('Error', 'Please Select a category');
+      return;
+    }
+    if (selectedService == null) {
+      Get.snackbar('Error', 'Please Select a service');
+      return;
+    }
+
     final total = await DbController.to.appDb
             .getTodayTotalByEmployeeId(EmployeeService.to.employee!.value.id) ??
         0.0;
@@ -109,8 +130,8 @@ class AddReportController extends GetxController {
   }
 
   onSearchItemChanged(SearchItem value) async {
-    log('Search item changed');
-    log('Value: ${value.value}');
+    log('onSearchItemChanged' + value.toString());
+
     int? itemId = int.tryParse(value.value);
     if (itemId == null) {
       return;
@@ -131,5 +152,10 @@ class SearchItem {
 
   factory SearchItem.fromJson(Map<String, dynamic> json) {
     return SearchItem(label: json['label'], value: json['value']);
+  }
+
+  @override
+  String toString() {
+    return 'SearchItem{label: $label, value: $value}';
   }
 }

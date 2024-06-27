@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,6 +16,7 @@ import '../../common/app_search_field.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/date_widget.dart';
 import '../../common/get_services_of_category_id_widget.dart';
+import '../../common/noman_search.dart';
 import '../../common/yes_no_button.dart';
 import '../controllers/add_report_controller.dart';
 
@@ -41,45 +44,32 @@ class AddReportView extends GetView<AddReportController> {
                 16.verticalSpace,
                 AppText.lightBoldText(S.of(context).name),
                 SizedBox(height: 5),
-                AppSearchField(
+                NomanTextFieldSearch(
+                    key: ValueKey(controller.nameController),
                     label: S.of(context).nameOfClient,
                     controller: controller.nameController,
-                    fetchData: () => controller.fetchDataName(),
+                    future: () => controller.fetchDataName(),
                     getSelectedValue: (SearchItem value) =>
                         controller.onSearchItemChanged(value)),
-                // TextField(
-                //         textCapitalization: TextCapitalization.sentences,
-                //         controller: controller.nameController,
-                //         decoration: InputDecoration(
-                //             hintText: S.of(context).nameOfClient))
-                //     .withLabel(S.of(context).name),
                 16.verticalSpace,
-                // TextField(
-                //         textCapitalization: TextCapitalization.sentences,
-                //         controller: controller.lastNameController,
-                //         decoration: InputDecoration(
-                //             hintText: S.of(context).lastNameOfClient))
-                //     .withLabel(S.of(context).lastName),
-
                 AppText.lightBoldText(S.of(context).lastName),
                 SizedBox(height: 5),
-                AppSearchField(
+                NomanTextFieldSearch(
                     label: S.of(context).lastNameOfClient,
+                    key: ValueKey(controller.lastNameController),
                     controller: controller.lastNameController,
-                    fetchData: () => controller.fetchDataName(),
+                    future: () => controller.fetchDataName(),
                     getSelectedValue: (SearchItem value) =>
                         controller.onSearchItemChanged(value)),
                 16.verticalSpace,
-                // TextField(
-                //   controller: controller.phoneController,
-                // ).withLabel(S.of(context).phoneNumber),
-
                 AppText.lightBoldText(S.of(context).phoneNumber),
                 SizedBox(height: 5),
-                AppSearchField(
-                    label: S.of(context).phoneNumber,
+                NomanTextFieldSearch(
+                    keyboardType: TextInputType.phone,
+                    label: S.of(context).phone,
+                    key: ValueKey(controller.phoneController),
                     controller: controller.phoneController,
-                    fetchData: () => controller.fetchDataPhone(),
+                    future: () => controller.fetchDataPhone(),
                     getSelectedValue: (SearchItem value) =>
                         controller.onSearchItemChanged(value)),
                 16.verticalSpace,
@@ -107,10 +97,9 @@ class AddReportView extends GetView<AddReportController> {
                 AppText.mediumText(S.of(context).selectCategory),
                 5.verticalSpace,
                 CustomDropDown(
-                  items: controller.categories.map((e) => e.name!).toList(),
-                  onChanged: controller.onCategoryChanged,
-                  title: newMethod,
-                ),
+                    items: controller.categories.map((e) => e.name!).toList(),
+                    onChanged: controller.onCategoryChanged,
+                    title: S.of(context).selectCategory),
                 16.verticalSpace,
                 AppText.mediumText(S.of(context).selectService),
                 5.verticalSpace,
@@ -142,6 +131,4 @@ class AddReportView extends GetView<AddReportController> {
       ),
     );
   }
-
-  String get newMethod => 'Select Category';
 }

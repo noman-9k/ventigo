@@ -81,6 +81,7 @@ class ServicesView extends GetView<ServicesController> {
                         AppSearchField(
                           label: S.of(context).search,
                           fetchData: () => controller.fetchData(),
+                          controller: TextEditingController(),
                           getSelectedValue: (SearchItem value) =>
                               controller.scrollToValue(value.value),
                         ),
