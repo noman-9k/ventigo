@@ -111,7 +111,7 @@
   "cardPay": "Оплата картой: ",
   "date": "Дата",
   "category": "Категория: ",
-  "service": "Сервис: ",
+  "service": "Сервис ",
   "editReport": "Редактировать отчет",
   "employees": "Сотрудники",
   "noEmployeeFoundnpleaseAddANewEmployee": "Сотрудник не найден\nПожалуйста, добавьте нового сотрудника.",

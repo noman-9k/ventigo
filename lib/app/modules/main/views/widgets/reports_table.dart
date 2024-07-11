@@ -67,7 +67,7 @@ class ReportsTable extends GetView<MainController> {
                           style: headerStyle,
                           textAlign: TextAlign.center),
                     ),
-                    size: ColumnSize.L),
+                    size: ColumnSize.M),
                 DataColumn2(
                     label: Center(
                         child: Text(S.of(context).date,

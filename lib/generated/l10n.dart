@@ -1170,10 +1170,10 @@ class S {
     );
   }
 
-  /// `Service: `
+  /// `Service`
   String get service {
     return Intl.message(
-      'Service: ',
+      'Service',
       name: 'service',
       desc: '',
       args: [],
@@ -1270,10 +1270,10 @@ class S {
     );
   }
 
-  /// `Phone\nNumber`
+  /// `Phone`
   String get phone {
     return Intl.message(
-      'Phone\nNumber',
+      'Phone',
       name: 'phone',
       desc: '',
       args: [],
