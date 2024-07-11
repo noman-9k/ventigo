@@ -7,6 +7,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
 import '../../../dialog/dialog_functions.dart';
 import '../../controllers/main_controller.dart';
@@ -15,7 +16,7 @@ class ReportsTable extends GetView<MainController> {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+      const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class ReportsTable extends GetView<MainController> {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 620,
+              minWidth: 660,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
@@ -43,25 +44,33 @@ class ReportsTable extends GetView<MainController> {
               }),
               columns: [
                 DataColumn2(
-                    label: Text('Employee\nData',
+                    label: Text(S.of(context).employeendata,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
-                  label: Text('Reg\nCus',
+                  label: Text(S.of(context).regncus,
                       style: headerStyle, textAlign: TextAlign.center),
                   size: ColumnSize.S,
                 ),
                 DataColumn2(
-                    label: Text('Card\nPay',
+                    label: Text(S.of(context).cardnpay,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
-                    label: Text('Customer\nData',
+                    label: Text(S.of(context).customerndata,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
-                        child: Text('Date',
+                      child: Text(
+                          S.of(context).phone + '\n' + S.of(context).number,
+                          style: headerStyle,
+                          textAlign: TextAlign.center),
+                    ),
+                    size: ColumnSize.L),
+                DataColumn2(
+                    label: Center(
+                        child: Text(S.of(context).date,
                             style: headerStyle, textAlign: TextAlign.center)),
                     fixedWidth: 100),
                 DataColumn2(
@@ -69,16 +78,16 @@ class ReportsTable extends GetView<MainController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Category',
+                        Text(S.of(context).category,
                             style: headerStyle, textAlign: TextAlign.center),
                         Divider(height: 1),
-                        Text('Service',
+                        Text(S.of(context).service,
                             style: headerStyle, textAlign: TextAlign.center),
                       ],
                     ),
                     size: ColumnSize.M),
                 DataColumn2(
-                    label: Text('New\nCus',
+                    label: Text(S.of(context).newncus,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
@@ -86,10 +95,10 @@ class ReportsTable extends GetView<MainController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Price',
+                          Text(S.of(context).price,
                               style: headerStyle, textAlign: TextAlign.center),
                           Divider(height: 1),
-                          Text('Total',
+                          Text(S.of(context).total,
                               style: headerStyle, textAlign: TextAlign.center),
                         ]),
                     size: ColumnSize.S,
@@ -101,7 +110,7 @@ class ReportsTable extends GetView<MainController> {
                         children: [
                           Text('%', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total', style: headerStyle),
+                          Text(S.of(context).total, style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -113,7 +122,8 @@ class ReportsTable extends GetView<MainController> {
                           context, tableItem, onDelete: () {
                         Navigator.pop(context);
                         controller.deleteItem(context, tableItem.id);
-                        Get.snackbar('Deleted', 'Item deleted');
+                        Get.snackbar(
+                            S.of(context).deleted, S.of(context).itemDeleted);
                       }, onEdit: () {
                         Navigator.pop(context);
 
@@ -132,15 +142,21 @@ class ReportsTable extends GetView<MainController> {
                       cells: [
                         DataCell(FittedBox(
                             child: Center(
-                                child: Text(
-                                    tableItem.employeeName ?? 'No data')))),
+                                child: Text(tableItem.employeeName ??
+                                    S.of(context).noData)))),
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
+                        // DataCell(Text(tableItem.name ?? S.of(context).noData)),
                         DataCell(Center(
                           child: FittedBox(
-                              child: Text(tableItem.name ?? 'No data')),
+                              child:
+                                  Text(tableItem.name ?? S.of(context).noData)),
                         )),
+                        DataCell(FittedBox(
+                            fit: BoxFit.fitHeight,
+                            child: Text('__' + getLast3(tableItem.phone)))),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
+
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -193,8 +209,13 @@ class ReportsTable extends GetView<MainController> {
                   .toList(),
             );
           }
-          return const Center(child: Text('No data'));
+          return Center(child: Text(S.of(context).noData));
         });
+  }
+
+  String getLast3(String? text) {
+    if (text == null) return '';
+    return text.toString().substring(text.length - 3, text.length);
   }
 }
 

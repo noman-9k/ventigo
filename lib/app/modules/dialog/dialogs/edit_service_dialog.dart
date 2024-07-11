@@ -7,6 +7,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../dialog_modal.dart';
 
 class EditServiceDialog extends StatefulWidget {
@@ -55,7 +56,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
       child: DialogModel(
         child: Column(
           children: [
-            AppText.boldText('Edit Service'),
+            AppText.boldText(S.of(context).editService),
             16.verticalSpace,
             TextField(
               textCapitalization: TextCapitalization.sentences,
@@ -68,7 +69,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
                   //     borderRadius: BorderRadius.circular(12),
                   //     borderSide: const BorderSide(color: Colors.transparent)),
                   ),
-            ).withLabel('Service Name'),
+            ).withLabel(S.of(context).serviceName),
             16.verticalSpace,
             TextField(
               controller: priceController,
@@ -80,14 +81,14 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
                   //     borderRadius: BorderRadius.circular(12),
                   //     borderSide: const BorderSide(color: Colors.transparent)),
                   ),
-            ).withLabel('Price'),
+            ).withLabel(S.of(context).price),
             16.verticalSpace,
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: Text('Cancel'),
+                  child: Text(S.of(context).cancel),
                 ),
                 TextButton(
                   onPressed: () {
@@ -102,7 +103,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
 
                     Navigator.pop(context);
                   },
-                  child: Text('Done'),
+                  child: Text(S.of(context).done),
                 ),
               ],
             ),

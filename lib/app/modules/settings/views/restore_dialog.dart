@@ -4,6 +4,7 @@ import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../controllers/settings_controller.dart';
 
 class RestoreDialog extends GetView<SettingsController> {
@@ -15,7 +16,8 @@ class RestoreDialog extends GetView<SettingsController> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppText.boldText('Select the database to restore', fontSize: 20),
+          AppText.boldText(S.of(context).selectTheDatabaseToRestore,
+              fontSize: 20),
           const SizedBox(height: 10),
           Obx(() {
             if (controller.isLoading.value) {
@@ -30,7 +32,8 @@ class RestoreDialog extends GetView<SettingsController> {
                     title: AppText.mediumBoldText(
                         'Date: ${controller.databases[index].createdAt?.smallDateWithTime()}'),
                     onTap: () {
-                      controller.restoreData(controller.databases[index].url!);
+                      controller.restoreData(
+                          controller.databases[index].url!, context);
                     },
                   );
                 },

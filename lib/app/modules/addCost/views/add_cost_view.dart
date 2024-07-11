@@ -7,6 +7,7 @@ import 'package:ventigo/app/modules/common/yes_no_button.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../controllers/add_cost_controller.dart';
@@ -18,7 +19,7 @@ class AddCostView extends GetView<AddCostController> {
     return Scaffold(
       appBar: AppBar(
         leading: AppBackButton(),
-        title: AppText.boldText('Add Cost'),
+        title: AppText.boldText(S.of(context).addCost),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -32,42 +33,42 @@ class AddCostView extends GetView<AddCostController> {
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller.nameController,
                 decoration: InputDecoration(
-                  hintText: 'Name ',
+                  hintText: S.of(context).name,
                 ),
-              ).withLabel('Name of expense'),
+              ).withLabel(S.of(context).nameOfExpense),
               20.verticalSpace,
               TextField(
                       readOnly: true,
                       onTap: () => controller.categoryTab(context),
                       controller: controller.categoriesController,
-                      decoration:
-                          InputDecoration(hintText: 'Select categories'))
-                  .withLabel('Categories'),
+                      decoration: InputDecoration(
+                          hintText: S.of(context).selectCategories))
+                  .withLabel(S.of(context).categories),
               20.verticalSpace,
               YesNoButton(
                   onChanged: (value) {
                     controller.deductFromTax = value;
                   },
-                  title: 'Deduct from TAX'),
+                  title: S.of(context).deductFromTax),
               20.verticalSpace,
               YesNoButton(
                   onChanged: (value) {
                     controller.systematicExpenditure = value;
                   },
-                  title: 'Systematic expenditure'),
+                  title: S.of(context).systematicExpenditure),
               20.verticalSpace,
-              AppText.lightBoldText('Repetition Interval'),
+              AppText.lightBoldText(S.of(context).repetitionInterval),
               SizedBox(height: 5),
               CustomDropDown(
                 items: [
-                  'Do Not Repeat',
-                  'Every Day',
-                  'Every Week',
-                  'Every Month',
-                  'Every Quarter',
-                  'Every Year'
+                  S.of(context).doNotRepeat,
+                  S.of(context).everyDay,
+                  S.of(context).everyWeek,
+                  S.of(context).everyMonth,
+                  S.of(context).everyQuarter,
+                  S.of(context).everyYear
                 ],
-                title: 'Repetition Interval',
+                title: S.of(context).repetitionInterval,
                 onChanged: (p0) {
                   controller.retrievalInterval = p0;
                 },
@@ -76,33 +77,33 @@ class AddCostView extends GetView<AddCostController> {
               TextField(
                 controller: controller.numberOfUnits,
                 decoration: InputDecoration(
-                  hintText: 'Number of Units',
+                  hintText: S.of(context).numberOfUnits,
                 ),
                 keyboardType: TextInputType.number,
-              ).withLabel('Number of Units'),
+              ).withLabel(S.of(context).numberOfUnits),
               20.verticalSpace,
               TextField(
                 controller: controller.priceController,
                 decoration: InputDecoration(
-                  hintText: 'Unit Price',
+                  hintText: S.of(context).unitPrice,
                 ),
                 keyboardType: TextInputType.number,
-              ).withLabel('Unit Price'),
+              ).withLabel(S.of(context).unitPrice),
               20.verticalSpace,
-              AppText.lightBoldText('Unit of measurements'),
+              AppText.lightBoldText(S.of(context).unitOfMeasurements),
               SizedBox(height: 5),
               CustomDropDown(
                 items: [
-                  'Milliliters',
-                  'KW/h',
-                  'Kilograms',
-                  'Letters',
-                  'Pieces',
-                  'Grams',
-                  'Boxes',
-                  'No Unit of Measurements',
+                  S.of(context).milliliters,
+                  S.of(context).kwh,
+                  S.of(context).kilograms,
+                  S.of(context).letters,
+                  S.of(context).pieces,
+                  S.of(context).grams,
+                  S.of(context).boxes,
+                  S.of(context).noUnitOfMeasurements,
                 ],
-                title: 'Unit of measurements',
+                title: S.of(context).unitOfMeasurements,
                 onChanged: (p0) {
                   print(p0);
                   controller.unitsOfMeasurement = p0;
@@ -111,7 +112,8 @@ class AddCostView extends GetView<AddCostController> {
               20.verticalSpace,
               ElevatedButton(
                   onPressed: controller.onSubmitted,
-                  child: AppText.boldText('Save', color: Colors.white)),
+                  child: AppText.boldText(S.of(context).save,
+                      color: Colors.white)),
             ],
           ),
         ),

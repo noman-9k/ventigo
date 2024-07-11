@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/db_converter/employee_converter.dart';
@@ -9,6 +10,8 @@ import 'package:ventigo/app/routes/app_pages.dart';
 
 class EmployeesController extends GetxController {
   static EmployeesController get to => Get.find();
+
+  ScrollController scrollController = ScrollController();
 
   Stream<List<DbEmployee>> fetchEmploys() {
     return DbController.to.appDb.getAllEmployees();
@@ -32,12 +35,27 @@ class EmployeesController extends GetxController {
     return fetchEmploys();
   }
 
-  scrollToValue(value) {
-    print(value);
+  scrollToValue(DbEmployee value) async {
+    int index = 0;
+    List<DbEmployee> dbEmployees =
+        await DbController.to.appDb.getAllEmployeesList();
+
+    index = dbEmployees.indexWhere((element) => element.id == value.id);
+
+    if (index == -1) {
+      log('Employee not found');
+    }
+    scrollController.animateTo(index * 80.0,
+        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 
   viewEmployee(DbEmployee employee) async {
     Get.toNamed(Routes.ADD_EMPLOYE, arguments: employee);
+  }
+
+  isCategoryPresent() async {
+    bool isPresent = await DbController.to.appDb.isCategoryPresent();
+    return isPresent;
   }
 }
 

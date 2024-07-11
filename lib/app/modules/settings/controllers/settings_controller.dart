@@ -17,6 +17,7 @@ import 'package:ventigo/app/routes/app_pages.dart';
 
 import '../../../../firebase/firebase_storage_repo.dart';
 import '../../../../firebase/firestore_repositery.dart';
+import '../../../../generated/l10n.dart';
 
 class SettingsController extends GetxController {
   List<DatabaseModel> databases = [];
@@ -77,10 +78,10 @@ class SettingsController extends GetxController {
         await file.writeAsBytes(bytes);
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: const Text('Backup restored successfully!'),
+          content: Text(S.of(context).backupRestoredSuccessfully),
           duration: const Duration(seconds: 1),
           action: SnackBarAction(
-            label: 'Reload App',
+            label: S.of(context).reloadApp,
             onPressed: () {
               Get.offAllNamed(Routes.LOGIN);
               SystemNavigator.pop();
@@ -111,9 +112,9 @@ class SettingsController extends GetxController {
     await getDatabases();
   }
 
-  Future<void> restoreData(String url) async {
+  Future<void> restoreData(String url, BuildContext context) async {
     Get.showSnackbar(GetSnackBar(
-        message: 'Restoring database...',
+        message: S.of(context).restoringDatabase,
         showProgressIndicator: true,
         isDismissible: false,
         snackPosition: SnackPosition.BOTTOM));
@@ -124,7 +125,7 @@ class SettingsController extends GetxController {
       await FireBaseStorageRepo().downloadFile(file, url);
 
       Get.showSnackbar(GetSnackBar(
-          message: 'Backup restored successfully!',
+          message: S.of(context).backupRestoredSuccessfully,
           duration: Duration(seconds: 2),
           snackPosition: SnackPosition.BOTTOM));
       Get.offAllNamed(Routes.LOGIN);
@@ -158,7 +159,7 @@ class SettingsController extends GetxController {
     DbController.to.appDb.deleteDatabase();
   }
 
-  Future<void> exportToCSVFile() async {
+  Future<void> exportToCSVFile(BuildContext context) async {
     final stream = DbController.to.appDb.getAllDataItems();
     var csvData = [
       ['ID', 'Name', 'Phone', 'Price', 'Employee Name']
@@ -180,7 +181,8 @@ class SettingsController extends GetxController {
       final fileName = DateTime.now().toString().split(' ')[0];
 
       await FileStorage.writeCounter(csv, '$fileName.csv');
-      Get.snackbar('Exported', 'Check your file in the Downloads folder');
+      Get.snackbar(S.of(context).exported,
+          S.of(context).checkYourFileInTheDownloadsFolder);
     });
   }
 }

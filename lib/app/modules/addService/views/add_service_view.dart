@@ -7,6 +7,7 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../controllers/add_service_controller.dart';
@@ -22,7 +23,7 @@ class AddServiceView extends GetView<AddServiceController> {
       // ),
       appBar: AppBar(
           leading: AppBackButton(),
-          title: AppText.boldText('Add Service'),
+          title: AppText.boldText(S.of(context).addService),
           centerTitle: true),
       body: SingleChildScrollView(
         child: Padding(
@@ -30,7 +31,7 @@ class AddServiceView extends GetView<AddServiceController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppText.mediumText('Create Or Select a category'),
+              AppText.mediumText(S.of(context).createOrSelectACategory),
               16.verticalSpace,
               GetBuilder<AddServiceController>(builder: (controller) {
                 return StreamBuilder(
@@ -40,14 +41,14 @@ class AddServiceView extends GetView<AddServiceController> {
                         return CustomDropDown(
                           items: snapshot.data!.map((e) => e.name!).toList(),
                           onChanged: controller.onCategoryChanged,
-                          title: 'Select Category',
+                          title: S.of(context).selectCategory,
                         );
                       }
                       return CircularProgressIndicator();
                     });
               }),
               10.verticalSpace,
-              AppText.mediumText('Or Create a new Category'),
+              AppText.mediumText(S.of(context).orCreateANewCategory),
               10.verticalSpace,
               TextField(
                 style: TextStyle(fontSize: 14.sp),
@@ -56,31 +57,33 @@ class AddServiceView extends GetView<AddServiceController> {
                 // readOnly: true,
                 controller: controller.categoryNameController,
                 decoration: InputDecoration(
-                  hintText: 'Enter Category Name',
+                  hintText: S.of(context).enterCategoryName,
                 ),
-              ).withLabel('Category Name'),
+              ).withLabel(S.of(context).categoryName),
               32.verticalSpace,
-              AppText.mediumText('Name of the Service'),
+              AppText.mediumText(S.of(context).nameOfTheService),
               10.verticalSpace,
               TextField(
                 style: TextStyle(fontSize: 14.sp),
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller.serviceNameController,
-                decoration: InputDecoration(hintText: 'Enter Service Name'),
-              ).withLabel('Service Name'),
+                decoration:
+                    InputDecoration(hintText: S.of(context).enterServiceName),
+              ).withLabel(S.of(context).serviceName),
               32.verticalSpace,
-              AppText.mediumText('Cost of Materials for this Services'),
+              AppText.mediumText(S.of(context).costOfMaterialsForThisServices),
               10.verticalSpace,
               TextField(
                 style: TextStyle(fontSize: 16.sp),
                 controller: controller.priceController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(hintText: 'Enter Price'),
-              ).withLabel('Price'),
+                decoration: InputDecoration(hintText: S.of(context).enterPrice),
+              ).withLabel(S.of(context).price),
               32.verticalSpace,
               ElevatedButton(
                 onPressed: controller.dbAddService,
-                child: AppText.boldText('Add Service', color: Colors.white),
+                child: AppText.boldText(S.of(context).addService,
+                    color: Colors.white),
               ),
             ],
           ),

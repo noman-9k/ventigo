@@ -7,6 +7,7 @@ class StatResultModel {
     required this.totalServices,
     required this.totalCost,
     required this.percentage,
+    required this.shopCost,
     this.date,
   });
 
@@ -19,6 +20,7 @@ class StatResultModel {
   DateTime? date;
   double percentage;
 
+  double? shopCost;
   @override
   String toString() {
     return 'StatResultModel(employeeName: $employeeName, totalPrice: $totalPrice, isRegCustomer: $noRegCustomer, isNewCustomer: $noNewCustomer, totalServices: $totalServices, totalCost: $totalCost, date: $date)';

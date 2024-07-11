@@ -4,6 +4,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../../config/app_text.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
 
 class EmployeeDataTable extends StatelessWidget {
@@ -35,25 +36,30 @@ class EmployeeDataTable extends StatelessWidget {
                   return AppColors.lightYellow;
                 }),
                 columns: [
-                  DataColumn2(label: Text('Reg\nCus'), size: ColumnSize.S),
-                  DataColumn2(label: Text('Card\nPay'), size: ColumnSize.S),
                   DataColumn2(
-                      label:
-                          Text('Employee\nData', textAlign: TextAlign.center),
+                      label: Text(S.of(context).regncus), size: ColumnSize.S),
+                  DataColumn2(
+                      label: Text(S.of(context).cardnpay), size: ColumnSize.S),
+                  DataColumn2(
+                      label: Text(S.of(context).employeendata,
+                          textAlign: TextAlign.center),
                       size: ColumnSize.L),
                   DataColumn2(
-                      label: Center(child: Text('Date')), fixedWidth: 100),
+                      label: Center(child: Text(S.of(context).date)),
+                      fixedWidth: 100),
                   DataColumn2(
                       label: Column(
                         children: [
-                          Text('Category'),
+                          Text(S.of(context).category),
                           Divider(height: 1),
-                          Text('Service'),
+                          Text(S.of(context).service),
                         ],
                       ),
                       size: ColumnSize.M),
                   DataColumn2(
-                      label: Text('Price'), size: ColumnSize.M, numeric: true),
+                      label: Text(S.of(context).price),
+                      size: ColumnSize.M,
+                      numeric: true),
                 ],
                 rows: tableItems
                     .map((tableItem) => DataRow(
@@ -83,8 +89,8 @@ class EmployeeDataTable extends StatelessWidget {
                                   tableItem.cardPay ?? false
                                       ? 'assets/icon/true.png'
                                       : 'assets/icon/false.png')),
-                              DataCell(
-                                  Text(tableItem.employeeName ?? 'No data')),
+                              DataCell(Text(tableItem.employeeName ??
+                                  S.of(context).noData)),
                               DataCell(Text(tableItem.date?.smallDate() ?? '')),
                               DataCell(Column(
                                 children: [
@@ -103,7 +109,7 @@ class EmployeeDataTable extends StatelessWidget {
                             ]))
                     .toList());
           }
-          return const Center(child: Text('No data'));
+          return Center(child: Text(S.of(context).noData));
         });
   }
 }

@@ -5,6 +5,7 @@ import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../../config/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
 import '../../../userData/widgets/user_data_table.dart';
 
@@ -40,27 +41,31 @@ class CostsTable extends StatelessWidget {
               minWidth: 500,
               columns: [
                 DataColumn2(
-                    label: Text('Name of\nCost',
+                    label: Text(S.of(context).nameOfncost,
                         textAlign: TextAlign.center, style: headerStyle)),
                 DataColumn2(
                     label: Text(
-                  'Related\nCategories',
+                  S.of(context).relatedncategories,
                   textAlign: TextAlign.center,
                   style: headerStyle,
                 )),
                 DataColumn2(
                     label: Text(
-                  'Deducted\nFrom TAX',
+                  S.of(context).deductednfromTax,
                   textAlign: TextAlign.center,
                   style: headerStyle,
                 )),
                 DataColumn2(
-                    label: Center(child: Text('Date', style: headerStyle))),
+                    label: Center(
+                        child: Text(S.of(context).date, style: headerStyle))),
                 DataColumn2(
-                    label: Center(child: Text('Price', style: headerStyle))),
+                    label: Center(
+                        child: Text(
+                            S.of(context).price + '\n' + S.of(context).cost,
+                            style: headerStyle))),
                 DataColumn2(
                     label: Text(
-                  'Systematic\nExpenditure',
+                  S.of(context).systematicnexpenditure,
                   textAlign: TextAlign.center,
                   style: headerStyle,
                 )),
@@ -69,9 +74,10 @@ class CostsTable extends StatelessWidget {
                   .map((tableItem) => DataRow(
                           onLongPress: () => pushConfirmDialog(
                                 context,
-                                title: 'Delete Cost',
-                                message:
-                                    'Are you sure you want to delete this cost?',
+                                title: S.of(context).deleteCost,
+                                message: S
+                                    .of(context)
+                                    .areYouSureYouWantToDeleteThisCost,
                                 onDone: () => DbController.to.appDb
                                     .deleteCost(tableItem.id),
                               ),
@@ -95,7 +101,7 @@ class CostsTable extends StatelessWidget {
                   .toList(),
             );
           }
-          return const Center(child: Text('No data'));
+          return Center(child: Text(S.of(context).noData));
         });
   }
 }

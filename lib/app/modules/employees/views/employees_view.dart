@@ -8,6 +8,7 @@ import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_search_field.dart';
 import '../controllers/employees_controller.dart';
@@ -21,14 +22,20 @@ class EmployeesView extends GetView<EmployeesController> {
         padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
-          onPressed: () => Get.toNamed(Routes.ADD_EMPLOYE),
+          onPressed: () async {
+            bool isCategoryPresent = await controller.isCategoryPresent();
+            isCategoryPresent
+                ? Get.toNamed(Routes.ADD_EMPLOYE)
+                : Get.snackbar(S.of(context).addCategoryFirst,
+                    S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
+          },
           child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),
       ),
       appBar: AppBar(
-        leading: LogoutButton(),
-        title: AppText.boldText('Employees', fontSize: 20),
+        title: AppText.boldText(S.of(context).employees, fontSize: 20),
         automaticallyImplyLeading: false,
+        actions: [LogoutButton()],
       ),
       body: Padding(
         padding: AppConstants.defaultPadding,
@@ -49,7 +56,7 @@ class EmployeesView extends GetView<EmployeesController> {
                     ),
                     20.verticalSpace,
                     AppText.mediumText(
-                        'No Employee Found\nPlease add a new employee.',
+                        S.of(context).noEmployeeFoundnpleaseAddANewEmployee,
                         align: TextAlign.center,
                         color: AppColors.lightGrey),
                     90.verticalSpace,
@@ -58,16 +65,21 @@ class EmployeesView extends GetView<EmployeesController> {
               }
               return SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     10.verticalSpace,
+                    AppText.lightBoldText(S.of(context).search),
+                    SizedBox(height: 5),
                     AppSearchField(
-                      label: 'Search',
+                      label: S.of(context).search,
                       fetchData: () => controller.getEmployeesSearchList(),
+                      controller: TextEditingController(),
                       getSelectedValue: (EmployeeSearchItem value) =>
                           controller.scrollToValue(value.value),
                     ),
                     10.verticalSpace,
                     ListView.separated(
+                      controller: controller.scrollController,
                       separatorBuilder: (context, index) =>
                           Divider(indent: 20, endIndent: 20, height: 5),
                       shrinkWrap: true,
@@ -90,7 +102,7 @@ class EmployeesView extends GetView<EmployeesController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  AppText.mediumText('Access Level',
+                                  AppText.mediumText(S.of(context).accessLevel,
                                       fontWeight: FontWeight.bold),
                                   Row(
                                     children: [
@@ -109,8 +121,8 @@ class EmployeesView extends GetView<EmployeesController> {
                                       5.horizontalSpace,
                                       AppText.mediumText(
                                           employee.visibility.length == 6
-                                              ? 'Not Limited'
-                                              : 'Limited'),
+                                              ? S.of(context).notLimited
+                                              : S.of(context).limited),
                                     ],
                                   ),
                                 ],

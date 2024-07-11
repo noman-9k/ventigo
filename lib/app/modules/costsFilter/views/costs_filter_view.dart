@@ -7,6 +7,7 @@ import 'package:ventigo/app/modules/common/yes_no_button.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../../common/common_price_range_slider.dart';
 import '../../common/custom_dropdown.dart';
@@ -19,7 +20,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
     return Scaffold(
       appBar: AppBar(
         leading: AppBackButton(),
-        title: AppText.boldText('Costs Filter'),
+        title: AppText.boldText(S.of(context).costsFilter),
         centerTitle: true,
         actions: [
           TextButton(
@@ -27,7 +28,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
               controller.clearFilters();
             },
             child: Row(children: [
-              AppText.mediumBoldText('Clear', color: Colors.red),
+              AppText.mediumBoldText(S.of(context).clear, color: Colors.red),
               5.horizontalSpace,
               Icon(Icons.close, color: Colors.red)
             ]),
@@ -43,9 +44,9 @@ class CostsFilterView extends GetView<CostsFilterController> {
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller.nameController,
                 decoration: InputDecoration(
-                  hintText: 'Name of cost',
+                  hintText: S.of(context).nameOfCost,
                 ),
-              ).withLabel('Name of cost'),
+              ).withLabel(S.of(context).nameOfCost),
               20.verticalSpace,
               // CustomDropDown(
               //   items: CategoryService.to
@@ -61,25 +62,25 @@ class CostsFilterView extends GetView<CostsFilterController> {
                   onChanged: (value) {
                     controller.isDeductFromTax = value;
                   },
-                  title: 'Deduct from TAX'),
+                  title: S.of(context).deductFromTax),
               20.verticalSpace,
               YesNoButton(
                   defaultValue: controller.isSystematicExpenditure,
                   onChanged: (value) {
                     controller.isSystematicExpenditure = value;
                   },
-                  title: 'Systematic expenditure'),
+                  title: S.of(context).systematicExpenditure),
               20.verticalSpace,
               CustomDropDown(
                 items: [
-                  'Do Not Repeat',
-                  'Every Day',
-                  'Every Week',
-                  'Every Month',
-                  'Every Quarter',
-                  'Every Year'
+                  S.of(context).doNotRepeat,
+                  S.of(context).everyDay,
+                  S.of(context).everyWeek,
+                  S.of(context).everyMonth,
+                  S.of(context).everyQuarter,
+                  S.of(context).everyYear
                 ],
-                title: 'Repetition Interval',
+                title: S.of(context).repetitionInterval,
                 onChanged: (p0) {
                   controller.repetitionInterval = p0;
                 },
@@ -96,7 +97,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
                   'Boxes',
                   'No Unit of Measurements',
                 ],
-                title: 'Unit of measurements',
+                title: S.of(context).unitOfMeasurements,
                 onChanged: (p0) {
                   controller.unitOfMeasurements = p0;
                 },
@@ -105,7 +106,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppText.mediumBoldText('Costs Price Range'),
+                  AppText.mediumBoldText(S.of(context).costsPriceRange),
                   10.verticalSpace,
                   Row(
                     children: [
@@ -113,7 +114,8 @@ class CostsFilterView extends GetView<CostsFilterController> {
                         child: TextField(
                           controller: controller.minPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(labelText: 'Min Price'),
+                          decoration: InputDecoration(
+                              labelText: S.of(context).minPrice),
                         ),
                       ),
                       10.horizontalSpace,
@@ -121,7 +123,8 @@ class CostsFilterView extends GetView<CostsFilterController> {
                         child: TextField(
                           controller: controller.maxPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(labelText: 'Max Price'),
+                          decoration: InputDecoration(
+                              labelText: S.of(context).maxPrice),
                         ),
                       ),
                     ],
@@ -137,7 +140,8 @@ class CostsFilterView extends GetView<CostsFilterController> {
               20.verticalSpace,
               ElevatedButton(
                 onPressed: controller.getFilteredCosts,
-                child: AppText.boldText('Apply Filter', color: Colors.white),
+                child: AppText.boldText(S.of(context).applyFilter,
+                    color: Colors.white),
               ),
             ],
           ),

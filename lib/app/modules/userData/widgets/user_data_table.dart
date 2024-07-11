@@ -8,6 +8,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../db/drift_db.dart';
 
 class UserDataTable extends StatelessWidget {
@@ -15,7 +16,7 @@ class UserDataTable extends StatelessWidget {
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
   final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+      const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class UserDataTable extends StatelessWidget {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 600,
+              minWidth: 700,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
@@ -42,31 +43,40 @@ class UserDataTable extends StatelessWidget {
               }),
               columns: [
                 DataColumn2(
-                    label: Text('Reg\nCus', style: headerStyle),
+                    label: Text(S.of(context).regncus, style: headerStyle),
                     size: ColumnSize.S),
                 DataColumn2(
-                    label: Text('Card\nPay', style: headerStyle),
+                    label: Text(S.of(context).cardnpay, style: headerStyle),
                     size: ColumnSize.S),
                 DataColumn2(
-                    label: Text('Customer\nData',
+                    label: Text(S.of(context).customerndata,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
-                    label: Center(child: Text('Date', style: headerStyle)),
+                    label: Center(
+                      child: Text(
+                          S.of(context).phone + '\n' + S.of(context).number,
+                          style: headerStyle,
+                          textAlign: TextAlign.center),
+                    ),
+                    size: ColumnSize.L),
+                DataColumn2(
+                    label: Center(
+                        child: Text(S.of(context).date, style: headerStyle)),
                     fixedWidth: 100),
                 DataColumn2(
                     label: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Category', style: headerStyle),
+                        Text(S.of(context).category, style: headerStyle),
                         Divider(height: 1),
-                        Text('Service', style: headerStyle),
+                        Text(S.of(context).service, style: headerStyle),
                       ],
                     ),
                     size: ColumnSize.M),
                 DataColumn2(
-                    label: Text('New\nCus',
+                    label: Text(S.of(context).newncus,
                         style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
@@ -74,9 +84,9 @@ class UserDataTable extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Price', style: headerStyle),
+                          Text(S.of(context).price, style: headerStyle),
                           Divider(height: 1),
-                          Text('Total', style: headerStyle),
+                          Text(S.of(context).total, style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -87,9 +97,9 @@ class UserDataTable extends StatelessWidget {
                         children: [
                           Text('%', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total', style: headerStyle),
+                          Text(S.of(context).total, style: headerStyle),
                         ]),
-                    size: ColumnSize.S,
+                    size: ColumnSize.M,
                     numeric: true),
               ],
               rows: tableItems
@@ -108,7 +118,13 @@ class UserDataTable extends StatelessWidget {
                       cells: [
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
-                        DataCell(Text(tableItem.name ?? 'No data')),
+                        DataCell(Text(tableItem.name ?? S.of(context).noData)),
+                        DataCell(FittedBox(
+                            fit: BoxFit.fitHeight,
+                            child: Text('..' +
+                                tableItem.phone.toString().substring(
+                                    tableItem.phone.toString().length - 3,
+                                    tableItem.phone.toString().length)))),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -141,28 +157,6 @@ class UserDataTable extends StatelessWidget {
                             FittedBox(child: Text('${tableItem.price}')),
                             Divider(height: 4, endIndent: 8, indent: 8),
                             FittedBox(child: Text('${tableItem.total}')),
-
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           snapshot.data.toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                         DataCell(Column(
@@ -173,37 +167,6 @@ class UserDataTable extends StatelessWidget {
                             Divider(height: 4, endIndent: 8, indent: 8),
                             Text(tableItem.total!
                                 .percentageOf(tableItem.percentage)),
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.price)
-                            //     .toString()),
-                            // Divider(height: 4, endIndent: 8, indent: 8),
-                            // Text(EmployeeService.to
-                            //     .getEmployeePercentageOf(tableItem.total)
-                            //     .toString()),
-                            // FutureBuilder(
-                            //     future: DbController.to.appDb
-                            //         .getTotalSalesOfTheDay(
-                            //             tableItem.id,
-                            //             EmployeeService.to.employee!.value.id,
-                            //             tableItem.date!),
-                            //     builder: (context, snapshot) {
-                            //       if (snapshot.connectionState ==
-                            //           ConnectionState.waiting) {
-                            //         return const AppShimmer(
-                            //             height: 10, width: 30);
-                            //       }
-                            //       if (snapshot.hasData) {
-                            //         return Text(
-                            //           EmployeeService.to
-                            //               .getEmployeePercentageOf(
-                            //                   snapshot.data)
-                            //               .toString(),
-                            //         );
-                            //       }
-                            //       return Text(
-                            //         snapshot.error.toString(),
-                            //       );
-                            //     })
                           ],
                         )),
                       ],
@@ -212,7 +175,7 @@ class UserDataTable extends StatelessWidget {
                   .toList(),
             );
           }
-          return const Center(child: Text('No data'));
+          return Center(child: Text(S.of(context).noData));
         });
   }
 }

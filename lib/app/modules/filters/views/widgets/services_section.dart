@@ -5,6 +5,7 @@ import 'package:ventigo/app/modules/filters/controllers/filters_controller.dart'
 import 'package:ventigo/config/app_text.dart';
 
 import '../../../../../config/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../db/db_controller.dart';
 
 class ServicesSection extends GetView<FiltersController> {
@@ -27,7 +28,7 @@ class ServicesSection extends GetView<FiltersController> {
             collapsedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12), side: BorderSide.none),
             shape: RoundedRectangleBorder(side: BorderSide.none),
-            title: AppText.boldText('Services'),
+            title: AppText.boldText(S.of(context).services),
             children: categories!.map((e) {
               return GetBuilder<FiltersController>(builder: (controller) {
                 return CheckboxListTile(
