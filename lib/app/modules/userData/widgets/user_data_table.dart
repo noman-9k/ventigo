@@ -31,7 +31,7 @@ class UserDataTable extends StatelessWidget {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 600,
+              minWidth: 700,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
                   (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
@@ -54,8 +54,10 @@ class UserDataTable extends StatelessWidget {
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
-                      child: Text(S.of(context).phone,
-                          style: headerStyle, textAlign: TextAlign.center),
+                      child: Text(
+                          S.of(context).phone + '\n' + S.of(context).number,
+                          style: headerStyle,
+                          textAlign: TextAlign.center),
                     ),
                     size: ColumnSize.L),
                 DataColumn2(
@@ -97,7 +99,7 @@ class UserDataTable extends StatelessWidget {
                           Divider(height: 1),
                           Text(S.of(context).total, style: headerStyle),
                         ]),
-                    size: ColumnSize.S,
+                    size: ColumnSize.M,
                     numeric: true),
               ],
               rows: tableItems
@@ -119,7 +121,7 @@ class UserDataTable extends StatelessWidget {
                         DataCell(Text(tableItem.name ?? S.of(context).noData)),
                         DataCell(FittedBox(
                             fit: BoxFit.fitHeight,
-                            child: Text('__' +
+                            child: Text('..' +
                                 tableItem.phone.toString().substring(
                                     tableItem.phone.toString().length - 3,
                                     tableItem.phone.toString().length)))),

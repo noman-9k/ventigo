@@ -27,7 +27,8 @@ class AddReportView extends GetView<AddReportController> {
     return Scaffold(
       appBar: AppAppBar(
           leading: AppBackButton(),
-          title: S.of(context).hello +
+          title:
+              //  S.of(context).hello +
               (EmployeeService.to.employee?.value.name ?? 'Walker!')),
       body: SingleChildScrollView(
         child: Padding(

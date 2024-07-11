@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "adminMaine":
             MessageLookupByLibrary.simpleMessage("Адміністратор Мейн"),
         "all": MessageLookupByLibrary.simpleMessage("Усі"),
+        "allCostsAreAddedOnTheSameDateAddMore":
+            MessageLookupByLibrary.simpleMessage(
+                "Все затраты добавляются в одну и ту же дату, добавьте еще, чтобы построить график"),
         "amountPercentagePerDay":
             MessageLookupByLibrary.simpleMessage("Сума у ​​відсотках на день"),
         "anErrorOccurred":
@@ -66,11 +69,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Резервне копіювання даних"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервну копію успішно відновлено!"),
+        "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
         "cancel": MessageLookupByLibrary.simpleMessage("Скасувати"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Оплата карткою: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Картка\nОплата"),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Oплата\nкартою"),
         "categories": MessageLookupByLibrary.simpleMessage("Категорії"),
-        "category": MessageLookupByLibrary.simpleMessage("Категорія: "),
+        "category": MessageLookupByLibrary.simpleMessage("Категорія "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Назва категорії"),
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Змінити пароль адміністратора"),
@@ -82,6 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearDates": MessageLookupByLibrary.simpleMessage("Очистити дати"),
         "confirm": MessageLookupByLibrary.simpleMessage("Підтвердити"),
         "cost": MessageLookupByLibrary.simpleMessage("Вартість"),
+        "costOfMaterials":
+            MessageLookupByLibrary.simpleMessage("Вартість матеріалів"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Вартість матеріалів для цієї послуги"),
         "costs": MessageLookupByLibrary.simpleMessage("витрати"),
@@ -90,17 +96,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Діапазон цін на витрати"),
         "costsTracker":
             MessageLookupByLibrary.simpleMessage("Відстеження витрат"),
-        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
-            "Створити або вибрати категорію"),
+        "createOrSelectACategory":
+            MessageLookupByLibrary.simpleMessage("Виберіть категорію"),
         "customerndata": MessageLookupByLibrary.simpleMessage("Дані\nклієнта"),
         "dataBackup":
             MessageLookupByLibrary.simpleMessage("Резервне копіювання даних"),
-        "date": MessageLookupByLibrary.simpleMessage("Дата: "),
+        "date": MessageLookupByLibrary.simpleMessage("Дата"),
         "dates": MessageLookupByLibrary.simpleMessage("Дати"),
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Вирахувати з ПОДАТКУ"),
         "deductednfromTax":
-            MessageLookupByLibrary.simpleMessage("Вираховано\nз ПОДАТКУ"),
+            MessageLookupByLibrary.simpleMessage("Відрахувати\nподатку"),
         "deleteCategory":
             MessageLookupByLibrary.simpleMessage("Видалити категорію"),
         "deleteCost": MessageLookupByLibrary.simpleMessage("Видалити вартість"),
@@ -151,48 +157,56 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забули пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("Від"),
-        "graphics": MessageLookupByLibrary.simpleMessage("Графіка"),
-        "hello": MessageLookupByLibrary.simpleMessage(" привіт, "),
+        "grams": MessageLookupByLibrary.simpleMessage("Граммы"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Графіки"),
+        "hello": MessageLookupByLibrary.simpleMessage(" привіт "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильна відповідь"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Звичайний код. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Елемент видалено"),
+        "kilograms": MessageLookupByLibrary.simpleMessage("Килограммы"),
+        "kwh": MessageLookupByLibrary.simpleMessage("КВт/ч"),
         "lastName": MessageLookupByLibrary.simpleMessage("Прізвище"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Прізвище клієнта"),
+        "letters": MessageLookupByLibrary.simpleMessage("Письма"),
         "limited": MessageLookupByLibrary.simpleMessage("Обмежено"),
         "login": MessageLookupByLibrary.simpleMessage("Вхід"),
         "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
             "Логін або пароль неправильні"),
         "logout": MessageLookupByLibrary.simpleMessage("Вийти"),
-        "masternname": MessageLookupByLibrary.simpleMessage("Головне\nім\'я"),
+        "masternname":
+            MessageLookupByLibrary.simpleMessage("ім\'я\n працівника"),
         "masters": MessageLookupByLibrary.simpleMessage("Майстри"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Максимальна ціна"),
+        "milliliters": MessageLookupByLibrary.simpleMessage("Милилитры"),
         "minPrice": MessageLookupByLibrary.simpleMessage("Мінімальна ціна"),
         "name": MessageLookupByLibrary.simpleMessage("Ім\'я "),
         "nameOfClient": MessageLookupByLibrary.simpleMessage("Ім\'я клієнта"),
         "nameOfCost": MessageLookupByLibrary.simpleMessage("Назва вартості"),
         "nameOfExpense": MessageLookupByLibrary.simpleMessage("Назва витрат"),
         "nameOfTheService":
-            MessageLookupByLibrary.simpleMessage("Назва служби"),
-        "nameOfncost": MessageLookupByLibrary.simpleMessage("Назва\nвартості"),
+            MessageLookupByLibrary.simpleMessage("Створіть службу"),
+        "nameOfncost": MessageLookupByLibrary.simpleMessage("Назва\nвитрати"),
+        "netProfit": MessageLookupByLibrary.simpleMessage("чистий\nприбуток"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Новий клієнт"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новий пароль"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Новий\nклієнт"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Новий\nCus"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Новий\nклiєнT"),
         "no": MessageLookupByLibrary.simpleMessage("ні"),
+        "noCostsAddedYet":
+            MessageLookupByLibrary.simpleMessage("Стоимости пока не добавлены"),
         "noData": MessageLookupByLibrary.simpleMessage("Немає даних"),
         "noDataFound": MessageLookupByLibrary.simpleMessage("Дані не знайдено"),
         "noEmployeeFoundnpleaseAddANewEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Не знайдено жодного працівника\nБудь ласка, додайте нового працівника."),
-        "noNewnclient":
-            MessageLookupByLibrary.simpleMessage("Ні. Новий\nклієнт"),
+        "noNewnclient": MessageLookupByLibrary.simpleMessage("Нових\nкліднтів"),
         "noOfnservices":
-            MessageLookupByLibrary.simpleMessage("Кількість\nслужб"),
+            MessageLookupByLibrary.simpleMessage("Кількість\nпослуг"),
         "noRegnclient":
-            MessageLookupByLibrary.simpleMessage("Номер Reg\nClient"),
+            MessageLookupByLibrary.simpleMessage("Постійних\nклієнтів"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
                 "Служби не знайдено\nДодайте нову службу"),
@@ -201,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notLimited": MessageLookupByLibrary.simpleMessage("Не обмежено"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Кількість\nслужб"),
+        "number": MessageLookupByLibrary.simpleMessage("номер"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Кількість послуг за місяць"),
         "numberOfUnits":
@@ -213,6 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Відсоток"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),
+        "pieces": MessageLookupByLibrary.simpleMessage("Части"),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Спочатку додайте категорію, щоб додати працівника"),
@@ -227,11 +243,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Ціна"),
         "priceOfService": MessageLookupByLibrary.simpleMessage("Ціна послуги"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Діапазон цін"),
+        "pricenservices": MessageLookupByLibrary.simpleMessage("Цена\nуслуги"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Політика конфіденційності"),
         "regnclient":
             MessageLookupByLibrary.simpleMessage("Реєстраційний\nклієнт"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Рег\nCus"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Постійний\nклієнто"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Постійний клієнт"),
         "relatedncategories":
@@ -270,7 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Виберіть службу"),
         "selectTheDatabaseToRestore": MessageLookupByLibrary.simpleMessage(
             "Виберіть базу даних для відновлення"),
-        "service": MessageLookupByLibrary.simpleMessage("Сервіс: "),
+        "service": MessageLookupByLibrary.simpleMessage("Послуая"),
         "serviceName": MessageLookupByLibrary.simpleMessage("Назва служби"),
         "services": MessageLookupByLibrary.simpleMessage("Послуги"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(
@@ -280,12 +297,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "setPercentageOfIncomeIfNecessary":
             MessageLookupByLibrary.simpleMessage(
                 "Встановити відсоток доходу, якщо необхідно"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "showPhone": MessageLookupByLibrary.simpleMessage("Показати телефон"),
+        "statistic": MessageLookupByLibrary.simpleMessage("Статистика"),
         "submit": MessageLookupByLibrary.simpleMessage("Надіслати"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Систематичні витрати"),
         "systematicnexpenditure":
-            MessageLookupByLibrary.simpleMessage("Систmatic\nВитрати"),
+            MessageLookupByLibrary.simpleMessage("ПостійHi\nвитрати"),
+        "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
+            "Добавлена ​​только одна стоимость, но добавьте еще, чтобы построить график"),
         "to": MessageLookupByLibrary.simpleMessage("До"),
         "total": MessageLookupByLibrary.simpleMessage("Усього"),
         "totalPercentagePerMonth": MessageLookupByLibrary.simpleMessage(
@@ -299,6 +320,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Рівень видимості з хрестиком зі списку"),
+        "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
+            "Як звуть вашу улюблену тварину?"),
+        "whatIsYourFavoriteBook":
+            MessageLookupByLibrary.simpleMessage("Яка ваша улюблена книга?"),
+        "whatIsYourFavoriteColor":
+            MessageLookupByLibrary.simpleMessage("Який твій улюблений колір?"),
+        "whatIsYourFavoriteFood":
+            MessageLookupByLibrary.simpleMessage("Яка твоя улюблена їжа?"),
+        "whatIsYourFavoriteMovie":
+            MessageLookupByLibrary.simpleMessage("Який твій улюблений фільм?"),
+        "whatIsYourFavoriteSong":
+            MessageLookupByLibrary.simpleMessage("Яка твоя улюблена пісня?"),
+        "whatsYourChildhoodNickname":
+            MessageLookupByLibrary.simpleMessage("Яке ваше дитяче прізвисько?"),
         "yes": MessageLookupByLibrary.simpleMessage("Так")
       };
 }

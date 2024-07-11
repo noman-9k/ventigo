@@ -560,10 +560,10 @@ class S {
     );
   }
 
-  /// `Hello, `
+  /// `Hello `
   String get hello {
     return Intl.message(
-      'Hello, ',
+      'Hello ',
       name: 'hello',
       desc: '',
       args: [],
@@ -700,10 +700,10 @@ class S {
     );
   }
 
-  /// `Create Or Select a category`
+  /// `Select a category`
   String get createOrSelectACategory {
     return Intl.message(
-      'Create Or Select a category',
+      'Select a category',
       name: 'createOrSelectACategory',
       desc: '',
       args: [],
@@ -730,10 +730,10 @@ class S {
     );
   }
 
-  /// `Name of the Service`
+  /// `Create a Service`
   String get nameOfTheService {
     return Intl.message(
-      'Name of the Service',
+      'Create a Service',
       name: 'nameOfTheService',
       desc: '',
       args: [],
@@ -1150,10 +1150,10 @@ class S {
     );
   }
 
-  /// `Date : `
+  /// `Date `
   String get date {
     return Intl.message(
-      'Date : ',
+      'Date ',
       name: 'date',
       desc: '',
       args: [],
@@ -1270,10 +1270,10 @@ class S {
     );
   }
 
-  /// `Phone`
+  /// `Phone\nNumber`
   String get phone {
     return Intl.message(
-      'Phone',
+      'Phone\nNumber',
       name: 'phone',
       desc: '',
       args: [],
@@ -1440,20 +1440,20 @@ class S {
     );
   }
 
-  /// `Employee\nData`
+  /// `Employee\nInformation`
   String get employeendata {
     return Intl.message(
-      'Employee\nData',
+      'Employee\nInformation',
       name: 'employeendata',
       desc: '',
       args: [],
     );
   }
 
-  /// `Customer\nData`
+  /// `Customer\nInformation`
   String get customerndata {
     return Intl.message(
-      'Customer\nData',
+      'Customer\nInformation',
       name: 'customerndata',
       desc: '',
       args: [],
@@ -1740,10 +1740,10 @@ class S {
     );
   }
 
-  /// `costs`
+  /// `Costs`
   String get costs {
     return Intl.message(
-      'costs',
+      'Costs',
       name: 'costs',
       desc: '',
       args: [],
@@ -1845,6 +1845,236 @@ class S {
     return Intl.message(
       'Login or password is incorrect',
       name: 'loginOrPasswordIsIncorrect',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Milliliters`
+  String get milliliters {
+    return Intl.message(
+      'Milliliters',
+      name: 'milliliters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `KW/h`
+  String get kwh {
+    return Intl.message(
+      'KW/h',
+      name: 'kwh',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kilograms`
+  String get kilograms {
+    return Intl.message(
+      'Kilograms',
+      name: 'kilograms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Letters`
+  String get letters {
+    return Intl.message(
+      'Letters',
+      name: 'letters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pieces`
+  String get pieces {
+    return Intl.message(
+      'Pieces',
+      name: 'pieces',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grams`
+  String get grams {
+    return Intl.message(
+      'Grams',
+      name: 'grams',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Boxes`
+  String get boxes {
+    return Intl.message(
+      'Boxes',
+      name: 'boxes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is only one cost added yet add more to plot the graph`
+  String get thereIsOnlyOneCostAddedYetAddMoreTo {
+    return Intl.message(
+      'There is only one cost added yet add more to plot the graph',
+      name: 'thereIsOnlyOneCostAddedYetAddMoreTo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Costs added yet`
+  String get noCostsAddedYet {
+    return Intl.message(
+      'No Costs added yet',
+      name: 'noCostsAddedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All costs are added on the same date, add more to plot the graph`
+  String get allCostsAreAddedOnTheSameDateAddMore {
+    return Intl.message(
+      'All costs are added on the same date, add more to plot the graph',
+      name: 'allCostsAreAddedOnTheSameDateAddMore',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistic`
+  String get statistic {
+    return Intl.message(
+      'Statistic',
+      name: 'statistic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cost of\nmaterials`
+  String get costOfMaterials {
+    return Intl.message(
+      'Cost of\nmaterials',
+      name: 'costOfMaterials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Price\nservices`
+  String get pricenservices {
+    return Intl.message(
+      'Price\nservices',
+      name: 'pricenservices',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Net\nprofit`
+  String get netProfit {
+    return Intl.message(
+      'Net\nprofit',
+      name: 'netProfit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is the name of your favorite pet?`
+  String get whatIsTheNameOfYourFavoritePet {
+    return Intl.message(
+      'What is the name of your favorite pet?',
+      name: 'whatIsTheNameOfYourFavoritePet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whats Your Childhood Nickname?`
+  String get whatsYourChildhoodNickname {
+    return Intl.message(
+      'Whats Your Childhood Nickname?',
+      name: 'whatsYourChildhoodNickname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is your favorite movie?`
+  String get whatIsYourFavoriteMovie {
+    return Intl.message(
+      'What is your favorite movie?',
+      name: 'whatIsYourFavoriteMovie',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is your favorite book?`
+  String get whatIsYourFavoriteBook {
+    return Intl.message(
+      'What is your favorite book?',
+      name: 'whatIsYourFavoriteBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is your favorite food?`
+  String get whatIsYourFavoriteFood {
+    return Intl.message(
+      'What is your favorite food?',
+      name: 'whatIsYourFavoriteFood',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is your favorite song?`
+  String get whatIsYourFavoriteSong {
+    return Intl.message(
+      'What is your favorite song?',
+      name: 'whatIsYourFavoriteSong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What is your favorite color?`
+  String get whatIsYourFavoriteColor {
+    return Intl.message(
+      'What is your favorite color?',
+      name: 'whatIsYourFavoriteColor',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `number`
+  String get number {
+    return Intl.message(
+      'number',
+      name: 'number',
       desc: '',
       args: [],
     );

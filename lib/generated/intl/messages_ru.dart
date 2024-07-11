@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Вход администратора"),
         "adminMaine": MessageLookupByLibrary.simpleMessage("Администратор Мэн"),
         "all": MessageLookupByLibrary.simpleMessage("Все"),
+        "allCostsAreAddedOnTheSameDateAddMore":
+            MessageLookupByLibrary.simpleMessage(
+                "Все затраты добавляются в одну и ту же дату, добавьте еще, чтобы построить график"),
         "amountPercentagePerDay":
             MessageLookupByLibrary.simpleMessage("Сумма в процентах в день"),
         "anErrorOccurred":
@@ -63,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupData": MessageLookupByLibrary.simpleMessage("Резервные данные"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервная копия успешно восстановлена!"),
+        "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Оплата картой: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Карта\nPay"),
@@ -80,6 +84,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearDates": MessageLookupByLibrary.simpleMessage("Очистить даты"),
         "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
         "cost": MessageLookupByLibrary.simpleMessage("Стоимость"),
+        "costOfMaterials":
+            MessageLookupByLibrary.simpleMessage("Стоимость\nматериалов"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Стоимость материалов для этой услуги"),
         "costs": MessageLookupByLibrary.simpleMessage("расходы"),
@@ -94,7 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Данные клиента\n"),
         "dataBackup": MessageLookupByLibrary.simpleMessage(
             "Резервное копирование данных"),
-        "date": MessageLookupByLibrary.simpleMessage("Дата: "),
+        "date": MessageLookupByLibrary.simpleMessage("Дата"),
         "dates": MessageLookupByLibrary.simpleMessage("Даты"),
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Вычесть из НАЛОГА"),
@@ -151,7 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
         "from": MessageLookupByLibrary.simpleMessage("От"),
         "graphics": MessageLookupByLibrary.simpleMessage("Графика"),
-        "hello": MessageLookupByLibrary.simpleMessage("привет, "),
+        "hello": MessageLookupByLibrary.simpleMessage("привет "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильный ответ"),
         "isRegularCus":
@@ -178,11 +184,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfTheService":
             MessageLookupByLibrary.simpleMessage("Название службы"),
         "nameOfncost": MessageLookupByLibrary.simpleMessage("Имя\nCost"),
+        "netProfit": MessageLookupByLibrary.simpleMessage("Чистая\nприбыль"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Новый клиент"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Новый\nКлиент"),
         "newncus": MessageLookupByLibrary.simpleMessage("Новый\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("нет"),
+        "noCostsAddedYet":
+            MessageLookupByLibrary.simpleMessage("Стоимости пока не добавлены"),
         "noData": MessageLookupByLibrary.simpleMessage("Нет данных"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Данные не найдены"),
@@ -202,6 +211,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notLimited": MessageLookupByLibrary.simpleMessage("Не ограничено"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Количество\nУслуг"),
+        "number": MessageLookupByLibrary.simpleMessage("число"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Количество услуг за месяц"),
         "numberOfUnits":
@@ -228,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Цена"),
         "priceOfService": MessageLookupByLibrary.simpleMessage("Цена услуги"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Диапазон цен"),
+        "pricenservices": MessageLookupByLibrary.simpleMessage("Цена\nуслуги"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
         "regnclient": MessageLookupByLibrary.simpleMessage("Регистр\nКлиент"),
@@ -280,12 +291,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "setPercentageOfIncomeIfNecessary":
             MessageLookupByLibrary.simpleMessage(
                 "При необходимости установите процент дохода"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "showPhone": MessageLookupByLibrary.simpleMessage("Показать телефон"),
         "submit": MessageLookupByLibrary.simpleMessage("Отправить"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Систематические расходы"),
         "systematicnexpenditure": MessageLookupByLibrary.simpleMessage(
             "Системаматематические\nРасходы"),
+        "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
+            "Добавлена ​​только одна стоимость, но добавьте еще, чтобы построить график"),
         "to": MessageLookupByLibrary.simpleMessage("Кому"),
         "total": MessageLookupByLibrary.simpleMessage("Итого"),
         "totalPercentagePerMonth":
@@ -299,6 +313,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Уровень видимости с крестиком из списка"),
+        "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
+            "Как зовут вашего любимого питомца?"),
+        "whatIsYourFavoriteBook":
+            MessageLookupByLibrary.simpleMessage("Какая ваша любимая книга?"),
+        "whatIsYourFavoriteColor":
+            MessageLookupByLibrary.simpleMessage("Какой ваш любимый цвет?"),
+        "whatIsYourFavoriteFood":
+            MessageLookupByLibrary.simpleMessage("Какая ваша любимая еда?"),
+        "whatIsYourFavoriteMovie":
+            MessageLookupByLibrary.simpleMessage("Какой ваш любимый фильм?"),
+        "whatIsYourFavoriteSong":
+            MessageLookupByLibrary.simpleMessage("Какая ваша любимая песня?"),
+        "whatsYourChildhoodNickname": MessageLookupByLibrary.simpleMessage(
+            "Какой у вас псевдоним в детстве?"),
         "yes": MessageLookupByLibrary.simpleMessage("Да")
       };
 }

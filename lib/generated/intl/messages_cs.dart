@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Přihlášení správce"),
         "adminMaine": MessageLookupByLibrary.simpleMessage("Admin Maine"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "allCostsAreAddedOnTheSameDateAddMore":
+            MessageLookupByLibrary.simpleMessage(
+                "Všechny náklady jsou přidány ke stejnému datu, přidejte další pro vykreslení grafu"),
         "amountPercentagePerDay":
             MessageLookupByLibrary.simpleMessage("Procento částky za den"),
         "anErrorOccurred":
@@ -78,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearDates": MessageLookupByLibrary.simpleMessage("Vymazat data"),
         "confirm": MessageLookupByLibrary.simpleMessage("Potvrdit"),
         "cost": MessageLookupByLibrary.simpleMessage("Cena"),
+        "costOfMaterials":
+            MessageLookupByLibrary.simpleMessage("Náklady na\nmateriály"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Náklady na materiály pro tyto služby"),
         "costs": MessageLookupByLibrary.simpleMessage("náklady"),
@@ -86,11 +91,11 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Cenové rozpětí nákladů"),
         "costsTracker":
             MessageLookupByLibrary.simpleMessage("Sledování nákladů"),
-        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
-            "Vytvořit nebo vybrat kategorii"),
+        "createOrSelectACategory":
+            MessageLookupByLibrary.simpleMessage("Vyberte kategorii"),
         "customerndata": MessageLookupByLibrary.simpleMessage("Zákazník\nData"),
         "dataBackup": MessageLookupByLibrary.simpleMessage("Zálohování dat"),
-        "date": MessageLookupByLibrary.simpleMessage("Datum: "),
+        "date": MessageLookupByLibrary.simpleMessage("Datum "),
         "dates": MessageLookupByLibrary.simpleMessage("Data"),
         "deductFromTax": MessageLookupByLibrary.simpleMessage("Odečíst z DANĚ"),
         "deductednfromTax":
@@ -144,15 +149,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Zapomněli jste heslo?"),
         "from": MessageLookupByLibrary.simpleMessage("Od"),
         "graphics": MessageLookupByLibrary.simpleMessage("Graphics"),
-        "hello": MessageLookupByLibrary.simpleMessage("Ahoj ahoj, "),
+        "hello": MessageLookupByLibrary.simpleMessage("Ahoj ahoj "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Nesprávná odpověď"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Je pravidelné Cus. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Položka smazána"),
+        "kilograms": MessageLookupByLibrary.simpleMessage("Kilogramy"),
+        "kwh": MessageLookupByLibrary.simpleMessage("KW/h"),
         "lastName": MessageLookupByLibrary.simpleMessage("Příjmení"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Příjmení klienta"),
+        "letters": MessageLookupByLibrary.simpleMessage("Dopisy"),
         "limited": MessageLookupByLibrary.simpleMessage("Limited"),
         "login": MessageLookupByLibrary.simpleMessage("Přihlásit se"),
         "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
@@ -167,13 +175,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfCost": MessageLookupByLibrary.simpleMessage("Název nákladů"),
         "nameOfExpense": MessageLookupByLibrary.simpleMessage("Název výdaje"),
         "nameOfTheService":
-            MessageLookupByLibrary.simpleMessage("Název služby"),
+            MessageLookupByLibrary.simpleMessage("Vytvořte službu"),
         "nameOfncost": MessageLookupByLibrary.simpleMessage("Název\nCena"),
+        "netProfit": MessageLookupByLibrary.simpleMessage("Čistý\nzisk"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Nový zákazník"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nové heslo"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Nový\nKlient"),
         "newncus": MessageLookupByLibrary.simpleMessage("Nový\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("Ne"),
+        "noCostsAddedYet": MessageLookupByLibrary.simpleMessage(
+            "Zatím nebyly přidány žádné náklady"),
         "noData": MessageLookupByLibrary.simpleMessage("Žádná data"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Nebyla nalezena žádná data"),
@@ -191,6 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Žádná jednotka měření"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Bez omezení"),
         "numOfnservices": MessageLookupByLibrary.simpleMessage("Počet\nSlužeb"),
+        "number": MessageLookupByLibrary.simpleMessage("číslo"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Počet služeb za měsíc"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Počet jednotek"),
@@ -217,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Cena"),
         "priceOfService": MessageLookupByLibrary.simpleMessage("Cena služby"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Cenový rozsah"),
+        "pricenservices": MessageLookupByLibrary.simpleMessage("Cena\nslužby"),
         "privacyPolicy": MessageLookupByLibrary.simpleMessage(
             "Zásady ochrany osobních údajů"),
         "regnclient": MessageLookupByLibrary.simpleMessage("Reg\nKlient"),
@@ -268,12 +281,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "setPercentageOfIncomeIfNecessary":
             MessageLookupByLibrary.simpleMessage(
                 "V případě potřeby nastavte procento příjmu"),
+        "settings": MessageLookupByLibrary.simpleMessage("Nastavení"),
         "showPhone": MessageLookupByLibrary.simpleMessage("Zobrazit telefon"),
+        "statistic": MessageLookupByLibrary.simpleMessage("Statistika"),
         "submit": MessageLookupByLibrary.simpleMessage("Odeslat"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Systematické výdaje"),
         "systematicnexpenditure":
             MessageLookupByLibrary.simpleMessage("Systmatic\nVýdaje"),
+        "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
+            "K vykreslení grafu je přidána pouze jedna cena, ale přidejte další"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "total": MessageLookupByLibrary.simpleMessage("Celkem"),
         "totalPercentagePerMonth":
@@ -287,6 +304,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Úroveň viditelnosti s křížkem ze seznamu"),
+        "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
+            "Jak se jmenuje tvůj oblíbený mazlíček?"),
+        "whatIsYourFavoriteBook": MessageLookupByLibrary.simpleMessage(
+            "Jaká je vaše oblíbená kniha?"),
+        "whatIsYourFavoriteColor": MessageLookupByLibrary.simpleMessage(
+            "Jaká je vaše oblíbená barva?"),
+        "whatIsYourFavoriteFood": MessageLookupByLibrary.simpleMessage(
+            "Jaké je vaše oblíbené jídlo?"),
+        "whatIsYourFavoriteMovie":
+            MessageLookupByLibrary.simpleMessage("Jaký je váš oblíbený film?"),
+        "whatIsYourFavoriteSong": MessageLookupByLibrary.simpleMessage(
+            "Jaká je vaše oblíbená píseň?"),
+        "whatsYourChildhoodNickname": MessageLookupByLibrary.simpleMessage(
+            "Jaká je vaše přezdívka z dětství?"),
         "yes": MessageLookupByLibrary.simpleMessage("Ano ano")
       };
 }

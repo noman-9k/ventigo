@@ -41,7 +41,15 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
                 align: TextAlign.center),
           10.verticalSpace,
           CustomDropDown(
-            items: AppConstants.securityQuestions,
+            items: [
+              S.of(context).whatIsTheNameOfYourFavoritePet,
+              S.of(context).whatsYourChildhoodNickname,
+              S.of(context).whatIsYourFavoriteMovie,
+              S.of(context).whatIsYourFavoriteBook,
+              S.of(context).whatIsYourFavoriteFood,
+              S.of(context).whatIsYourFavoriteSong,
+              S.of(context).whatIsYourFavoriteColor,
+            ],
             onChanged: (value) {
               selectedQuestion = value ?? '';
             },

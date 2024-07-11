@@ -29,7 +29,7 @@ class AdminAuthView extends GetView<AdminAuthController> {
                   pushChangeAdminPassDialog(context);
                 },
                 child: AppText.lightBoldText(S.of(context).setAdminPassword,
-                    color: Colors.red, fontSize: 20.sp)),
+                    color: Colors.red, fontSize: 15.sp)),
           AppText.boldText(S.of(context).enterPasswordHere, fontSize: 20.sp),
           20.verticalSpace,
           Padding(

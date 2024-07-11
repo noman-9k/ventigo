@@ -34,6 +34,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "adminMaine":
             MessageLookupByLibrary.simpleMessage("Administrador Maine"),
         "all": MessageLookupByLibrary.simpleMessage("todo"),
+        "allCostsAreAddedOnTheSameDateAddMore":
+            MessageLookupByLibrary.simpleMessage(
+                "Todos los costos se agregan en la misma fecha, agregue más para trazar el gráfico"),
         "amountPercentagePerDay":
             MessageLookupByLibrary.simpleMessage("Cantidad Porcentaje por día"),
         "anErrorOccurred":
@@ -80,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearDates": MessageLookupByLibrary.simpleMessage("Borrar fechas"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirmar"),
         "cost": MessageLookupByLibrary.simpleMessage("costo"),
+        "costOfMaterials":
+            MessageLookupByLibrary.simpleMessage("Costo de\nmateriales"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Costo de los Materiales para estos Servicios"),
         "costs": MessageLookupByLibrary.simpleMessage("costos"),
@@ -88,12 +93,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Rango de Precios de Costos"),
         "costsTracker":
             MessageLookupByLibrary.simpleMessage("Rastreador de Costos"),
-        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
-            "Crear o seleccionar una categoría"),
+        "createOrSelectACategory":
+            MessageLookupByLibrary.simpleMessage("Seleccione una categoría"),
         "customerndata": MessageLookupByLibrary.simpleMessage("Cliente\nDatos"),
         "dataBackup":
             MessageLookupByLibrary.simpleMessage("Copia de seguridad de datos"),
-        "date": MessageLookupByLibrary.simpleMessage("Fecha: "),
+        "date": MessageLookupByLibrary.simpleMessage("Fecha"),
         "dates": MessageLookupByLibrary.simpleMessage("Fechas"),
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Deducir del IMPUESTO"),
@@ -150,13 +155,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("¿Olvidaste tu contraseña?"),
         "from": MessageLookupByLibrary.simpleMessage("De"),
         "graphics": MessageLookupByLibrary.simpleMessage("Gráficos"),
-        "hello": MessageLookupByLibrary.simpleMessage("Hola hola"),
+        "hello": MessageLookupByLibrary.simpleMessage("Hola"),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Respuesta incorrecta"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Es cliente regular: "),
         "itemDeleted":
             MessageLookupByLibrary.simpleMessage("Elemento eliminado"),
+        "kwh": MessageLookupByLibrary.simpleMessage("KW/h"),
         "lastName": MessageLookupByLibrary.simpleMessage("ApellidoApellido"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Apellido del Cliente"),
@@ -176,14 +182,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfExpense":
             MessageLookupByLibrary.simpleMessage("Nombre del gasto"),
         "nameOfTheService":
-            MessageLookupByLibrary.simpleMessage("Nombre del Servicio"),
+            MessageLookupByLibrary.simpleMessage("Crear un servicio"),
         "nameOfncost":
             MessageLookupByLibrary.simpleMessage("Nombre del\nCosto"),
+        "netProfit": MessageLookupByLibrary.simpleMessage("Beneficio\nneto"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Nuevo Cliente"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nueva Contraseña"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Nuevo\nCliente"),
         "newncus": MessageLookupByLibrary.simpleMessage("Nuevo\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("no"),
+        "noCostsAddedYet": MessageLookupByLibrary.simpleMessage(
+            "Aún no se han agregado costos"),
         "noData": MessageLookupByLibrary.simpleMessage("Sin datos"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("No se encontraron datos"),
@@ -204,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notLimited": MessageLookupByLibrary.simpleMessage("No limitado"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Núm. de\nServicios"),
+        "number": MessageLookupByLibrary.simpleMessage("número"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Número de servicios por mes"),
         "numberOfUnits":
@@ -234,6 +244,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceOfService":
             MessageLookupByLibrary.simpleMessage("Precio del Servicio"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Rango de precios"),
+        "pricenservices":
+            MessageLookupByLibrary.simpleMessage("Precio\nservicios"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Política de privacidad"),
         "regnclient": MessageLookupByLibrary.simpleMessage("Reg\nCliente"),
@@ -294,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Gasto sistemático"),
         "systematicnexpenditure":
             MessageLookupByLibrary.simpleMessage("Sistemamatic\nGasto"),
+        "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
+            "Solo hay un costo agregado pero agrega más para trazar el gráfico"),
         "to": MessageLookupByLibrary.simpleMessage("A"),
         "total": MessageLookupByLibrary.simpleMessage("total"),
         "totalPercentagePerMonth":
@@ -307,6 +321,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Nivel de visibilidad con una cruz de la lista"),
+        "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
+            "¿Cuál es el nombre de tu mascota favorita?"),
+        "whatIsYourFavoriteBook":
+            MessageLookupByLibrary.simpleMessage("¿Cuál es tu libro favorito?"),
+        "whatIsYourFavoriteColor":
+            MessageLookupByLibrary.simpleMessage("¿Cuál es tu color favorito?"),
+        "whatIsYourFavoriteFood": MessageLookupByLibrary.simpleMessage(
+            "¿Cuál es tu comida favorita?"),
+        "whatIsYourFavoriteMovie": MessageLookupByLibrary.simpleMessage(
+            "¿Cuál es tu película favorita?"),
+        "whatIsYourFavoriteSong": MessageLookupByLibrary.simpleMessage(
+            "¿Cuál es tu canción favorita?"),
+        "whatsYourChildhoodNickname": MessageLookupByLibrary.simpleMessage(
+            "¿Cuál es tu apodo de infancia?"),
         "yes": MessageLookupByLibrary.simpleMessage("Sí")
       };
 }

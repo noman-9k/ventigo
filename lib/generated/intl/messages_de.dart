@@ -35,6 +35,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "adminMaine":
             MessageLookupByLibrary.simpleMessage("Administrator Maine"),
         "all": MessageLookupByLibrary.simpleMessage("Alle"),
+        "allCostsAreAddedOnTheSameDateAddMore":
+            MessageLookupByLibrary.simpleMessage(
+                "Alle Kosten wurden am selben Datum hinzugefügt, fügen Sie weitere hinzu, um das Diagramm zu zeichnen"),
         "amountPercentagePerDay":
             MessageLookupByLibrary.simpleMessage("Prozentsatzbetrag pro Tag"),
         "anErrorOccurred":
@@ -63,6 +66,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupData": MessageLookupByLibrary.simpleMessage("Daten sichern"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Backup erfolgreich wiederhergestellt!"),
+        "boxes": MessageLookupByLibrary.simpleMessage("Kartons"),
         "cancel": MessageLookupByLibrary.simpleMessage("Abbrechen"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Kartenzahlung: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Card\nPay"),
@@ -79,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "clearDates": MessageLookupByLibrary.simpleMessage("Daten löschen"),
         "confirm": MessageLookupByLibrary.simpleMessage("Bestätigen"),
         "cost": MessageLookupByLibrary.simpleMessage("Kosten"),
+        "costOfMaterials":
+            MessageLookupByLibrary.simpleMessage("Kosten für\nMaterialien"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Materialkosten für diesen Dienst"),
         "costs": MessageLookupByLibrary.simpleMessage("Kosten"),
@@ -86,11 +92,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Kostenpreisspanne"),
         "costsTracker": MessageLookupByLibrary.simpleMessage("Kosten-Tracker"),
-        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
-            "Kategorie erstellen oder auswählen"),
+        "createOrSelectACategory":
+            MessageLookupByLibrary.simpleMessage("Wählen Sie eine Kategorie"),
         "customerndata": MessageLookupByLibrary.simpleMessage("Kundendaten"),
         "dataBackup": MessageLookupByLibrary.simpleMessage("Datensicherung"),
-        "date": MessageLookupByLibrary.simpleMessage("Datum : "),
+        "date": MessageLookupByLibrary.simpleMessage("Datum "),
         "dates": MessageLookupByLibrary.simpleMessage("Daten"),
         "deductFromTax":
             MessageLookupByLibrary.simpleMessage("Von der STEUER abziehen"),
@@ -147,16 +153,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Kennwort vergessen?"),
         "from": MessageLookupByLibrary.simpleMessage("Von"),
+        "grams": MessageLookupByLibrary.simpleMessage("Gramm"),
         "graphics": MessageLookupByLibrary.simpleMessage("Grafiken"),
-        "hello": MessageLookupByLibrary.simpleMessage("Hallo, "),
+        "hello": MessageLookupByLibrary.simpleMessage("Hallo "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Falsche Antwort"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Ist regulärer Kunde. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Artikel gelöscht"),
+        "kilograms": MessageLookupByLibrary.simpleMessage("Kilogramm"),
+        "kwh": MessageLookupByLibrary.simpleMessage("KW/h"),
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Nachname des Kunden"),
+        "letters": MessageLookupByLibrary.simpleMessage("Briefe"),
         "limited": MessageLookupByLibrary.simpleMessage("Begrenzt"),
         "login": MessageLookupByLibrary.simpleMessage("Anmelden"),
         "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(
@@ -165,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "masternname": MessageLookupByLibrary.simpleMessage("Master\nName"),
         "masters": MessageLookupByLibrary.simpleMessage("Master"),
         "maxPrice": MessageLookupByLibrary.simpleMessage("Höchstpreis"),
+        "milliliters": MessageLookupByLibrary.simpleMessage("Milliliter"),
         "minPrice": MessageLookupByLibrary.simpleMessage("Mindestpreis"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameOfClient": MessageLookupByLibrary.simpleMessage("Name des Kunden"),
@@ -172,13 +183,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfExpense":
             MessageLookupByLibrary.simpleMessage("Name der Ausgabe"),
         "nameOfTheService":
-            MessageLookupByLibrary.simpleMessage("Name des Dienstes"),
+            MessageLookupByLibrary.simpleMessage("Erstellen Sie einen Service"),
         "nameOfncost": MessageLookupByLibrary.simpleMessage("Name der\nKosten"),
+        "netProfit": MessageLookupByLibrary.simpleMessage("Nettogewinn"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Neukunde"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Neues Passwort"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Neuer\nClient"),
         "newncus": MessageLookupByLibrary.simpleMessage("Neuer\nCus"),
         "no": MessageLookupByLibrary.simpleMessage("Nein"),
+        "noCostsAddedYet": MessageLookupByLibrary.simpleMessage(
+            "Noch keine Kosten hinzugefügt"),
         "noData": MessageLookupByLibrary.simpleMessage("Keine Daten"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Keine Daten gefunden"),
@@ -199,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notLimited": MessageLookupByLibrary.simpleMessage("Nicht begrenzt"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Anzahl\nDienste"),
+        "number": MessageLookupByLibrary.simpleMessage("nummer"),
         "numberOfServiceForMonth": MessageLookupByLibrary.simpleMessage(
             "Anzahl der Services für den Monat"),
         "numberOfUnits":
@@ -212,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Prozentsatz"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
+        "pieces": MessageLookupByLibrary.simpleMessage("Stück"),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Bitte fügen Sie zuerst eine Kategorie hinzu, um einen Mitarbeiter hinzuzufügen"),
@@ -227,6 +243,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "priceOfService":
             MessageLookupByLibrary.simpleMessage("Preis des Dienstes"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Preisspanne"),
+        "pricenservices":
+            MessageLookupByLibrary.simpleMessage("Preis\nDienstleistungen"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Datenschutzrichtlinie"),
         "regnclient": MessageLookupByLibrary.simpleMessage("Reg\nClient"),
@@ -279,12 +297,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "setPercentageOfIncomeIfNecessary":
             MessageLookupByLibrary.simpleMessage(
                 "Legen Sie bei Bedarf den Prozentsatz des Einkommens fest"),
+        "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "showPhone": MessageLookupByLibrary.simpleMessage("Telefon anzeigen"),
+        "statistic": MessageLookupByLibrary.simpleMessage("Statistik"),
         "submit": MessageLookupByLibrary.simpleMessage("Senden"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Systematische Ausgabe"),
         "systematicnexpenditure":
             MessageLookupByLibrary.simpleMessage("Systemmatic\nExpenditure"),
+        "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
+            "Es wurde nur eine Kostenangabe hinzugefügt, fügen Sie jedoch weitere hinzu, um das Diagramm zu zeichnen"),
         "to": MessageLookupByLibrary.simpleMessage("Bis"),
         "total": MessageLookupByLibrary.simpleMessage("Gesamt"),
         "totalPercentagePerMonth":
@@ -298,6 +320,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Sichtbarkeitsstufe mit einem Kreuz aus der Liste"),
+        "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
+            "Wie heißt Ihr Lieblingshaustier?"),
+        "whatIsYourFavoriteBook":
+            MessageLookupByLibrary.simpleMessage("Was ist Ihr Lieblingsbuch?"),
+        "whatIsYourFavoriteColor": MessageLookupByLibrary.simpleMessage(
+            "Was ist Ihre Lieblingsfarbe?"),
+        "whatIsYourFavoriteFood":
+            MessageLookupByLibrary.simpleMessage("Was ist Ihr Lieblingsessen?"),
+        "whatIsYourFavoriteMovie":
+            MessageLookupByLibrary.simpleMessage("Was ist Ihr Lieblingsfilm?"),
+        "whatIsYourFavoriteSong":
+            MessageLookupByLibrary.simpleMessage("Was ist Ihr Lieblingslied?"),
+        "whatsYourChildhoodNickname": MessageLookupByLibrary.simpleMessage(
+            "Wie lautet Ihr Spitzname aus der Kindheit?"),
         "yes": MessageLookupByLibrary.simpleMessage("Ja")
       };
 }

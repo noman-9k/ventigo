@@ -146,7 +146,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   return AppColors.lightYellow;
                 }),
                 columnSpacing: 10,
-                minWidth: 550,
+                minWidth: 650,
                 horizontalMargin: 10,
                 columns: <DataColumn2>[
                   DataColumn2(
@@ -194,7 +194,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              S.of(context).cost,
+                              S.of(context).costOfMaterials,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
@@ -205,34 +205,34 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              S.of(context).price,
+                              S.of(context).pricenservices,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
                       ),
-                      size: ColumnSize.S),
+                      size: ColumnSize.M),
                   DataColumn2(
                       label: Center(
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              '%',
+                              '%' + '\n' + S.of(context).employees,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
                       ),
-                      size: ColumnSize.S),
+                      size: ColumnSize.M),
                   DataColumn2(
                       label: Center(
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'Profit',
+                              S.of(context).netProfit,
                               style: headerStyle,
                               textAlign: TextAlign.center,
                             )),
                       ),
-                      size: ColumnSize.S),
+                      size: ColumnSize.M),
                 ],
                 rows: List<DataRow>.generate(
                   snapshot.data!.length,

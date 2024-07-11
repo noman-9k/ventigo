@@ -18,24 +18,24 @@ class StatisticsView extends GetView<StatisticController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppAppBar(title: 'Hello '),
-      floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 50),
-          child: FloatingActionButton.extended(
-            hoverColor: Colors.white,
-            splashColor: AppColors.whiteColor,
-            focusColor: Colors.white,
-            hoverElevation: 0,
-            foregroundColor: Colors.white,
-            onPressed: () {
-              NewStatisticsResultsController.to.clearFilters();
-            },
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            label: AppText.mediumBoldText(
-                S.of(context).clear + ' ' + S.of(context).filters,
-                color: Colors.red),
-          )),
+      appBar: AppAppBar(title: S.of(context).hello),
+      // floatingActionButton: Padding(
+      //     padding: const EdgeInsets.only(bottom: 50),
+      //     child: FloatingActionButton.extended(
+      //       hoverColor: Colors.white,
+      //       splashColor: AppColors.whiteColor,
+      //       focusColor: Colors.white,
+      //       hoverElevation: 0,
+      //       foregroundColor: Colors.white,
+      //       onPressed: () {
+      //         NewStatisticsResultsController.to.clearFilters();
+      //       },
+      //       backgroundColor: Colors.transparent,
+      //       elevation: 0,
+      //       label: AppText.mediumBoldText(
+      //           S.of(context).clear + ' ' + S.of(context).filters,
+      //           color: Colors.red),
+      //     )),
       body: GetBuilder<NewStatisticsResultsController>(builder: (controller) {
         return TwoTabsView(
           topCenterWidget: DateWidget(),

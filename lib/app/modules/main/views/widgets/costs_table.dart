@@ -60,7 +60,9 @@ class CostsTable extends StatelessWidget {
                         child: Text(S.of(context).date, style: headerStyle))),
                 DataColumn2(
                     label: Center(
-                        child: Text(S.of(context).price, style: headerStyle))),
+                        child: Text(
+                            S.of(context).price + '\n' + S.of(context).cost,
+                            style: headerStyle))),
                 DataColumn2(
                     label: Text(
                   S.of(context).systematicnexpenditure,
