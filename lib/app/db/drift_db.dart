@@ -406,6 +406,9 @@ class AppDb extends _$AppDb {
     int from = fromDate.millisecondsSinceEpoch ~/ 1000;
     int to = toDate.millisecondsSinceEpoch ~/ 1000;
 
+    // another Day added to toDate to include the last day
+    to += Duration(hours: 24).inMilliseconds ~/ 1000;
+
     final joins = [
       innerJoin(dbServices, dbServices.id.equalsExp(dbDataItems.serviceId)),
       innerJoin(dbEmployees, dbEmployees.id.equalsExp(dbDataItems.employeeId)),
@@ -417,7 +420,8 @@ class AppDb extends _$AppDb {
             dbDataItems.regCustomer.count(),
           ])
           ..where(dbDataItems.date.isBiggerOrEqualValue(fromDate))
-          ..where(dbDataItems.date.isSmallerOrEqualValue(toDate))
+          ..where(dbDataItems.date.isSmallerOrEqualValue(
+              DateTime.fromMillisecondsSinceEpoch(to * 1000)))
           ..groupBy([dbEmployees.id])
           ..orderBy([
             OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)

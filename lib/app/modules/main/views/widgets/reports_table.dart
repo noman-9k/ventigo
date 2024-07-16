@@ -31,6 +31,7 @@ class ReportsTable extends GetView<MainController> {
 
             return DataTable2(
               columnSpacing: 10,
+              bottomMargin: 90,
               horizontalMargin: 10,
               minWidth: 660,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
