@@ -111,7 +111,7 @@
   "cardPay": "Pago con Tarjeta: ",
   "date": "Fecha",
   "category": "Categoría:",
-  "service": "Servicio:",
+  "service": "Servicio ",
   "editReport": "Editar informe",
   "employees": "Empleados",
   "noEmployeeFoundnpleaseAddANewEmployee": "No se encontró ningún empleado\nPor favor agregue un nuevo empleado.",

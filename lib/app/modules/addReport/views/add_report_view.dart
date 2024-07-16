@@ -78,13 +78,19 @@ class AddReportView extends GetView<AddReportController> {
                     title: S.of(context).newCustomer,
                     onChanged: (value) {
                       controller.newCustomer = value;
+
+                      if (value) {
+                        controller.regCustomer = false;
+                        controller.update();
+                      }
                     }),
                 16.verticalSpace,
                 YesNoButton(
+                    key: ValueKey(controller.regCustomer),
                     title: S.of(context).regularCustomer,
-                    // defaultValue: controller.newCustomer == null
-                    //     ? null
-                    //     : !controller.newCustomer!,
+                    defaultValue: controller.newCustomer == null
+                        ? null
+                        : !controller.newCustomer!,
                     onChanged: (value) {
                       controller.regCustomer = value;
                     }),

@@ -20,12 +20,12 @@ class FiltersView extends GetView<FiltersController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        label: AppText.mediumBoldText(S.of(context).applyFilters,
-            color: Colors.white),
-        backgroundColor: AppColors.primaryColor,
-        onPressed: () => controller.applyFilters(),
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //   label: AppText.mediumBoldText(S.of(context).applyFilters,
+      //       color: Colors.white),
+      //   backgroundColor: AppColors.primaryColor,
+      //   onPressed: () => controller.applyFilters(),
+      // ),
       appBar: AppBar(
         leading: AppBackButton(),
         title: AppText.boldText(S.of(context).filters, fontSize: 20.sp),

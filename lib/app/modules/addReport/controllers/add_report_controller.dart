@@ -6,6 +6,7 @@ import 'package:ventigo/app/app_services/category_service.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/extensions/date_extension.dart';
+import 'package:ventigo/extensions/list_extension.dart';
 
 import '../../../db/drift_db.dart';
 
@@ -39,10 +40,12 @@ class AddReportController extends GetxController {
     List<DbDataItem> dataItems = await DbController.to.appDb.getAllDataItemsF();
 
     dataItems.forEach((element) {
-      list.add(SearchItem(label: element.name!, value: element.id.toString()));
+      list.add(SearchItem(
+          label: element.name!.replaceAll('\n', ' - '),
+          value: element.id.toString()));
     });
 
-    return list;
+    return list.myDistinct();
   }
 
   Future<List> fetchDataPhone() async {
@@ -55,7 +58,7 @@ class AddReportController extends GetxController {
           SearchItem(label: element.phone ?? "", value: element.id.toString()));
     });
 
-    return list;
+    return list.myDistinct();
   }
 
   onCategoryChanged(String? p1) {
@@ -157,5 +160,12 @@ class SearchItem {
   @override
   String toString() {
     return 'SearchItem{label: $label, value: $value}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    // if (identical(this, other)) return true;
+
+    return other is SearchItem && other.label == label;
   }
 }

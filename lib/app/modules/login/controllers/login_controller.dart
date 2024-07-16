@@ -28,6 +28,7 @@ class LoginController extends GetxController {
       Get.showSnackbar(GetSnackBar(
         title: S.current.error,
         message: S.current.loginOrPasswordIsIncorrect,
+        duration: Duration(seconds: 2),
       ));
     }
 

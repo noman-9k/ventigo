@@ -218,7 +218,11 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
     super.dispose();
   }
 
-  ListView _listViewBuilder(context) {
+  Widget _listViewBuilder(context) {
+    // if (itemsFound == false) {
+    //   return SizedBox();
+    // }
+
     if (itemsFound == false) {
       return ListView(
         padding: EdgeInsets.zero,
@@ -307,7 +311,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
     if (itemsFound == true && filteredList!.length > 0 ||
         itemsFound == false && widget.controller.text.length > 0) {
       return Container(
-          height: calculateHeight().toDouble(),
+          height: itemsFound == false ? 0.0 : calculateHeight().toDouble(),
           child: decoratedScrollbar(_listViewBuilder(context)));
     }
     return null;

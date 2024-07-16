@@ -31,19 +31,18 @@ class NewStatisticsResultsController extends GetxController {
   }
 
   updateDate({DateTime? fromDate, DateTime? toDate}) {
-    this.fromDate = fromDate.obs;
-    this.toDate = toDate.obs;
-
-    if (fromDate != null) fromDateController.text = fromDate.smallDate();
-    if (toDate != null) toDateController.text = toDate.smallDate();
+    if (fromDate != null) {
+      this.fromDate = fromDate.obs;
+      fromDateController.text = fromDate.smallDate();
+    } else {
+      this.toDate = toDate.obs;
+      if (toDate != null) toDateController.text = toDate.smallDate();
+    }
 
     update();
   }
 
   getFilteredStream() {
-    log('fromDate: ${this.fromDate?.value}');
-    log('toDate: ${this.toDate?.value}');
-
     filterFuture = DbController.to.appDb.getNewStatisticsReports(
         fromDate: fromDate?.value, toDate: toDate?.value);
 

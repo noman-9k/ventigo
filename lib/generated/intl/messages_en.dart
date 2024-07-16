@@ -214,7 +214,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Payment by Card"),
         "percentage": MessageLookupByLibrary.simpleMessage("Percentage"),
-        "phone": MessageLookupByLibrary.simpleMessage("Phone\nNumber"),
+        "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pieces": MessageLookupByLibrary.simpleMessage("Pieces"),
         "pleaseAddACategoryFirstToAddAnEmployee":
@@ -273,7 +273,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectService": MessageLookupByLibrary.simpleMessage("Select Service"),
         "selectTheDatabaseToRestore": MessageLookupByLibrary.simpleMessage(
             "Select the database to restore"),
-        "service": MessageLookupByLibrary.simpleMessage("Service: "),
+        "service": MessageLookupByLibrary.simpleMessage("Service"),
         "serviceName": MessageLookupByLibrary.simpleMessage("Service Name"),
         "services": MessageLookupByLibrary.simpleMessage("Services"),
         "setAdminPassword":

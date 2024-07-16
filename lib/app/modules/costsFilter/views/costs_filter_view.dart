@@ -47,7 +47,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
                   hintText: S.of(context).nameOfCost,
                 ),
               ).withLabel(S.of(context).nameOfCost),
-              20.verticalSpace,
+              // 20.verticalSpace,
               // CustomDropDown(
               //   items: CategoryService.to
               //       .getAllServicesCategories()

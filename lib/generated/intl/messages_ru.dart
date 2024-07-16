@@ -281,7 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectService": MessageLookupByLibrary.simpleMessage("Выбрать услугу"),
         "selectTheDatabaseToRestore": MessageLookupByLibrary.simpleMessage(
             "Выберите базу данных для восстановления"),
-        "service": MessageLookupByLibrary.simpleMessage("Сервис: "),
+        "service": MessageLookupByLibrary.simpleMessage("Сервис "),
         "serviceName": MessageLookupByLibrary.simpleMessage("Имя службы"),
         "services": MessageLookupByLibrary.simpleMessage("Услуги"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(

@@ -31,6 +31,7 @@ class _YesNoButtonState extends State<YesNoButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: widget.key,
       height: 50,
       width: 1.sw,
       decoration: BoxDecoration(

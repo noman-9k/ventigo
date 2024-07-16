@@ -14,6 +14,7 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/settings/controllers/file_storage.dart';
 import 'package:ventigo/app/modules/settings/views/restore_dialog.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
+import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../firebase/firebase_storage_repo.dart';
 import '../../../../firebase/firestore_repositery.dart';
@@ -162,17 +163,33 @@ class SettingsController extends GetxController {
   Future<void> exportToCSVFile(BuildContext context) async {
     final stream = DbController.to.appDb.getAllDataItems();
     var csvData = [
-      ['ID', 'Name', 'Phone', 'Price', 'Employee Name']
+      [
+        'ID',
+        'Date',
+        'Name',
+        'Regular Customer',
+        'New Customer',
+        'Payment by Card',
+        'Phone',
+        'Employee Name',
+        'Category Name',
+        'Service Name',
+      ]
     ];
 
     await stream.listen((event) async {
       event.forEach((element) {
         csvData.add([
           element.id.toString(),
+          if (element.date != null) element.date!.smallDate() else '',
           element.name ?? '',
+          element.regCustomer.toString(),
+          element.newCustomer.toString(),
+          element.cardPay.toString(),
           element.phone ?? '',
-          element.price.toString(),
-          element.employeeName ?? ''
+          element.employeeName ?? '',
+          element.categoryName ?? '',
+          element.serviceName ?? '',
         ]);
       });
 

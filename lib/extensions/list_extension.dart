@@ -12,6 +12,21 @@
 // }
 
 import '../app/models/stats_result_model.dart';
+import '../app/modules/addReport/controllers/add_report_controller.dart';
+
+extension ListSearchExtension on List<SearchItem> {
+  List<SearchItem> myDistinct() {
+    return this.fold(
+      [],
+      (List<SearchItem> distinctList, item) {
+        if (!distinctList.any((element) => element.label == item.label)) {
+          distinctList.add(item);
+        }
+        return distinctList;
+      },
+    );
+  }
+}
 
 extension ListExtension on List<StatResultModel> {
   StatResultModel get total {

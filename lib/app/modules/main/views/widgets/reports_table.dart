@@ -31,6 +31,7 @@ class ReportsTable extends GetView<MainController> {
 
             return DataTable2(
               columnSpacing: 10,
+              bottomMargin: 90,
               horizontalMargin: 10,
               minWidth: 660,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>(
@@ -67,7 +68,7 @@ class ReportsTable extends GetView<MainController> {
                           style: headerStyle,
                           textAlign: TextAlign.center),
                     ),
-                    size: ColumnSize.L),
+                    size: ColumnSize.M),
                 DataColumn2(
                     label: Center(
                         child: Text(S.of(context).date,
