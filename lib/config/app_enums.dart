@@ -4,5 +4,6 @@ enum VisibilityFilter {
   percentageDay,
   numberOfServices,
   showPhone,
-  servicesPerDay
+  servicesPerDay,
+  onlyAllServices,
 }

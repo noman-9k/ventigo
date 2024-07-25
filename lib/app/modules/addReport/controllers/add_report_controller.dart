@@ -10,13 +10,27 @@ import 'package:ventigo/extensions/list_extension.dart';
 
 import '../../../db/drift_db.dart';
 
+class YesNoButtonController extends GetxController {
+  bool? newCustomer;
+  bool? regCustomer;
+
+  void onNewCustomerChanged({bool value = false}) {
+    if (value) {
+      regCustomer = false;
+    }
+    newCustomer = value;
+    update();
+  }
+}
+
 class AddReportController extends GetxController {
+  static AddReportController get to => Get.find<AddReportController>();
   TextEditingController nameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController priceController = TextEditingController();
   bool? newCustomer;
-  bool? regCustomer;
+  bool? regCustomer = false;
   bool? cardPay;
   RxBool isLoading = false.obs;
 

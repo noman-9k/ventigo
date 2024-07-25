@@ -6,6 +6,7 @@ import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/models/employee.dart';
 import 'package:ventigo/app/modules/filters/db_filter/costs_filter.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
@@ -217,6 +218,18 @@ class AppDb extends _$AppDb {
   Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
       (select(dbDataItems)
             ..where((tbl) => tbl.employeeId.equals(id))
+            ..orderBy([
+              (tbl) =>
+                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
+            ]))
+          .watch();
+
+  Stream<List<DbDataItem>> getLastWeeksDataItemsByEmployeeId(int id) =>
+      (select(dbDataItems)
+            ..where((tbl) =>
+                tbl.employeeId.equals(id) &
+                tbl.date.isBiggerOrEqualValue(
+                    DateTime.now().subtract(Duration(days: 7))))
             ..orderBy([
               (tbl) =>
                   OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
@@ -441,6 +454,14 @@ class AppDb extends _$AppDb {
           'SELECT COUNT(*) as newCus FROM db_data_items WHERE reg_customer = 1 AND employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
 
+      // unique customers
+      final uniqueCustomers = await customSelect(
+          // 'SELECT COUNT(DISTINCT phone) as uniqCus FROM db_data_items WHERE employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
+          'SELECT COUNT(DISTINCT phone) as uniqCus FROM db_data_items WHERE  date BETWEEN $from AND $to',
+          readsFrom: {dbDataItems}).getSingle();
+
+      log('uniqueCustomers: ${uniqueCustomers.data['uniqCus']}');
+
       final totalNewCus = await customSelect(
           'SELECT COUNT(*) as newCus FROM db_data_items WHERE new_customer = 1 AND employee_id = ${e.read(dbEmployees.id)} AND date BETWEEN $from AND $to',
           readsFrom: {dbDataItems}).getSingle();
@@ -484,6 +505,7 @@ class AppDb extends _$AppDb {
           noRegCustomer: totalRegCus.data['newCus'],
           noNewCustomer: totalNewCus.data['newCus'],
           totalServices: totalServices.data['totalServices'],
+          uniqueCustomers: uniqueCustomers.data['uniqCus'],
           shopCost: shopCost,
           totalCost: sumAllTheCosts,
           percentage: double.tryParse(
@@ -629,6 +651,10 @@ class AppDb extends _$AppDb {
       log('value: $value');
       return value > 0;
     });
+  }
+
+  Future<DbEmployee> getEmployeeById(int id) {
+    return (select(dbEmployees)..where((tbl) => tbl.id.equals(id))).getSingle();
   }
 }
 

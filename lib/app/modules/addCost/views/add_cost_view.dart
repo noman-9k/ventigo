@@ -54,26 +54,38 @@ class AddCostView extends GetView<AddCostController> {
               YesNoButton(
                   onChanged: (value) {
                     controller.systematicExpenditure = value;
+                    controller.update();
                   },
                   title: S.of(context).systematicExpenditure),
               20.verticalSpace,
-              AppText.lightBoldText(S.of(context).repetitionInterval),
-              SizedBox(height: 5),
-              CustomDropDown(
-                items: [
-                  S.of(context).doNotRepeat,
-                  S.of(context).everyDay,
-                  S.of(context).everyWeek,
-                  S.of(context).everyMonth,
-                  S.of(context).everyQuarter,
-                  S.of(context).everyYear
-                ],
-                title: S.of(context).repetitionInterval,
-                onChanged: (p0) {
-                  controller.retrievalInterval = p0;
-                },
-              ),
-              20.verticalSpace,
+              GetBuilder<AddCostController>(builder: (controller) {
+                if (controller.systematicExpenditure ?? false) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText.lightBoldText(S.of(context).repetitionInterval),
+                      SizedBox(height: 5),
+                      CustomDropDown(
+                        items: [
+                          S.of(context).doNotRepeat,
+                          S.of(context).everyDay,
+                          S.of(context).everyWeek,
+                          S.of(context).everyMonth,
+                          S.of(context).everyQuarter,
+                          S.of(context).everyYear
+                        ],
+                        title: S.of(context).repetitionInterval,
+                        onChanged: (p0) {
+                          controller.retrievalInterval = p0;
+                        },
+                      ),
+                      20.verticalSpace,
+                    ],
+                  );
+                } else {
+                  return Container();
+                }
+              }),
               TextField(
                 controller: controller.numberOfUnits,
                 decoration: InputDecoration(

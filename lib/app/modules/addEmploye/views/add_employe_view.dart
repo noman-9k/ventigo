@@ -85,24 +85,24 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                       type: VisibilityFilter.percentage),
                   10.verticalSpace,
                   _checkbox(
-                      title: S.of(context).totalPercentagePerMonth,
-                      type: VisibilityFilter.percentageMonth),
-                  10.verticalSpace,
-                  _checkbox(
-                      title: S.of(context).amountPercentagePerDay,
-                      type: VisibilityFilter.percentageDay),
-                  10.verticalSpace,
-                  _checkbox(
-                      title: S.of(context).numberOfServiceForMonth,
-                      type: VisibilityFilter.numberOfServices),
-                  10.verticalSpace,
-                  _checkbox(
-                      title: S.of(context).showPhone,
-                      type: VisibilityFilter.showPhone),
-                  10.verticalSpace,
-                  _checkbox(
-                      title: S.of(context).totalPriceServicePerDay,
-                      type: VisibilityFilter.servicesPerDay),
+                      title: 'View Services before 7 days',
+                      type: VisibilityFilter.onlyAllServices),
+                  // 10.verticalSpace,
+                  // _checkbox(
+                  //     title: S.of(context).amountPercentagePerDay,
+                  //     type: VisibilityFilter.percentageDay),
+                  // 10.verticalSpace,
+                  // _checkbox(
+                  //     title: S.of(context).numberOfServiceForMonth,
+                  //     type: VisibilityFilter.numberOfServices),
+                  // 10.verticalSpace,
+                  // _checkbox(
+                  //     title: S.of(context).showPhone,
+                  //     type: VisibilityFilter.showPhone),
+                  // 10.verticalSpace,
+                  // _checkbox(
+                  //     title: S.of(context).totalPriceServicePerDay,
+                  //     type: VisibilityFilter.servicesPerDay),
                   24.verticalSpace,
                   ElevatedButton(
                     onPressed: () => controller.saveEmployee(),

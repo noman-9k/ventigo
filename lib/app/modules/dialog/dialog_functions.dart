@@ -11,10 +11,11 @@ import 'dialogs/reset_Password_dialog.dart';
 import 'dialogs/security_questions_dialog.dart';
 import 'sheets/data_item_bottom_sheet.dart';
 
-pushChangeSecurityQuestionsDialog(BuildContext context) {
+pushChangeSecurityQuestionsDialog(BuildContext context,
+    {bool isFirstTime = false}) {
   showDialog(
     context: context,
-    builder: (context) => SecurityQuestionsDialog(),
+    builder: (context) => SecurityQuestionsDialog(isFirstTime: isFirstTime),
   );
 }
 
@@ -88,7 +89,10 @@ pushEditCategoryDialog(BuildContext context, DbCategory category) {
   );
 }
 
-pushChangeAdminPassDialog(BuildContext context) {
+pushChangeAdminPassDialog(BuildContext context, {bool isFirstTime = false}) {
+  if (isFirstTime)
+    return pushChangeSecurityQuestionsDialog(context, isFirstTime: isFirstTime);
+
   showDialog(
     context: context,
     builder: (context) => ChangeAdminPassDialog(),

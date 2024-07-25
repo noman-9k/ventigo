@@ -148,10 +148,9 @@ class ReportsTable extends GetView<MainController> {
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
                         // DataCell(Text(tableItem.name ?? S.of(context).noData)),
-                        DataCell(Center(
-                          child: FittedBox(
-                              child:
-                                  Text(tableItem.name ?? S.of(context).noData)),
+                        DataCell(FittedBox(
+                          child: Text(tableItem.name ?? S.of(context).noData,
+                              textAlign: TextAlign.start),
                         )),
                         DataCell(FittedBox(
                             fit: BoxFit.fitHeight,
@@ -165,8 +164,9 @@ class ReportsTable extends GetView<MainController> {
                               height: 20,
                               child: FittedBox(
                                 fit: BoxFit.fitHeight,
-                                child: Text(tableItem.categoryName ?? '',
-                                    textAlign: TextAlign.center),
+                                child: Text(
+                                  tableItem.categoryName ?? '',
+                                ),
                               ),
                             ),
                             Divider(height: 2),
@@ -228,7 +228,7 @@ class YesNoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-          width: 20,
+          width: 15,
           status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
     );
   }

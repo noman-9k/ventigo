@@ -26,7 +26,7 @@ class AdminAuthView extends GetView<AdminAuthController> {
           if (MySharedPref.getFromDisk('admin_pin') == null)
             TextButton(
                 onPressed: () {
-                  pushChangeAdminPassDialog(context);
+                  pushChangeAdminPassDialog(context, isFirstTime: true);
                 },
                 child: AppText.lightBoldText(S.of(context).setAdminPassword,
                     color: Colors.red, fontSize: 15.sp)),

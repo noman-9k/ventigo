@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/db/drift_db.dart';
 
+import '../../../../config/app_enums.dart';
 import '../../../routes/app_pages.dart';
 import '../../dialog/dialog_functions.dart';
 
@@ -18,8 +21,28 @@ class UserDataController extends GetxController {
   }
 
   Stream<List<DbDataItem>> getAllDataItems() {
-    return DbController.to.appDb
-        .getAllDataItemsByEmployeeId(EmployeeService.to.employee!.value.id);
+    return !isShowOnlyWeekServicesVisible()
+        ? DbController.to.appDb.getLastWeeksDataItemsByEmployeeId(
+            EmployeeService.to.employee!.value.id)
+        : DbController.to.appDb
+            .getAllDataItemsByEmployeeId(EmployeeService.to.employee!.value.id);
+  }
+
+  // Stream<List<DbDataItem>> getAllDataItems() {
+  //   return DbController.to.appDb.getLastWeeksDataItemsByEmployeeId(
+  //       EmployeeService.to.employee!.value.id);
+  // }
+
+  bool isEmployeePerVisible() {
+    return EmployeeService.to.employee!.value.visibility
+            ?.contains(VisibilityFilter.percentage) ??
+        false;
+  }
+
+  bool isShowOnlyWeekServicesVisible() {
+    return EmployeeService.to.employee!.value.visibility
+            ?.contains(VisibilityFilter.onlyAllServices) ??
+        false;
   }
 
   logout(BuildContext context) {

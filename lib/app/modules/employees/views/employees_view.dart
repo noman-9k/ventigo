@@ -113,14 +113,14 @@ class EmployeesView extends GetView<EmployeesController> {
                                           decoration: BoxDecoration(
                                               color:
                                                   employee.visibility.length ==
-                                                          6
+                                                          2
                                                       ? Color(0xFF00A3E8)
                                                       : Color(0xFFA349A1),
                                               borderRadius:
                                                   BorderRadius.circular(4))),
                                       5.horizontalSpace,
                                       AppText.mediumText(
-                                          employee.visibility.length == 6
+                                          employee.visibility.length == 2
                                               ? S.of(context).notLimited
                                               : S.of(context).limited),
                                     ],

@@ -1880,10 +1880,10 @@ class S {
     );
   }
 
-  /// `Letters`
+  /// `Liters`
   String get letters {
     return Intl.message(
-      'Letters',
+      'Liters',
       name: 'letters',
       desc: '',
       args: [],
