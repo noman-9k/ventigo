@@ -193,10 +193,13 @@ class CustomExpansionTile extends StatelessWidget {
                           onLongPress: () => pushEditServiceDialog(
                               context, snapshot.data![i], (value) {}),
                           title: AppText.mediumText(
-                              S.of(context).name + snapshot.data![i].name!,
+                              S.of(context).name +
+                                  ": " +
+                                  snapshot.data![i].name!,
                               fontSize: 14),
                           subtitle: AppText.mediumText(
                             S.of(context).price +
+                                ": " +
                                 snapshot.data![i].price.toString(),
                             fontSize: 14,
                           ),

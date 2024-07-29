@@ -12,21 +12,26 @@ import 'package:ventigo/config/app_styles.dart';
 import '../../../../config/app_colors.dart';
 import '../../../../generated/l10n.dart';
 
-class DashboardView extends GetView<DashboardController> {
+class DashboardView extends StatefulWidget {
   const DashboardView({Key? key}) : super(key: key);
 
   @override
+  State<DashboardView> createState() => _DashboardViewState();
+}
+
+class _DashboardViewState extends State<DashboardView> {
+  @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      return PopScope(
-        canPop: false,
-        onPopInvoked: (didPop) {
-          pushConfirmDialog(context,
-              title: S.of(context).exit,
-              message: S.of(context).areYouSureYouWantToLogout,
-              onDone: () => Get.offAllNamed(Routes.LOGIN));
-        },
-        child: Scaffold(
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        pushConfirmDialog(context,
+            title: S.of(context).exit,
+            message: S.of(context).areYouSureYouWantToLogout,
+            onDone: () => Get.offAllNamed(Routes.LOGIN));
+      },
+      child: GetBuilder<DashboardController>(builder: (controller) {
+        return Scaffold(
           bottomNavigationBar: BottomBarInspiredOutside(
             height: 45,
             items: controller.navItems,
@@ -46,9 +51,9 @@ class DashboardView extends GetView<DashboardController> {
           ),
           body: controller.widgetOptions[controller.currentIndex.value],
           extendBody: true,
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 }
 

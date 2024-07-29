@@ -166,7 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Nachname des Kunden"),
-        "letters": MessageLookupByLibrary.simpleMessage("Briefe"),
+        "letters": MessageLookupByLibrary.simpleMessage("Liter"),
         "limited": MessageLookupByLibrary.simpleMessage("Begrenzt"),
         "login": MessageLookupByLibrary.simpleMessage("Anmelden"),
         "loginOrPasswordIsIncorrect": MessageLookupByLibrary.simpleMessage(

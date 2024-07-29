@@ -4,6 +4,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ventigo/app/modules/userData/controllers/user_data_controller.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
@@ -90,17 +91,18 @@ class UserDataTable extends StatelessWidget {
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
-                DataColumn2(
-                    label: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('%', style: headerStyle),
-                          Divider(height: 1),
-                          Text(S.of(context).total, style: headerStyle),
-                        ]),
-                    size: ColumnSize.M,
-                    numeric: true),
+                if (UserDataController.to.isEmployeePerVisible())
+                  DataColumn2(
+                      label: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text('%', style: headerStyle),
+                            Divider(height: 1),
+                            Text(S.of(context).total, style: headerStyle),
+                          ]),
+                      size: ColumnSize.M,
+                      numeric: true),
               ],
               rows: tableItems
                   .map(
@@ -119,12 +121,16 @@ class UserDataTable extends StatelessWidget {
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
                         DataCell(Text(tableItem.name ?? S.of(context).noData)),
-                        DataCell(FittedBox(
-                            fit: BoxFit.fitHeight,
-                            child: Text('..' +
-                                tableItem.phone.toString().substring(
-                                    tableItem.phone.toString().length - 3,
-                                    tableItem.phone.toString().length)))),
+                        DataCell(Center(
+                          child: FittedBox(
+                              fit: BoxFit.fitHeight,
+                              child: Text(
+                                '..' +
+                                    tableItem.phone.toString().substring(
+                                        tableItem.phone.toString().length - 3,
+                                        tableItem.phone.toString().length),
+                              )),
+                        )),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -134,7 +140,7 @@ class UserDataTable extends StatelessWidget {
                               child: FittedBox(
                                 fit: BoxFit.fitHeight,
                                 child: Text(tableItem.categoryName ?? '',
-                                    textAlign: TextAlign.center),
+                                    textAlign: TextAlign.start),
                               ),
                             ),
                             Divider(height: 2),
@@ -159,16 +165,17 @@ class UserDataTable extends StatelessWidget {
                             FittedBox(child: Text('${tableItem.total}')),
                           ],
                         )),
-                        DataCell(Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(tableItem.price!
-                                .percentageOf(tableItem.percentage)),
-                            Divider(height: 4, endIndent: 8, indent: 8),
-                            Text(tableItem.total!
-                                .percentageOf(tableItem.percentage)),
-                          ],
-                        )),
+                        if (UserDataController.to.isEmployeePerVisible())
+                          DataCell(Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(tableItem.price!
+                                  .percentageOf(tableItem.percentage)),
+                              Divider(height: 4, endIndent: 8, indent: 8),
+                              Text(tableItem.total!
+                                  .percentageOf(tableItem.percentage)),
+                            ],
+                          )),
                       ],
                     ),
                   )

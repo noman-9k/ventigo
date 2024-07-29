@@ -10,9 +10,11 @@ import 'package:ventigo/extensions/text_field_extension.dart';
 import '../../../../config/app_styles.dart';
 import '../../../../config/app_text.dart';
 import '../../../../generated/l10n.dart';
+import '../dialog_functions.dart';
 
 class SecurityQuestionsDialog extends StatefulWidget {
-  const SecurityQuestionsDialog({super.key});
+  const SecurityQuestionsDialog({super.key, this.isFirstTime = false});
+  final bool isFirstTime;
 
   @override
   State<SecurityQuestionsDialog> createState() =>
@@ -89,6 +91,9 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
               MySharedPref.saveToDisk('question', selectedQuestion);
               MySharedPref.saveToDisk('answer', answerController.text.trim());
               Navigator.pop(context);
+              if (widget.isFirstTime) {
+                pushChangeAdminPassDialog(context);
+              }
             },
             child: Text(S.of(context).save),
           ),

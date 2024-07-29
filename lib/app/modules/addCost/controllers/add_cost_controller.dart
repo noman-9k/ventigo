@@ -60,7 +60,7 @@ class AddCostController extends GetxController {
           'Error', 'Please select if it should be systematic expenditure');
       return;
     }
-    if (retrievalInterval == null) {
+    if (retrievalInterval == null && (systematicExpenditure ?? false)) {
       Get.snackbar('Error', 'Please select a retrieval interval');
       return;
     }
@@ -80,7 +80,7 @@ class AddCostController extends GetxController {
       nameController.text,
       deductFromTax,
       systematicExpenditure,
-      retrievalInterval!,
+      retrievalInterval ?? 'Do not repeat',
       numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
       price *
           (numberOfUnits.text.isEmpty ? 1 : int.tryParse(numberOfUnits.text)!),

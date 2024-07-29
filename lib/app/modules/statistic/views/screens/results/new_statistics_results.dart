@@ -146,7 +146,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   return AppColors.lightYellow;
                 }),
                 columnSpacing: 10,
-                minWidth: 650,
+                minWidth: 700,
                 horizontalMargin: 10,
                 columns: <DataColumn2>[
                   DataColumn2(
@@ -177,6 +177,16 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             fit: BoxFit.fitWidth,
                             child: Text(
                               S.of(context).noNewnclient,
+                              style: headerStyle,
+                            )),
+                      ),
+                      size: ColumnSize.S),
+                  DataColumn2(
+                      label: Center(
+                        child: FittedBox(
+                            fit: BoxFit.fitWidth,
+                            child: Text(
+                              'Unique\nClients',
                               style: headerStyle,
                             )),
                       ),
@@ -281,6 +291,19 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   fit: BoxFit.fitWidth,
                                   child: Text(
                                     snapshot.data![index].noNewCustomer
+                                        .toString(),
+                                    style: AppStyles.boldStyle(
+                                        fontSize: 13, color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  )),
+                            ),
+                          ),
+                          DataCell(
+                            Center(
+                              child: FittedBox(
+                                  fit: BoxFit.fitWidth,
+                                  child: Text(
+                                    snapshot.data![index].uniqueCustomers
                                         .toString(),
                                     style: AppStyles.boldStyle(
                                         fontSize: 13, color: Colors.green),
@@ -400,6 +423,19 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                 child: Text(
                                   snapshot.data![index].noNewCustomer
                                       .toString(),
+                                  style: AppStyles.lightStyle(fontSize: 13),
+                                  textAlign: TextAlign.center,
+                                )),
+                          ),
+                        ),
+                        DataCell(
+                          Center(
+                            child: FittedBox(
+                                fit: BoxFit.fitWidth,
+                                child: Text(
+                                  // snapshot.data![index].uniqueCustomers
+                                  //     .toString(),
+                                  '',
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),

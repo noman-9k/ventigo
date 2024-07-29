@@ -30,5 +30,6 @@ class DashboardController extends GetxController {
 
   onTapped(value) {
     currentIndex.value = value;
+    update();
   }
 }
