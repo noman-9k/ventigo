@@ -201,5 +201,7 @@
   "whatIsYourFavoriteFood": "Was ist Ihr Lieblingsessen?",
   "whatIsYourFavoriteSong": "Was ist Ihr Lieblingslied?",
   "whatIsYourFavoriteColor": "Was ist Ihre Lieblingsfarbe?",
-  "number": "номер"
+  "number": "номер",
+  "viewServicesBefore7Days": "View Services before 7 days",
+  "canAddAPhoneNumber": "Can add a phone number"
 }

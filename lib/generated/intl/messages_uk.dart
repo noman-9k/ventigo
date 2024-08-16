@@ -70,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервну копію успішно відновлено!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Скасувати"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Оплата карткою: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Oплата\nкартою"),
@@ -317,6 +319,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Одиниця вимірювання"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Ціна за одиницю"),
         "userName": MessageLookupByLibrary.simpleMessage("Ім\'я користувача"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Рівень видимості з хрестиком зі списку"),

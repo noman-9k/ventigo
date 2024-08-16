@@ -201,5 +201,7 @@
   "whatIsYourFavoriteFood": "Какая ваша любимая еда?",
   "whatIsYourFavoriteSong": "Какая ваша любимая песня?",
   "whatIsYourFavoriteColor": "Какой ваш любимый цвет?",
-  "number": "число"
+  "number": "число",
+  "viewServicesBefore7Days": "View Services before 7 days",
+  "canAddAPhoneNumber": "Can add a phone number"
 }

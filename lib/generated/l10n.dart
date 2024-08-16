@@ -2079,6 +2079,26 @@ class S {
       args: [],
     );
   }
+
+  /// `View Services before 7 days`
+  String get viewServicesBefore7Days {
+    return Intl.message(
+      'View Services before 7 days',
+      name: 'viewServicesBefore7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can add a phone number`
+  String get canAddAPhoneNumber {
+    return Intl.message(
+      'Can add a phone number',
+      name: 'canAddAPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

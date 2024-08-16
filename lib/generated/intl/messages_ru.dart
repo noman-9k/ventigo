@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервная копия успешно восстановлена!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Оплата картой: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Карта\nPay"),
@@ -310,6 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Единица измерения"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Цена за единицу"),
         "userName": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Уровень видимости с крестиком из списка"),

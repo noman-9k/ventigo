@@ -201,5 +201,7 @@
   "whatIsYourFavoriteFood": "Jaké je vaše oblíbené jídlo?",
   "whatIsYourFavoriteSong": "Jaká je vaše oblíbená píseň?",
   "whatIsYourFavoriteColor": "Jaká je vaše oblíbená barva?",
-  "number": "číslo"
+  "number": "číslo",
+  "viewServicesBefore7Days": "View Services before 7 days",
+  "canAddAPhoneNumber": "Can add a phone number"
 }

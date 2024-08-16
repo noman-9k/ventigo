@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Backup restored successfully!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Boxes"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Card Pay: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Card\nPay"),
@@ -304,6 +306,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unit of measurements"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Unit Price"),
         "userName": MessageLookupByLibrary.simpleMessage("User Name"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Visibility level with a cross from the list"),

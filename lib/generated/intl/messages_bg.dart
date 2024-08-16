@@ -70,6 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Архивирането е възстановено успешно!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Кутии"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отказ"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Плащане с карта: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\n"),
@@ -325,6 +327,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Мерна единица"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Единична цена"),
         "userName": MessageLookupByLibrary.simpleMessage("Потребителско име"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Ниво на видимост с кръстче от списъка"),

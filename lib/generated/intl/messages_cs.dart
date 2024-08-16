@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupData": MessageLookupByLibrary.simpleMessage("Zálohování dat"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Záloha byla úspěšně obnovena!"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Zrušit"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Platba kartou: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZaplatit"),
@@ -301,6 +303,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Jednotka měření"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Jednotková cena"),
         "userName": MessageLookupByLibrary.simpleMessage("Uživatelské jméno"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Úroveň viditelnosti s křížkem ze seznamu"),
