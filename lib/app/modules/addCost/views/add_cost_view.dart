@@ -41,8 +41,7 @@ class AddCostView extends GetView<AddCostController> {
                       readOnly: true,
                       onTap: () => controller.categoryTab(context),
                       controller: controller.categoriesController,
-                      decoration: InputDecoration(
-                          hintText: S.of(context).selectCategories))
+                      decoration: InputDecoration(hintText: S.of(context).selectCategories))
                   .withLabel(S.of(context).categories),
               20.verticalSpace,
               YesNoButton(
@@ -118,14 +117,16 @@ class AddCostView extends GetView<AddCostController> {
                 title: S.of(context).unitOfMeasurements,
                 onChanged: (p0) {
                   print(p0);
-                  controller.unitsOfMeasurement = p0;
+                  if (p0 == S.of(context).noUnitOfMeasurements) {
+                    controller.unitsOfMeasurement = null;
+                  } else {
+                    controller.unitsOfMeasurement = p0;
+                  }
                 },
               ),
               20.verticalSpace,
               ElevatedButton(
-                  onPressed: controller.onSubmitted,
-                  child: AppText.boldText(S.of(context).save,
-                      color: Colors.white)),
+                  onPressed: controller.onSubmitted, child: AppText.boldText(S.of(context).save, color: Colors.white)),
             ],
           ),
         ),

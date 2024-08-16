@@ -7,6 +7,8 @@ class CostsFilter {
   double? minPrice;
   double? maxPrice;
   List<String>? categories;
+  final DateTime? fromDate;
+  final DateTime? toDate;
 
   CostsFilter({
     this.name,
@@ -17,6 +19,8 @@ class CostsFilter {
     this.minPrice,
     this.maxPrice,
     this.categories,
+    this.fromDate,
+    this.toDate,
   });
 
   @override

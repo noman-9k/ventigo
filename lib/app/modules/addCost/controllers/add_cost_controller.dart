@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/modules/costsFilter/controllers/costs_filter_controller.dart';
+import 'package:ventigo/app/modules/filters/controllers/filters_controller.dart';
+import 'package:ventigo/app/modules/main/controllers/main_controller.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../app_services/category_service.dart';
@@ -81,11 +84,13 @@ class AddCostController extends GetxController {
       retrievalInterval ?? 'Do not repeat',
       numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
       price,
-      unitsOfMeasurement,
+      unitsOfMeasurement ?? 'Nill',
       categories,
       DateTime.now().add(Duration(days: 0)).onlyDate(),
     );
     Get.back();
     Get.snackbar('Success', 'Cost added successfully');
+    CostsFilterController.to.update();
+    update();
   }
 }

@@ -517,6 +517,16 @@ class AppDb extends _$AppDb {
       query.where((tbl) => tbl.categories.contains('All') | tbl.categories.like('%${filter!.categories.toString()}%'));
       ;
     }
+    if (filter?.fromDate != null) {
+      query.where((tbl) => tbl.date.isBiggerOrEqualValue(filter!.fromDate!));
+      log('filter.fromDate: ${filter?.fromDate}');
+    }
+    if (filter?.toDate != null) {
+      query.where((tbl) => tbl.date.isSmallerOrEqualValue(filter!.toDate!));
+    }
+    query.watch().first.then((List<DbCost> data) {
+      log(data.first.date.toString());
+    });
 
     return query.watch();
   }
@@ -564,6 +574,20 @@ class AppDb extends _$AppDb {
 
   Future<DbEmployee> getEmployeeById(int id) {
     return (select(dbEmployees)..where((tbl) => tbl.id.equals(id))).getSingle();
+  }
+
+  Future<String?>? getTotalCosts(DateTime? fromDate, DateTime? toDate) {
+    final query = select(dbCosts)
+      ..where((tbl) => tbl.date.isBiggerOrEqualValue(fromDate ?? DateTime(2000)))
+      ..where((tbl) => tbl.date.isSmallerOrEqualValue(toDate ?? DateTime(8000)));
+
+    var ww = query.get().then((value) {
+      if (value.isNotEmpty) {
+        return value.map((e) => (e.price ?? 1) * (e.numberOfUnits ?? 1)).toList().sumAll().toStringAsFixed(2);
+      }
+    });
+
+    return ww;
   }
 }
 
