@@ -202,6 +202,12 @@
   "whatIsYourFavoriteSong": "¿Cuál es tu canción favorita?",
   "whatIsYourFavoriteColor": "¿Cuál es tu color favorito?",
   "number": "número",
-  "viewServicesBefore7Days": "View Services before 7 days",
-  "canAddAPhoneNumber": "Can add a phone number"
+  "viewServicesBefore7Days": "Před 7 dny služby",
+"canAddAPhoneNumber": "Puede agregar un numero de teléfono",
+"invalidPin": "PIN není platný",
+"note": "Nota",
+"enterANote": "Ingrese una nota",
+"characters": "characteres"
+  
+
 }

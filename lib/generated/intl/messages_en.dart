@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryName": MessageLookupByLibrary.simpleMessage("Category Name"),
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Change Admin Password"),
+        "characters": MessageLookupByLibrary.simpleMessage("characters"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Check your file in the Downloads folder"),
@@ -118,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Employee\nInformation"),
         "employees": MessageLookupByLibrary.simpleMessage("Employees"),
+        "enterANote": MessageLookupByLibrary.simpleMessage("Enter a note"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Enter Category Name"),
         "enterPasswordHere":
@@ -152,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Hello "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Incorrect answer"),
+        "invalidPin": MessageLookupByLibrary.simpleMessage("Invalid pin"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Is Regular Cus. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Item deleted"),
@@ -202,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("No Unit of Measurements"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Not Limited"),
+        "note": MessageLookupByLibrary.simpleMessage("Note"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Num. of\nServices"),
         "number": MessageLookupByLibrary.simpleMessage("number"),

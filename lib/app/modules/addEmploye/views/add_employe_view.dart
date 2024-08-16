@@ -74,6 +74,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   _checkbox(title: S.of(context).employeePercentage, type: VisibilityFilter.percentage),
                   10.verticalSpace,
                   _checkbox(title: S.of(context).viewServicesBefore7Days, type: VisibilityFilter.onlyAllServices),
+                  10.verticalSpace,
                   _checkbox(title: S.of(context).canAddAPhoneNumber, type: VisibilityFilter.canAddAPhone),
 
                   // 10.verticalSpace,

@@ -21,6 +21,7 @@ class FiltersController extends GetxController {
   TextEditingController maxPriceController = TextEditingController();
   TextEditingController minPriceController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
   DateTime? fromDate;
   DateTime? toDate;
 
@@ -55,6 +56,7 @@ class FiltersController extends GetxController {
       isRegularCustomer: isRegularCustomer,
       isCustomerCard: isCustomerCard,
       isNewCustomer: isNewCustomer,
+      notes: notesController.text,
     );
 
     update();
@@ -72,6 +74,7 @@ class FiltersController extends GetxController {
     maxPriceController.clear();
     minPriceController.clear();
     phoneController.clear();
+    notesController.clear();
     fromDate = null;
     toDate = null;
     selectedMaster.clear();

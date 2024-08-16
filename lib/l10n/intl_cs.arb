@@ -203,5 +203,9 @@
   "whatIsYourFavoriteColor": "Jaká je vaše oblíbená barva?",
   "number": "číslo",
   "viewServicesBefore7Days": "View Services before 7 days",
-  "canAddAPhoneNumber": "Can add a phone number"
+  "canAddAPhoneNumber": "Can add a phone number",
+  "invalidPin": "Invalid pin",
+  "note": "Note",
+  "enterANote": "Enter a note",
+  "characters": "characters"
 }

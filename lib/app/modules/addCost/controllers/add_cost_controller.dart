@@ -28,8 +28,7 @@ class AddCostController extends GetxController {
       selectedCategories: selectedCategories,
       onDone: (categories) {
         selectedCategories = categories ?? [];
-        categoriesController.text =
-            selectedCategories.map((e) => e.name).join(', ');
+        categoriesController.text = selectedCategories.map((e) => e.name).join(', ');
 
         update();
       },
@@ -56,8 +55,7 @@ class AddCostController extends GetxController {
       return;
     }
     if (systematicExpenditure == null) {
-      Get.snackbar(
-          'Error', 'Please select if it should be systematic expenditure');
+      Get.snackbar('Error', 'Please select if it should be systematic expenditure');
       return;
     }
     if (retrievalInterval == null && (systematicExpenditure ?? false)) {
@@ -82,8 +80,7 @@ class AddCostController extends GetxController {
       systematicExpenditure,
       retrievalInterval ?? 'Do not repeat',
       numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
-      price *
-          (numberOfUnits.text.isEmpty ? 1 : int.tryParse(numberOfUnits.text)!),
+      price,
       unitsOfMeasurement,
       categories,
       DateTime.now().add(Duration(days: 0)).onlyDate(),

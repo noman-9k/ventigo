@@ -91,9 +91,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
       this.filteredList = tempList;
       this.loading = false;
       // if no items are found, add message none found
-      itemsFound = tempList.length == 0 && widget.controller.text.isNotEmpty
-          ? false
-          : true;
+      itemsFound = tempList.length == 0 && widget.controller.text.isNotEmpty ? false : true;
     });
     // mark that the overlay widget needs to be rebuilt so results can show
     this._overlayEntry.markNeedsBuild();
@@ -113,19 +111,12 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
         for (int i = 0; i < filteredList!.length; i++) {
           // lowercase the item and see if the item contains the string of text from the lowercase search
           if (widget.getSelectedValue != null) {
-            if (this
-                .filteredList![i]
-                .label
-                .toLowerCase()
-                .contains(widget.controller.text.toLowerCase())) {
+            if (this.filteredList![i].label.toLowerCase().contains(widget.controller.text.toLowerCase())) {
               // if there is a match, add to the temp list
               tempList.add(this.filteredList![i]);
             }
           } else {
-            if (this
-                .filteredList![i]
-                .toLowerCase()
-                .contains(widget.controller.text.toLowerCase())) {
+            if (this.filteredList![i].toLowerCase().contains(widget.controller.text.toLowerCase())) {
               // if there is a match, add to the temp list
               tempList.add(this.filteredList![i]);
             }
@@ -150,10 +141,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
     // loop through each item in filtered items
     for (int i = 0; i < filteredList!.length; i++) {
       // lowercase the item and see if the item contains the string of text from the lowercase search
-      if (this
-          .filteredList![i]
-          .toLowerCase()
-          .contains(widget.controller.text.toLowerCase())) {
+      if (this.filteredList![i].toLowerCase().contains(widget.controller.text.toLowerCase())) {
         // if there is a match, add to the temp list
         tempList.add(this.filteredList![i]);
       }
@@ -199,8 +187,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
           bool textMatchesItem = false;
           if (widget.getSelectedValue != null) {
             // try to match the label against what is set on controller
-            textMatchesItem = filteredList!
-                .any((item) => item.label == widget.controller.text);
+            textMatchesItem = filteredList!.any((item) => item.label == widget.controller.text);
           } else {
             textMatchesItem = filteredList!.contains(widget.controller.text);
           }
@@ -272,9 +259,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
               FocusScope.of(context).unfocus();
             },
             child: ListTile(
-                title: widget.getSelectedValue != null
-                    ? Text(filteredList![i].label)
-                    : Text(filteredList![i])));
+                title: widget.getSelectedValue != null ? Text(filteredList![i].label) : Text(filteredList![i])));
       },
       padding: EdgeInsets.zero,
       shrinkWrap: true,
@@ -283,13 +268,13 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
 
   /// A default loading indicator to display when executing a Future
   Widget _loadingIndicator() {
-    return Container(
+    return SizedBox.shrink();
+    Container(
       width: 50,
       height: 50,
       child: Center(
         child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(
-              Theme.of(context).colorScheme.secondary),
+          valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );
@@ -298,8 +283,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
   Widget decoratedScrollbar(child) {
     if (widget.scrollbarDecoration is ScrollbarDecoration) {
       return Theme(
-        data: Theme.of(context)
-            .copyWith(scrollbarTheme: widget.scrollbarDecoration!.theme),
+        data: Theme.of(context).copyWith(scrollbarTheme: widget.scrollbarDecoration!.theme),
         child: Scrollbar(child: child, controller: _scrollController),
       );
     }
@@ -308,8 +292,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
   }
 
   Widget? _listViewContainer(context) {
-    if (itemsFound == true && filteredList!.length > 0 ||
-        itemsFound == false && widget.controller.text.length > 0) {
+    if (itemsFound == true && filteredList!.length > 0 || itemsFound == false && widget.controller.text.length > 0) {
       return Container(
           height: itemsFound == false ? 0.0 : calculateHeight().toDouble(),
           child: decoratedScrollbar(_listViewBuilder(context)));
@@ -354,9 +337,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
                         minHeight: 0,
                         maxHeight: calculateHeight().toDouble(),
                       ),
-                      child: loading
-                          ? _loadingIndicator()
-                          : _listViewContainer(context)),
+                      child: loading ? _loadingIndicator() : _listViewContainer(context)),
                 ),
               ),
             ));
@@ -372,9 +353,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
         focusNode: this._focusNode,
         decoration: widget.decoration != null
             ? widget.decoration
-            : InputDecoration(
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                labelText: widget.label),
+            : InputDecoration(floatingLabelBehavior: FloatingLabelBehavior.never, labelText: widget.label),
         style: widget.textStyle,
         onChanged: (String value) {
           // every time we make a change to the input, update the list

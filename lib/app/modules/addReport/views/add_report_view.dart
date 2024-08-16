@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -10,6 +9,7 @@ import 'package:ventigo/app/modules/common/back_button.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../config/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../../app_services/employee_service.dart';
 import '../../common/custom_dropdown.dart';
@@ -132,6 +132,30 @@ class AddReportView extends GetView<AddReportController> {
                     decoration: InputDecoration(
                       hintText: S.of(context).priceOfService,
                     )).withLabel(S.of(context).price),
+                16.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppText.lightBoldText(S.of(context).note),
+                    Obx(() {
+                      return Text(
+                        S.of(context).characters + ' ${controller.notesLength.value}/45 ',
+                        style: AppStyles.lightStyle(),
+                      );
+                    }),
+                  ],
+                ),
+                SizedBox(height: 5),
+                TextField(
+                    controller: controller.notesController,
+                    minLines: 5,
+                    maxLines: 7,
+                    onChanged: (value) => controller.notesLength.value = value.length,
+                    keyboardType: TextInputType.multiline,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(45),
+                    ],
+                    decoration: InputDecoration(hintText: S.of(context).enterANote)),
                 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(

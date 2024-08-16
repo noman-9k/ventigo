@@ -41,6 +41,7 @@ class DbDataItems extends Table {
   RealColumn get price => real().nullable()();
   RealColumn get total => real().nullable()();
   RealColumn get percentage => real().nullable()();
+  TextColumn get notes => text().nullable()();
 }
 
 class DbCosts extends Table {

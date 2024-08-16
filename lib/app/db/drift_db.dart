@@ -18,8 +18,7 @@ import 'tables/tables.dart';
 
 part 'drift_db.g.dart';
 
-@DriftDatabase(
-    tables: [DbEmployees, DbCategories, DbServices, DbDataItems, DbCosts])
+@DriftDatabase(tables: [DbEmployees, DbCategories, DbServices, DbDataItems, DbCosts])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
 
@@ -27,14 +26,11 @@ class AppDb extends _$AppDb {
   int get schemaVersion => 1;
 
   // Employees
-  Future insertNewEmployee(DbEmployee employee) =>
-      into(dbEmployees).insert(employee);
+  Future insertNewEmployee(DbEmployee employee) => into(dbEmployees).insert(employee);
 
-  Future updateEmployee(DbEmployee employee) =>
-      update(dbEmployees).replace(employee);
+  Future updateEmployee(DbEmployee employee) => update(dbEmployees).replace(employee);
 
-  Future<int> insertNewCompanionEmployee(String name, String lastName,
-      String login, String password, double percentage,
+  Future<int> insertNewCompanionEmployee(String name, String lastName, String login, String password, double percentage,
       {List<String>? categories, List<String>? visibility}) async {
     final id = await into(dbEmployees).insert(DbEmployeesCompanion.insert(
         name: Value(name),
@@ -48,59 +44,39 @@ class AppDb extends _$AppDb {
     return id;
   }
 
-  Stream<List<DbEmployee>> getAllEmployees() => (select(dbEmployees)
-        ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
-        ]))
-      .watch();
+  Stream<List<DbEmployee>> getAllEmployees() =>
+      (select(dbEmployees)..orderBy([(tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)])).watch();
 
-  Future<List<DbEmployee>> getAllEmployeesList() => (select(dbEmployees)
-        ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
-        ]))
-      .get();
+  Future<List<DbEmployee>> getAllEmployeesList() =>
+      (select(dbEmployees)..orderBy([(tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)])).get();
 
   // Categories
-  Future insertNewCategory(DbCategory category) =>
-      into(dbCategories).insert(category);
+  Future insertNewCategory(DbCategory category) => into(dbCategories).insert(category);
 
   Future<int> insertNewCompanionCategory(String name) async {
-    final id = await into(dbCategories)
-        .insert(DbCategoriesCompanion.insert(name: Value(name)));
+    final id = await into(dbCategories).insert(DbCategoriesCompanion.insert(name: Value(name)));
     return id;
   }
 
   Future<int> getCategoryId(String name) async {
-    final category = await (select(dbCategories)
-          ..where((tbl) => tbl.name.equals(name)))
-        .getSingle();
+    final category = await (select(dbCategories)..where((tbl) => tbl.name.equals(name))).getSingle();
     return category.id;
   }
 
-  Stream<List<DbCategory>> getAllCategories() => (select(dbCategories)
-        ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
-        ]))
-      .watch();
+  Stream<List<DbCategory>> getAllCategories() =>
+      (select(dbCategories)..orderBy([(tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)])).watch();
 
-  Future<List<DbCategory>> getAllCategoriesF() => (select(dbCategories)
-        ..orderBy([
-          (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
-        ]))
-      .get();
+  Future<List<DbCategory>> getAllCategoriesF() =>
+      (select(dbCategories)..orderBy([(tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)])).get();
 
-  Future<List<DbCategory>?> getCategoriesByEmpIDs(
-      List<String> categories) async {
+  Future<List<DbCategory>?> getCategoriesByEmpIDs(List<String> categories) async {
     final ids = categories.map((e) => int.parse(e)).toList();
-    final categoriesList =
-        await (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
+    final categoriesList = await (select(dbCategories)..where((tbl) => tbl.id.isIn(ids))).get();
     return categoriesList;
   }
 
   Future<List<DbCategory>?> getCategoryByEmpId(int id) async {
-    final employee = await (select(dbEmployees)
-          ..where((tbl) => tbl.id.equals(id)))
-        .getSingle();
+    final employee = await (select(dbEmployees)..where((tbl) => tbl.id.equals(id))).getSingle();
 
     final categories = await getCategoriesByEmpIDs(employee.categories);
     return categories;
@@ -118,13 +94,11 @@ class AppDb extends _$AppDb {
   }
 
   // Services
-  Future insertNewService(DbService service) =>
-      into(dbServices).insert(service);
+  Future insertNewService(DbService service) => into(dbServices).insert(service);
 
-  Future<int> insertNewCompanionService(
-      String name, double price, int categoryId) async {
-    final id = await into(dbServices).insert(DbServicesCompanion.insert(
-        name: Value(name), price: Value(price), categoryId: categoryId));
+  Future<int> insertNewCompanionService(String name, double price, int categoryId) async {
+    final id = await into(dbServices)
+        .insert(DbServicesCompanion.insert(name: Value(name), price: Value(price), categoryId: categoryId));
     return id;
   }
 
@@ -144,36 +118,35 @@ class AppDb extends _$AppDb {
   Future<List<DbService>> getServicesByCategoryId(int i) =>
       (select(dbServices)..where((tbl) => tbl.categoryId.equals(i))).get();
 
-  Future<DbEmployee?> getEmployeeByLoginPassword(
-      String login, String password) async {
+  Future<DbEmployee?> getEmployeeByLoginPassword(String login, String password) async {
     final employee = await (select(dbEmployees)
-          ..where(
-              (tbl) => tbl.login.equals(login) & tbl.password.equals(password)))
+          ..where((tbl) => tbl.login.equals(login) & tbl.password.equals(password)))
         .getSingleOrNull();
     return employee;
   }
 
   // DataItems
 
-  Future insertNewDataItem(DbDataItem dataItem) =>
-      into(dbDataItems).insert(dataItem);
+  Future insertNewDataItem(DbDataItem dataItem) => into(dbDataItems).insert(dataItem);
 
   Future<int> insertNewCompanionDataItem(
-      String name,
-      String phone,
-      int employeeId,
-      String employeeName,
-      int categoryId,
-      String categoryName,
-      int serviceId,
-      String serviceName,
-      bool newCustomer,
-      bool regCustomer,
-      DateTime date,
-      bool cardPay,
-      double price,
-      double total,
-      double percentage) async {
+    String name,
+    String phone,
+    int employeeId,
+    String employeeName,
+    int categoryId,
+    String categoryName,
+    int serviceId,
+    String serviceName,
+    bool newCustomer,
+    bool regCustomer,
+    DateTime date,
+    bool cardPay,
+    double price,
+    double total,
+    double percentage,
+    String notes,
+  ) async {
     final id = await into(dbDataItems).insert(DbDataItemsCompanion.insert(
       name: Value(name),
       phone: Value(phone),
@@ -190,61 +163,40 @@ class AppDb extends _$AppDb {
       price: Value(price),
       total: Value(total),
       percentage: Value(percentage),
+      notes: Value(notes),
     ));
     return id;
   }
 
-  Future updateDataItem(DbDataItem dataItem) =>
-      update(dbDataItems).replace(dataItem);
+  Future updateDataItem(DbDataItem dataItem) => update(dbDataItems).replace(dataItem);
 
-  Future<List<DbDataItem>> getAllDataItemsF() => select(dbDataItems).get();
-  Future<DbDataItem> getDataItemById(int id) =>
-      (select(dbDataItems)..where((tbl) => tbl.id.equals(id))).getSingle();
+  Future<List<DbDataItem>> getAllDataItemsF() =>
+      (select(dbDataItems)..orderBy([(tbl) => OrderingTerm(expression: tbl.phone, mode: OrderingMode.desc)])).get();
+  Future<DbDataItem> getDataItemById(int id) => (select(dbDataItems)..where((tbl) => tbl.id.equals(id))).getSingle();
 
-  Stream<List<DbDataItem>> getAllDataItems(
-          {DateTime? fromDate, DateTime? toDate}) =>
-      (select(dbDataItems)
-            ..orderBy([
-              (tbl) =>
-                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
-            ])
-            ..where((tbl) =>
-                tbl.date.isBiggerOrEqualValue(
-                    fromDate ?? DateTime.now().subtract(Duration(days: 3600))) &
-                tbl.date.isSmallerOrEqualValue(
-                    toDate ?? DateTime.now().add(Duration(days: 3600)))))
-          .watch();
+  Stream<List<DbDataItem>> getAllDataItems({DateTime? fromDate, DateTime? toDate}) => (select(dbDataItems)
+        ..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)])
+        ..where((tbl) =>
+            tbl.date.isBiggerOrEqualValue(fromDate ?? DateTime.now().subtract(Duration(days: 3600))) &
+            tbl.date.isSmallerOrEqualValue(toDate ?? DateTime.now().add(Duration(days: 3600)))))
+      .watch();
 
-  Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) =>
-      (select(dbDataItems)
-            ..where((tbl) => tbl.employeeId.equals(id))
-            ..orderBy([
-              (tbl) =>
-                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
-            ]))
-          .watch();
+  Stream<List<DbDataItem>> getAllDataItemsByEmployeeId(int id) => (select(dbDataItems)
+        ..where((tbl) => tbl.employeeId.equals(id))
+        ..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)]))
+      .watch();
 
-  Stream<List<DbDataItem>> getLastWeeksDataItemsByEmployeeId(int id) =>
-      (select(dbDataItems)
-            ..where((tbl) =>
-                tbl.employeeId.equals(id) &
-                tbl.date.isBiggerOrEqualValue(
-                    DateTime.now().subtract(Duration(days: 7))))
-            ..orderBy([
-              (tbl) =>
-                  OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)
-            ]))
-          .watch();
+  Stream<List<DbDataItem>> getLastWeeksDataItemsByEmployeeId(int id) => (select(dbDataItems)
+        ..where((tbl) =>
+            tbl.employeeId.equals(id) & tbl.date.isBiggerOrEqualValue(DateTime.now().subtract(Duration(days: 7))))
+        ..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)]))
+      .watch();
 
   Stream<List<DbDataItem>> getDataItemsByEmployee(int i) =>
       (select(dbDataItems)..where((tbl) => tbl.employeeId.equals(i))).watch();
 
-  Stream<List<DbDataItem>> getDataItemsByDateRange(
-          DateTime start, DateTime end) =>
-      (select(dbDataItems)
-            ..where((tbl) =>
-                tbl.date.isBiggerOrEqualValue(start) &
-                tbl.date.isSmallerOrEqualValue(end)))
+  Stream<List<DbDataItem>> getDataItemsByDateRange(DateTime start, DateTime end) =>
+      (select(dbDataItems)..where((tbl) => tbl.date.isBiggerOrEqualValue(start) & tbl.date.isSmallerOrEqualValue(end)))
           .watch();
 
   void deleteDatabase() {
@@ -256,8 +208,7 @@ class AppDb extends _$AppDb {
 
   Future<double?> getTodayTotalByEmployeeId(int employeeId) async {
     try {
-      final query = select(dbDataItems)
-        ..where((tbl) => tbl.employeeId.equals(employeeId));
+      final query = select(dbDataItems)..where((tbl) => tbl.employeeId.equals(employeeId));
 
       final dataItems = await query.get();
       final total = dataItems
@@ -276,16 +227,8 @@ class AppDb extends _$AppDb {
     }
   }
 
-  void insertCost(
-      String name,
-      bool? deductFromTax,
-      bool? systematicExpenditure,
-      String? retrievalInterval,
-      int? numberOfUnits,
-      double? price,
-      String? unitsOfMeasurement,
-      List<String> selectedCategories,
-      DateTime date) {
+  void insertCost(String name, bool? deductFromTax, bool? systematicExpenditure, String? retrievalInterval,
+      int? numberOfUnits, double? price, String? unitsOfMeasurement, List<String> selectedCategories, DateTime date) {
     var cost = DbCostsCompanion(
       name: Value(name),
       isDeductFromTax: Value(deductFromTax),
@@ -324,9 +267,8 @@ class AppDb extends _$AppDb {
   Future<int> count(String tableName, {String? whereClause}) {
     final table = getTable(tableName);
     if (table == null) return Future.value(0);
-    final count = DbController.to.appDb.customSelect(
-        'SELECT COUNT(*) FROM ${tableName} ${whereClause ?? ''}',
-        readsFrom: {table}).get();
+    final count = DbController.to.appDb
+        .customSelect('SELECT COUNT(*) FROM ${tableName} ${whereClause ?? ''}', readsFrom: {table}).get();
     return count.then((value) => value.first.data['COUNT(*)'] as int);
   }
 
@@ -340,19 +282,16 @@ class AppDb extends _$AppDb {
       query.where((tbl) => tbl.date.isSmallerOrEqualValue(filterData.toDate!));
     }
     if (filterData.priceFrom != null) {
-      query.where(
-          (tbl) => tbl.price.isBiggerOrEqualValue(filterData.priceFrom!));
+      query.where((tbl) => tbl.price.isBiggerOrEqualValue(filterData.priceFrom!));
     }
     if (filterData.priceTo != null) {
-      query
-          .where((tbl) => tbl.price.isSmallerOrEqualValue(filterData.priceTo!));
+      query.where((tbl) => tbl.price.isSmallerOrEqualValue(filterData.priceTo!));
     }
     if (filterData.selectedMasters?.isNotEmpty ?? false) {
       query.where((tbl) => tbl.employeeName.isIn(filterData.selectedMasters!));
     }
     if (filterData.selectedCategories?.isNotEmpty ?? false) {
-      query.where(
-          (tbl) => tbl.categoryName.isIn(filterData.selectedCategories!));
+      query.where((tbl) => tbl.categoryName.isIn(filterData.selectedCategories!));
     }
     if (filterData.name?.isNotEmpty ?? false) {
       query.where((tbl) => tbl.name.like('%${filterData.name}%'));
@@ -361,14 +300,16 @@ class AppDb extends _$AppDb {
       query.where((tbl) => tbl.phone.like('%${filterData.phone}%'));
     }
     if (filterData.isRegularCustomer != null) {
-      query.where(
-          (tbl) => tbl.regCustomer.equals(filterData.isRegularCustomer!));
+      query.where((tbl) => tbl.regCustomer.equals(filterData.isRegularCustomer!));
     }
     if (filterData.isCustomerCard != null) {
       query.where((tbl) => tbl.cardPay.equals(filterData.isCustomerCard!));
     }
     if (filterData.isNewCustomer != null) {
       query.where((tbl) => tbl.newCustomer.equals(filterData.isNewCustomer!));
+    }
+    if (filterData.notes != null) {
+      query.where((tbl) => tbl.notes.like('%${filterData.notes}%'));
     }
 
     return query.watch();
@@ -377,42 +318,32 @@ class AppDb extends _$AppDb {
   Future<List<Map<String, dynamic>>> customSelectFuture(String query) =>
       DbController.to.appDb.customSelect(query).map((item) => item.data).get();
 
-  Stream<List<Map<String, dynamic>>> customSelectStream(String query,
-          {Set<String>? fromEntityNames}) =>
-      DbController.to.appDb
-          .customSelect(query)
-          .map((item) => item.data)
-          .watch();
+  Stream<List<Map<String, dynamic>>> customSelectStream(String query, {Set<String>? fromEntityNames}) =>
+      DbController.to.appDb.customSelect(query).map((item) => item.data).watch();
 
   TableInfo<Table, dynamic>? getTable(String tableName) {
-    final tables = DbController.to.appDb.allTables
-        .where((element) => element.actualTableName == tableName);
+    final tables = DbController.to.appDb.allTables.where((element) => element.actualTableName == tableName);
     if (tables.isEmpty) return null;
     return tables.first;
   }
 
   Future<double> getCostsByDate(DateTime? date) async {
     if (date == null) return 0;
-    final costs =
-        await (select(dbCosts)..where((tbl) => tbl.date.equals(date))).get();
+    final costs = await (select(dbCosts)..where((tbl) => tbl.date.equals(date))).get();
 
     return costs.map((e) => e.price).toList().sumAll();
   }
 
-  Future<double> getCostsByDateRange(
-      DateTime? fromDate, DateTime? toDate) async {
+  Future<double> getCostsByDateRange(DateTime? fromDate, DateTime? toDate) async {
     if (fromDate == null || toDate == null) return 0;
     final costs = await (select(dbCosts)
-          ..where((tbl) =>
-              tbl.date.isBiggerOrEqualValue(fromDate) &
-              tbl.date.isSmallerOrEqualValue(toDate)))
+          ..where((tbl) => tbl.date.isBiggerOrEqualValue(fromDate) & tbl.date.isSmallerOrEqualValue(toDate)))
         .get();
 
     return costs.map((e) => e.price).toList().sumAll();
   }
 
-  Future<List<StatResultModel>> getNewStatisticsReports(
-      {DateTime? fromDate, DateTime? toDate}) async {
+  Future<List<StatResultModel>> getNewStatisticsReports({DateTime? fromDate, DateTime? toDate}) async {
     fromDate = fromDate ?? DateTime.now().subtract(Duration(days: 3600));
     toDate = toDate ?? DateTime.now().add(Duration(days: 3600));
 
@@ -433,12 +364,9 @@ class AppDb extends _$AppDb {
             dbDataItems.regCustomer.count(),
           ])
           ..where(dbDataItems.date.isBiggerOrEqualValue(fromDate))
-          ..where(dbDataItems.date.isSmallerOrEqualValue(
-              DateTime.fromMillisecondsSinceEpoch(to * 1000)))
+          ..where(dbDataItems.date.isSmallerOrEqualValue(DateTime.fromMillisecondsSinceEpoch(to * 1000)))
           ..groupBy([dbEmployees.id])
-          ..orderBy([
-            OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)
-          ]))
+          ..orderBy([OrderingTerm(expression: dbEmployees.id, mode: OrderingMode.asc)]))
         .get();
 
     List<StatResultModel> list = [];
@@ -478,10 +406,7 @@ class AppDb extends _$AppDb {
 
       final date = e.read(dbDataItems.date);
 
-      final List<int> allServicesIdsList = allServicesIds
-          .map((e) => e.data['totalServices'])
-          .toList()
-          .cast<int>();
+      final List<int> allServicesIdsList = allServicesIds.map((e) => e.data['totalServices']).toList().cast<int>();
 
       final sumAllTheCosts = await sumAllPrices(allServicesIdsList);
 
@@ -509,9 +434,7 @@ class AppDb extends _$AppDb {
           shopCost: shopCost,
           totalCost: sumAllTheCosts,
           percentage: double.tryParse(
-                  (double.tryParse(totalPrice.data['totalPrice'].toString()) ??
-                          0)
-                      .percentageOf(employeePercentage)) ??
+                  (double.tryParse(totalPrice.data['totalPrice'].toString()) ?? 0).percentageOf(employeePercentage)) ??
               0,
           date: date));
     }
@@ -524,17 +447,14 @@ class AppDb extends _$AppDb {
     List<double?> prices = [];
 
     for (final id in ids) {
-      final query = await (select(dbServices)
-            ..where((tbl) => tbl.id.equals(id)))
-          .getSingle();
+      final query = await (select(dbServices)..where((tbl) => tbl.id.equals(id))).getSingle();
       prices.add(query.price);
     }
 
     return prices.sumAll();
   }
 
-  Future<List<QueryRow>> getStatisticsReports(
-      {DateTime? fromDate, DateTime? toDate}) async {
+  Future<List<QueryRow>> getStatisticsReports({DateTime? fromDate, DateTime? toDate}) async {
     int? from;
     int? to;
     String? whereClause;
@@ -585,21 +505,16 @@ class AppDb extends _$AppDb {
       query.where((tbl) => tbl.isDeductFromTax.equals(filter!.deductFromTax!));
     }
     if (filter?.systematicExpenditure != null) {
-      query.where(
-          (tbl) => tbl.isSystematic.equals(filter!.systematicExpenditure!));
+      query.where((tbl) => tbl.isSystematic.equals(filter!.systematicExpenditure!));
     }
     if (filter?.repetitionInterval?.isNotEmpty ?? false) {
-      query.where(
-          (tbl) => tbl.repetitionInterval.equals(filter!.repetitionInterval!));
+      query.where((tbl) => tbl.repetitionInterval.equals(filter!.repetitionInterval!));
     }
     if (filter?.unitOfMeasurements?.isNotEmpty ?? false) {
-      query.where(
-          (tbl) => tbl.unitsOfMeasurement.equals(filter!.unitOfMeasurements!));
+      query.where((tbl) => tbl.unitsOfMeasurement.equals(filter!.unitOfMeasurements!));
     }
     if (filter?.categories?.isNotEmpty ?? false) {
-      query.where((tbl) =>
-          tbl.categories.contains('All') |
-          tbl.categories.like('%${filter!.categories.toString()}%'));
+      query.where((tbl) => tbl.categories.contains('All') | tbl.categories.like('%${filter!.categories.toString()}%'));
       ;
     }
 
@@ -611,19 +526,15 @@ class AppDb extends _$AppDb {
   }
 
   getServiceByServiceName(String query) {
-    return (select(dbServices)..where((tbl) => tbl.name.equals(query)))
-        .getSingle();
+    return (select(dbServices)..where((tbl) => tbl.name.equals(query))).getSingle();
   }
 
   getCategoryByService(DbService service) {
-    return (select(dbCategories)
-          ..where((tbl) => tbl.id.equals(service.categoryId)))
-        .getSingle();
+    return (select(dbCategories)..where((tbl) => tbl.id.equals(service.categoryId))).getSingle();
   }
 
   getCategoryById(int index) {
-    return (select(dbCategories)..where((tbl) => tbl.id.equals(index)))
-        .getSingle();
+    return (select(dbCategories)..where((tbl) => tbl.id.equals(index))).getSingle();
   }
 
   void deleteDataItem(int id) {
@@ -640,9 +551,7 @@ class AppDb extends _$AppDb {
   }
 
   Future<double> getPriceByServiceId(int serviceId) async {
-    final query = await (select(dbServices)
-          ..where((tbl) => tbl.id.equals(serviceId)))
-        .getSingle();
+    final query = await (select(dbServices)..where((tbl) => tbl.id.equals(serviceId))).getSingle();
     return query.price ?? 0.0;
   }
 
@@ -671,7 +580,6 @@ LazyDatabase _openConnection() {
 // write extension on lists to get the sum of the list
 extension Sum on List<double?> {
   double sumAll() {
-    return this
-        .fold(0, (previousValue, element) => previousValue + (element ?? 0));
+    return this.fold(0, (previousValue, element) => previousValue + (element ?? 0));
   }
 }

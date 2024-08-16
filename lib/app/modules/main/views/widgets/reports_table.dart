@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
@@ -72,7 +73,7 @@ class ReportsTable extends GetView<MainController> {
                         Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
                       ],
                     ),
-                    size: ColumnSize.M),
+                    size: ColumnSize.L),
                 DataColumn2(
                     label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
@@ -125,9 +126,11 @@ class ReportsTable extends GetView<MainController> {
                         DataCell(FittedBox(
                           child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
                         )),
-                        DataCell(FittedBox(
-                            fit: BoxFit.fitHeight,
-                            child: Text('__' + tableItem.phone.toString().lastThreeCharacters()))),
+                        DataCell(Center(
+                          child: FittedBox(
+                              fit: BoxFit.fitHeight,
+                              child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
+                        )),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
 
                         DataCell(Column(
@@ -145,13 +148,11 @@ class ReportsTable extends GetView<MainController> {
                             Divider(height: 2),
 
                             // Service
-                            SizedBox(
-                              height: 20,
-                              child: FittedBox(
-                                fit: BoxFit.fitHeight,
-                                child: Text(tableItem.serviceName ?? '', textAlign: TextAlign.center),
-                              ),
-                            ),
+                            Text(tableItem.serviceName ?? '',
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: TextStyle(fontSize: 11.sp, height: 0.9),
+                                overflow: TextOverflow.ellipsis),
                           ],
                         )),
                         DataCell(YesNoWidget(tableItem.newCustomer)),

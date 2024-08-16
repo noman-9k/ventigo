@@ -12,8 +12,7 @@ import '../../../db/drift_db.dart';
 import '../../main/views/widgets/reports_table.dart';
 
 class DataItemBottomSheet extends StatelessWidget {
-  const DataItemBottomSheet(this.tableItem,
-      {super.key, required, this.onEdit, this.onDelete});
+  const DataItemBottomSheet(this.tableItem, {super.key, required, this.onEdit, this.onDelete});
   final DbDataItem tableItem;
   final Function()? onEdit;
   final Function()? onDelete;
@@ -53,28 +52,15 @@ class DataItemBottomSheet extends StatelessWidget {
                 ],
               ),
             ),
-            TitleSubtitle(
-                title: S.of(context).employeeName,
-                subtitle: tableItem.employeeName),
-            TitleSubtitle(
-                title: S.of(context).phone,
-                subtitle: ' ' + tableItem.phone.toString()),
-            TitleSubtitle(
-                title: S.of(context).isRegularCus,
-                status: tableItem.regCustomer),
-            TitleSubtitle(
-                title: S.of(context).cardPay, status: tableItem.cardPay),
-            TitleSubtitle(
-                title: S.of(context).date,
-                subtitle: tableItem.date?.formateDate()),
-            TitleSubtitle(
-                title: S.of(context).category,
-                subtitle: tableItem.categoryName),
-            TitleSubtitle(
-                title: S.of(context).service, subtitle: tableItem.serviceName),
-            TitleSubtitle(
-                title: S.of(context).price,
-                subtitle: tableItem.price.toString()),
+            TitleSubtitle(title: S.of(context).employeeName, subtitle: tableItem.employeeName),
+            TitleSubtitle(title: S.of(context).phone, subtitle: ' ' + tableItem.phone.toString()),
+            TitleSubtitle(title: S.of(context).isRegularCus, status: tableItem.regCustomer),
+            TitleSubtitle(title: S.of(context).cardPay, status: tableItem.cardPay),
+            TitleSubtitle(title: S.of(context).date, subtitle: tableItem.date?.formateDate()),
+            TitleSubtitle(title: S.of(context).category, subtitle: tableItem.categoryName),
+            TitleSubtitle(title: S.of(context).service, subtitle: tableItem.serviceName),
+            TitleSubtitle(title: S.of(context).price, subtitle: tableItem.price.toString()),
+            TitleSubtitle(title: S.of(context).note, subtitle: tableItem.notes),
             70.verticalSpace,
           ],
         ),
@@ -84,8 +70,7 @@ class DataItemBottomSheet extends StatelessWidget {
 }
 
 class TitleSubtitle extends StatelessWidget {
-  const TitleSubtitle(
-      {super.key, required this.title, this.subtitle, this.status});
+  const TitleSubtitle({super.key, required this.title, this.subtitle, this.status});
   final String title;
   final String? subtitle;
   final bool? status;
@@ -99,10 +84,7 @@ class TitleSubtitle extends StatelessWidget {
           RichText(
               text: TextSpan(children: [
             TextSpan(text: title, style: AppStyles.boldStyle()),
-            if (subtitle != null)
-              TextSpan(
-                  text: subtitle,
-                  style: AppStyles.mediumStyle(color: Colors.black)),
+            if (subtitle != null) TextSpan(text: "   " + subtitle!, style: AppStyles.mediumStyle(color: Colors.black)),
           ])),
           if (status != null)
             Padding(

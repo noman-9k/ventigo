@@ -202,6 +202,11 @@
   "whatIsYourFavoriteSong": "Was ist Ihr Lieblingslied?",
   "whatIsYourFavoriteColor": "Was ist Ihre Lieblingsfarbe?",
   "number": "номер",
-  "viewServicesBefore7Days": "View Services before 7 days",
-  "canAddAPhoneNumber": "Can add a phone number"
+  "viewServicesBefore7Days": "Преглед на услугите преди 7 дни",
+ "canAddAPhoneNumber": "Може да добави телефонен номер",
+ "invalidPin": "Невалиден ПИН",
+ "note": "Забележка",
+ "enterANote": "Въведете бележка",
+ "characters": "знаци"
+  
 }

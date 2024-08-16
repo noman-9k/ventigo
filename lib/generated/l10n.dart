@@ -2099,6 +2099,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Invalid pin`
+  String get invalidPin {
+    return Intl.message(
+      'Invalid pin',
+      name: 'invalidPin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note`
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a note`
+  String get enterANote {
+    return Intl.message(
+      'Enter a note',
+      name: 'enterANote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `characters`
+  String get characters {
+    return Intl.message(
+      'characters',
+      name: 'characters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

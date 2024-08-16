@@ -67,7 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Kopia zapasowa została przywrócona pomyślnie!"),
         "boxes": MessageLookupByLibrary.simpleMessage("pudełka"),
         "canAddAPhoneNumber":
-            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
+            MessageLookupByLibrary.simpleMessage("Można dodać numer telefonu"),
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Płatność kartą: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZapłać"),
@@ -76,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryName": MessageLookupByLibrary.simpleMessage("Nazwa kategorii"),
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Zmień hasło administratora"),
+        "characters": MessageLookupByLibrary.simpleMessage("characters"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Sprawdź swój plik w folderze Pobrane"),
@@ -124,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Dane pracownika\n"),
         "employees": MessageLookupByLibrary.simpleMessage("pracownicy"),
+        "enterANote": MessageLookupByLibrary.simpleMessage("Wprowadź notatkę"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Wprowadź nazwę kategorii"),
         "enterPasswordHere":
@@ -159,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Cześć"),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Niepoprawna odpowiedź"),
+        "invalidPin":
+            MessageLookupByLibrary.simpleMessage("Nieprawidłowy kod PIN"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Jest zwykłym zwyczajem: "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Element usunięty"),
@@ -208,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Brak jednostki miary"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Bez ograniczeń"),
+        "note": MessageLookupByLibrary.simpleMessage("Uwaga"),
         "numOfnservices": MessageLookupByLibrary.simpleMessage("Liczba\nusług"),
         "number": MessageLookupByLibrary.simpleMessage("numer"),
         "numberOfServiceForMonth":
@@ -307,8 +312,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Jednostka miary"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Cena jednostkowa"),
         "userName": MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
-        "viewServicesBefore7Days":
-            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
+        "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(
+            "Wyświetl usługi sprzed 7 dni"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Poziom widoczności z krzyżykiem z listy"),

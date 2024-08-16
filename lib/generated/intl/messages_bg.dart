@@ -70,8 +70,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Архивирането е възстановено успешно!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Кутии"),
-        "canAddAPhoneNumber":
-            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
+        "canAddAPhoneNumber": MessageLookupByLibrary.simpleMessage(
+            "Може да добави телефонен номер"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отказ"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Плащане с карта: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\n"),
@@ -81,6 +81,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Име на категория"),
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Промяна на администраторска парола"),
+        "characters": MessageLookupByLibrary.simpleMessage("знаци"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Проверете файла си в папката за изтегляния"),
@@ -136,6 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Данни за \nслужителя"),
         "employees": MessageLookupByLibrary.simpleMessage("Служители"),
+        "enterANote": MessageLookupByLibrary.simpleMessage("Въведете бележка"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Въведете име на категория"),
         "enterPasswordHere":
@@ -173,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage(" Здравей "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправилен отговор"),
+        "invalidPin": MessageLookupByLibrary.simpleMessage("Невалиден ПИН"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Редовен Cus е. : "),
         "itemDeleted":
@@ -222,6 +225,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Няма мерна единица"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Неограничено"),
+        "note": MessageLookupByLibrary.simpleMessage("Забележка"),
         "numOfnservices": MessageLookupByLibrary.simpleMessage("Брой\nуслуги"),
         "number": MessageLookupByLibrary.simpleMessage("номер"),
         "numberOfServiceForMonth":
@@ -327,8 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Мерна единица"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Единична цена"),
         "userName": MessageLookupByLibrary.simpleMessage("Потребителско име"),
-        "viewServicesBefore7Days":
-            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
+        "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(
+            "Преглед на услугите преди 7 дни"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Ниво на видимост с кръстче от списъка"),

@@ -201,6 +201,10 @@
   "whatIsYourFavoriteSong": "Jaka jest twoja ulubiona piosenka?",
   "whatIsYourFavoriteColor": "Jaki jest twój ulubiony kolor?",
   "number": "numer",
-  "viewServicesBefore7Days": "View Services before 7 days",
-  "canAddAPhoneNumber": "Can add a phone number"
+  "viewServicesBefore7Days": "Wyświetl usługi sprzed 7 dni",
+  "canAddAPhoneNumber": "Można dodać numer telefonu",
+  "invalidPin": "Nieprawidłowy kod PIN",
+  "note": "Uwaga",
+  "enterANote": "Wprowadź notatkę",
+  "characters": "characters"
 }

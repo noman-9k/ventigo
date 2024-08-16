@@ -30,6 +30,8 @@ class AddReportController extends GetxController {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController priceController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
+  RxInt notesLength = 0.obs;
   bool? newCustomer;
   bool? regCustomer = false;
   bool? cardPay;
@@ -82,7 +84,6 @@ class AddReportController extends GetxController {
 
   onServiceChanged(DbService p1) {
     selectedService = p1;
-    log('Service changed');
     update();
   }
 
@@ -95,10 +96,7 @@ class AddReportController extends GetxController {
       Get.snackbar('Error', 'Name is required');
       return;
     }
-    if (phoneController.text.isEmpty && !canAddAPhone()) {
-      Get.snackbar('Error', 'Phone is required');
-      return;
-    }
+
     if (priceController.text.isEmpty) {
       Get.snackbar('Error', 'Price is required');
       return;
@@ -112,33 +110,36 @@ class AddReportController extends GetxController {
       return;
     }
 
-    final total = await DbController.to.appDb.getTodayTotalByEmployeeId(EmployeeService.to.employee!.value.id) ?? 0.0;
+    final total =
+        await DbController.to.appDb.getTodayTotalByEmployeeId(EmployeeService.to.employee?.value.id ?? 0) ?? 0.0;
 
     isLoading.value = true;
     int categoryId = selectedCategory!.id;
     int serviceId = selectedService!.id;
     int employeeId = EmployeeService.to.employee!.value.id;
     String name = nameController.text.trim() + '\n' + lastNameController.text.trim();
-    String phone = canAddAPhone() ? '' : phoneController.text.trim();
+    String phone = !canAddAPhone() ? '' : phoneController.text.trim();
 
     double price = double.parse(priceController.text.trim());
 
     await DbController.to.appDb.insertNewCompanionDataItem(
-        name,
-        phone,
-        employeeId,
-        EmployeeService.to.employee!.value.name,
-        categoryId,
-        selectedCategory?.name ?? 'No category',
-        serviceId,
-        selectedService?.name ?? 'No service',
-        newCustomer ?? false,
-        regCustomer ?? false,
-        DateTime.now().add(Duration(days: 0)).onlyDate(),
-        cardPay ?? false,
-        price,
-        (total + price),
-        EmployeeService.to.employee!.value.percentage ?? 0.0);
+      name,
+      phone,
+      employeeId,
+      EmployeeService.to.employee!.value.name,
+      categoryId,
+      selectedCategory?.name ?? 'No category',
+      serviceId,
+      selectedService?.name ?? 'No service',
+      newCustomer ?? false,
+      regCustomer ?? false,
+      DateTime.now().add(Duration(days: 0)).onlyDate(),
+      cardPay ?? false,
+      price,
+      (total + price),
+      EmployeeService.to.employee!.value.percentage ?? 0.0,
+      notesController.text.trim(),
+    );
 
     isLoading.value = false;
 
@@ -177,8 +178,6 @@ class SearchItem {
 
   @override
   bool operator ==(Object other) {
-    // if (identical(this, other)) return true;
-
     return other is SearchItem && other.label == label;
   }
 }

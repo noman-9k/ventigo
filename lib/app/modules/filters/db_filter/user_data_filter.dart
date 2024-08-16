@@ -13,6 +13,7 @@ class UserDataFilter {
   final bool? isRegularCustomer;
   final bool? isCustomerCard;
   final bool? isNewCustomer;
+  final String? notes;
 
   UserDataFilter({
     required bool asc,
@@ -29,6 +30,7 @@ class UserDataFilter {
     required bool? isRegularCustomer,
     required bool? isCustomerCard,
     required bool? isNewCustomer,
+    required String? notes,
   })  : asc = asc,
         this.orderingColumn = orderingColumn,
         this.selectQuery = selectQuery,
@@ -42,5 +44,6 @@ class UserDataFilter {
         this.selectedCategories = selectedCategories,
         this.isRegularCustomer = isRegularCustomer,
         this.isCustomerCard = isCustomerCard,
-        this.isNewCustomer = isNewCustomer;
+        this.isNewCustomer = isNewCustomer,
+        this.notes = notes;
 }
