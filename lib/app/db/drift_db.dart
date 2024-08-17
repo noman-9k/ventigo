@@ -583,7 +583,7 @@ class AppDb extends _$AppDb {
 
     var ww = query.get().then((value) {
       if (value.isNotEmpty) {
-        return value.map((e) => (e.price ?? 1) * (e.numberOfUnits ?? 1)).toList().sumAll().toStringAsFixed(2);
+        return value.map((e) => e.price).toList().sumAll().toStringAsFixed(2);
       }
     });
 

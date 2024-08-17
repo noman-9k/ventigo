@@ -20,24 +20,26 @@ class DateSection extends GetView<FiltersController> {
         Row(
           children: [
             Expanded(
+              child: ElevatedButton(
+                  onPressed: () {
+                    controller.selectDateRange(context);
+                  },
+                  child: Text('Select Dates')),
+            ),
+            10.horizontalSpace,
+            Expanded(
               child: TextField(
                 decoration: InputDecoration(labelText: S.of(context).from),
                 controller: controller.fromDateController,
                 readOnly: true,
-                onTap: () {
-                  controller.selectDate(context, isFromDate: true);
-                },
               ),
             ),
-            const SizedBox(width: 10),
+            5.horizontalSpace,
             Expanded(
               child: TextField(
                 decoration: InputDecoration(labelText: S.of(context).to),
                 controller: controller.toDateController,
                 readOnly: true,
-                onTap: () {
-                  controller.selectDate(context, isFromDate: false);
-                },
               ),
             ),
           ],

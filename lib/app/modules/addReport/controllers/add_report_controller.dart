@@ -118,7 +118,7 @@ class AddReportController extends GetxController {
     int serviceId = selectedService!.id;
     int employeeId = EmployeeService.to.employee!.value.id;
     String name = nameController.text.trim() + '\n' + lastNameController.text.trim();
-    String phone = !canAddAPhone() ? '' : phoneController.text.trim();
+    String phone = phoneController.text.trim();
 
     double price = double.parse(priceController.text.trim());
 

@@ -124,4 +124,15 @@ class FiltersController extends GetxController {
   ifSelectedMaster(String s) {
     return selectedMaster.contains(s);
   }
+
+  void selectDateRange(BuildContext context) {
+    showDateRangePicker(context: context, firstDate: DateTime(2000), lastDate: DateTime(3000)).then((value) {
+      if (value != null) {
+        fromDate = value.start;
+        toDate = value.end.add(const Duration(days: 1)).subtract(const Duration(minutes: 1));
+        fromDateController.text = fromDate!.smallDate();
+        toDateController.text = toDate!.smallDate();
+      }
+    });
+  }
 }

@@ -19,8 +19,7 @@ import 'controler/new_statistics_results_controller.dart';
 
 class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
   const NewStatisticsResults({super.key});
-  final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+  final TextStyle headerStyle = const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +28,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
         padding: const EdgeInsets.only(bottom: 80),
         child: Obx(() {
           return FloatingActionButton(
-            onPressed: () => controller.changeBottomSheet(
-                value: controller.isBottomSheetOpen.isFalse),
-            child: Icon(controller.isBottomSheetOpen.isTrue
-                ? Icons.close
-                : Icons.filter_list),
+            onPressed: () => controller.changeBottomSheet(value: controller.isBottomSheetOpen.isFalse),
+            child: Icon(controller.isBottomSheetOpen.isTrue ? Icons.close : Icons.filter_list),
           );
         }),
       ),
@@ -52,25 +48,48 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       10.verticalSpace,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppText.boldText(S.of(context).dates),
-                          30.verticalSpace,
-                          TextButton(
-                              onPressed: () {
-                                controller.clearFilters();
+                          Center(
+                            child: InkWell(
+                              onTap: () {
+                                controller.selectDateRange(context);
                               },
-                              child: AppText.mediumBoldText(
-                                  S.of(context).clearDates,
-                                  color: AppColors.redColor)),
+                              child: Container(
+                                margin: EdgeInsets.only(bottom: 10.h),
+                                decoration: BoxDecoration(
+                                  color: AppColors.lightPrimaryColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                width: 0.4.sw,
+                                height: 50.h,
+                                child: Center(child: AppText.boldText('Select Dates', color: AppColors.whiteColor)),
+                              ),
+                            ),
+                          ),
+                          30.verticalSpace,
+                          InkWell(
+                            onTap: () {
+                              controller.clearFilters();
+                            },
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              height: 50.h,
+                              child: AppText.mediumBoldText(S.of(context).clearDates, color: AppColors.redColor),
+                            ),
+                          ),
                         ],
                       ),
                       5.verticalSpace,
                       Row(
                         children: [
+                          10.horizontalSpace,
                           Expanded(
                             child: TextField(
-                              decoration: InputDecoration(
-                                  labelText: S.of(context).from),
+                              decoration: InputDecoration(labelText: S.of(context).from),
                               controller: controller.fromDateController,
                               readOnly: true,
                               onTap: () {
@@ -83,8 +102,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                           const SizedBox(width: 10),
                           Expanded(
                             child: TextField(
-                              decoration:
-                                  InputDecoration(labelText: S.of(context).to),
+                              decoration: InputDecoration(labelText: S.of(context).to),
                               controller: controller.toDateController,
                               readOnly: true,
                               onTap: () {
@@ -104,9 +122,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               controller.getFilteredStream();
                               controller.changeBottomSheet(value: false);
                             },
-                            child: AppText.mediumBoldText(
-                                S.of(context).applyFilters,
-                                color: Colors.white)),
+                            child: AppText.mediumBoldText(S.of(context).applyFilters, color: Colors.white)),
                       ),
                     ],
                   ),
@@ -136,13 +152,9 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
               }
 
               return DataTable2(
-                headingRowColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
+                headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                   if (states.contains(MaterialState.selected))
-                    return Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.08);
+                    return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                   return AppColors.lightYellow;
                 }),
                 columnSpacing: 10,
@@ -194,9 +206,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   DataColumn2(
                       label: Center(
                         child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                            child: Text(S.of(context).noOfnservices,
-                                style: headerStyle)),
+                            fit: BoxFit.fitWidth, child: Text(S.of(context).noOfnservices, style: headerStyle)),
                       ),
                       size: ColumnSize.S),
                   DataColumn2(
@@ -249,13 +259,9 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   (index) {
                     if (snapshot.data![index].employeeName == 'Total') {
                       return DataRow(
-                        color: MaterialStateProperty.resolveWith<Color?>(
-                            (Set<MaterialState> states) {
+                        color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                           if (states.contains(MaterialState.selected))
-                            return Theme.of(context)
-                                .colorScheme
-                                .primary
-                                .withOpacity(0.08);
+                            return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                           return AppColors.lightYellow;
                         }),
                         cells: [
@@ -264,10 +270,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].employeeName
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    snapshot.data![index].employeeName.toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -277,10 +281,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].noRegCustomer
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    snapshot.data![index].noRegCustomer.toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -290,10 +292,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].noNewCustomer
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    snapshot.data![index].noNewCustomer.toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -303,10 +303,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].uniqueCustomers
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    snapshot.data![index].uniqueCustomers.toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -316,10 +314,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].totalServices
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    snapshot.data![index].totalServices.toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -330,8 +326,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   fit: BoxFit.fitWidth,
                                   child: Text(
                                     snapshot.data![index].totalCost.toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -341,11 +336,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    (snapshot.data![index].totalPrice -
-                                            snapshot.data![index].totalCost)
-                                        .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    (snapshot.data![index].totalPrice - snapshot.data![index].totalCost).toString(),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -356,8 +348,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   fit: BoxFit.fitWidth,
                                   child: Text(
                                     snapshot.data![index].percentage.toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -372,8 +363,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                             snapshot.data![index].totalCost -
                                             snapshot.data![index].shopCost!)
                                         .toString(),
-                                    style: AppStyles.boldStyle(
-                                        fontSize: 13, color: Colors.green),
+                                    style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
                             ),
@@ -409,8 +399,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].noRegCustomer
-                                      .toString(),
+                                  snapshot.data![index].noRegCustomer.toString(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
@@ -421,8 +410,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].noNewCustomer
-                                      .toString(),
+                                  snapshot.data![index].noNewCustomer.toString(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
@@ -446,8 +434,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].totalServices
-                                      .toString(),
+                                  snapshot.data![index].totalServices.toString(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
