@@ -325,7 +325,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               child: FittedBox(
                                   fit: BoxFit.fitWidth,
                                   child: Text(
-                                    snapshot.data![index].totalCost.toString(),
+                                    snapshot.data![index].totalCost.only2Decimals(),
                                     style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
@@ -362,7 +362,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                             snapshot.data![index].percentage -
                                             snapshot.data![index].totalCost -
                                             snapshot.data![index].shopCost!)
-                                        .toString(),
+                                        .only2Decimals(),
                                     style: AppStyles.boldStyle(fontSize: 13, color: Colors.green),
                                     textAlign: TextAlign.center,
                                   )),
@@ -445,7 +445,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].totalCost.toString(),
+                                  snapshot.data![index].totalCost.only2Decimals(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
@@ -456,7 +456,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].totalPrice.toString(),
+                                  snapshot.data![index].totalPrice.only2Decimals(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
@@ -467,7 +467,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                             child: FittedBox(
                                 fit: BoxFit.fitWidth,
                                 child: Text(
-                                  snapshot.data![index].percentage.toString(),
+                                  snapshot.data![index].percentage.only2Decimals(),
                                   // .percentageOf(
                                   //     snapshot.data![index].percentage)
                                   // .toString(),
@@ -484,7 +484,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                   (snapshot.data![index].totalPrice -
                                           snapshot.data![index].percentage -
                                           snapshot.data![index].totalCost)
-                                      .toString(),
+                                      .only2Decimals(),
                                   style: AppStyles.lightStyle(fontSize: 13),
                                   textAlign: TextAlign.center,
                                 )),
