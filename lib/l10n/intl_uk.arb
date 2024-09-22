@@ -201,5 +201,11 @@
   "whatIsYourFavoriteFood": "Яка твоя улюблена їжа?",
   "whatIsYourFavoriteSong": "Яка твоя улюблена пісня?",
   "whatIsYourFavoriteColor": "Який твій улюблений колір?",
-  "number": "номер"
+  "number": "номер",
+"viewServicesBefore7Days": "Переглянути послуги до 7 днів",
+ "canAddAPhoneNumber": "Можна додати номер телефону",
+ "invalidPin": "Недійсний PIN-код",
+ "note": "Примітка",
+ "enterANote": "Введіть примітку",
+ "characters": "персонажі"
 }

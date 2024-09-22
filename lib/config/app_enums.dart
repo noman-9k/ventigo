@@ -6,4 +6,5 @@ enum VisibilityFilter {
   showPhone,
   servicesPerDay,
   onlyAllServices,
+  canAddAPhone
 }

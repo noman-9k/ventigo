@@ -2079,6 +2079,66 @@ class S {
       args: [],
     );
   }
+
+  /// `View Services before 7 days`
+  String get viewServicesBefore7Days {
+    return Intl.message(
+      'View Services before 7 days',
+      name: 'viewServicesBefore7Days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Can add a phone number`
+  String get canAddAPhoneNumber {
+    return Intl.message(
+      'Can add a phone number',
+      name: 'canAddAPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid pin`
+  String get invalidPin {
+    return Intl.message(
+      'Invalid pin',
+      name: 'invalidPin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note`
+  String get note {
+    return Intl.message(
+      'Note',
+      name: 'note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter a note`
+  String get enterANote {
+    return Intl.message(
+      'Enter a note',
+      name: 'enterANote',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `characters`
+  String get characters {
+    return Intl.message(
+      'characters',
+      name: 'characters',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -30,8 +30,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   TextField(
                           textCapitalization: TextCapitalization.sentences,
                           controller: controller.nameController,
-                          decoration: InputDecoration(
-                              hintText: S.of(context).enterYourName))
+                          decoration: InputDecoration(hintText: S.of(context).enterYourName))
                       .withLabel(S.of(context).name),
                   10.verticalSpace,
                   TextField(
@@ -53,40 +52,31 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                         hintText: S.of(context).enterYourPassword,
                       )).withLabel(S.of(context).password),
                   10.verticalSpace,
-                  AppText.mediumText(
-                      S.of(context).selectCategoriesFromTheListnmaybeSeveral,
-                      align: TextAlign.center),
+                  AppText.mediumText(S.of(context).selectCategoriesFromTheListnmaybeSeveral, align: TextAlign.center),
                   10.verticalSpace,
                   TextField(
                           readOnly: true,
                           onTap: () => controller.categoryTab(context),
                           controller: controller.categoriesController,
-                          decoration: InputDecoration(
-                              hintText: S.of(context).selectCategories))
+                          decoration: InputDecoration(hintText: S.of(context).selectCategories))
                       .withLabel(S.of(context).categories),
                   10.verticalSpace,
-                  AppText.mediumText(
-                      S.of(context).setPercentageOfIncomeIfNecessary,
-                      align: TextAlign.center),
+                  AppText.mediumText(S.of(context).setPercentageOfIncomeIfNecessary, align: TextAlign.center),
                   5.verticalSpace,
                   TextField(
                     controller: controller.percentageController,
                     keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                        hintText: S.of(context).setPercentageOfIncome),
+                    decoration: InputDecoration(hintText: S.of(context).setPercentageOfIncome),
                   ).withLabel(S.of(context).percentage),
                   10.verticalSpace,
-                  AppText.mediumText(
-                      S.of(context).visibilityLevelWithACrossFromTheList,
-                      align: TextAlign.center),
+                  AppText.mediumText(S.of(context).visibilityLevelWithACrossFromTheList, align: TextAlign.center),
                   10.verticalSpace,
-                  _checkbox(
-                      title: S.of(context).employeePercentage,
-                      type: VisibilityFilter.percentage),
+                  _checkbox(title: S.of(context).employeePercentage, type: VisibilityFilter.percentage),
                   10.verticalSpace,
-                  _checkbox(
-                      title: 'View Services before 7 days',
-                      type: VisibilityFilter.onlyAllServices),
+                  _checkbox(title: S.of(context).viewServicesBefore7Days, type: VisibilityFilter.onlyAllServices),
+                  10.verticalSpace,
+                  _checkbox(title: S.of(context).canAddAPhoneNumber, type: VisibilityFilter.canAddAPhone),
+
                   // 10.verticalSpace,
                   // _checkbox(
                   //     title: S.of(context).amountPercentagePerDay,
@@ -106,8 +96,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   24.verticalSpace,
                   ElevatedButton(
                     onPressed: () => controller.saveEmployee(),
-                    child: AppText.boldText(S.of(context).saveEmployee,
-                        color: Colors.white),
+                    child: AppText.boldText(S.of(context).saveEmployee, color: Colors.white),
                   ),
                 ],
               );
@@ -122,8 +111,7 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
           contentPadding: EdgeInsets.symmetric(horizontal: 20),
           dense: true,
           tileColor: Color(0xFFECECEC),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           value: controller.trueFilters.contains(type),
           onChanged: (value) {
             controller.onVisibilityFilterChange(type, value!);

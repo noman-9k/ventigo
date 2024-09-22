@@ -1,4 +1,8 @@
+import 'dart:developer';
 import 'dart:io';
+import 'package:file_picker/file_picker.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -56,5 +60,34 @@ class FileStorage {
     // Write the data in the file you have created
     file.writeAsBytesSync(bytes);
     return file;
+  }
+
+  static Future<bool> saveToSpecificPath(Uint8List bytes, String name) async {
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      await Permission.storage.request();
+    }
+    Get.showSnackbar(GetSnackBar(
+        message: 'Creating database...',
+        showProgressIndicator: true,
+        isDismissible: false,
+        snackPosition: SnackPosition.BOTTOM));
+    String? outputFile = await FilePicker.platform
+        .saveFile(dialogTitle: 'Save Your File to desired location', fileName: name, bytes: bytes);
+    if (outputFile == null) {
+      return false;
+    }
+
+    log('File Saved: $outputFile');
+
+    // try {
+    //   File returnedFile = File('$outputFile');
+    //   returnedFile.writeAsBytesSync(bytes);
+    //   return true;
+    // } catch (e) {
+    //   log(e.toString());
+    // }
+
+    return true;
   }
 }

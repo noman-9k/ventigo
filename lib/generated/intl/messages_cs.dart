@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupData": MessageLookupByLibrary.simpleMessage("Zálohování dat"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Záloha byla úspěšně obnovena!"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Zrušit"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Platba kartou: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZaplatit"),
@@ -73,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryName": MessageLookupByLibrary.simpleMessage("Název kategorie"),
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Změnit heslo správce"),
+        "characters": MessageLookupByLibrary.simpleMessage("characters"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Zkontrolujte svůj soubor ve složce Stažené soubory"),
@@ -118,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Zaměstnanec\nData"),
         "employees": MessageLookupByLibrary.simpleMessage("Zaměstnanci"),
+        "enterANote": MessageLookupByLibrary.simpleMessage("Enter a note"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Zadejte název kategorie"),
         "enterPasswordHere":
@@ -152,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Ahoj ahoj "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Nesprávná odpověď"),
+        "invalidPin": MessageLookupByLibrary.simpleMessage("Invalid pin"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Je pravidelné Cus. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Položka smazána"),
@@ -201,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Žádná jednotka měření"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Bez omezení"),
+        "note": MessageLookupByLibrary.simpleMessage("Note"),
         "numOfnservices": MessageLookupByLibrary.simpleMessage("Počet\nSlužeb"),
         "number": MessageLookupByLibrary.simpleMessage("číslo"),
         "numberOfServiceForMonth":
@@ -301,6 +307,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Jednotka měření"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Jednotková cena"),
         "userName": MessageLookupByLibrary.simpleMessage("Uživatelské jméno"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Úroveň viditelnosti s křížkem ze seznamu"),

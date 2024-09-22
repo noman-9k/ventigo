@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Backup restored successfully!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Boxes"),
+        "canAddAPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Card Pay: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Card\nPay"),
@@ -72,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "categoryName": MessageLookupByLibrary.simpleMessage("Category Name"),
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Change Admin Password"),
+        "characters": MessageLookupByLibrary.simpleMessage("characters"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Check your file in the Downloads folder"),
@@ -116,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Employee\nInformation"),
         "employees": MessageLookupByLibrary.simpleMessage("Employees"),
+        "enterANote": MessageLookupByLibrary.simpleMessage("Enter a note"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Enter Category Name"),
         "enterPasswordHere":
@@ -150,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("Hello "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Incorrect answer"),
+        "invalidPin": MessageLookupByLibrary.simpleMessage("Invalid pin"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Is Regular Cus. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Item deleted"),
@@ -200,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("No Unit of Measurements"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Not Limited"),
+        "note": MessageLookupByLibrary.simpleMessage("Note"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Num. of\nServices"),
         "number": MessageLookupByLibrary.simpleMessage("number"),
@@ -304,6 +310,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unit of measurements"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Unit Price"),
         "userName": MessageLookupByLibrary.simpleMessage("User Name"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("View Services before 7 days"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 " Visibility level with a cross from the list"),

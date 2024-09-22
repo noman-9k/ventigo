@@ -71,10 +71,10 @@ class FiltersView extends GetView<FiltersController> {
                       decoration: InputDecoration())
                   .withLabel(S.of(context).name),
               10.verticalSpace,
-              TextField(
-                      controller: controller.phoneController,
-                      decoration: InputDecoration())
+              TextField(controller: controller.phoneController, decoration: InputDecoration())
                   .withLabel(S.of(context).phone),
+              10.verticalSpace,
+              TextField(controller: controller.notesController).withLabel(S.of(context).note),
               10.verticalSpace,
               Divider(indent: 20, endIndent: 20),
               10.verticalSpace,
@@ -96,8 +96,7 @@ class FiltersView extends GetView<FiltersController> {
                         child: TextField(
                           controller: controller.minPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: S.of(context).minPrice),
+                          decoration: InputDecoration(labelText: S.of(context).minPrice),
                         ),
                       ),
                       10.horizontalSpace,
@@ -105,8 +104,7 @@ class FiltersView extends GetView<FiltersController> {
                         child: TextField(
                           controller: controller.maxPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: S.of(context).maxPrice),
+                          decoration: InputDecoration(labelText: S.of(context).maxPrice),
                         ),
                       ),
                     ],
@@ -125,8 +123,7 @@ class FiltersView extends GetView<FiltersController> {
               20.verticalSpace,
               ElevatedButton(
                   onPressed: () => controller.applyFilters(),
-                  child: AppText.boldText(S.of(context).applyFilters,
-                      color: Colors.white)),
+                  child: AppText.boldText(S.of(context).applyFilters, color: Colors.white)),
               40.verticalSpace,
             ],
           ),

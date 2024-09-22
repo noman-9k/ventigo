@@ -12,6 +12,7 @@ import '../../common/back_button.dart';
 import '../../common/common_price_range_slider.dart';
 import '../../common/custom_dropdown.dart';
 import '../controllers/costs_filter_controller.dart';
+import 'widgets/costs_dates_section.dart';
 
 class CostsFilterView extends GetView<CostsFilterController> {
   const CostsFilterView({Key? key}) : super(key: key);
@@ -47,15 +48,6 @@ class CostsFilterView extends GetView<CostsFilterController> {
                   hintText: S.of(context).nameOfCost,
                 ),
               ).withLabel(S.of(context).nameOfCost),
-              // 20.verticalSpace,
-              // CustomDropDown(
-              //   items: CategoryService.to
-              //       .getAllServicesCategories()
-              //       .map((e) => e.name)
-              //       .toList(),
-              //   onChanged: controller.onCategoryChanged,
-              //   title: 'Select Category',
-              // ),
               20.verticalSpace,
               YesNoButton(
                   defaultValue: controller.isDeductFromTax,
@@ -103,6 +95,8 @@ class CostsFilterView extends GetView<CostsFilterController> {
                 },
               ),
               20.verticalSpace,
+              CostsDateSection(),
+              20.verticalSpace,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -114,8 +108,7 @@ class CostsFilterView extends GetView<CostsFilterController> {
                         child: TextField(
                           controller: controller.minPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: S.of(context).minPrice),
+                          decoration: InputDecoration(labelText: S.of(context).minPrice),
                         ),
                       ),
                       10.horizontalSpace,
@@ -123,25 +116,17 @@ class CostsFilterView extends GetView<CostsFilterController> {
                         child: TextField(
                           controller: controller.maxPriceController,
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                              labelText: S.of(context).maxPrice),
+                          decoration: InputDecoration(labelText: S.of(context).maxPrice),
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              // CommonPriceRangeSlider(
-              //   title: 'Cost Price',
-              //   onChanged: (RangeValues values) {
-              //     print(values);
-              //   },
-              // ),
               20.verticalSpace,
               ElevatedButton(
                 onPressed: controller.getFilteredCosts,
-                child: AppText.boldText(S.of(context).applyFilter,
-                    color: Colors.white),
+                child: AppText.boldText(S.of(context).applyFilter, color: Colors.white),
               ),
             ],
           ),

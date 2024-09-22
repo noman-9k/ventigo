@@ -201,5 +201,12 @@
   "whatIsYourFavoriteFood": "Was ist Ihr Lieblingsessen?",
   "whatIsYourFavoriteSong": "Was ist Ihr Lieblingslied?",
   "whatIsYourFavoriteColor": "Was ist Ihre Lieblingsfarbe?",
-  "number": "nummer"
+  "number": "Nummer",
+"viewServicesBefore7Days": "Dienste vor 7 Tagen anzeigen",
+"canAddAPhoneNumber": "Kann eine Telefonnummer hinzufügen",
+"invalidPin": "Ungültige PIN",
+"note": "Notiz",
+"enterANote": "Notiz eingeben",
+"characters": "Zeichen"
+
 }

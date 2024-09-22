@@ -26,8 +26,7 @@ class EmployeesView extends GetView<EmployeesController> {
             bool isCategoryPresent = await controller.isCategoryPresent();
             isCategoryPresent
                 ? Get.toNamed(Routes.ADD_EMPLOYE)
-                : Get.snackbar(S.of(context).addCategoryFirst,
-                    S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
+                : Get.snackbar(S.of(context).addCategoryFirst, S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
           },
           child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),
@@ -51,14 +50,11 @@ class EmployeesView extends GetView<EmployeesController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Center(
-                      child: Image.asset('assets/place_holders/employees.png',
-                          height: 100.h, width: 100.w),
+                      child: Image.asset('assets/place_holders/employees.png', height: 100.h, width: 100.w),
                     ),
                     20.verticalSpace,
-                    AppText.mediumText(
-                        S.of(context).noEmployeeFoundnpleaseAddANewEmployee,
-                        align: TextAlign.center,
-                        color: AppColors.lightGrey),
+                    AppText.mediumText(S.of(context).noEmployeeFoundnpleaseAddANewEmployee,
+                        align: TextAlign.center, color: AppColors.lightGrey),
                     90.verticalSpace,
                   ],
                 );
@@ -74,14 +70,12 @@ class EmployeesView extends GetView<EmployeesController> {
                       label: S.of(context).search,
                       fetchData: () => controller.getEmployeesSearchList(),
                       controller: TextEditingController(),
-                      getSelectedValue: (EmployeeSearchItem value) =>
-                          controller.scrollToValue(value.value),
+                      getSelectedValue: (EmployeeSearchItem value) => controller.scrollToValue(value.value),
                     ),
                     10.verticalSpace,
                     ListView.separated(
                       controller: controller.scrollController,
-                      separatorBuilder: (context, index) =>
-                          Divider(indent: 20, endIndent: 20, height: 5),
+                      separatorBuilder: (context, index) => Divider(indent: 20, endIndent: 20, height: 5),
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data?.length ?? 0,
@@ -102,8 +96,7 @@ class EmployeesView extends GetView<EmployeesController> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  AppText.mediumText(S.of(context).accessLevel,
-                                      fontWeight: FontWeight.bold),
+                                  AppText.mediumText(S.of(context).accessLevel, fontWeight: FontWeight.bold),
                                   Row(
                                     children: [
                                       Container(
@@ -111,18 +104,14 @@ class EmployeesView extends GetView<EmployeesController> {
                                           height: 15,
                                           width: 20,
                                           decoration: BoxDecoration(
-                                              color:
-                                                  employee.visibility.length ==
-                                                          2
-                                                      ? Color(0xFF00A3E8)
-                                                      : Color(0xFFA349A1),
-                                              borderRadius:
-                                                  BorderRadius.circular(4))),
+                                              color: employee.visibility.length == 3
+                                                  ? Color(0xFF00A3E8)
+                                                  : Color(0xFFA349A1),
+                                              borderRadius: BorderRadius.circular(4))),
                                       5.horizontalSpace,
-                                      AppText.mediumText(
-                                          employee.visibility.length == 2
-                                              ? S.of(context).notLimited
-                                              : S.of(context).limited),
+                                      AppText.mediumText(employee.visibility.length == 3
+                                          ? S.of(context).notLimited
+                                          : S.of(context).limited),
                                     ],
                                   ),
                                 ],

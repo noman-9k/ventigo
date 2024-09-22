@@ -12,8 +12,7 @@ class MainController extends GetxController {
   List<TableItem> tableItems = [];
 
   static MainController get to => Get.find();
-  Stream<List<DbDataItem>> currentStream =
-      DbController.to.appDb.getAllDataItems();
+  Stream<List<DbDataItem>> currentStream = DbController.to.appDb.getAllDataItems();
 
   getFilteredDataItems({UserDataFilter? filter}) {
     if (filter == null) {
@@ -29,9 +28,7 @@ class MainController extends GetxController {
   }
 
   deleteItem(BuildContext context, int id) {
-    pushConfirmDialog(context,
-        title: 'Delete Item',
-        message: 'Are you sure you want to delete this item?', onDone: () {
+    pushConfirmDialog(context, title: 'Delete Item', message: 'Are you sure you want to delete this item?', onDone: () {
       DbController.to.appDb.deleteDataItem(id);
       update();
     });

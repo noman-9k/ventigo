@@ -48,9 +48,9 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
       bottomSheet: !isExpanded
           ? null
           : Container(
-              height: 250,
-              width: 0.8.sw,
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              height: 200,
+              width: 0.9.sw,
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,34 +61,48 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                   Row(
                     children: [
                       Expanded(
-                        child: TextField(
-                          decoration:
-                              InputDecoration(labelText: S.of(context).from),
-                          controller: TextEditingController(
-                              text: fromDate?.smallDate()),
-                          readOnly: true,
-                          onTap: () {
-                            pushDatePicker(context, (p0) {
-                              fromDate = p0;
-                              setState(() {});
-                            });
-                          },
-                        ),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              showDateRangePicker(context: context, firstDate: DateTime(2000), lastDate: DateTime(3000))
+                                  .then((value) {
+                                if (value != null) {
+                                  fromDate = value.start;
+                                  toDate = value.end.add(const Duration(days: 1)).subtract(const Duration(minutes: 1));
+                                  // fromDateController.text = fromDate!.smallDate();
+                                  // toDateController.text = toDate!.smallDate();
+                                }
+
+                                setState(() {});
+                              });
+                            },
+                            child: Text('Select Dates')),
                       ),
-                      const SizedBox(width: 10),
+                      10.horizontalSpace,
                       Expanded(
                         child: TextField(
-                          decoration:
-                              InputDecoration(labelText: S.of(context).to),
-                          controller:
-                              TextEditingController(text: toDate?.smallDate()),
+                          decoration: InputDecoration(labelText: S.of(context).from),
+                          controller: TextEditingController(text: fromDate?.smallDate()),
                           readOnly: true,
-                          onTap: () {
-                            pushDatePicker(context, (p0) {
-                              toDate = p0;
-                              setState(() {});
-                            });
-                          },
+                          // onTap: () {
+                          //   pushDatePicker(context, (p0) {
+                          //     fromDate = p0;
+                          //     setState(() {});
+                          //   });
+                          // },
+                        ),
+                      ),
+                      5.horizontalSpace,
+                      Expanded(
+                        child: TextField(
+                          decoration: InputDecoration(labelText: S.of(context).to),
+                          controller: TextEditingController(text: toDate?.smallDate()),
+                          readOnly: true,
+                          // onTap: () {
+                          //   pushDatePicker(context, (p0) {
+                          //     toDate = p0;
+                          //     setState(() {});
+                          //   });
+                          // },
                         ),
                       ),
                     ],
@@ -98,16 +112,12 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: ElevatedButton(
                         onPressed: () {
-                          filterFuture = DbController.to.appDb
-                              .getStatisticsReports(
-                                  fromDate: fromDate, toDate: toDate);
+                          filterFuture = DbController.to.appDb.getStatisticsReports(fromDate: fromDate, toDate: toDate);
                           setState(() {});
 
                           isExpanded = false;
                         },
-                        child: AppText.mediumBoldText(
-                            S.of(context).applyFilters,
-                            color: Colors.white)),
+                        child: AppText.mediumBoldText(S.of(context).applyFilters, color: Colors.white)),
                   ),
                 ],
               ),
@@ -134,13 +144,9 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
             }
 
             return DataTable2(
-              headingRowColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
+              headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
-                  return Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.08);
+                  return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                 return AppColors.lightYellow;
               }),
               columnSpacing: 10,
@@ -211,13 +217,10 @@ class _StatisticReportScreenState extends State<StatisticReportScreen> {
                       }));
                     }
 
-                    DateTime? date = DateTime.fromMillisecondsSinceEpoch(
-                        row.read<int>('date') * 1000);
+                    DateTime? date = DateTime.fromMillisecondsSinceEpoch(row.read<int>('date') * 1000);
 
-                    if (date.isAfter(toDate ??
-                            DateTime.now().add(Duration(days: 20000))) ||
-                        date.isBefore(fromDate ??
-                            DateTime.now().subtract(Duration(days: 20000)))) {
+                    if (date.isAfter(toDate ?? DateTime.now().add(Duration(days: 20000))) ||
+                        date.isBefore(fromDate ?? DateTime.now().subtract(Duration(days: 20000)))) {
                       return DataRow(
                           cells: List.generate(5, (index) {
                         return DataCell(SizedBox.shrink());

@@ -4,10 +4,12 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ventigo/app/modules/userData/controllers/user_data_controller.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
+import 'package:ventigo/extensions/string_extensions.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../db/drift_db.dart';
@@ -16,8 +18,7 @@ class UserDataTable extends StatelessWidget {
   const UserDataTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
-  final TextStyle headerStyle =
-      const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
+  final TextStyle headerStyle = const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -33,38 +34,24 @@ class UserDataTable extends StatelessWidget {
               columnSpacing: 10,
               horizontalMargin: 10,
               minWidth: 700,
-              headingRowColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
+              headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
-                  return Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.08);
+                  return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                 return AppColors.lightYellow;
               }),
               columns: [
+                DataColumn2(label: Text(S.of(context).regncus, style: headerStyle), size: ColumnSize.S),
+                DataColumn2(label: Text(S.of(context).cardnpay, style: headerStyle), size: ColumnSize.S),
                 DataColumn2(
-                    label: Text(S.of(context).regncus, style: headerStyle),
-                    size: ColumnSize.S),
-                DataColumn2(
-                    label: Text(S.of(context).cardnpay, style: headerStyle),
-                    size: ColumnSize.S),
-                DataColumn2(
-                    label: Text(S.of(context).customerndata,
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
-                      child: Text(
-                          S.of(context).phone + '\n' + S.of(context).number,
-                          style: headerStyle,
-                          textAlign: TextAlign.center),
+                      child: Text(S.of(context).phone + '\n' + S.of(context).number,
+                          style: headerStyle, textAlign: TextAlign.center),
                     ),
                     size: ColumnSize.L),
-                DataColumn2(
-                    label: Center(
-                        child: Text(S.of(context).date, style: headerStyle)),
-                    fixedWidth: 100),
+                DataColumn2(label: Center(child: Text(S.of(context).date, style: headerStyle)), fixedWidth: 100),
                 DataColumn2(
                     label: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -72,13 +59,12 @@ class UserDataTable extends StatelessWidget {
                       children: [
                         Text(S.of(context).category, style: headerStyle),
                         Divider(height: 1),
-                        Text(S.of(context).service, style: headerStyle),
+                        Text(S.of(context).service, style: headerStyle, maxLines: 2, overflow: TextOverflow.ellipsis),
                       ],
                     ),
-                    size: ColumnSize.M),
+                    size: ColumnSize.L),
                 DataColumn2(
-                    label: Text(S.of(context).newncus,
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
                     label: Column(
@@ -107,13 +93,9 @@ class UserDataTable extends StatelessWidget {
               rows: tableItems
                   .map(
                     (tableItem) => DataRow(
-                      color: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
+                      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected))
-                          return Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.08);
+                          return Theme.of(context).colorScheme.primary.withOpacity(0.08);
 
                         return tableItem.date?.getDayColor();
                       }),
@@ -124,36 +106,31 @@ class UserDataTable extends StatelessWidget {
                         DataCell(Center(
                           child: FittedBox(
                               fit: BoxFit.fitHeight,
-                              child: Text(
-                                '..' +
-                                    tableItem.phone.toString().substring(
-                                        tableItem.phone.toString().length - 3,
-                                        tableItem.phone.toString().length),
-                              )),
+                              child: Text('..' + tableItem.phone.toString().lastThreeCharacters()
+                                  // substring(
+                                  //     tableItem.phone.toString().length - 3,
+                                  //     tableItem.phone.toString().length),
+                                  )),
                         )),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
-                              height: 20,
+                              height: 18,
                               child: FittedBox(
                                 fit: BoxFit.fitHeight,
-                                child: Text(tableItem.categoryName ?? '',
-                                    textAlign: TextAlign.start),
+                                child: Text(tableItem.categoryName ?? '', textAlign: TextAlign.start),
                               ),
                             ),
                             Divider(height: 2),
 
                             // Service
-                            SizedBox(
-                              height: 20,
-                              child: FittedBox(
-                                fit: BoxFit.fitHeight,
-                                child: Text(tableItem.serviceName ?? '',
-                                    textAlign: TextAlign.center),
-                              ),
-                            ),
+                            Text(tableItem.serviceName ?? '',
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: TextStyle(fontSize: 11.sp, height: 0.9),
+                                overflow: TextOverflow.ellipsis),
                           ],
                         )),
                         DataCell(YesNoWidget(tableItem.newCustomer)),
@@ -169,11 +146,9 @@ class UserDataTable extends StatelessWidget {
                           DataCell(Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(tableItem.price!
-                                  .percentageOf(tableItem.percentage)),
+                              Text(tableItem.price!.percentageOf(tableItem.percentage)),
                               Divider(height: 4, endIndent: 8, indent: 8),
-                              Text(tableItem.total!
-                                  .percentageOf(tableItem.percentage)),
+                              Text(tableItem.total!.percentageOf(tableItem.percentage)),
                             ],
                           )),
                       ],
@@ -194,9 +169,7 @@ class YesNoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(
-          width: 20,
-          status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
+      child: Image.asset(width: 20, status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
     );
   }
 }

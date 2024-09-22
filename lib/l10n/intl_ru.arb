@@ -201,5 +201,12 @@
   "whatIsYourFavoriteFood": "Какая ваша любимая еда?",
   "whatIsYourFavoriteSong": "Какая ваша любимая песня?",
   "whatIsYourFavoriteColor": "Какой ваш любимый цвет?",
-  "number": "число"
+  "number": "число",
+  "viewServicesBefore7Days": "Просмотр услуг до 7 дней",
+"canAddAPhoneNumber": "Можно добавить номер телефона",
+"invalidPin": "Неверный PIN-код",
+"note": "Примечание",
+"enterANote": "Введите примечание",
+"characters": "символы"
 }
+  

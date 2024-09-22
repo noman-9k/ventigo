@@ -1,7 +1,9 @@
 {
     "editor.guides.bracketPairs": true,
     "cSpell.words": [
+        "Autovalidate",
         "getservices",
+        "Pinput",
         "Snackbars",
         "ventigo"
     ]

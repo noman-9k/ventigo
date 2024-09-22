@@ -201,5 +201,13 @@
   "whatIsYourFavoriteFood": "¿Cuál es tu comida favorita?",
   "whatIsYourFavoriteSong": "¿Cuál es tu canción favorita?",
   "whatIsYourFavoriteColor": "¿Cuál es tu color favorito?",
-  "number": "número"
+  "number": "número",
+  "viewServicesBefore7Days": "Před 7 dny služby",
+"canAddAPhoneNumber": "Puede agregar un numero de teléfono",
+"invalidPin": "PIN není platný",
+"note": "Nota",
+"enterANote": "Ingrese una nota",
+"characters": "characteres"
+  
+
 }

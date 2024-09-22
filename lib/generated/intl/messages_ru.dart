@@ -67,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Резервная копия успешно восстановлена!"),
         "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
+        "canAddAPhoneNumber": MessageLookupByLibrary.simpleMessage(
+            "Можно добавить номер телефона"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Оплата картой: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Карта\nPay"),
@@ -76,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Название категории"),
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Изменить пароль администратора"),
+        "characters": MessageLookupByLibrary.simpleMessage("символы"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Проверьте свой файл в папке Загрузки"),
@@ -126,6 +129,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Данные о сотруднике\n"),
         "employees": MessageLookupByLibrary.simpleMessage("Сотрудники"),
+        "enterANote":
+            MessageLookupByLibrary.simpleMessage("Введите примечание"),
         "enterCategoryName":
             MessageLookupByLibrary.simpleMessage("Введите название категории"),
         "enterPasswordHere":
@@ -160,6 +165,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "hello": MessageLookupByLibrary.simpleMessage("привет "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильный ответ"),
+        "invalidPin": MessageLookupByLibrary.simpleMessage("Неверный PIN-код"),
         "isRegularCus":
             MessageLookupByLibrary.simpleMessage("Является обычным Cus. : "),
         "itemDeleted": MessageLookupByLibrary.simpleMessage("Элемент удален"),
@@ -209,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Нет единиц измерения"),
         "notLimited": MessageLookupByLibrary.simpleMessage("Не ограничено"),
+        "note": MessageLookupByLibrary.simpleMessage("Примечание"),
         "numOfnservices":
             MessageLookupByLibrary.simpleMessage("Количество\nУслуг"),
         "number": MessageLookupByLibrary.simpleMessage("число"),
@@ -310,6 +317,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Единица измерения"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Цена за единицу"),
         "userName": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
+        "viewServicesBefore7Days":
+            MessageLookupByLibrary.simpleMessage("Просмотр услуг до 7 дней"),
         "visibilityLevelWithACrossFromTheList":
             MessageLookupByLibrary.simpleMessage(
                 "Уровень видимости с крестиком из списка"),
