@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../config/app_colors.dart';
 import '../../../config/app_text.dart';
+import '../../../generated/l10n.dart';
 
 class YesNoButton extends StatefulWidget {
   const YesNoButton(
@@ -30,6 +31,7 @@ class _YesNoButtonState extends State<YesNoButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: widget.key,
       height: 50,
       width: 1.sw,
       decoration: BoxDecoration(
@@ -53,7 +55,7 @@ class _YesNoButtonState extends State<YesNoButton> {
                     });
                     widget.onChanged(isYes);
                   },
-                  child: Text('Yes')),
+                  child: Text(S.of(context).yes)),
               RadioMenuButton(
                   value: false,
                   groupValue: isYes,
@@ -64,7 +66,7 @@ class _YesNoButtonState extends State<YesNoButton> {
                     });
                     widget.onChanged(isYes);
                   },
-                  child: Text('No')),
+                  child: Text(S.of(context).no)),
             ],
           ),
           10.horizontalSpace,

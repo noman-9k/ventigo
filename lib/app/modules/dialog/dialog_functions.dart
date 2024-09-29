@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../generated/l10n.dart';
 import '../../db/drift_db.dart';
 import 'dialogs/change_admin_pass_dialog.dart';
 import 'dialogs/category_select_dialog.dart';
@@ -10,10 +11,11 @@ import 'dialogs/reset_Password_dialog.dart';
 import 'dialogs/security_questions_dialog.dart';
 import 'sheets/data_item_bottom_sheet.dart';
 
-pushChangeSecurityQuestionsDialog(BuildContext context) {
+pushChangeSecurityQuestionsDialog(BuildContext context,
+    {bool isFirstTime = false}) {
   showDialog(
     context: context,
-    builder: (context) => SecurityQuestionsDialog(),
+    builder: (context) => SecurityQuestionsDialog(isFirstTime: isFirstTime),
   );
 }
 
@@ -64,14 +66,14 @@ pushConfirmDialog(
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: AppText.mediumBoldText('Cancel'),
+          child: AppText.mediumBoldText(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);
             onDone();
           },
-          child: AppText.boldText('Confirm'),
+          child: AppText.boldText(S.of(context).confirm),
         ),
       ],
     ),
@@ -87,7 +89,10 @@ pushEditCategoryDialog(BuildContext context, DbCategory category) {
   );
 }
 
-pushChangeAdminPassDialog(BuildContext context) {
+pushChangeAdminPassDialog(BuildContext context, {bool isFirstTime = false}) {
+  if (isFirstTime)
+    return pushChangeSecurityQuestionsDialog(context, isFirstTime: isFirstTime);
+
   showDialog(
     context: context,
     builder: (context) => ChangeAdminPassDialog(),

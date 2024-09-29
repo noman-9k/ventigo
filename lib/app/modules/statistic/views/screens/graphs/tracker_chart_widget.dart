@@ -3,6 +3,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../../../../generated/l10n.dart';
 import '../../../../../db/db_controller.dart';
 
 class TrackerChart extends StatelessWidget {
@@ -35,8 +36,8 @@ class TrackerChart extends StatelessWidget {
                     width: 250,
                     child: AppText.mediumText(
                       snapshot.data?.length == 1
-                          ? 'There is only one cost added yet add more to plot the graph'
-                          : 'No Costs added yet',
+                          ? S.of(context).thereIsOnlyOneCostAddedYetAddMoreTo
+                          : S.of(context).noCostsAddedYet,
                       align: TextAlign.center,
                       color: Colors.grey[600],
                     ),
@@ -65,7 +66,7 @@ class TrackerChart extends StatelessWidget {
                         SizedBox(
                           width: 250,
                           child: AppText.mediumText(
-                            'All costs are added on the same date, add more to plot the graph',
+                            S.of(context).allCostsAreAddedOnTheSameDateAddMore,
                             align: TextAlign.center,
                             color: Colors.grey[600],
                           ),
@@ -79,7 +80,7 @@ class TrackerChart extends StatelessWidget {
                     child: SfCartesianChart(
                         primaryXAxis: DateTimeAxis(
                           title: AxisTitle(
-                              text: 'Date',
+                              text: S.of(context).date,
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
@@ -91,7 +92,9 @@ class TrackerChart extends StatelessWidget {
                         ),
                         primaryYAxis: NumericAxis(
                           title: AxisTitle(
-                              text: isCostsTable ? 'Cost' : 'Price',
+                              text: isCostsTable
+                                  ? S.of(context).cost
+                                  : S.of(context).price,
                               textStyle: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,

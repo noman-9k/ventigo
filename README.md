@@ -4,6 +4,11 @@ A new Flutter project.
 
 ## Getting Started
 
+## Drift migration
+```
+dart run drift_dev schema dump lib/app/db/drift_db.dart drift_schemas/
+```
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:

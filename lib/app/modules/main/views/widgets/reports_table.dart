@@ -2,11 +2,14 @@ import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
+import 'package:ventigo/extensions/string_extensions.dart';
 
+import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
 import '../../../dialog/dialog_functions.dart';
 import '../../controllers/main_controller.dart';
@@ -14,8 +17,7 @@ import '../../controllers/main_controller.dart';
 class ReportsTable extends GetView<MainController> {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
-  final TextStyle headerStyle =
-      const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
+  final TextStyle headerStyle = const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -30,67 +32,59 @@ class ReportsTable extends GetView<MainController> {
 
             return DataTable2(
               columnSpacing: 10,
+              bottomMargin: 90,
               horizontalMargin: 10,
-              minWidth: 620,
-              headingRowColor: MaterialStateProperty.resolveWith<Color?>(
-                  (Set<MaterialState> states) {
+              minWidth: 660,
+              headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
-                  return Theme.of(context)
-                      .colorScheme
-                      .primary
-                      .withOpacity(0.08);
+                  return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                 return AppColors.lightYellow;
               }),
               columns: [
                 DataColumn2(
-                    label: Text('Employee\nData',
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
-                  label: Text('Reg\nCus',
-                      style: headerStyle, textAlign: TextAlign.center),
+                  label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
                   size: ColumnSize.S,
                 ),
                 DataColumn2(
-                    label: Text('Card\nPay',
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).cardnpay, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
-                    label: Text('Customer\nData',
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),
                 DataColumn2(
                     label: Center(
-                        child: Text('Date',
-                            style: headerStyle, textAlign: TextAlign.center)),
+                      child: Text(S.of(context).phone + '\n' + S.of(context).number,
+                          style: headerStyle, textAlign: TextAlign.center),
+                    ),
+                    size: ColumnSize.M),
+                DataColumn2(
+                    label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
                     fixedWidth: 100),
                 DataColumn2(
                     label: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text('Category',
-                            style: headerStyle, textAlign: TextAlign.center),
+                        Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
                         Divider(height: 1),
-                        Text('Service',
-                            style: headerStyle, textAlign: TextAlign.center),
+                        Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
                       ],
                     ),
-                    size: ColumnSize.M),
+                    size: ColumnSize.L),
                 DataColumn2(
-                    label: Text('New\nCus',
-                        style: headerStyle, textAlign: TextAlign.center),
+                    label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.S),
                 DataColumn2(
                     label: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Price',
-                              style: headerStyle, textAlign: TextAlign.center),
+                          Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
                           Divider(height: 1),
-                          Text('Total',
-                              style: headerStyle, textAlign: TextAlign.center),
+                          Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -101,7 +95,7 @@ class ReportsTable extends GetView<MainController> {
                         children: [
                           Text('%', style: headerStyle),
                           Divider(height: 1),
-                          Text('Total', style: headerStyle),
+                          Text(S.of(context).total, style: headerStyle),
                         ]),
                     size: ColumnSize.S,
                     numeric: true),
@@ -109,38 +103,36 @@ class ReportsTable extends GetView<MainController> {
               rows: tableItems
                   .map(
                     (tableItem) => DataRow(
-                      onLongPress: () => pushShowReportsBottomSheet(
-                          context, tableItem, onDelete: () {
+                      onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
                         Navigator.pop(context);
                         controller.deleteItem(context, tableItem.id);
-                        Get.snackbar('Deleted', 'Item deleted');
+                        Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
                       }, onEdit: () {
                         Navigator.pop(context);
 
                         controller.editItem(tableItem);
                       }),
-                      color: MaterialStateProperty.resolveWith<Color?>(
-                          (Set<MaterialState> states) {
+                      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected))
-                          return Theme.of(context)
-                              .colorScheme
-                              .primary
-                              .withOpacity(0.08);
+                          return Theme.of(context).colorScheme.primary.withOpacity(0.08);
 
                         return tableItem.date?.getDayColor();
                       }),
                       cells: [
-                        DataCell(FittedBox(
-                            child: Center(
-                                child: Text(
-                                    tableItem.employeeName ?? 'No data')))),
+                        DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
+                        // DataCell(Text(tableItem.name ?? S.of(context).noData)),
+                        DataCell(FittedBox(
+                          child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
+                        )),
                         DataCell(Center(
                           child: FittedBox(
-                              child: Text(tableItem.name ?? 'No data')),
+                              fit: BoxFit.fitHeight,
+                              child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
                         )),
                         DataCell(Text(tableItem.date?.smallDate() ?? '')),
+
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -148,21 +140,19 @@ class ReportsTable extends GetView<MainController> {
                               height: 20,
                               child: FittedBox(
                                 fit: BoxFit.fitHeight,
-                                child: Text(tableItem.categoryName ?? '',
-                                    textAlign: TextAlign.center),
+                                child: Text(
+                                  tableItem.categoryName ?? '',
+                                ),
                               ),
                             ),
                             Divider(height: 2),
 
                             // Service
-                            SizedBox(
-                              height: 20,
-                              child: FittedBox(
-                                fit: BoxFit.fitHeight,
-                                child: Text(tableItem.serviceName ?? '',
-                                    textAlign: TextAlign.center),
-                              ),
-                            ),
+                            Text(tableItem.serviceName ?? '',
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: TextStyle(fontSize: 11.sp, height: 0.9),
+                                overflow: TextOverflow.ellipsis),
                           ],
                         )),
                         DataCell(YesNoWidget(tableItem.newCustomer)),
@@ -178,13 +168,10 @@ class ReportsTable extends GetView<MainController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             FittedBox(
-                              child: Text(tableItem.price!
-                                  .percentageOf(tableItem.percentage)),
+                              child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
                             ),
                             Divider(height: 4, endIndent: 8, indent: 8),
-                            FittedBox(
-                                child: Text(tableItem.total!
-                                    .percentageOf(tableItem.percentage))),
+                            FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
                           ],
                         )),
                       ],
@@ -193,8 +180,13 @@ class ReportsTable extends GetView<MainController> {
                   .toList(),
             );
           }
-          return const Center(child: Text('No data'));
+          return Center(child: Text(S.of(context).noData));
         });
+  }
+
+  String getLast3(String? text) {
+    if (text == null) return '';
+    return text.toString().substring(text.length - 3, text.length);
   }
 }
 
@@ -205,9 +197,7 @@ class YesNoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(
-          width: 20,
-          status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
+      child: Image.asset(width: 15, status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
     );
   }
 }

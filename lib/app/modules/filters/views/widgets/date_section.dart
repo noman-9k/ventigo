@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/modules/filters/controllers/filters_controller.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class DateSection extends GetView<FiltersController> {
   const DateSection({super.key});
 
@@ -13,29 +15,31 @@ class DateSection extends GetView<FiltersController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         10.verticalSpace,
-        AppText.boldText('Dates'),
+        AppText.boldText(S.of(context).dates),
         5.verticalSpace,
         Row(
           children: [
             Expanded(
-              child: TextField(
-                decoration: InputDecoration(labelText: 'From'),
-                controller: controller.fromDateController,
-                readOnly: true,
-                onTap: () {
-                  controller.selectDate(context, isFromDate: true);
-                },
-              ),
+              child: ElevatedButton(
+                  onPressed: () {
+                    controller.selectDateRange(context);
+                  },
+                  child: Text('Select Dates')),
             ),
-            const SizedBox(width: 10),
+            10.horizontalSpace,
             Expanded(
               child: TextField(
-                decoration: InputDecoration(labelText: 'To'),
+                decoration: InputDecoration(labelText: S.of(context).from),
+                controller: controller.fromDateController,
+                readOnly: true,
+              ),
+            ),
+            5.horizontalSpace,
+            Expanded(
+              child: TextField(
+                decoration: InputDecoration(labelText: S.of(context).to),
                 controller: controller.toDateController,
                 readOnly: true,
-                onTap: () {
-                  controller.selectDate(context, isFromDate: false);
-                },
               ),
             ),
           ],

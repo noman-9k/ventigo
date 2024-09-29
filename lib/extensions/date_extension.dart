@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -42,28 +44,14 @@ extension SmallDate on DateTime {
   Color getDayColor() {
     final day = int.parse(DateFormat('dd').format(this));
     final colors = [
-      Colors.red.withOpacity(0.2),
-      Colors.blue.withOpacity(0.2),
-      Colors.green.withOpacity(0.2),
-      Colors.yellow.withOpacity(0.2),
-      Colors.purple.withOpacity(0.2),
-      Colors.red.withOpacity(0.2),
-      Colors.blue.withOpacity(0.2),
-      Colors.green.withOpacity(0.2),
-      Colors.yellow.withOpacity(0.2),
-      Colors.purple.withOpacity(0.2),
-      Colors.red.withOpacity(0.2),
-      Colors.blue.withOpacity(0.2),
-      Colors.green.withOpacity(0.2),
-      Colors.yellow.withOpacity(0.2),
-      Colors.purple.withOpacity(0.2),
-      Colors.red.withOpacity(0.2),
-      Colors.blue.withOpacity(0.2),
-      Colors.green.withOpacity(0.2),
-      Colors.yellow.withOpacity(0.2),
-      Colors.purple.withOpacity(0.2),
-      Colors.red.withOpacity(0.2),
+      Color(0xFFDDFDF1),
+      Color(0xFFFFFFC6),
+      Color(0xFFDFF5FF),
+      // Colors.green.withOpacity(0.2),
+      // Colors.yellow.withOpacity(0.2),
+      // Colors.cyanAccent.withOpacity(0.2),
     ];
-    return colors[day - 1];
+
+    return colors[day % colors.length];
   }
 }

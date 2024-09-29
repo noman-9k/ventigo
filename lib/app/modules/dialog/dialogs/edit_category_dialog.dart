@@ -5,6 +5,7 @@ import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../db/drift_db.dart';
 
 class EditCategoryDialog extends StatefulWidget {
@@ -31,18 +32,18 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: [
-          AppText.boldText('Edit Category'),
+          AppText.boldText(S.of(context).editCategory),
           10.verticalSpace,
           TextField(
             textCapitalization: TextCapitalization.sentences,
             controller: categoryNameController,
-          ).withLabel('Category Name'),
+          ).withLabel(S.of(context).categoryName),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: Text('Cancel'),
+                child: Text(S.of(context).cancel),
               ),
               TextButton(
                 onPressed: () {
@@ -52,7 +53,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
                   ));
                   Navigator.pop(context);
                 },
-                child: Text('Save'),
+                child: Text(S.of(context).save),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../db/drift_db.dart';
 import '../../../models/caregory.dart';
 
@@ -29,12 +30,12 @@ class _CategorySelectDialogState extends State<CategorySelectDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Select Categories'),
+      title: Text(S.of(context).selectCategories),
       content: SingleChildScrollView(
         child: Column(
           children: [
             CheckboxListTile(
-              title: Text('All'),
+              title: Text(S.of(context).all),
               value: selectedCategories.length == widget.categories.length,
               onChanged: (value) {
                 if (value!) {
@@ -69,14 +70,14 @@ class _CategorySelectDialogState extends State<CategorySelectDialog> {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text('Cancel'),
+          child: Text(S.of(context).cancel),
         ),
         TextButton(
           onPressed: () {
             widget.onDone(selectedCategories);
             Navigator.of(context).pop();
           },
-          child: const Text('Done'),
+          child: Text(S.of(context).done),
         ),
       ],
     );

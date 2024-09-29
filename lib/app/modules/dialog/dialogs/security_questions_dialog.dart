@@ -9,9 +9,12 @@ import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../../config/app_styles.dart';
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
+import '../dialog_functions.dart';
 
 class SecurityQuestionsDialog extends StatefulWidget {
-  const SecurityQuestionsDialog({super.key});
+  const SecurityQuestionsDialog({super.key, this.isFirstTime = false});
+  final bool isFirstTime;
 
   @override
   State<SecurityQuestionsDialog> createState() =>
@@ -30,20 +33,29 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
       width: 0.8.sw,
       child: Column(
         children: [
-          Text('Security Questions', style: AppStyles.boldStyle()),
+          Text(S.of(context).securityQuestions, style: AppStyles.boldStyle()),
           10.verticalSpace,
           if (MySharedPref.getFromDisk('question') != null ||
               MySharedPref.getFromDisk('question') == '')
             AppText.lightBoldText(
-                'Previous Question:\n${MySharedPref.getFromDisk('question') ?? ''}',
+                S.of(context).previousQuestion +
+                    ':\n${MySharedPref.getFromDisk('question') ?? ''}',
                 align: TextAlign.center),
           10.verticalSpace,
           CustomDropDown(
-            items: AppConstants.securityQuestions,
+            items: [
+              S.of(context).whatIsTheNameOfYourFavoritePet,
+              S.of(context).whatsYourChildhoodNickname,
+              S.of(context).whatIsYourFavoriteMovie,
+              S.of(context).whatIsYourFavoriteBook,
+              S.of(context).whatIsYourFavoriteFood,
+              S.of(context).whatIsYourFavoriteSong,
+              S.of(context).whatIsYourFavoriteColor,
+            ],
             onChanged: (value) {
               selectedQuestion = value ?? '';
             },
-            title: 'Select Question',
+            title: S.of(context).selectQuestion,
           ),
           20.verticalSpace,
           TextField(
@@ -57,8 +69,8 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
             onPressed: () {
               if (selectedQuestion.isEmpty) {
                 Get.showSnackbar(GetSnackBar(
-                  title: 'Please select a question',
-                  message: 'Please select a question',
+                  title: S.of(context).pleaseSelectAQuestion,
+                  message: S.of(context).pleaseSelectAQuestion,
                   duration: Duration(seconds: 2),
                   snackPosition: SnackPosition.TOP,
                 ));
@@ -68,8 +80,8 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
               if (answerController.text.trim().isEmpty ||
                   answerController.text.trim() == '') {
                 Get.showSnackbar(GetSnackBar(
-                  title: 'Please fill in the answer field',
-                  message: 'Please fill in the answer field',
+                  title: S.of(context).pleaseFillInTheAnswerField,
+                  message: S.of(context).pleaseFillInTheAnswerField,
                   duration: Duration(seconds: 1),
                   snackPosition: SnackPosition.TOP,
                 ));
@@ -79,15 +91,18 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
               MySharedPref.saveToDisk('question', selectedQuestion);
               MySharedPref.saveToDisk('answer', answerController.text.trim());
               Navigator.pop(context);
+              if (widget.isFirstTime) {
+                pushChangeAdminPassDialog(context);
+              }
             },
-            child: Text('Save'),
+            child: Text(S.of(context).save),
           ),
           10.verticalSpace,
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text('Cancel'),
+            child: Text(S.of(context).cancel),
           )
         ],
       ),

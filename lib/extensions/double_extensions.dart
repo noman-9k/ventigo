@@ -5,4 +5,8 @@ extension DoubleExtension on double {
     if (number == null) return '0';
     return '${this * number / 100}';
   }
+
+  String only2Decimals() {
+    return '${this.toStringAsFixed(2)}';
+  }
 }

@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/app_app_bar.dart';
+import 'package:ventigo/app/modules/common/back_button.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../config/app_styles.dart';
+import '../../../../generated/l10n.dart';
 import '../../../app_services/employee_service.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/date_widget.dart';
 import '../../common/get_services_of_category_id_widget.dart';
+import '../../common/noman_search.dart';
 import '../../common/yes_no_button.dart';
 import '../controllers/add_report_controller.dart';
 
@@ -20,91 +25,148 @@ class AddReportView extends GetView<AddReportController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-          title: 'Hello, ' +
+          leading: AppBackButton(),
+          title:
+              //  S.of(context).hello +
               (EmployeeService.to.employee?.value.name ?? 'Walker!')),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: AppConstants.defaultPadding,
-          child: GetBuilder<AddReportController>(builder: (controller) {
-            return Column(
+      body: GestureDetector(
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: AppConstants.defaultPadding,
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                20.verticalSpace,
                 DateWidget(),
                 20.verticalSpace,
-                Center(child: AppText.boldText('Add Report', fontSize: 20.sp)),
+                Center(child: AppText.boldText(S.of(context).addReport, fontSize: 20.sp)),
                 16.verticalSpace,
-                TextField(
-                        textCapitalization: TextCapitalization.sentences,
-                        controller: controller.nameController,
-                        decoration: InputDecoration(hintText: 'Name of Client'))
-                    .withLabel('Name'),
+                AppText.lightBoldText(S.of(context).name),
+                SizedBox(height: 5),
+                NomanTextFieldSearch(
+                    key: ValueKey(controller.nameController),
+                    label: S.of(context).nameOfClient,
+                    controller: controller.nameController,
+                    future: () => controller.fetchDataName(),
+                    getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
                 16.verticalSpace,
-                TextField(
-                        textCapitalization: TextCapitalization.sentences,
-                        controller: controller.lastNameController,
-                        decoration:
-                            InputDecoration(hintText: 'Last Name of Client'))
-                    .withLabel('Last Name'),
+                AppText.lightBoldText(S.of(context).lastName),
+                SizedBox(height: 5),
+                NomanTextFieldSearch(
+                    label: S.of(context).lastNameOfClient,
+                    key: ValueKey(controller.lastNameController),
+                    controller: controller.lastNameController,
+                    future: () => controller.fetchDataName(),
+                    getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
                 16.verticalSpace,
-                TextField(
-                  controller: controller.phoneController,
-                ).withLabel('Phone Number'),
-                16.verticalSpace,
+                if (controller.canAddAPhone()) ...[
+                  AppText.lightBoldText(S.of(context).phoneNumber),
+                  SizedBox(height: 5),
+                  NomanTextFieldSearch(
+                      keyboardType: TextInputType.phone,
+                      label: S.of(context).phone,
+                      key: ValueKey(controller.phoneController),
+                      controller: controller.phoneController,
+                      future: () => controller.fetchDataPhone(),
+                      getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
+                  16.verticalSpace,
+                ],
+                GetBuilder<YesNoButtonController>(builder: (controller) {
+                  return Column(
+                    children: [
+                      YesNoButton(
+                          title: S.of(context).newCustomer,
+                          onChanged: (value) {
+                            AddReportController.to.newCustomer = value;
+                            controller.onNewCustomerChanged(value: value);
+                          }),
+                      16.verticalSpace,
+                      YesNoButton(
+                          key: ValueKey(controller.regCustomer),
+                          title: S.of(context).regularCustomer,
+                          defaultValue: controller.regCustomer == null ? null : controller.regCustomer,
+                          onChanged: (value) {
+                            controller.regCustomer = value;
+                            AddReportController.to.regCustomer = value;
+                          }),
+                      16.verticalSpace,
+                    ],
+                  );
+                }),
                 YesNoButton(
-                    title: 'New Customer',
-                    onChanged: (value) {
-                      controller.newCustomer = value;
-                    }),
-                16.verticalSpace,
-                YesNoButton(
-                    title: 'Regular Customer',
-                    // defaultValue: controller.newCustomer == null
-                    //     ? null
-                    //     : !controller.newCustomer!,
-                    onChanged: (value) {
-                      controller.regCustomer = value;
-                    }),
-                16.verticalSpace,
-                YesNoButton(
-                    title: 'Payment by Card',
+                    title: S.of(context).paymentByCard,
                     onChanged: (value) {
                       controller.cardPay = value;
                     }),
                 16.verticalSpace,
-                AppText.mediumText('Select Category'),
-                5.verticalSpace,
-                CustomDropDown(
-                  items: controller.categories.map((e) => e.name!).toList(),
-                  onChanged: controller.onCategoryChanged,
-                  title: 'Select Category',
-                ),
-                16.verticalSpace,
-                AppText.mediumText('Select Service'),
-                5.verticalSpace,
-                controller.selectedCategory == null
-                    ? const SizedBox()
-                    : GetServiceOfCategoryById(
-                        categoryId: controller.selectedCategory?.id,
-                        onChanged: controller.onServiceChanged),
-                16.verticalSpace,
+                GetBuilder<AddReportController>(builder: (controller) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppText.mediumText(S.of(context).selectCategory),
+                      5.verticalSpace,
+                      CustomDropDown(
+                          items: controller.categories.map((e) => e.name!).toList(),
+                          onChanged: controller.onCategoryChanged,
+                          title: S.of(context).selectCategory),
+                      controller.selectedCategory == null
+                          ? const SizedBox()
+                          : Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                16.verticalSpace,
+                                AppText.mediumText(S.of(context).selectService),
+                                5.verticalSpace,
+                                GetServiceOfCategoryById(
+                                    categoryId: controller.selectedCategory?.id,
+                                    onChanged: controller.onServiceChanged),
+                              ],
+                            ),
+                      16.verticalSpace,
+                    ],
+                  );
+                }),
                 TextField(
                     controller: controller.priceController,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      hintText: 'Price of Service',
-                    )).withLabel('Price'),
+                      hintText: S.of(context).priceOfService,
+                    )).withLabel(S.of(context).price),
+                16.verticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    AppText.lightBoldText(S.of(context).note),
+                    Obx(() {
+                      return Text(
+                        S.of(context).characters + ' ${controller.notesLength.value}/45 ',
+                        style: AppStyles.lightStyle(),
+                      );
+                    }),
+                  ],
+                ),
+                SizedBox(height: 5),
+                TextField(
+                    controller: controller.notesController,
+                    minLines: 5,
+                    maxLines: 7,
+                    onChanged: (value) => controller.notesLength.value = value.length,
+                    keyboardType: TextInputType.multiline,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(45),
+                    ],
+                    decoration: InputDecoration(hintText: S.of(context).enterANote)),
                 16.verticalSpace,
                 Obx(() {
                   return ElevatedButton(
                       onPressed: controller.submit,
                       child: controller.isLoading.isTrue
                           ? CircularProgressIndicator()
-                          : AppText.boldText('Submit', color: Colors.white));
+                          : AppText.boldText(S.of(context).submit, color: Colors.white));
                 })
               ],
-            );
-          }),
+            ),
+          ),
         ),
       ),
     );

@@ -5,6 +5,7 @@ import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../app_services/local_storage_service.dart';
 
 class ChangeAdminPassDialog extends StatefulWidget {
@@ -22,7 +23,7 @@ class _ChangeAdminPassDialogState extends State<ChangeAdminPassDialog> {
     return DialogModel(
         child: Column(
       children: [
-        AppText.boldText('Change Admin Password'),
+        AppText.boldText(S.of(context).changeAdminPassword),
         16.verticalSpace,
         TextField(
           inputFormatters: [
@@ -32,21 +33,21 @@ class _ChangeAdminPassDialogState extends State<ChangeAdminPassDialog> {
           keyboardType: TextInputType.number,
           controller: _controller,
           decoration: InputDecoration(border: InputBorder.none),
-        ).withLabel('New Password'),
+        ).withLabel(S.of(context).newPassword),
         16.verticalSpace,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('Cancel'),
+              child: Text(S.of(context).cancel),
             ),
             TextButton(
               onPressed: () {
                 MySharedPref.saveToDisk('admin_pin', _controller.text);
                 Navigator.pop(context);
               },
-              child: Text('Done'),
+              child: Text(S.of(context).done),
             ),
           ],
         )

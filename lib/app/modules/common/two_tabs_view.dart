@@ -13,6 +13,7 @@ class TwoTabsView extends StatefulWidget {
       required this.widgets,
       this.topCenterWidget,
       this.onFilterPressed,
+      this.clearWidget,
       this.showFilter = false,
       this.isSmall = false});
   final List<String> tabNames;
@@ -20,6 +21,7 @@ class TwoTabsView extends StatefulWidget {
   final Widget? topCenterWidget;
   final bool showFilter;
   final bool isSmall;
+  final Widget? clearWidget;
   final Function(int)? onFilterPressed;
 
   @override
@@ -45,6 +47,7 @@ class _TwoTabsViewState extends State<TwoTabsView>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             if (widget.showFilter) 1.verticalSpace,
+            if (widget.clearWidget != null) 1.verticalSpace,
             Container(
               margin: EdgeInsets.only(top: 10.h),
               height: widget.isSmall ? 45.h : 55.h,
@@ -75,6 +78,7 @@ class _TwoTabsViewState extends State<TwoTabsView>
                         .toList()),
               ),
             ),
+            if (widget.clearWidget != null) widget.clearWidget!,
             if (widget.showFilter)
               IconButton(
                   // onPressed: () => Get.toNamed(Routes.COSTS_FILTER),

@@ -14,9 +14,11 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/settings/controllers/file_storage.dart';
 import 'package:ventigo/app/modules/settings/views/restore_dialog.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
+import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../firebase/firebase_storage_repo.dart';
 import '../../../../firebase/firestore_repositery.dart';
+import '../../../../generated/l10n.dart';
 
 class SettingsController extends GetxController {
   List<DatabaseModel> databases = [];
@@ -24,20 +26,23 @@ class SettingsController extends GetxController {
 
   Future<void> createData() async {
     try {
-      Get.showSnackbar(GetSnackBar(
-          message: 'Creating database...',
-          showProgressIndicator: true,
-          isDismissible: false,
-          snackPosition: SnackPosition.BOTTOM));
-
       final dbFolder = await getApplicationDocumentsDirectory();
       final file = File(p.join(dbFolder.path, 'ventigo.sqlite'));
 
-      final fileName = DateTime.now().toString().split(' ')[0];
+      // final fileName = DateTime.now().toString().split(' ')[0];
+      int timeInMillis = DateTime.now().millisecondsSinceEpoch;
+
+      // Convert to base36 (which uses 0-9 and a-z)
+      String base36Id = timeInMillis.toRadixString(36);
+
+      // Take only the last 4 characters (ensures it's always 4 chars)
+      final String fileName = DateTime.now().toString().split(' ')[0] + '_(${base36Id.substring(base36Id.length - 4)})';
 
       final bytes = await file.readAsBytesSync();
 
-      await FileStorage.writeCounterBytes(bytes, 'backup_$fileName.sqlite');
+      // await FileStorage.writeCounterBytes(bytes, 'backup_$fileName.sqlite');
+      await FileStorage.saveToSpecificPath(bytes, 'backup_$fileName.sqlite');
+
       Get.snackbar('Exported', 'Check your file in the Downloads folder');
     } catch (e) {
       log('Error ' + e.toString());
@@ -65,9 +70,7 @@ class SettingsController extends GetxController {
       if (result != null) {
         if (!result.files.first.xFile.name.contains('sqlite')) {
           Get.showSnackbar(GetSnackBar(
-              message: 'Invalid file format',
-              duration: Duration(seconds: 2),
-              snackPosition: SnackPosition.BOTTOM));
+              message: 'Invalid file format', duration: Duration(seconds: 2), snackPosition: SnackPosition.BOTTOM));
           return;
         }
 
@@ -77,10 +80,10 @@ class SettingsController extends GetxController {
         await file.writeAsBytes(bytes);
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: const Text('Backup restored successfully!'),
+          content: Text(S.of(context).backupRestoredSuccessfully),
           duration: const Duration(seconds: 1),
           action: SnackBarAction(
-            label: 'Reload App',
+            label: S.of(context).reloadApp,
             onPressed: () {
               Get.offAllNamed(Routes.LOGIN);
               SystemNavigator.pop();
@@ -111,9 +114,9 @@ class SettingsController extends GetxController {
     await getDatabases();
   }
 
-  Future<void> restoreData(String url) async {
+  Future<void> restoreData(String url, BuildContext context) async {
     Get.showSnackbar(GetSnackBar(
-        message: 'Restoring database...',
+        message: S.of(context).restoringDatabase,
         showProgressIndicator: true,
         isDismissible: false,
         snackPosition: SnackPosition.BOTTOM));
@@ -124,7 +127,7 @@ class SettingsController extends GetxController {
       await FireBaseStorageRepo().downloadFile(file, url);
 
       Get.showSnackbar(GetSnackBar(
-          message: 'Backup restored successfully!',
+          message: S.of(context).backupRestoredSuccessfully,
           duration: Duration(seconds: 2),
           snackPosition: SnackPosition.BOTTOM));
       Get.offAllNamed(Routes.LOGIN);
@@ -139,9 +142,7 @@ class SettingsController extends GetxController {
     isLoading.value = true;
 
     try {
-      await FireStoreRepository()
-          .getCollectionData(databaseCollection)
-          .then((value) {
+      await FireStoreRepository().getCollectionData(databaseCollection).then((value) {
         databases = value.map((e) => DatabaseModel.fromMap(e)).toList();
       });
     } catch (e) {
@@ -158,29 +159,62 @@ class SettingsController extends GetxController {
     DbController.to.appDb.deleteDatabase();
   }
 
-  Future<void> exportToCSVFile() async {
-    final stream = DbController.to.appDb.getAllDataItems();
+  Future<void> exportToCSVFile(BuildContext context) async {
+    DateTime? fromDate;
+    DateTime? toDate;
+
+    await showDateRangePicker(context: context, firstDate: DateTime(2000), lastDate: DateTime(3000)).then((value) {
+      if (value != null) {
+        fromDate = value.start;
+        toDate = value.end.add(const Duration(days: 1)).subtract(const Duration(minutes: 1));
+      }
+    });
+
+    final stream = DbController.to.appDb.getAllDataItems(fromDate: fromDate, toDate: toDate);
     var csvData = [
-      ['ID', 'Name', 'Phone', 'Price', 'Employee Name']
+      [
+        'ID',
+        'Date',
+        'Name',
+        'Regular Customer',
+        'New Customer',
+        'Payment by Card',
+        'Phone',
+        'Employee Name',
+        'Category Name',
+        'Service Name',
+      ]
     ];
 
     await stream.listen((event) async {
       event.forEach((element) {
         csvData.add([
           element.id.toString(),
+          if (element.date != null) element.date!.smallDate() else '',
           element.name ?? '',
+          element.regCustomer.toString(),
+          element.newCustomer.toString(),
+          element.cardPay.toString(),
           element.phone ?? '',
-          element.price.toString(),
-          element.employeeName ?? ''
+          element.employeeName ?? '',
+          element.categoryName ?? '',
+          element.serviceName ?? '',
         ]);
       });
 
       final csv = const ListToCsvConverter().convert(csvData);
 
-      final fileName = DateTime.now().toString().split(' ')[0];
+      // final fileName = DateTime.now().toString().split(' ')[0];
+      int timeInMillis = DateTime.now().millisecondsSinceEpoch;
+
+      // Convert to base36 (which uses 0-9 and a-z)
+      String base36Id = timeInMillis.toRadixString(36);
+
+      // Take only the last 4 characters (ensures it's always 4 chars)
+      final String fileName = DateTime.now().toString().split(' ')[0] + '_(${base36Id.substring(base36Id.length - 4)})';
 
       await FileStorage.writeCounter(csv, '$fileName.csv');
-      Get.snackbar('Exported', 'Check your file in the Downloads folder');
+      Get.snackbar(S.of(context).exported, S.of(context).checkYourFileInTheDownloadsFolder);
     });
   }
 }

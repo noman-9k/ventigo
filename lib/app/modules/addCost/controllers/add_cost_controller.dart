@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/app/db/db_controller.dart';
+import 'package:ventigo/app/modules/costsFilter/controllers/costs_filter_controller.dart';
+import 'package:ventigo/app/modules/filters/controllers/filters_controller.dart';
+import 'package:ventigo/app/modules/main/controllers/main_controller.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../app_services/category_service.dart';
@@ -28,8 +31,7 @@ class AddCostController extends GetxController {
       selectedCategories: selectedCategories,
       onDone: (categories) {
         selectedCategories = categories ?? [];
-        categoriesController.text =
-            selectedCategories.map((e) => e.name).join(', ');
+        categoriesController.text = selectedCategories.map((e) => e.name).join(', ');
 
         update();
       },
@@ -56,11 +58,10 @@ class AddCostController extends GetxController {
       return;
     }
     if (systematicExpenditure == null) {
-      Get.snackbar(
-          'Error', 'Please select if it should be systematic expenditure');
+      Get.snackbar('Error', 'Please select if it should be systematic expenditure');
       return;
     }
-    if (retrievalInterval == null) {
+    if (retrievalInterval == null && (systematicExpenditure ?? false)) {
       Get.snackbar('Error', 'Please select a retrieval interval');
       return;
     }
@@ -80,15 +81,16 @@ class AddCostController extends GetxController {
       nameController.text,
       deductFromTax,
       systematicExpenditure,
-      retrievalInterval!,
+      retrievalInterval ?? 'Do not repeat',
       numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
-      price *
-          (numberOfUnits.text.isEmpty ? 1 : int.tryParse(numberOfUnits.text)!),
-      unitsOfMeasurement,
+      price,
+      unitsOfMeasurement ?? 'Nill',
       categories,
       DateTime.now().add(Duration(days: 0)).onlyDate(),
     );
     Get.back();
     Get.snackbar('Success', 'Cost added successfully');
+    CostsFilterController.to.update();
+    update();
   }
 }

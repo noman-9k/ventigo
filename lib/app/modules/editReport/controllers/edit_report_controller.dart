@@ -23,10 +23,8 @@ class EditReportController extends GetxController {
   Future<void> onInit() async {
     DbDataItem item = Get.arguments;
 
-    categories =
-        await DbController.to.appDb.getCategoryByEmpId(item.employeeId);
-    services =
-        await DbController.to.appDb.getServicesByCategoryId(item.categoryId);
+    categories = await DbController.to.appDb.getCategoryByEmpId(item.employeeId);
+    services = await DbController.to.appDb.getServicesByCategoryId(item.categoryId);
 
     nameController.text = item.name?.split(' ').first ?? '';
     lastNameController.text = item.name?.split(' ').last ?? '';
@@ -52,9 +50,7 @@ class EditReportController extends GetxController {
   }
 
   void editReport() {
-    if (nameController.text.isEmpty ||
-        lastNameController.text.isEmpty ||
-        phoneController.text.isEmpty) {
+    if (nameController.text.isEmpty || lastNameController.text.isEmpty || phoneController.text.isEmpty) {
       Get.snackbar('Error', 'Please fill all fields');
       return;
     }
@@ -65,7 +61,7 @@ class EditReportController extends GetxController {
 
     DbDataItem newItem = DbDataItem(
       id: item.id,
-      name: nameController.text + ' ' + lastNameController.text,
+      name: nameController.text + '\n' + lastNameController.text,
       phone: phoneController.text,
       // price: double.parse(priceController.text),
       price: item.price,

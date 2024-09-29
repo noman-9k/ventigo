@@ -21,6 +21,7 @@ class FiltersController extends GetxController {
   TextEditingController maxPriceController = TextEditingController();
   TextEditingController minPriceController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
   DateTime? fromDate;
   DateTime? toDate;
 
@@ -55,6 +56,7 @@ class FiltersController extends GetxController {
       isRegularCustomer: isRegularCustomer,
       isCustomerCard: isCustomerCard,
       isNewCustomer: isNewCustomer,
+      notes: notesController.text,
     );
 
     update();
@@ -72,6 +74,7 @@ class FiltersController extends GetxController {
     maxPriceController.clear();
     minPriceController.clear();
     phoneController.clear();
+    notesController.clear();
     fromDate = null;
     toDate = null;
     selectedMaster.clear();
@@ -120,5 +123,16 @@ class FiltersController extends GetxController {
 
   ifSelectedMaster(String s) {
     return selectedMaster.contains(s);
+  }
+
+  void selectDateRange(BuildContext context) {
+    showDateRangePicker(context: context, firstDate: DateTime(2000), lastDate: DateTime(3000)).then((value) {
+      if (value != null) {
+        fromDate = value.start;
+        toDate = value.end.add(const Duration(days: 1)).subtract(const Duration(minutes: 1));
+        fromDateController.text = fromDate!.smallDate();
+        toDateController.text = toDate!.smallDate();
+      }
+    });
   }
 }

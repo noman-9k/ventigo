@@ -6,6 +6,7 @@ import 'package:ventigo/app/db/tables/tables.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../../../../config/app_colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../../controllers/filters_controller.dart';
 
 class CategoriesSection extends GetView<FiltersController> {
@@ -29,7 +30,7 @@ class CategoriesSection extends GetView<FiltersController> {
             collapsedShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12), side: BorderSide.none),
             shape: RoundedRectangleBorder(side: BorderSide.none),
-            title: AppText.boldText('Categories'),
+            title: AppText.boldText(S.of(context).categories),
             children: categories!.map((e) {
               return GetBuilder<FiltersController>(builder: (controller) {
                 return CheckboxListTile(
