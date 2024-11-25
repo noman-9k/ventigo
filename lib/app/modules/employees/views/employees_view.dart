@@ -9,6 +9,8 @@ import 'package:ventigo/config/app_colors.dart';
 
 import '../../../../config/app_text.dart';
 import '../../../../generated/l10n.dart';
+import '../../../app_services/purchase_service.dart';
+import '../../../db/db_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_search_field.dart';
 import '../controllers/employees_controller.dart';
@@ -24,9 +26,20 @@ class EmployeesView extends GetView<EmployeesController> {
           backgroundColor: AppColors.primaryColor,
           onPressed: () async {
             bool isCategoryPresent = await controller.isCategoryPresent();
-            isCategoryPresent
-                ? Get.toNamed(Routes.ADD_EMPLOYE)
-                : Get.snackbar(S.of(context).addCategoryFirst, S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
+            if (!isCategoryPresent) {
+              Get.snackbar(S.of(context).addCategoryFirst, S.of(context).pleaseAddACategoryFirstToAddAnEmployee);
+              return;
+            }
+
+            if (await DbController.to.appDb.getTotalEmployees() < 2) {
+              Get.toNamed(Routes.ADD_EMPLOYE);
+            } else {
+              if (await PurchaseService.to.isPurchased()) {
+                Get.toNamed(Routes.ADD_EMPLOYE);
+              } else {
+                await PurchaseService.to.checkSubscription();
+              }
+            }
           },
           child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),

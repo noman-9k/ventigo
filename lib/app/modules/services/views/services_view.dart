@@ -14,6 +14,7 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../app_services/purchase_service.dart';
 import '../../../constants/app_images.dart';
 import '../../common/app_search_field.dart';
 import '../../common/svg_icon.dart';
@@ -35,7 +36,17 @@ class ServicesView extends GetView<ServicesController> {
         padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
           backgroundColor: AppColors.primaryColor,
-          onPressed: () => Get.toNamed(Routes.ADD_SERVICE),
+          onPressed: () async {
+            if (await DbController.to.appDb.getTotalServices() < 2) {
+              Get.toNamed(Routes.ADD_SERVICE);
+            } else {
+              if (await PurchaseService.to.isPurchased()) {
+                Get.toNamed(Routes.ADD_SERVICE);
+              } else {
+                await PurchaseService.to.checkSubscription();
+              }
+            }
+          },
           child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
         ),
       ),
@@ -55,14 +66,11 @@ class ServicesView extends GetView<ServicesController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset('assets/place_holders/categories.png',
-                      height: 100.h, width: 100.w),
+                  Image.asset('assets/place_holders/categories.png', height: 100.h, width: 100.w),
                   20.verticalSpace,
                   Center(
-                    child: AppText.mediumText(
-                        S.of(context).noServicesFoundnpleaseAddANewService,
-                        align: TextAlign.center,
-                        color: AppColors.lightGrey),
+                    child: AppText.mediumText(S.of(context).noServicesFoundnpleaseAddANewService,
+                        align: TextAlign.center, color: AppColors.lightGrey),
                   ),
                   90.verticalSpace,
                 ],
@@ -82,8 +90,7 @@ class ServicesView extends GetView<ServicesController> {
                           label: S.of(context).search,
                           fetchData: () => controller.fetchData(),
                           controller: TextEditingController(),
-                          getSelectedValue: (SearchItem value) =>
-                              controller.scrollToValue(value.value),
+                          getSelectedValue: (SearchItem value) => controller.scrollToValue(value.value),
                         ),
                         20.verticalSpace,
                         AppText.boldText(S.of(context).categories),
@@ -94,8 +101,7 @@ class ServicesView extends GetView<ServicesController> {
                           return ListView.separated(
                             key: Key('builder ${selectedCat?.id.toString()}'),
                             physics: NeverScrollableScrollPhysics(),
-                            separatorBuilder: (context, index) =>
-                                5.verticalSpace,
+                            separatorBuilder: (context, index) => 5.verticalSpace,
                             shrinkWrap: true,
                             itemCount: snapshot.data!.length,
                             itemBuilder: (context, index) {
@@ -107,9 +113,7 @@ class ServicesView extends GetView<ServicesController> {
                                 child: CustomExpansionTile(
                                     key: ValueKey(snapshot.data![index].id),
                                     category: snapshot.data![index],
-                                    isSelected: selectedCat != null &&
-                                        selectedCat.id ==
-                                            snapshot.data![index].id),
+                                    isSelected: selectedCat != null && selectedCat.id == snapshot.data![index].id),
                               );
                             },
                           );
@@ -126,8 +130,7 @@ class ServicesView extends GetView<ServicesController> {
 }
 
 class CustomExpansionTile extends StatelessWidget {
-  const CustomExpansionTile(
-      {super.key, this.isSelected = false, required this.category});
+  const CustomExpansionTile({super.key, this.isSelected = false, required this.category});
   final bool isSelected;
   final DbCategory category;
 
@@ -149,8 +152,7 @@ class CustomExpansionTile extends StatelessWidget {
         collapsedBackgroundColor: isSelected
             ? AppColors.veryLightPrimaryColor.withOpacity(0.4)
             : AppColors.veryLightPrimaryColor.withOpacity(0.2),
-        collapsedShape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        collapsedShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -188,40 +190,27 @@ class CustomExpansionTile extends StatelessWidget {
                     itemBuilder: (context, i) {
                       return ListTile(
                           contentPadding: EdgeInsets.zero,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          onLongPress: () => pushEditServiceDialog(
-                              context, snapshot.data![i], (value) {}),
-                          title: AppText.mediumText(
-                              S.of(context).name +
-                                  ": " +
-                                  snapshot.data![i].name!,
-                              fontSize: 14),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                          onLongPress: () => pushEditServiceDialog(context, snapshot.data![i], (value) {}),
+                          title: AppText.mediumText(S.of(context).name + ": " + snapshot.data![i].name!, fontSize: 14),
                           subtitle: AppText.mediumText(
-                            S.of(context).price +
-                                ": " +
-                                snapshot.data![i].price.toString(),
+                            S.of(context).price + ": " + snapshot.data![i].price.toString(),
                             fontSize: 14,
                           ),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                onPressed: () => pushEditServiceDialog(
-                                    context, snapshot.data![i], (value) {}),
-                                icon:
-                                    SvgIcon(icon: AppImages.edit_ic, size: 23),
+                                onPressed: () => pushEditServiceDialog(context, snapshot.data![i], (value) {}),
+                                icon: SvgIcon(icon: AppImages.edit_ic, size: 23),
                               ),
                               1.horizontalSpace,
                               IconButton(
                                 onPressed: () => pushConfirmDialog(
                                   context,
                                   title: S.of(context).deleteService,
-                                  message: S
-                                      .of(context)
-                                      .areYouSureYouWantToDeleteThisService,
-                                  onDone: () => controller
-                                      .deleteService(snapshot.data![i].id),
+                                  message: S.of(context).areYouSureYouWantToDeleteThisService,
+                                  onDone: () => controller.deleteService(snapshot.data![i].id),
                                 ),
                                 icon: SvgIcon(icon: AppImages.delete, size: 25),
                               ),

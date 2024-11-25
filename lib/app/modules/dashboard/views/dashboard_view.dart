@@ -41,11 +41,8 @@ class _DashboardViewState extends State<DashboardView> {
             iconSize: 20,
             itemStyle: ItemStyle.circle,
             indexSelected: controller.currentIndex.value,
-            countStyle: CountStyle(
-                background: AppColors.primaryColor.withOpacity(0.9),
-                color: Colors.white),
-            chipStyle:
-                ChipStyle(background: AppColors.primaryColor.withOpacity(0.9)),
+            countStyle: CountStyle(background: AppColors.primaryColor.withOpacity(0.9), color: Colors.white),
+            chipStyle: ChipStyle(background: AppColors.primaryColor.withOpacity(0.9)),
             titleStyle: AppStyles.lightStyle(),
             onTap: (int index) => controller.onTapped(index),
           ),

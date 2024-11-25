@@ -1,13 +1,19 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'dart:io';
+import 'package:purchases_flutter/purchases_flutter.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:purchases_ui_flutter/paywall_result.dart';
+import 'package:purchases_ui_flutter/purchases_ui_flutter.dart';
 import 'package:ventigo/firebase_options.dart';
+import 'package:ventigo/store_config.dart';
 import 'app/app_services/local_storage_service.dart';
 import 'app/routes/app_pages.dart';
 import 'app_bindings.dart';
@@ -17,11 +23,36 @@ import 'generated/l10n.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await MySharedPref.init();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // if (Platform.isAndroid) {
+  //   StoreConfig(
+  //     store: Store.playStore,
+  //     apiKey: googleApiKey,
+  //   );
+  // }
+
   await MySharedPref.init();
 
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
+  await configSdk();
+}
+
+Future<void> configSdk() async {
+  await Purchases.setLogLevel(LogLevel.debug);
+
+  PurchasesConfiguration? appConfig;
+
+  if (Platform.isAndroid) {
+    appConfig = PurchasesConfiguration('goog_taLAmsAMtpfBmgHELgrnECDFtux');
+  }
+  if (appConfig != null) {
+    await Purchases.configure(appConfig);
+
+    // final paywallResult = await RevenueCatUI.presentPaywallIfNeeded('pro');
+    // log('paywallResult: $paywallResult');
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -55,8 +86,7 @@ class _MyAppState extends State<MyApp> {
 
   void _startLogoutTimer() {
     _logoutTimer?.cancel();
-    _logoutTimer = Timer(Duration(seconds: _timeoutDuration),
-        () => Get.offAllNamed(Routes.LOGIN));
+    _logoutTimer = Timer(Duration(seconds: _timeoutDuration), () => Get.offAllNamed(Routes.LOGIN));
   }
 
   void _cancelLogoutTimer() {
@@ -121,8 +151,7 @@ class _MyAppState extends State<MyApp> {
           locale: Locale(MySharedPref.getLanguage()),
           localeResolutionCallback: (deviceLocale, supportedLocales) {
             for (var locale in supportedLocales) {
-              if (locale.languageCode == deviceLocale!.languageCode &&
-                  locale.countryCode == deviceLocale.countryCode) {
+              if (locale.languageCode == deviceLocale!.languageCode && locale.countryCode == deviceLocale.countryCode) {
                 return deviceLocale;
               }
             }

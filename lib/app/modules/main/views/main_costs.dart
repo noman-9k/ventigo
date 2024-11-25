@@ -7,6 +7,7 @@ import 'package:ventigo/app/modules/costsFilter/controllers/costs_filter_control
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_text.dart';
 import '../../../../generated/l10n.dart';
+import '../../../app_services/purchase_service.dart';
 import '../../../routes/app_pages.dart';
 import '../../filters/db_filter/costs_filter.dart';
 import '../controllers/main_controller.dart';
@@ -21,10 +22,15 @@ class MainCostsView extends GetView<MainController> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 90),
         child: FloatingActionButton(
-          backgroundColor: AppColors.primaryColor,
-          child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
-          onPressed: () => Get.toNamed(Routes.ADD_COST),
-        ),
+            backgroundColor: AppColors.primaryColor,
+            child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
+            onPressed: () async {
+              if (await PurchaseService.to.isPurchased()) {
+                Get.toNamed(Routes.ADD_COST);
+              } else {
+                await PurchaseService.to.checkSubscription();
+              }
+            }),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,

@@ -14,14 +14,12 @@ class StatisticController extends GetxController {
     final fromDate = NewStatisticsResultsController.to.fromDate?.value;
     final toDate = NewStatisticsResultsController.to.toDate?.value;
 
-    var allCosts = DbController.to.appDb
-        .getAllDataItems(fromDate: fromDate, toDate: toDate);
+    var allCosts = DbController.to.appDb.getAllDataItems(fromDate: fromDate, toDate: toDate);
 
     await for (var costs in allCosts) {
       var salesData = <SalesData>[];
       for (var cost in costs) {
-        final serviceCost =
-            await DbController.to.appDb.getPriceByServiceId(cost.serviceId);
+        final serviceCost = await DbController.to.appDb.getPriceByServiceId(cost.serviceId);
 
         salesData.add(SalesData(cost.date ?? DateTime.now(), serviceCost));
       }
@@ -33,8 +31,7 @@ class StatisticController extends GetxController {
     final fromDate = NewStatisticsResultsController.to.fromDate?.value;
     final toDate = NewStatisticsResultsController.to.toDate?.value;
 
-    var allSales = DbController.to.appDb
-        .getAllDataItems(fromDate: fromDate, toDate: toDate);
+    var allSales = DbController.to.appDb.getAllDataItems(fromDate: fromDate, toDate: toDate);
 
     return allSales.map((sales) {
       var salesData = <SalesData>[];

@@ -1,4 +1,5 @@
 {
+    "dart.flutterSdkPath": ".fvm/versions/stable",
     "editor.guides.bracketPairs": true,
     "cSpell.words": [
         "Autovalidate",

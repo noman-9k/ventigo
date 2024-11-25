@@ -30,6 +30,10 @@ class AppDb extends _$AppDb {
 
   Future updateEmployee(DbEmployee employee) => update(dbEmployees).replace(employee);
 
+  Future<int> getTotalEmployees() => (select(dbEmployees)).get().then((value) => value.length);
+
+  Future<int> getTotalServices() => (select(dbServices)).get().then((value) => value.length);
+
   Future<int> insertNewCompanionEmployee(String name, String lastName, String login, String password, double percentage,
       {List<String>? categories, List<String>? visibility}) async {
     final id = await into(dbEmployees).insert(DbEmployeesCompanion.insert(

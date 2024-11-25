@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:ventigo/app/modules/employees/views/employees_view.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../app_services/purchase_service.dart';
 import '../../statistic/views/statistic_view.dart';
 import '../../services/views/services_view.dart';
 import '../../settings/views/settings_view.dart';
@@ -28,8 +29,18 @@ class DashboardController extends GetxController {
 
   RxInt currentIndex = 2.obs;
 
-  onTapped(value) {
-    currentIndex.value = value;
+  onTapped(value) async {
+    if (value == 1) {
+      if (!await PurchaseService.to.isPurchased()) {
+        await PurchaseService.to.checkSubscription();
+        currentIndex.value = 2;
+      } else {
+        currentIndex.value = value;
+      }
+    } else {
+      currentIndex.value = value;
+    }
+
     update();
   }
 }
