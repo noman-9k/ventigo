@@ -28,8 +28,7 @@ class TwoTabsView extends StatefulWidget {
   State<TwoTabsView> createState() => _TwoTabsViewState();
 }
 
-class _TwoTabsViewState extends State<TwoTabsView>
-    with SingleTickerProviderStateMixin {
+class _TwoTabsViewState extends State<TwoTabsView> with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   late TabController _tabController;
   @override
   void initState() {
@@ -38,7 +37,17 @@ class _TwoTabsViewState extends State<TwoTabsView>
   }
 
   @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Column(
       children: [
         10.verticalSpace,
@@ -51,9 +60,7 @@ class _TwoTabsViewState extends State<TwoTabsView>
             Container(
               margin: EdgeInsets.only(top: 10.h),
               height: widget.isSmall ? 45.h : 55.h,
-              decoration: BoxDecoration(
-                  color: AppColors.veryLightBlue,
-                  borderRadius: BorderRadius.circular(90.0.r)),
+              decoration: BoxDecoration(color: AppColors.veryLightBlue, borderRadius: BorderRadius.circular(90.0.r)),
               child: Container(
                 margin: EdgeInsets.all(6.h),
                 width: widget.isSmall ? 200.w : 270.w,
@@ -83,8 +90,7 @@ class _TwoTabsViewState extends State<TwoTabsView>
               IconButton(
                   // onPressed: () => Get.toNamed(Routes.COSTS_FILTER),
                   onPressed: () {
-                    if (widget.onFilterPressed != null)
-                      widget.onFilterPressed!(_tabController.index);
+                    if (widget.onFilterPressed != null) widget.onFilterPressed!(_tabController.index);
                   },
                   icon: Icon(FontAwesomeIcons.list))
           ],

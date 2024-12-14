@@ -17,12 +17,12 @@ class DashboardBinding extends Bindings {
     Get.lazyPut<DashboardController>(() => DashboardController());
     Get.put<ServicesController>(ServicesController());
     Get.lazyPut<FiltersController>(() => FiltersController());
-    Get.put<StatisticController>(StatisticController());
+    Get.put<StatisticController>(StatisticController(), permanent: true);
     Get.lazyPut<EmployeesController>(() => EmployeesController());
     Get.put<SettingsController>(SettingsController());
     Get.put<CostsFilterController>(CostsFilterController());
-    Get.put<MainController>(MainController());
-    Get.put<NewStatisticsResultsController>(NewStatisticsResultsController());
+    Get.put<MainController>(MainController(), permanent: true);
+    Get.put<NewStatisticsResultsController>(NewStatisticsResultsController(), permanent: true);
 
     Get.put<FiltersController>(FiltersController(), permanent: true);
     Get.put<CostsFilterController>(CostsFilterController(), permanent: true);

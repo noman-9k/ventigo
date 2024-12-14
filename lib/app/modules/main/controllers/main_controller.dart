@@ -12,6 +12,7 @@ class MainController extends GetxController {
   List<TableItem> tableItems = [];
 
   static MainController get to => Get.find();
+
   Stream<List<DbDataItem>> currentStream = DbController.to.appDb.getAllDataItems();
 
   getFilteredDataItems({UserDataFilter? filter}) {

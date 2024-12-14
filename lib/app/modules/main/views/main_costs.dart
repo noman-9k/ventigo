@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,7 +26,7 @@ class MainCostsView extends GetView<MainController> {
             backgroundColor: AppColors.primaryColor,
             child: FaIcon(FontAwesomeIcons.plus, color: Colors.white),
             onPressed: () async {
-              if (await PurchaseService.to.isPurchased()) {
+              if (await PurchaseService.to.isPurchased() || kDebugMode) {
                 Get.toNamed(Routes.ADD_COST);
               } else {
                 await PurchaseService.to.checkSubscription();
@@ -44,6 +45,10 @@ class MainCostsView extends GetView<MainController> {
                 FutureBuilder(
                     future: controller.getTotalCosts(),
                     builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return CircularProgressIndicator();
+                      }
+
                       return AppText.mediumBoldText(snapshot.data ?? "0", color: AppColors.primaryColor);
                     })
               ],

@@ -39,6 +39,8 @@ class AddCostController extends GetxController {
   }
 
   onSubmitted() async {
+    Get.closeAllSnackbars();
+
     if (nameController.text.isEmpty) {
       Get.snackbar('Error', 'Name cannot be empty');
       return;
@@ -65,10 +67,10 @@ class AddCostController extends GetxController {
       Get.snackbar('Error', 'Please select a retrieval interval');
       return;
     }
-    if (numberOfUnits.text.isEmpty) {
-      Get.snackbar('Error', 'Please select a number of units');
-      return;
-    }
+    // if (numberOfUnits.text.isEmpty) {
+    //   Get.snackbar('Error', 'Please select a number of units');
+    //   return;
+    // }
 
     List<String>? categories = selectedCategories.map((e) => e.name!).toList();
 
@@ -82,9 +84,9 @@ class AddCostController extends GetxController {
       deductFromTax,
       systematicExpenditure,
       retrievalInterval ?? 'Do not repeat',
-      numberOfUnits.text.isEmpty ? null : int.tryParse(numberOfUnits.text),
+      numberOfUnits.text.isEmpty ? 1 : int.tryParse(numberOfUnits.text),
       price,
-      unitsOfMeasurement ?? 'Nill',
+      unitsOfMeasurement ?? '',
       categories,
       DateTime.now().add(Duration(days: 0)).onlyDate(),
     );

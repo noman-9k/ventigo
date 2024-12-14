@@ -39,7 +39,9 @@ class SettingsView extends GetView<SettingsController> {
                     title: AppText.boldText(S.of(context).exportToFile),
                     trailing: Icon(Icons.arrow_forward_ios),
                     onTap: () {
-                      controller.exportToCSVFile(context);
+                      pushExportTableSelectDialog(context,
+                          onDataExport: () => controller.exportDataToCSVFile(context),
+                          onExpenseExport: () => controller.exportExpenseToCSVFile(context));
                     },
                   ),
                   // about section
@@ -99,8 +101,7 @@ class SettingsView extends GetView<SettingsController> {
                         onTap: () => pushConfirmDialog(
                           context,
                           title: S.of(context).clearData,
-                          message:
-                              S.of(context).areYouSureYouWantToClearAllData,
+                          message: S.of(context).areYouSureYouWantToClearAllData,
                           onDone: () => controller.clearData(),
                         ),
                         title: AppText.boldText(S.of(context).clearData),

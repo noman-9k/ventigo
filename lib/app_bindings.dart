@@ -10,7 +10,7 @@ class AppBindings extends Bindings {
   @override
   void dependencies() {
     Get.put<SplashController>(SplashController());
-    Get.put<DbController>(DbController());
+    Get.put<DbController>(DbController(), permanent: true);
 
     // services
     Get.lazyPut<EmployeeService>(() => EmployeeService());

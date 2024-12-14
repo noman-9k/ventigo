@@ -33,10 +33,7 @@ class MainReportsView extends GetView<MainController> {
                                 controller.filter = null;
                                 controller.clearFilters();
                               },
-                              child: AppText.mediumBoldText(
-                                  S.of(context).clear +
-                                      ' ' +
-                                      S.of(context).filters,
+                              child: AppText.mediumBoldText(S.of(context).clear + ' ' + S.of(context).filters,
                                   color: Colors.red),
                             )
                           : Container(),

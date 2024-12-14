@@ -1,11 +1,11 @@
 {
-    "dart.flutterSdkPath": ".fvm/versions/stable",
-    "editor.guides.bracketPairs": true,
-    "cSpell.words": [
-        "Autovalidate",
-        "getservices",
-        "Pinput",
-        "Snackbars",
-        "ventigo"
-    ]
+  "dart.flutterSdkPath": ".fvm/versions/3.19.3",
+  "editor.guides.bracketPairs": true,
+  "cSpell.words": [
+    "Autovalidate",
+    "getservices",
+    "Pinput",
+    "Snackbars",
+    "ventigo"
+  ]
 }

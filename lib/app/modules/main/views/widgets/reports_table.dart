@@ -100,18 +100,18 @@ class ReportsTable extends GetView<MainController> {
                     size: ColumnSize.S,
                     numeric: true),
               ],
-              rows: tableItems
+              rows: snapshot.data!
                   .map(
                     (tableItem) => DataRow(
-                      onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
-                        Navigator.pop(context);
-                        controller.deleteItem(context, tableItem.id);
-                        Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
-                      }, onEdit: () {
-                        Navigator.pop(context);
+                      // onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
+                      //   Navigator.pop(context);
+                      //   controller.deleteItem(context, tableItem.id);
+                      //   Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
+                      // }, onEdit: () {
+                      //   Navigator.pop(context);
 
-                        controller.editItem(tableItem);
-                      }),
+                      //   controller.editItem(tableItem);
+                      // }),
                       color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                         if (states.contains(MaterialState.selected))
                           return Theme.of(context).colorScheme.primary.withOpacity(0.08);

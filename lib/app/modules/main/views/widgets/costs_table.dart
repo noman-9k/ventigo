@@ -86,7 +86,7 @@ class CostsTable extends StatelessWidget {
                                   DataCell(Text(tableItem.date?.smallDate() ?? '', style: TextStyle(fontSize: 10))),
                                   DataCell(Center(child: Text(tableItem.numberOfUnits.toString()))),
                                   DataCell(Center(child: Text(tableItem.price.toString()))),
-                                  DataCell(Center(child: FittedBox(child: Text(tableItem.unitsOfMeasurement ?? '')))),
+                                  DataCell(Center(child: Text(tableItem.unitsOfMeasurement ?? ''))),
                                   DataCell(YesNoWidget(tableItem.isSystematic)),
                                 ]))
                         .toList(),

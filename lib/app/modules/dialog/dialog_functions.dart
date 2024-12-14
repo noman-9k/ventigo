@@ -9,10 +9,10 @@ import 'dialogs/edit_category_dialog.dart';
 import 'dialogs/edit_service_dialog.dart';
 import 'dialogs/reset_Password_dialog.dart';
 import 'dialogs/security_questions_dialog.dart';
+import 'dialogs/selecy_table_dialog.dart';
 import 'sheets/data_item_bottom_sheet.dart';
 
-pushChangeSecurityQuestionsDialog(BuildContext context,
-    {bool isFirstTime = false}) {
+pushChangeSecurityQuestionsDialog(BuildContext context, {bool isFirstTime = false}) {
   showDialog(
     context: context,
     builder: (context) => SecurityQuestionsDialog(isFirstTime: isFirstTime),
@@ -36,13 +36,11 @@ pushShowReportsBottomSheet(
     context: context,
     showDragHandle: true,
     scrollControlDisabledMaxHeightRatio: 0.6,
-    builder: (context) =>
-        DataItemBottomSheet(tableItem, onEdit: onEdit, onDelete: onDelete),
+    builder: (context) => DataItemBottomSheet(tableItem, onEdit: onEdit, onDelete: onDelete),
   );
 }
 
-pushEditServiceDialog(
-    BuildContext context, DbService service, Function(String?) onDone) {
+pushEditServiceDialog(BuildContext context, DbService service, Function(String?) onDone) {
   showDialog(
     context: context,
     builder: (context) => EditServiceDialog(
@@ -90,8 +88,7 @@ pushEditCategoryDialog(BuildContext context, DbCategory category) {
 }
 
 pushChangeAdminPassDialog(BuildContext context, {bool isFirstTime = false}) {
-  if (isFirstTime)
-    return pushChangeSecurityQuestionsDialog(context, isFirstTime: isFirstTime);
+  if (isFirstTime) return pushChangeSecurityQuestionsDialog(context, isFirstTime: isFirstTime);
 
   showDialog(
     context: context,
@@ -127,5 +124,16 @@ pushCategorySelectDialog(
       onDone: onDone,
       selectedCategories: selectedCategories,
     ),
+  );
+}
+
+pushExportTableSelectDialog(
+  BuildContext context, {
+  required Function() onDataExport,
+  required Function() onExpenseExport,
+}) {
+  showDialog(
+    context: context,
+    builder: (context) => SelectExportTableDialog(onDataExport: onDataExport, onExpenseExport: onExpenseExport),
   );
 }

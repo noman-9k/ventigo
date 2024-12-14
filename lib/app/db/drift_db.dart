@@ -247,11 +247,14 @@ class AppDb extends _$AppDb {
     into(dbCosts).insert(cost);
   }
 
-  Stream<List<DbCost>> getAllCosts() => (select(dbCosts)
+  Stream<List<DbCost>> getAllCosts({DateTime? fromDate, DateTime? toDate}) => (select(dbCosts)
         ..orderBy([
           (tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc),
           (tbl) => OrderingTerm(expression: tbl.id, mode: OrderingMode.desc)
-        ]))
+        ])
+        ..where((tbl) =>
+            tbl.date.isBiggerOrEqualValue(fromDate ?? DateTime.now().subtract(Duration(days: 3600))) &
+            tbl.date.isSmallerOrEqualValue(toDate ?? DateTime.now().add(Duration(days: 3600)))))
       .watch();
 
   Future<bool> ifAllSameDate({bool isCostTable = true}) async {
