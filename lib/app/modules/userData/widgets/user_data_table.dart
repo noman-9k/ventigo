@@ -41,7 +41,7 @@ class UserDataTable extends StatelessWidget {
               }),
               columns: [
                 DataColumn2(label: Text(S.of(context).regncus, style: headerStyle), size: ColumnSize.S),
-                DataColumn2(label: Text(S.of(context).cardnpay, style: headerStyle), size: ColumnSize.S),
+                DataColumn2(label: Text('Cash\nPay', style: headerStyle), size: ColumnSize.S),
                 DataColumn2(
                     label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
                     size: ColumnSize.L),

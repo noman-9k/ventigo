@@ -4,14 +4,12 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
 import 'package:ventigo/extensions/string_extensions.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
-import '../../../dialog/dialog_functions.dart';
 import '../../controllers/main_controller.dart';
 
 class ReportsTable extends GetView<MainController> {
@@ -30,155 +28,226 @@ class ReportsTable extends GetView<MainController> {
           if (snapshot.hasData) {
             List<DbDataItem> tableItems = snapshot.data ?? [];
 
-            return DataTable2(
-              columnSpacing: 10,
-              bottomMargin: 90,
-              horizontalMargin: 10,
-              minWidth: 660,
-              headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-                if (states.contains(MaterialState.selected))
-                  return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-                return AppColors.lightYellow;
-              }),
-              columns: [
-                DataColumn2(
+            return PaginatedDataTable2(
+                availableRowsPerPage: const [2, 5, 10, 30, 100],
+                // rowsPerPage: 20,
+                autoRowsToHeight: true,
+                columnSpacing: 12,
+                minWidth: 700,
+                wrapInCard: false,
+                isHorizontalScrollBarVisible: false,
+                isVerticalScrollBarVisible: false,
+                columns: [
+                  DataColumn(
                     label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
-                    size: ColumnSize.L),
-                DataColumn2(
-                  label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
-                  size: ColumnSize.S,
-                ),
-                DataColumn2(
-                    label: Text(S.of(context).cardnpay, style: headerStyle, textAlign: TextAlign.center),
-                    size: ColumnSize.S),
-                DataColumn2(
-                    label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
-                    size: ColumnSize.L),
-                DataColumn2(
-                    label: Center(
-                      child: Text(S.of(context).phone + '\n' + S.of(context).number,
-                          style: headerStyle, textAlign: TextAlign.center),
-                    ),
-                    size: ColumnSize.M),
-                DataColumn2(
-                    label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
-                    fixedWidth: 100),
-                DataColumn2(
-                    label: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
-                        Divider(height: 1),
-                        Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
-                      ],
-                    ),
-                    size: ColumnSize.L),
-                DataColumn2(
-                    label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
-                    size: ColumnSize.S),
-                DataColumn2(
-                    label: Column(
+                  ),
+                  DataColumn2(
+                    label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
+                    size: ColumnSize.S,
+                  ),
+                  DataColumn2(
+                      label: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center), size: ColumnSize.S),
+                  DataColumn2(
+                      label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
+                      size: ColumnSize.L),
+                  DataColumn2(
+                      label: Center(
+                        child: Text(S.of(context).phone + '\n' + S.of(context).number,
+                            style: headerStyle, textAlign: TextAlign.center),
+                      ),
+                      size: ColumnSize.M),
+                  DataColumn2(
+                      label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
+                      fixedWidth: 100),
+                  DataColumn2(
+                      label: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
+                          Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
                           Divider(height: 1),
-                          Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
-                        ]),
-                    size: ColumnSize.S,
-                    numeric: true),
-                DataColumn2(
-                    label: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('%', style: headerStyle),
-                          Divider(height: 1),
-                          Text(S.of(context).total, style: headerStyle),
-                        ]),
-                    size: ColumnSize.S,
-                    numeric: true),
-              ],
-              rows: snapshot.data!
-                  .map(
-                    (tableItem) => DataRow(
-                      // onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
-                      //   Navigator.pop(context);
-                      //   controller.deleteItem(context, tableItem.id);
-                      //   Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
-                      // }, onEdit: () {
-                      //   Navigator.pop(context);
-
-                      //   controller.editItem(tableItem);
-                      // }),
-                      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-                        if (states.contains(MaterialState.selected))
-                          return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-
-                        return tableItem.date?.getDayColor();
-                      }),
-                      cells: [
-                        DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
-                        DataCell(YesNoWidget(tableItem.regCustomer)),
-                        DataCell(YesNoWidget(tableItem.cardPay)),
-                        // DataCell(Text(tableItem.name ?? S.of(context).noData)),
-                        DataCell(FittedBox(
-                          child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
-                        )),
-                        DataCell(Center(
-                          child: FittedBox(
-                              fit: BoxFit.fitHeight,
-                              child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
-                        )),
-                        DataCell(Text(tableItem.date?.smallDate() ?? '')),
-
-                        DataCell(Column(
+                          Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
+                        ],
+                      ),
+                      size: ColumnSize.L),
+                  DataColumn2(
+                      label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
+                      size: ColumnSize.S),
+                  DataColumn2(
+                      label: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 20,
-                              child: FittedBox(
-                                fit: BoxFit.fitHeight,
-                                child: Text(
-                                  tableItem.categoryName ?? '',
-                                ),
-                              ),
-                            ),
-                            Divider(height: 2),
+                            Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
+                            Divider(height: 1),
+                            Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
+                          ]),
+                      size: ColumnSize.S,
+                      numeric: true),
+                  DataColumn2(
+                      label: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text('%', style: headerStyle),
+                            Divider(height: 1),
+                            Text(S.of(context).total, style: headerStyle),
+                          ]),
+                      size: ColumnSize.S,
+                      numeric: true),
+                ],
+                source: _DbDataSource(tableItems, context));
 
-                            // Service
-                            Text(tableItem.serviceName ?? '',
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 11.sp, height: 0.9),
-                                overflow: TextOverflow.ellipsis),
-                          ],
-                        )),
-                        DataCell(YesNoWidget(tableItem.newCustomer)),
-                        DataCell(Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FittedBox(child: Text('${tableItem.price}')),
-                            Divider(height: 4, endIndent: 8, indent: 8),
-                            FittedBox(child: Text('${tableItem.total}')),
-                          ],
-                        )),
-                        DataCell(Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FittedBox(
-                              child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
-                            ),
-                            Divider(height: 4, endIndent: 8, indent: 8),
-                            FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
-                          ],
-                        )),
-                      ],
-                    ),
-                  )
-                  .toList(),
-            );
+            // DataTable2(
+            //   columnSpacing: 10,
+            //   bottomMargin: 90,
+            //   horizontalMargin: 10,
+            //   minWidth: 660,
+            //   headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+            //     if (states.contains(MaterialState.selected))
+            //       return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+            //     return AppColors.lightYellow;
+            //   }),
+            //   columns: [
+            //     DataColumn2(
+            //         label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
+            //         size: ColumnSize.L),
+            //     DataColumn2(
+            //       label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
+            //       size: ColumnSize.S,
+            //     ),
+            //     DataColumn2(
+            //         label: Text(S.of(context).cardnpay, style: headerStyle, textAlign: TextAlign.center),
+            //         size: ColumnSize.S),
+            //     DataColumn2(
+            //         label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
+            //         size: ColumnSize.L),
+            //     DataColumn2(
+            //         label: Center(
+            //           child: Text(S.of(context).phone + '\n' + S.of(context).number,
+            //               style: headerStyle, textAlign: TextAlign.center),
+            //         ),
+            //         size: ColumnSize.M),
+            //     DataColumn2(
+            //         label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
+            //         fixedWidth: 100),
+            //     DataColumn2(
+            //         label: Column(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           crossAxisAlignment: CrossAxisAlignment.center,
+            //           children: [
+            //             Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
+            //             Divider(height: 1),
+            //             Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
+            //           ],
+            //         ),
+            //         size: ColumnSize.L),
+            //     DataColumn2(
+            //         label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
+            //         size: ColumnSize.S),
+            //     DataColumn2(
+            //         label: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             crossAxisAlignment: CrossAxisAlignment.center,
+            //             children: [
+            //               Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
+            //               Divider(height: 1),
+            //               Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
+            //             ]),
+            //         size: ColumnSize.S,
+            //         numeric: true),
+            //     DataColumn2(
+            //         label: Column(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             crossAxisAlignment: CrossAxisAlignment.center,
+            //             children: [
+            //               Text('%', style: headerStyle),
+            //               Divider(height: 1),
+            //               Text(S.of(context).total, style: headerStyle),
+            //             ]),
+            //         size: ColumnSize.S,
+            //         numeric: true),
+            //   ],
+            //   rows:
+            // snapshot.data!
+            //       .map(
+            //         (tableItem) => DataRow(
+            //           onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
+            //             Navigator.pop(context);
+            //             controller.deleteItem(context, tableItem.id);
+            //             Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
+            //           }, onEdit: () {
+            //             Navigator.pop(context);
+
+            //             controller.editItem(tableItem);
+            //           }),
+            //           color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+            //             if (states.contains(MaterialState.selected))
+            //               return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+
+            //             return tableItem.date?.getDayColor();
+            //           }),
+            //           cells: [
+            //             DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
+            //             DataCell(YesNoWidget(tableItem.regCustomer)),
+            //             DataCell(YesNoWidget(tableItem.cardPay)),
+            //             // DataCell(Text(tableItem.name ?? S.of(context).noData)),
+            //             DataCell(FittedBox(
+            //               child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
+            //             )),
+            //             DataCell(Center(
+            //               child: FittedBox(
+            //                   fit: BoxFit.fitHeight,
+            //                   child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
+            //             )),
+            //             DataCell(Text(tableItem.date?.smallDate() ?? '')),
+
+            //             DataCell(Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: [
+            //                 SizedBox(
+            //                   height: 20,
+            //                   child: FittedBox(
+            //                     fit: BoxFit.fitHeight,
+            //                     child: Text(
+            //                       tableItem.categoryName ?? '',
+            //                     ),
+            //                   ),
+            //                 ),
+            //                 Divider(height: 2),
+
+            //                 // Service
+            //                 Text(tableItem.serviceName ?? '',
+            //                     textAlign: TextAlign.center,
+            //                     maxLines: 2,
+            //                     style: TextStyle(fontSize: 11.sp, height: 0.9),
+            //                     overflow: TextOverflow.ellipsis),
+            //               ],
+            //             )),
+            //             DataCell(YesNoWidget(tableItem.newCustomer)),
+            //             DataCell(Column(
+            //               crossAxisAlignment: CrossAxisAlignment.center,
+            //               children: [
+            //                 FittedBox(child: Text('${tableItem.price}')),
+            //                 Divider(height: 4, endIndent: 8, indent: 8),
+            //                 FittedBox(child: Text('${tableItem.total}')),
+            //               ],
+            //             )),
+            //             DataCell(Column(
+            //               crossAxisAlignment: CrossAxisAlignment.center,
+            //               children: [
+            //                 FittedBox(
+            //                   child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
+            //                 ),
+            //                 Divider(height: 4, endIndent: 8, indent: 8),
+            //                 FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
+            //               ],
+            //             )),
+            //           ],
+            //         ),
+            //       )
+            //       .toList(),
+            // );
           }
           return Center(child: Text(S.of(context).noData));
         });
@@ -200,4 +269,96 @@ class YesNoWidget extends StatelessWidget {
       child: Image.asset(width: 15, status ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png'),
     );
   }
+}
+
+class _DbDataSource extends DataTableSource {
+  final List<DbDataItem> items;
+  final BuildContext context;
+
+  _DbDataSource(this.items, this.context);
+
+  @override
+  DataRow getRow(int index) {
+    final tableItem = items[index];
+    return DataRow(
+      // onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
+      //   Navigator.pop(context);
+      //   controller.deleteItem(context, tableItem.id);
+      //   Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
+      // }, onEdit: () {
+      //   Navigator.pop(context);
+
+      //   controller.editItem(tableItem);
+      // }),
+      color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+        if (states.contains(MaterialState.selected)) return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+
+        return tableItem.date?.getDayColor();
+      }),
+      cells: [
+        DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
+        DataCell(YesNoWidget(tableItem.regCustomer)),
+        DataCell(YesNoWidget(tableItem.cardPay)),
+        // DataCell(Text(tableItem.name ?? S.of(context).noData)),
+        DataCell(FittedBox(
+          child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
+        )),
+        DataCell(Center(
+          child: FittedBox(fit: BoxFit.fitHeight, child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
+        )),
+        DataCell(Text(tableItem.date?.smallDate() ?? '')),
+
+        DataCell(Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 20,
+              child: FittedBox(
+                fit: BoxFit.fitHeight,
+                child: Text(
+                  tableItem.categoryName ?? '',
+                ),
+              ),
+            ),
+            Divider(height: 2),
+
+            // Service
+            Text(tableItem.serviceName ?? '',
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                style: TextStyle(fontSize: 11.sp, height: 0.9),
+                overflow: TextOverflow.ellipsis),
+          ],
+        )),
+        DataCell(YesNoWidget(tableItem.newCustomer)),
+        DataCell(Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            FittedBox(child: Text('${tableItem.price}')),
+            Divider(height: 4, endIndent: 8, indent: 8),
+            FittedBox(child: Text('${tableItem.total}')),
+          ],
+        )),
+        DataCell(Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            FittedBox(
+              child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
+            ),
+            Divider(height: 4, endIndent: 8, indent: 8),
+            FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
+          ],
+        )),
+      ],
+    );
+  }
+
+  @override
+  bool get isRowCountApproximate => false;
+
+  @override
+  int get rowCount => items.length;
+
+  @override
+  int get selectedRowCount => 0;
 }

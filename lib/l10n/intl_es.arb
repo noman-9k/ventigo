@@ -203,11 +203,11 @@
   "whatIsYourFavoriteColor": "¿Cuál es tu color favorito?",
   "number": "número",
   "viewServicesBefore7Days": "Před 7 dny služby",
-"canAddAPhoneNumber": "Puede agregar un numero de teléfono",
-"invalidPin": "PIN není platný",
-"note": "Nota",
-"enterANote": "Ingrese una nota",
-"characters": "characteres"
-  
-
+  "canAddAPhoneNumber": "Puede agregar un numero de teléfono",
+  "invalidPin": "PIN není platný",
+  "note": "Nota",
+  "enterANote": "Ingrese una nota",
+  "characters": "characteres",
+  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
+  "paymentByCash": "Payment By Cash"
 }

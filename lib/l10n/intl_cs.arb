@@ -207,5 +207,7 @@
   "invalidPin": "Invalid pin",
   "note": "Note",
   "enterANote": "Enter a note",
-  "characters": "characters"
+  "characters": "characters",
+  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
+  "paymentByCash": "Payment By Cash"
 }

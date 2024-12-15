@@ -26,27 +26,17 @@ class EmployeeDataTable extends StatelessWidget {
                 columnSpacing: 12,
                 horizontalMargin: 12,
                 minWidth: 500,
-                headingRowColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
+                headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                   if (states.contains(MaterialState.selected))
-                    return Theme.of(context)
-                        .colorScheme
-                        .primary
-                        .withOpacity(0.08);
+                    return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                   return AppColors.lightYellow;
                 }),
                 columns: [
+                  DataColumn2(label: Text(S.of(context).regncus), size: ColumnSize.S),
+                  DataColumn2(label: Text('Cash/Pay'), size: ColumnSize.S),
                   DataColumn2(
-                      label: Text(S.of(context).regncus), size: ColumnSize.S),
-                  DataColumn2(
-                      label: Text(S.of(context).cardnpay), size: ColumnSize.S),
-                  DataColumn2(
-                      label: Text(S.of(context).employeendata,
-                          textAlign: TextAlign.center),
-                      size: ColumnSize.L),
-                  DataColumn2(
-                      label: Center(child: Text(S.of(context).date)),
-                      fixedWidth: 100),
+                      label: Text(S.of(context).employeendata, textAlign: TextAlign.center), size: ColumnSize.L),
+                  DataColumn2(label: Center(child: Text(S.of(context).date)), fixedWidth: 100),
                   DataColumn2(
                       label: Column(
                         children: [
@@ -56,53 +46,34 @@ class EmployeeDataTable extends StatelessWidget {
                         ],
                       ),
                       size: ColumnSize.M),
-                  DataColumn2(
-                      label: Text(S.of(context).price),
-                      size: ColumnSize.M,
-                      numeric: true),
+                  DataColumn2(label: Text(S.of(context).price), size: ColumnSize.M, numeric: true),
                 ],
                 rows: tableItems
                     .map((tableItem) => DataRow(
-                            color: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
+                            color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                               if (states.contains(MaterialState.selected))
-                                return Theme.of(context)
-                                    .colorScheme
-                                    .primary
-                                    .withOpacity(0.08);
+                                return Theme.of(context).colorScheme.primary.withOpacity(0.08);
 
-                              Duration difference =
-                                  currentDate.difference(tableItem.date!);
+                              Duration difference = currentDate.difference(tableItem.date!);
                               var changeColor = difference.inDays.isEven;
-                              return changeColor
-                                  ? Color(0xFFDDFDF1)
-                                  : Colors.white;
+                              return changeColor ? Color(0xFFDDFDF1) : Colors.white;
                             }),
                             cells: [
                               DataCell(Image.asset(
                                   width: 20,
-                                  tableItem.regCustomer ?? false
-                                      ? 'assets/icon/true.png'
-                                      : 'assets/icon/false.png')),
+                                  tableItem.regCustomer ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png')),
                               DataCell(Image.asset(
                                   width: 20,
-                                  tableItem.cardPay ?? false
-                                      ? 'assets/icon/true.png'
-                                      : 'assets/icon/false.png')),
-                              DataCell(Text(tableItem.employeeName ??
-                                  S.of(context).noData)),
+                                  tableItem.cardPay ?? false ? 'assets/icon/true.png' : 'assets/icon/false.png')),
+                              DataCell(Text(tableItem.employeeName ?? S.of(context).noData)),
                               DataCell(Text(tableItem.date?.smallDate() ?? '')),
                               DataCell(Column(
                                 children: [
                                   SizedBox(height: 2),
-                                  AppText.lightText(
-                                      tableItem.categoryName ?? '',
-                                      height: 1.1,
-                                      align: TextAlign.center,
-                                      color: Colors.black),
+                                  AppText.lightText(tableItem.categoryName ?? '',
+                                      height: 1.1, align: TextAlign.center, color: Colors.black),
                                   Divider(height: 2),
-                                  AppText.lightText(tableItem.serviceName ?? '',
-                                      color: Colors.black),
+                                  AppText.lightText(tableItem.serviceName ?? '', color: Colors.black),
                                 ],
                               )),
                               DataCell(Text('${tableItem.price}')),

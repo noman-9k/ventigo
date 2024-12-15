@@ -96,10 +96,13 @@ class _TwoTabsViewState extends State<TwoTabsView> with SingleTickerProviderStat
           ],
         ),
         Expanded(
-          child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            controller: _tabController,
-            children: widget.widgets,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 70),
+            child: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: _tabController,
+              children: widget.widgets,
+            ),
           ),
         ),
       ],

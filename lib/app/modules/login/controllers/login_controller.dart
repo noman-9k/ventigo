@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
 import 'package:intl/intl.dart' as intl;
@@ -19,8 +20,7 @@ class LoginController extends GetxController {
   login() async {
     isLoading.value = true;
 
-    var employee = await EmployeeService.to
-        .employeeLogin(loginController.text.trim(), passController.text.trim());
+    var employee = await EmployeeService.to.employeeLogin(loginController.text.trim(), passController.text.trim());
 
     if (employee != null) {
       Get.offAllNamed(Routes.USER_DATA);
@@ -42,8 +42,7 @@ class LoginController extends GetxController {
 
   void changeLanguage(Locale e) {
     // check if the current locale
-    log('current locale is ${intl.Intl.getCurrentLocale()}',
-        name: 'OnBoardingController');
+    log('current locale is ${intl.Intl.getCurrentLocale()}', name: 'OnBoardingController');
 
     intl.Intl.defaultLocale = e.languageCode;
 
@@ -55,21 +54,21 @@ class LoginController extends GetxController {
   String getFlag(String languageCode) {
     AppConstants.languages.map((e) => log(e.languageCode));
 
-    return AppConstants.languages
-        .firstWhere((element) => element.languageCode == languageCode)
-        .countryFlag;
+    return AppConstants.languages.firstWhere((element) => element.languageCode == languageCode).countryFlag;
   }
 
   String getCurrentFlag() {
     return AppConstants.languages
-        .firstWhere(
-            (element) => element.languageCode == intl.Intl.getCurrentLocale())
+        .firstWhere((element) => element.languageCode == intl.Intl.getCurrentLocale())
         .countryFlag;
   }
 
   String getCountryName(String languageCode) {
-    return AppConstants.languages
-        .firstWhere((element) => element.languageCode == languageCode)
-        .language;
+    return AppConstants.languages.firstWhere((element) => element.languageCode == languageCode).language;
+  }
+
+  Future<void> shareMyApp() async {
+    Share.share(' Check out app at https://play.google.com/store/apps/details?id=com.salon.ventigo',
+        subject: 'Ventigo Mobile App');
   }
 }

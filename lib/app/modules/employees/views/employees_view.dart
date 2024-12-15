@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
@@ -10,9 +11,11 @@ import 'package:ventigo/config/app_colors.dart';
 import '../../../../config/app_text.dart';
 import '../../../../generated/l10n.dart';
 import '../../../app_services/purchase_service.dart';
+import '../../../constants/app_images.dart';
 import '../../../db/db_controller.dart';
 import '../../../routes/app_pages.dart';
 import '../../common/app_search_field.dart';
+import '../../dialog/dialog_functions.dart';
 import '../controllers/employees_controller.dart';
 
 class EmployeesView extends GetView<EmployeesController> {
@@ -130,7 +133,17 @@ class EmployeesView extends GetView<EmployeesController> {
                                 ],
                               ),
                               10.horizontalSpace,
-                              Icon(Icons.arrow_forward_ios_rounded)
+                              IconButton(
+                                  onPressed: () => pushConfirmDialog(
+                                        context,
+                                        title: 'Delete ' + (employee.name ?? ''),
+                                        message: 'Employee will be deleted Permanently',
+                                        onDone: () {
+                                          DbController.to.appDb.deleteEmployee(employee.id);
+                                        },
+                                      ),
+                                  icon: SvgPicture.asset(AppImages.delete)),
+                              // Icon(Icons.arrow_forward_ios_rounded)
                               // IconButton(
                               //   icon:
                               //       const Icon(Icons.arrow_forward_ios_rounded),

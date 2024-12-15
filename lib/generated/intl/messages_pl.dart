@@ -122,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwisko pracownika: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Odsetek pracownika"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Dane pracownika\n"),
         "employees": MessageLookupByLibrary.simpleMessage("pracownicy"),
@@ -225,6 +228,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Lub zaloguj się jako"),
         "password": MessageLookupByLibrary.simpleMessage("Hasto pracownika"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Płatność Kartą"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Odsetek"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),

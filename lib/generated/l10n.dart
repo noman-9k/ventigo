@@ -630,10 +630,10 @@ class S {
     );
   }
 
-  /// `Payment by Card`
+  /// `Payment by Cash`
   String get paymentByCard {
     return Intl.message(
-      'Payment by Card',
+      'Payment by Cash',
       name: 'paymentByCard',
       desc: '',
       args: [],
@@ -1140,10 +1140,10 @@ class S {
     );
   }
 
-  /// `Card Pay: `
+  /// `Cash Pay: `
   String get cardPay {
     return Intl.message(
-      'Card Pay: ',
+      'Cash Pay: ',
       name: 'cardPay',
       desc: '',
       args: [],
@@ -1430,10 +1430,10 @@ class S {
     );
   }
 
-  /// `Card\nPay`
+  /// `Cash\nPay`
   String get cardnpay {
     return Intl.message(
-      'Card\nPay',
+      'Cash\nPay',
       name: 'cardnpay',
       desc: '',
       args: [],
@@ -2135,6 +2135,26 @@ class S {
     return Intl.message(
       'characters',
       name: 'characters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee will be deleted Permanently`
+  String get employeeWillBeDeletedPermanently {
+    return Intl.message(
+      'Employee will be deleted Permanently',
+      name: 'employeeWillBeDeletedPermanently',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment By Cash`
+  String get paymentByCash {
+    return Intl.message(
+      'Payment By Cash',
+      name: 'paymentByCash',
       desc: '',
       args: [],
     );

@@ -127,6 +127,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Ім\'я працівника: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Відсоток працівників"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Дані\nпрацівника"),
         "employees": MessageLookupByLibrary.simpleMessage("Співробітники"),
@@ -231,6 +234,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Або увійдіть як"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Оплата карткою"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Відсоток"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),

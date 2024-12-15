@@ -34,6 +34,10 @@ class AppDb extends _$AppDb {
 
   Future<int> getTotalServices() => (select(dbServices)).get().then((value) => value.length);
 
+  Future<void> deleteEmployee(int id) {
+    return (delete(dbEmployees)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   Future<int> insertNewCompanionEmployee(String name, String lastName, String login, String password, double percentage,
       {List<String>? categories, List<String>? visibility}) async {
     final id = await into(dbEmployees).insert(DbEmployeesCompanion.insert(
