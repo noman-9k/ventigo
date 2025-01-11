@@ -2159,6 +2159,26 @@ class S {
       args: [],
     );
   }
+
+  /// ` (Optionally)`
+  String get optionally {
+    return Intl.message(
+      ' (Optionally)',
+      name: 'optionally',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pieces, Liters, Kilograms .. `
+  String get piecesLitersKilograms {
+    return Intl.message(
+      'Pieces, Liters, Kilograms .. ',
+      name: 'piecesLitersKilograms',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

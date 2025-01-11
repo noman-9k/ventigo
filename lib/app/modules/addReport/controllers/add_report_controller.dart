@@ -116,38 +116,17 @@ class AddReportController extends GetxController {
     isLoading.value = true;
     int categoryId = selectedCategory!.id;
     int serviceId = selectedService!.id;
-    int employeeId = EmployeeService.to.employee!.value.id;
+    int employeeId = EmployeeService.to.employee?.value.id ?? 0;
     String name = nameController.text.trim() + '\n' + lastNameController.text.trim();
     String phone = phoneController.text.trim();
 
     double price = double.parse(priceController.text.trim());
 
-    // for (int i = 0; i < 50; i++) {
-    //   await DbController.to.appDb.insertNewCompanionDataItem(
-    //     name + ' ' + i.toString(),
-    //     phone,
-    //     employeeId,
-    //     EmployeeService.to.employee!.value.name,
-    //     categoryId,
-    //     selectedCategory?.name ?? 'No category',
-    //     serviceId,
-    //     selectedService?.name ?? 'No service',
-    //     newCustomer ?? false,
-    //     regCustomer ?? false,
-    //     DateTime.now().add(Duration(days: 0)).onlyDate(),
-    //     cardPay ?? false,
-    //     price,
-    //     (total + price),
-    //     EmployeeService.to.employee!.value.percentage ?? 0.0,
-    //     notesController.text.trim(),
-    //   );
-    // }
-
     await DbController.to.appDb.insertNewCompanionDataItem(
       name,
       phone,
       employeeId,
-      EmployeeService.to.employee!.value.name,
+      EmployeeService.to.employee?.value.name ?? '',
       categoryId,
       selectedCategory?.name ?? 'No category',
       serviceId,

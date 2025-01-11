@@ -227,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Anzahl der Services für den Monat"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Anzahl der Einheiten"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Oder neue Kategorie erstellen"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Oder anmelden als"),
@@ -239,6 +240,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "pieces": MessageLookupByLibrary.simpleMessage("Stück"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Bitte fügen Sie zuerst eine Kategorie hinzu, um einen Mitarbeiter hinzuzufügen"),

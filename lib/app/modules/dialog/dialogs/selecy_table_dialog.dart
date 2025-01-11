@@ -11,8 +11,8 @@ class SelectExportTableDialog extends StatelessWidget {
     return DialogModel(
       child: Column(
         children: [
-          ListTile(title: Text('Export Sales'), onTap: onDataExport),
-          ListTile(title: Text('Export Expenditure'), onTap: onExpenseExport),
+          ListTile(title: Text('Export Reports'), onTap: onDataExport),
+          ListTile(title: Text('Export Costs'), onTap: onExpenseExport),
         ],
       ),
     );

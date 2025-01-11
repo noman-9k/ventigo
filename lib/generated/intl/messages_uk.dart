@@ -229,6 +229,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Кількість послуг за місяць"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Кількість одиниць"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Або створити нову категорію"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Або увійдіть як"),
@@ -240,6 +241,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефону"),
         "pieces": MessageLookupByLibrary.simpleMessage("Части"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Спочатку додайте категорію, щоб додати працівника"),

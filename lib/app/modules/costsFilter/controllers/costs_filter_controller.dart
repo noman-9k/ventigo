@@ -81,6 +81,6 @@ class CostsFilterController extends GetxController {
   }
 
   Future<String?>? getTotalCosts() {
-    return DbController.to.appDb.getTotalCosts(fromDate, toDate);
+    return DbController.to.appDb.getTotalCosts(fromDate ?? DateTime(DateTime.now().year, DateTime.now().month), toDate);
   }
 }

@@ -261,6 +261,9 @@ class AppDb extends _$AppDb {
             tbl.date.isSmallerOrEqualValue(toDate ?? DateTime.now().add(Duration(days: 3600)))))
       .watch();
 
+  Future<List<DbCost>> getAllCostsF() =>
+      (select(dbCosts)..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)])).get();
+
   Future<bool> ifAllSameDate({bool isCostTable = true}) async {
     if (isCostTable) {
       final query = select(dbCosts);
@@ -599,6 +602,40 @@ class AppDb extends _$AppDb {
     });
 
     return ww;
+  }
+
+  Future<DbCost?> getCostById(int itemId) {
+    return (select(dbCosts)..where((tbl) => tbl.id.equals(itemId))).getSingle();
+  }
+
+  Future<int> getTotalDataCount() {
+    return count('db_data_items');
+  }
+
+  Future<void> deleteExcessDataByNumberOfItemsToKeep(int numberOfItemsToKeep) async {
+    final query = await select(dbDataItems)
+      ..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)]);
+
+    query.get().then((value) {
+      if (value.length > numberOfItemsToKeep) {
+        for (var i = numberOfItemsToKeep; i < value.length; i++) {
+          deleteDataItem(value[i].id);
+        }
+      }
+    });
+  }
+
+  deleteExcessCostsByNumberOfItemsToKeep(int costsCount) async {
+    final query = await select(dbCosts)
+      ..orderBy([(tbl) => OrderingTerm(expression: tbl.date, mode: OrderingMode.desc)]);
+
+    query.get().then((value) {
+      if (value.length > costsCount) {
+        for (var i = costsCount; i < value.length; i++) {
+          deleteDataItem(value[i].id);
+        }
+      }
+    });
   }
 }
 

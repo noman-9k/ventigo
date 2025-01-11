@@ -19,19 +19,16 @@ class MySharedPref {
   static dynamic getFromDisk(String key) {
     try {
       var value = _sharedPreferences.get(key);
-      print(
-          '\n\n\n\n\n (TRACE) LocalStorageService:_getFromDisk. key: $key value: $value /n');
+      print('\n\n\n\n\n (TRACE) LocalStorageService:_getFromDisk. key: $key value: $value /n');
       return value;
     } catch (err) {
-      print(
-          '\n\n\n\n\n (ERROR) LocalStorageService:_getFromDisk. key: $key error: $err /n');
+      print('\n\n\n\n\n (ERROR) LocalStorageService:_getFromDisk. key: $key error: $err /n');
       return null;
     }
   }
 
   static void saveToDisk<T>(String key, T content) {
-    print(
-        '\n\n\n\n\n(TRACE) LocalStorageService:_saveStringToDisk. key: $key value: $content /n');
+    print('\n\n\n\n\n(TRACE) LocalStorageService:_saveStringToDisk. key: $key value: $content /n');
     if (content is String) {
       _sharedPreferences.setString(key, content);
     }
@@ -59,5 +56,9 @@ class MySharedPref {
 
   static String getLanguage() {
     return _sharedPreferences.getString('language') ?? 'en';
+  }
+
+  static void deleteFromDisk(String s) {
+    _sharedPreferences.remove(s);
   }
 }

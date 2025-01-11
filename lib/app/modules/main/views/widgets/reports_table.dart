@@ -10,6 +10,7 @@ import 'package:ventigo/extensions/string_extensions.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
+import '../../../dialog/dialog_functions.dart';
 import '../../controllers/main_controller.dart';
 
 class ReportsTable extends GetView<MainController> {
@@ -29,27 +30,29 @@ class ReportsTable extends GetView<MainController> {
             List<DbDataItem> tableItems = snapshot.data ?? [];
 
             return PaginatedDataTable2(
-                availableRowsPerPage: const [2, 5, 10, 30, 100],
+                // availableRowsPerPage: const [2, 5, 10, 30, 100],
                 // rowsPerPage: 20,
                 autoRowsToHeight: true,
-                columnSpacing: 12,
-                minWidth: 700,
+                columnSpacing: 10,
+                minWidth: 1350,
                 wrapInCard: false,
                 isHorizontalScrollBarVisible: false,
                 isVerticalScrollBarVisible: false,
                 columns: [
-                  DataColumn(
+                  DataColumn2(
                     label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
+                    size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
+                    label: Center(child: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center)),
                     size: ColumnSize.S,
                   ),
                   DataColumn2(
-                      label: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center), size: ColumnSize.S),
+                      label: Center(child: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center)),
+                      size: ColumnSize.S),
                   DataColumn2(
                       label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
-                      size: ColumnSize.L),
+                      fixedWidth: 177),
                   DataColumn2(
                       label: Center(
                         child: Text(S.of(context).phone + '\n' + S.of(context).number,
@@ -57,7 +60,7 @@ class ReportsTable extends GetView<MainController> {
                       ),
                       size: ColumnSize.M),
                   DataColumn2(
-                      label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
+                      label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.start)),
                       fixedWidth: 100),
                   DataColumn2(
                       label: Column(
@@ -65,13 +68,14 @@ class ReportsTable extends GetView<MainController> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
-                          Divider(height: 1),
+                          Divider(height: 2, indent: 50, endIndent: 50),
                           Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
                         ],
                       ),
-                      size: ColumnSize.L),
+                      fixedWidth: 230),
                   DataColumn2(
-                      label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
+                      label:
+                          Center(child: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center)),
                       size: ColumnSize.S),
                   DataColumn2(
                       label: Column(
@@ -79,10 +83,10 @@ class ReportsTable extends GetView<MainController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
-                            Divider(height: 1),
+                            Divider(height: 2, indent: 15, endIndent: 15),
                             Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
                           ]),
-                      size: ColumnSize.S,
+                      size: ColumnSize.M,
                       numeric: true),
                   DataColumn2(
                       label: Column(
@@ -90,164 +94,16 @@ class ReportsTable extends GetView<MainController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text('%', style: headerStyle),
-                            Divider(height: 1),
+                            Divider(height: 2, indent: 5, endIndent: 5),
                             Text(S.of(context).total, style: headerStyle),
                           ]),
-                      size: ColumnSize.S,
+                      size: ColumnSize.M,
                       numeric: true),
+                  DataColumn2(
+                      label: Center(child: Text(S.of(context).note, style: headerStyle, textAlign: TextAlign.center)),
+                      fixedWidth: 200),
                 ],
-                source: _DbDataSource(tableItems, context));
-
-            // DataTable2(
-            //   columnSpacing: 10,
-            //   bottomMargin: 90,
-            //   horizontalMargin: 10,
-            //   minWidth: 660,
-            //   headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-            //     if (states.contains(MaterialState.selected))
-            //       return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-            //     return AppColors.lightYellow;
-            //   }),
-            //   columns: [
-            //     DataColumn2(
-            //         label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
-            //         size: ColumnSize.L),
-            //     DataColumn2(
-            //       label: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center),
-            //       size: ColumnSize.S,
-            //     ),
-            //     DataColumn2(
-            //         label: Text(S.of(context).cardnpay, style: headerStyle, textAlign: TextAlign.center),
-            //         size: ColumnSize.S),
-            //     DataColumn2(
-            //         label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
-            //         size: ColumnSize.L),
-            //     DataColumn2(
-            //         label: Center(
-            //           child: Text(S.of(context).phone + '\n' + S.of(context).number,
-            //               style: headerStyle, textAlign: TextAlign.center),
-            //         ),
-            //         size: ColumnSize.M),
-            //     DataColumn2(
-            //         label: Center(child: Text(S.of(context).date, style: headerStyle, textAlign: TextAlign.center)),
-            //         fixedWidth: 100),
-            //     DataColumn2(
-            //         label: Column(
-            //           mainAxisAlignment: MainAxisAlignment.center,
-            //           crossAxisAlignment: CrossAxisAlignment.center,
-            //           children: [
-            //             Text(S.of(context).category, style: headerStyle, textAlign: TextAlign.center),
-            //             Divider(height: 1),
-            //             Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
-            //           ],
-            //         ),
-            //         size: ColumnSize.L),
-            //     DataColumn2(
-            //         label: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center),
-            //         size: ColumnSize.S),
-            //     DataColumn2(
-            //         label: Column(
-            //             mainAxisAlignment: MainAxisAlignment.center,
-            //             crossAxisAlignment: CrossAxisAlignment.center,
-            //             children: [
-            //               Text(S.of(context).price, style: headerStyle, textAlign: TextAlign.center),
-            //               Divider(height: 1),
-            //               Text(S.of(context).total, style: headerStyle, textAlign: TextAlign.center),
-            //             ]),
-            //         size: ColumnSize.S,
-            //         numeric: true),
-            //     DataColumn2(
-            //         label: Column(
-            //             mainAxisAlignment: MainAxisAlignment.center,
-            //             crossAxisAlignment: CrossAxisAlignment.center,
-            //             children: [
-            //               Text('%', style: headerStyle),
-            //               Divider(height: 1),
-            //               Text(S.of(context).total, style: headerStyle),
-            //             ]),
-            //         size: ColumnSize.S,
-            //         numeric: true),
-            //   ],
-            //   rows:
-            // snapshot.data!
-            //       .map(
-            //         (tableItem) => DataRow(
-            //           onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
-            //             Navigator.pop(context);
-            //             controller.deleteItem(context, tableItem.id);
-            //             Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
-            //           }, onEdit: () {
-            //             Navigator.pop(context);
-
-            //             controller.editItem(tableItem);
-            //           }),
-            //           color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-            //             if (states.contains(MaterialState.selected))
-            //               return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-
-            //             return tableItem.date?.getDayColor();
-            //           }),
-            //           cells: [
-            //             DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
-            //             DataCell(YesNoWidget(tableItem.regCustomer)),
-            //             DataCell(YesNoWidget(tableItem.cardPay)),
-            //             // DataCell(Text(tableItem.name ?? S.of(context).noData)),
-            //             DataCell(FittedBox(
-            //               child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
-            //             )),
-            //             DataCell(Center(
-            //               child: FittedBox(
-            //                   fit: BoxFit.fitHeight,
-            //                   child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
-            //             )),
-            //             DataCell(Text(tableItem.date?.smallDate() ?? '')),
-
-            //             DataCell(Column(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               children: [
-            //                 SizedBox(
-            //                   height: 20,
-            //                   child: FittedBox(
-            //                     fit: BoxFit.fitHeight,
-            //                     child: Text(
-            //                       tableItem.categoryName ?? '',
-            //                     ),
-            //                   ),
-            //                 ),
-            //                 Divider(height: 2),
-
-            //                 // Service
-            //                 Text(tableItem.serviceName ?? '',
-            //                     textAlign: TextAlign.center,
-            //                     maxLines: 2,
-            //                     style: TextStyle(fontSize: 11.sp, height: 0.9),
-            //                     overflow: TextOverflow.ellipsis),
-            //               ],
-            //             )),
-            //             DataCell(YesNoWidget(tableItem.newCustomer)),
-            //             DataCell(Column(
-            //               crossAxisAlignment: CrossAxisAlignment.center,
-            //               children: [
-            //                 FittedBox(child: Text('${tableItem.price}')),
-            //                 Divider(height: 4, endIndent: 8, indent: 8),
-            //                 FittedBox(child: Text('${tableItem.total}')),
-            //               ],
-            //             )),
-            //             DataCell(Column(
-            //               crossAxisAlignment: CrossAxisAlignment.center,
-            //               children: [
-            //                 FittedBox(
-            //                   child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
-            //                 ),
-            //                 Divider(height: 4, endIndent: 8, indent: 8),
-            //                 FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
-            //               ],
-            //             )),
-            //           ],
-            //         ),
-            //       )
-            //       .toList(),
-            // );
+                source: _DbDataSource(tableItems, context, controller));
           }
           return Center(child: Text(S.of(context).noData));
         });
@@ -274,22 +130,23 @@ class YesNoWidget extends StatelessWidget {
 class _DbDataSource extends DataTableSource {
   final List<DbDataItem> items;
   final BuildContext context;
+  final MainController controller;
 
-  _DbDataSource(this.items, this.context);
+  _DbDataSource(this.items, this.context, this.controller);
 
   @override
   DataRow getRow(int index) {
     final tableItem = items[index];
     return DataRow(
-      // onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
-      //   Navigator.pop(context);
-      //   controller.deleteItem(context, tableItem.id);
-      //   Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
-      // }, onEdit: () {
-      //   Navigator.pop(context);
+      onLongPress: () => pushShowReportsBottomSheet(context, tableItem, onDelete: () {
+        Navigator.pop(context);
+        controller.deleteItem(context, tableItem.id);
+        Get.snackbar(S.of(context).deleted, S.of(context).itemDeleted);
+      }, onEdit: () {
+        Navigator.pop(context);
 
-      //   controller.editItem(tableItem);
-      // }),
+        controller.editItem(tableItem);
+      }),
       color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
         if (states.contains(MaterialState.selected)) return Theme.of(context).colorScheme.primary.withOpacity(0.08);
 
@@ -312,7 +169,7 @@ class _DbDataSource extends DataTableSource {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 20,
+              height: 18,
               child: FittedBox(
                 fit: BoxFit.fitHeight,
                 child: Text(
@@ -320,13 +177,13 @@ class _DbDataSource extends DataTableSource {
                 ),
               ),
             ),
-            Divider(height: 2),
+            Divider(height: 5, indent: 30, endIndent: 30),
 
             // Service
             Text(tableItem.serviceName ?? '',
-                textAlign: TextAlign.center,
+                textAlign: TextAlign.end,
                 maxLines: 2,
-                style: TextStyle(fontSize: 11.sp, height: 0.9),
+                style: TextStyle(fontSize: 12.sp, height: 0.9),
                 overflow: TextOverflow.ellipsis),
           ],
         )),
@@ -335,7 +192,7 @@ class _DbDataSource extends DataTableSource {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FittedBox(child: Text('${tableItem.price}')),
-            Divider(height: 4, endIndent: 8, indent: 8),
+            Divider(height: 4, endIndent: 10, indent: 10),
             FittedBox(child: Text('${tableItem.total}')),
           ],
         )),
@@ -345,10 +202,11 @@ class _DbDataSource extends DataTableSource {
             FittedBox(
               child: Text(tableItem.price!.percentageOf(tableItem.percentage)),
             ),
-            Divider(height: 4, endIndent: 8, indent: 8),
+            Divider(height: 4, endIndent: 10, indent: 10),
             FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
           ],
         )),
+        DataCell(Text(tableItem.notes ?? '')),
       ],
     );
   }

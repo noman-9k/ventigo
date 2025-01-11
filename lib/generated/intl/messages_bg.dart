@@ -234,6 +234,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Брой услуги за месеца"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Брой единици"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Или създайте нова категория"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или влезте като"),
@@ -246,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Телефон "),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефонен номер"),
         "pieces": MessageLookupByLibrary.simpleMessage("Парчета"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Моля, първо добавете категория, за да добавите служител"),

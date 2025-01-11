@@ -222,6 +222,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Numer usługi w miesiącu"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Liczba jednostek"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Lub utwórz nową kategorię"),
         "orSignInAs":
@@ -234,6 +235,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
         "pieces": MessageLookupByLibrary.simpleMessage("kawałki"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Proszę wypełnić pole odpowiedzi"),
         "pleaseSelectAQuestion":

@@ -10,10 +10,13 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:ventigo/app/app_services/local_storage_service.dart';
+import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/app/modules/settings/controllers/file_storage.dart';
 import 'package:ventigo/app/modules/settings/views/restore_dialog.dart';
 import 'package:ventigo/app/routes/app_pages.dart';
+import 'package:ventigo/config/app_colors.dart';
+import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../firebase/firebase_storage_repo.dart';
@@ -24,6 +27,10 @@ import '../../dialog/dialog_functions.dart';
 class SettingsController extends GetxController {
   List<DatabaseModel> databases = [];
   RxBool isLoading = false.obs;
+
+  TextEditingController maxRowsController = TextEditingController();
+
+  final maxRowsFormKey = GlobalKey<FormState>();
 
   Future<void> createData() async {
     try {
@@ -279,6 +286,15 @@ class SettingsController extends GetxController {
       Navigator.pop(context);
       Get.snackbar(S.of(context).exported, S.of(context).checkYourFileInTheDownloadsFolder);
     });
+  }
+
+  validateMaxRows(String? value) {
+    if (value != null) {
+      if (int.parse(value) < 50) {
+        return 'Please enter a number greater than 50';
+      }
+    }
+    return null;
   }
 }
 

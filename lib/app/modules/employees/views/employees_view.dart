@@ -106,51 +106,61 @@ class EmployeesView extends GetView<EmployeesController> {
                             child: AppText.boldText(employee.name![0]),
                             radius: 25,
                           ),
-                          trailing: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  AppText.mediumText(S.of(context).accessLevel, fontWeight: FontWeight.bold),
-                                  Row(
-                                    children: [
-                                      Container(
-                                          padding: EdgeInsets.all(5),
-                                          height: 15,
-                                          width: 20,
-                                          decoration: BoxDecoration(
-                                              color: employee.visibility.length == 3
-                                                  ? Color(0xFF00A3E8)
-                                                  : Color(0xFFA349A1),
-                                              borderRadius: BorderRadius.circular(4))),
-                                      5.horizontalSpace,
-                                      AppText.mediumText(employee.visibility.length == 3
-                                          ? S.of(context).notLimited
-                                          : S.of(context).limited),
-                                    ],
+                          trailing: IconButton(
+                              onPressed: () => pushConfirmDialog(
+                                    context,
+                                    title: 'Delete ' + (employee.name ?? ''),
+                                    message: 'Employee will be deleted Permanently',
+                                    onDone: () {
+                                      DbController.to.appDb.deleteEmployee(employee.id);
+                                    },
                                   ),
-                                ],
-                              ),
-                              10.horizontalSpace,
-                              IconButton(
-                                  onPressed: () => pushConfirmDialog(
-                                        context,
-                                        title: 'Delete ' + (employee.name ?? ''),
-                                        message: 'Employee will be deleted Permanently',
-                                        onDone: () {
-                                          DbController.to.appDb.deleteEmployee(employee.id);
-                                        },
-                                      ),
-                                  icon: SvgPicture.asset(AppImages.delete)),
-                              // Icon(Icons.arrow_forward_ios_rounded)
-                              // IconButton(
-                              //   icon:
-                              //       const Icon(Icons.arrow_forward_ios_rounded),
-                              //   onPressed: () {},
-                              // ),
-                            ],
-                          ),
+                              icon: SvgPicture.asset(AppImages.delete)),
+                          // trailing: Row(
+                          //   mainAxisSize: MainAxisSize.min,
+                          //   children: [
+                          //     Column(
+                          //       crossAxisAlignment: CrossAxisAlignment.end,
+                          //       children: [
+                          //         AppText.mediumText(S.of(context).accessLevel, fontWeight: FontWeight.bold),
+                          //         Row(
+                          //           children: [
+                          //             Container(
+                          //                 padding: EdgeInsets.all(5),
+                          //                 height: 15,
+                          //                 width: 20,
+                          //                 decoration: BoxDecoration(
+                          //                     color: employee.visibility.length == 3
+                          //                         ? Color(0xFF00A3E8)
+                          //                         : Color(0xFFA349A1),
+                          //                     borderRadius: BorderRadius.circular(4))),
+                          //             5.horizontalSpace,
+                          //             AppText.mediumText(employee.visibility.length == 3
+                          //                 ? S.of(context).notLimited
+                          //                 : S.of(context).limited),
+                          //           ],
+                          //         ),
+                          //       ],
+                          //     ),
+                          //     10.horizontalSpace,
+                          //     IconButton(
+                          //         onPressed: () => pushConfirmDialog(
+                          //               context,
+                          //               title: 'Delete ' + (employee.name ?? ''),
+                          //               message: 'Employee will be deleted Permanently',
+                          //               onDone: () {
+                          //                 DbController.to.appDb.deleteEmployee(employee.id);
+                          //               },
+                          //             ),
+                          //         icon: SvgPicture.asset(AppImages.delete)),
+                          //     // Icon(Icons.arrow_forward_ios_rounded)
+                          //     // IconButton(
+                          //     //   icon:
+                          //     //       const Icon(Icons.arrow_forward_ios_rounded),
+                          //     //   onPressed: () {},
+                          //     // ),
+                          //   ],
+                          // ),
                         );
                       },
                     ),

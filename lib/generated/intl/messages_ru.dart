@@ -226,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Количество услуг за месяц"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Количество единиц"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Или создайте новую категорию"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или войдите как"),
@@ -236,6 +237,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Чтобы добавить сотрудника, сначала добавьте категорию"),

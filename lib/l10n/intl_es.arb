@@ -209,5 +209,7 @@
   "enterANote": "Ingrese una nota",
   "characters": "characteres",
   "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
-  "paymentByCash": "Payment By Cash"
+  "paymentByCash": "Payment By Cash",
+  "optionally": " (Optionally)",
+  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
 }

@@ -215,6 +215,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Počet služeb za měsíc"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Počet jednotek"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Nebo vytvořit novou kategorii"),
         "orSignInAs":
@@ -226,6 +227,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Procento"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonní číslo"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Pro přidání zaměstnance nejprve přidejte kategorii"),

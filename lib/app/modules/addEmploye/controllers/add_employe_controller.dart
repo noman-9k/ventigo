@@ -37,8 +37,7 @@ class AddEmployeeController extends GetxController {
       passController.text = employee.password ?? '';
       percentageController.text = employee.percentage.toString();
       selectedCategories = employee.categories ?? [];
-      categoriesController.text =
-          selectedCategories.map((e) => e.name).join(', ');
+      categoriesController.text = selectedCategories.map((e) => e.name).join(', ');
       trueFilters = employee.visibility ?? [];
 
       update();
@@ -65,8 +64,7 @@ class AddEmployeeController extends GetxController {
       selectedCategories: selectedCategories,
       onDone: (categories) {
         selectedCategories = categories ?? [];
-        categoriesController.text =
-            selectedCategories.map((e) => e.name).join(', ');
+        categoriesController.text = selectedCategories.map((e) => e.name).join(', ');
 
         update();
       },

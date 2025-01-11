@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
+import '../../../../config/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
@@ -21,10 +23,7 @@ class AddServiceView extends GetView<AddServiceController> {
       //   onPressed: () => controller.getAll(),
       //   child: Icon(Icons.arrow_forward),
       // ),
-      appBar: AppBar(
-          leading: AppBackButton(),
-          title: AppText.boldText(S.of(context).addService),
-          centerTitle: true),
+      appBar: AppBar(leading: AppBackButton(), title: AppText.boldText(S.of(context).addService), centerTitle: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: AppConstants.defaultPadding,
@@ -55,11 +54,25 @@ class AddServiceView extends GetView<AddServiceController> {
                 textCapitalization: TextCapitalization.sentences,
                 // onTap: controller.addNewCategory,
                 // readOnly: true,
+                inputFormatters: [LengthLimitingTextInputFormatter(29)],
+                onChanged: (value) => controller.categoryLength.value = value.length,
                 controller: controller.categoryNameController,
                 decoration: InputDecoration(
                   hintText: S.of(context).enterCategoryName,
                 ),
               ).withLabel(S.of(context).categoryName),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Obx(() {
+                    return Text(
+                      S.of(context).characters + ' ${controller.categoryLength.value}/29 ',
+                      style: AppStyles.lightStyle(),
+                    );
+                  }),
+                ],
+              ),
               32.verticalSpace,
               AppText.mediumText(S.of(context).nameOfTheService),
               10.verticalSpace,
@@ -67,9 +80,22 @@ class AddServiceView extends GetView<AddServiceController> {
                 style: TextStyle(fontSize: 14.sp),
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller.serviceNameController,
-                decoration:
-                    InputDecoration(hintText: S.of(context).enterServiceName),
+                onChanged: (value) => controller.serviceLength.value = value.length,
+                inputFormatters: [LengthLimitingTextInputFormatter(29)],
+                decoration: InputDecoration(hintText: S.of(context).enterServiceName),
               ).withLabel(S.of(context).serviceName),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Obx(() {
+                    return Text(
+                      S.of(context).characters + ' ${controller.serviceLength.value}/29 ',
+                      style: AppStyles.lightStyle(),
+                    );
+                  }),
+                ],
+              ),
               32.verticalSpace,
               AppText.mediumText(S.of(context).costOfMaterialsForThisServices),
               10.verticalSpace,
@@ -82,8 +108,7 @@ class AddServiceView extends GetView<AddServiceController> {
               32.verticalSpace,
               ElevatedButton(
                 onPressed: controller.dbAddService,
-                child: AppText.boldText(S.of(context).addService,
-                    color: Colors.white),
+                child: AppText.boldText(S.of(context).addService, color: Colors.white),
               ),
             ],
           ),
