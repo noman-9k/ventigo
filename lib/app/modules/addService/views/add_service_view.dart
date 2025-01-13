@@ -8,7 +8,6 @@ import 'package:ventigo/app/db/db_controller.dart';
 import 'package:ventigo/config/app_text.dart';
 import 'package:ventigo/extensions/text_field_extension.dart';
 
-import '../../../../config/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
 import '../../common/custom_dropdown.dart';
@@ -60,19 +59,7 @@ class AddServiceView extends GetView<AddServiceController> {
                 decoration: InputDecoration(
                   hintText: S.of(context).enterCategoryName,
                 ),
-              ).withLabel(S.of(context).categoryName),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Obx(() {
-                    return Text(
-                      S.of(context).characters + ' ${controller.categoryLength.value}/29 ',
-                      style: AppStyles.lightStyle(),
-                    );
-                  }),
-                ],
-              ),
+              ).addMaxCount(29).withLabel(S.of(context).categoryName),
               32.verticalSpace,
               AppText.mediumText(S.of(context).nameOfTheService),
               10.verticalSpace,
@@ -83,19 +70,7 @@ class AddServiceView extends GetView<AddServiceController> {
                 onChanged: (value) => controller.serviceLength.value = value.length,
                 inputFormatters: [LengthLimitingTextInputFormatter(29)],
                 decoration: InputDecoration(hintText: S.of(context).enterServiceName),
-              ).withLabel(S.of(context).serviceName),
-              SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Obx(() {
-                    return Text(
-                      S.of(context).characters + ' ${controller.serviceLength.value}/29 ',
-                      style: AppStyles.lightStyle(),
-                    );
-                  }),
-                ],
-              ),
+              ).addMaxCount(29).withLabel(S.of(context).serviceName),
               32.verticalSpace,
               AppText.mediumText(S.of(context).costOfMaterialsForThisServices),
               10.verticalSpace,

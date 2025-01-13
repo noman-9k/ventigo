@@ -16,7 +16,11 @@ class UserDataTable extends StatelessWidget {
   const UserDataTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
   // DateTime currentDate = DateTime.now();
-  final TextStyle headerStyle = const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
+  final TextStyle headerStyle = const TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.bold,
+    fontFeatures: [FontFeature.tabularFigures()],
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,7 @@ class UserDataTable extends StatelessWidget {
             return DataTable2(
               columnSpacing: 10,
               horizontalMargin: 10,
-              minWidth: 1100,
+              minWidth: 1350,
               headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected))
                   return Theme.of(context).colorScheme.primary.withOpacity(0.08);
@@ -40,11 +44,7 @@ class UserDataTable extends StatelessWidget {
               columns: [
                 DataColumn2(label: Center(child: Text(S.of(context).regncus, style: headerStyle)), size: ColumnSize.S),
                 DataColumn2(label: Center(child: Text('Cash\nPay', style: headerStyle)), size: ColumnSize.S),
-                DataColumn2(
-                  fixedWidth: 177,
-                  label:
-                      Center(child: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center)),
-                ),
+                DataColumn2(label: Text(S.of(context).customerndata, style: headerStyle), fixedWidth: 300),
                 DataColumn2(
                     label: Center(
                       child: Text(S.of(context).phone + '\n' + S.of(context).number,
@@ -62,7 +62,7 @@ class UserDataTable extends StatelessWidget {
                         Text(S.of(context).service, style: headerStyle, maxLines: 2, overflow: TextOverflow.ellipsis),
                       ],
                     ),
-                    fixedWidth: 230),
+                    fixedWidth: 320),
                 DataColumn2(
                     label: Center(child: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center)),
                     size: ColumnSize.S),
@@ -91,7 +91,7 @@ class UserDataTable extends StatelessWidget {
                       numeric: true),
                 DataColumn2(
                     label: Center(child: Text(S.of(context).note, style: headerStyle, textAlign: TextAlign.center)),
-                    fixedWidth: 200),
+                    fixedWidth: 250),
               ],
               rows: tableItems
                   .map(
@@ -105,7 +105,17 @@ class UserDataTable extends StatelessWidget {
                       cells: [
                         DataCell(YesNoWidget(tableItem.regCustomer)),
                         DataCell(YesNoWidget(tableItem.cardPay)),
-                        DataCell(Center(child: Text(tableItem.name ?? S.of(context).noData))),
+                        DataCell(SizedBox(
+                          width: 380,
+                          child: Column(
+                            children: [
+                              Text(tableItem.name?.split('\n').first ?? S.of(context).noData,
+                                  textAlign: TextAlign.start, overflow: TextOverflow.ellipsis),
+                              Text(tableItem.name?.split('\n').last ?? S.of(context).noData,
+                                  textAlign: TextAlign.start, overflow: TextOverflow.ellipsis),
+                            ],
+                          ),
+                        )),
                         DataCell(Center(
                           child: FittedBox(
                               fit: BoxFit.fitHeight,
@@ -119,23 +129,11 @@ class UserDataTable extends StatelessWidget {
                         DataCell(Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                              height: 18,
-                              child: FittedBox(
-                                fit: BoxFit.fitHeight,
-                                child: Text(
-                                  tableItem.categoryName ?? '',
-                                ),
-                              ),
-                            ),
-                            Divider(height: 5, indent: 30, endIndent: 30),
-
-                            // Service
+                            Text(tableItem.categoryName ?? '',
+                                textAlign: TextAlign.end, overflow: TextOverflow.ellipsis),
+                            Divider(height: 3, indent: 30, endIndent: 30),
                             Text(tableItem.serviceName ?? '',
-                                textAlign: TextAlign.end,
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 12.sp, height: 0.9),
-                                overflow: TextOverflow.ellipsis),
+                                textAlign: TextAlign.end, overflow: TextOverflow.ellipsis),
                           ],
                         )),
                         DataCell(YesNoWidget(tableItem.newCustomer)),
@@ -156,7 +154,7 @@ class UserDataTable extends StatelessWidget {
                               Text(tableItem.total!.percentageOf(tableItem.percentage)),
                             ],
                           )),
-                        DataCell(Text(tableItem.notes ?? '')),
+                        DataCell(Text(tableItem.notes ?? '', maxLines: 2, overflow: TextOverflow.ellipsis)),
                       ],
                     ),
                   )

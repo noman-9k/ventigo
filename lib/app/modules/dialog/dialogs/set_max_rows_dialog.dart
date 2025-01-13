@@ -43,10 +43,6 @@ class _SetMaxRowsDialogState extends State<SetMaxRowsDialog> {
           ).withLabel('Reports Limit'),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel'),
-            ),
-            TextButton(
               onPressed: () => saveMaxDataRows(context, maxDataRowsController.text),
               child: Text('Done'),
             )
@@ -60,10 +56,10 @@ class _SetMaxRowsDialogState extends State<SetMaxRowsDialog> {
             decoration: InputDecoration(border: InputBorder.none),
           ).withLabel('Costs Limit'),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('Cancel'),
-            ),
+            // TextButton(
+            //   onPressed: () => Navigator.pop(context),
+            //   child: Text('Exit'),
+            // ),
             TextButton(
               onPressed: () => saveMaxCostsRows(context, maxCostRowsController.text),
               child: Text('Done'),

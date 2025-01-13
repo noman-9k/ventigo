@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../config/app_styles.dart';
 import '../../../generated/l10n.dart';
@@ -73,8 +74,6 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
   static const itemHeight = 55;
   bool? itemsFound;
   ScrollController _scrollController = ScrollController();
-
-  int chatCount = 0;
 
   void resetList() {
     List tempList = <dynamic>[];
@@ -371,9 +370,6 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
                 : InputDecoration(floatingLabelBehavior: FloatingLabelBehavior.never, labelText: widget.label),
             style: widget.textStyle,
             onChanged: (String value) {
-              setState(() {
-                chatCount = widget.controller.text.length;
-              });
               // every time we make a change to the input, update the list
               _debouncer.run(() {
                 setState(() {
@@ -385,17 +381,7 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
                 });
               });
             },
-          ),
-          if (widget.maxLength != null)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text(
-                  (widget.maxLength ?? 100 - chatCount).toString() + " " + S.of(context).characters + " left",
-                  style: AppStyles.lightStyle(),
-                ),
-              ],
-            ),
+          ).addMaxCount(widget.maxLength),
         ],
       ),
     );

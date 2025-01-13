@@ -37,7 +37,7 @@ class _EditCategoryDialogState extends State<EditCategoryDialog> {
           TextField(
             textCapitalization: TextCapitalization.sentences,
             controller: categoryNameController,
-          ).withLabel(S.of(context).categoryName),
+          ).addMaxCount(29).withLabel(S.of(context).categoryName),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

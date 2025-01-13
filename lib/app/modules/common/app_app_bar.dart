@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:ventigo/app/modules/common/logout_button.dart';
 
@@ -26,7 +27,10 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
             Spacer(),
             CircleAvatar(child: FaIcon(FontAwesomeIcons.users, size: 20)),
             const SizedBox(width: 10),
-            AppText.boldText(title),
+            SizedBox(
+              width: 0.5.sw,
+              child: AppText.boldText(title),
+            ),
             Spacer(),
           ],
         ),

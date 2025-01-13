@@ -25,10 +25,11 @@ class AddReportView extends GetView<AddReportController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-          leading: AppBackButton(),
-          title:
-              //  S.of(context).hello +
-              (EmployeeService.to.employee?.value.name ?? 'Walker!')),
+        leading: AppBackButton(),
+        title:
+            //  S.of(context).hello +
+            (EmployeeService.to.employee?.value.name ?? 'Walker!'),
+      ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: SingleChildScrollView(
@@ -155,7 +156,7 @@ class AddReportView extends GetView<AddReportController> {
                     minLines: 3,
                     maxLines: 5,
                     onChanged: (value) => controller.notesLength.value = value.length,
-                    keyboardType: TextInputType.multiline,
+                    keyboardType: TextInputType.text,
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(45),
                     ],

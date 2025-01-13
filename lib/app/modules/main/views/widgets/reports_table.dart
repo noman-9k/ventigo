@@ -16,7 +16,7 @@ import '../../controllers/main_controller.dart';
 class ReportsTable extends GetView<MainController> {
   const ReportsTable({super.key, required this.stream});
   final Stream<List<DbDataItem>> stream;
-  final TextStyle headerStyle = const TextStyle(fontSize: 11, fontWeight: FontWeight.bold);
+  final TextStyle headerStyle = const TextStyle(fontSize: 12, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,14 @@ class ReportsTable extends GetView<MainController> {
                 // rowsPerPage: 20,
                 autoRowsToHeight: true,
                 columnSpacing: 10,
-                minWidth: 1350,
+                minWidth: 1650,
                 wrapInCard: false,
                 isHorizontalScrollBarVisible: false,
                 isVerticalScrollBarVisible: false,
                 columns: [
                   DataColumn2(
-                    label: Text(S.of(context).employeendata, style: headerStyle, textAlign: TextAlign.center),
-                    size: ColumnSize.L,
-                  ),
+                      label: Text('Employee Information', style: headerStyle, textAlign: TextAlign.center),
+                      fixedWidth: 210),
                   DataColumn2(
                     label: Center(child: Text(S.of(context).regncus, style: headerStyle, textAlign: TextAlign.center)),
                     size: ColumnSize.S,
@@ -50,9 +49,7 @@ class ReportsTable extends GetView<MainController> {
                   DataColumn2(
                       label: Center(child: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center)),
                       size: ColumnSize.S),
-                  DataColumn2(
-                      label: Text(S.of(context).customerndata, style: headerStyle, textAlign: TextAlign.center),
-                      fixedWidth: 177),
+                  DataColumn2(label: Text(S.of(context).customerndata, style: headerStyle), fixedWidth: 300),
                   DataColumn2(
                       label: Center(
                         child: Text(S.of(context).phone + '\n' + S.of(context).number,
@@ -72,7 +69,7 @@ class ReportsTable extends GetView<MainController> {
                           Text(S.of(context).service, style: headerStyle, textAlign: TextAlign.center),
                         ],
                       ),
-                      fixedWidth: 230),
+                      fixedWidth: 320),
                   DataColumn2(
                       label:
                           Center(child: Text(S.of(context).newncus, style: headerStyle, textAlign: TextAlign.center)),
@@ -101,7 +98,7 @@ class ReportsTable extends GetView<MainController> {
                       numeric: true),
                   DataColumn2(
                       label: Center(child: Text(S.of(context).note, style: headerStyle, textAlign: TextAlign.center)),
-                      fixedWidth: 200),
+                      fixedWidth: 300),
                 ],
                 source: _DbDataSource(tableItems, context, controller));
           }
@@ -153,12 +150,20 @@ class _DbDataSource extends DataTableSource {
         return tableItem.date?.getDayColor();
       }),
       cells: [
-        DataCell(FittedBox(child: Center(child: Text(tableItem.employeeName ?? S.of(context).noData)))),
+        DataCell(Center(child: Text(tableItem.employeeName ?? S.of(context).noData, maxLines: 2))),
         DataCell(YesNoWidget(tableItem.regCustomer)),
         DataCell(YesNoWidget(tableItem.cardPay)),
         // DataCell(Text(tableItem.name ?? S.of(context).noData)),
-        DataCell(FittedBox(
-          child: Text(tableItem.name ?? S.of(context).noData, textAlign: TextAlign.start),
+        DataCell(SizedBox(
+          width: 380,
+          child: Column(
+            children: [
+              Text(tableItem.name?.split('\n').first ?? S.of(context).noData,
+                  textAlign: TextAlign.start, overflow: TextOverflow.ellipsis),
+              Text(tableItem.name?.split('\n').last ?? S.of(context).noData,
+                  textAlign: TextAlign.start, overflow: TextOverflow.ellipsis),
+            ],
+          ),
         )),
         DataCell(Center(
           child: FittedBox(fit: BoxFit.fitHeight, child: Text('__' + tableItem.phone.toString().lastThreeCharacters())),
@@ -168,23 +173,11 @@ class _DbDataSource extends DataTableSource {
         DataCell(Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 18,
-              child: FittedBox(
-                fit: BoxFit.fitHeight,
-                child: Text(
-                  tableItem.categoryName ?? '',
-                ),
-              ),
-            ),
-            Divider(height: 5, indent: 30, endIndent: 30),
+            Text(tableItem.categoryName ?? '', textAlign: TextAlign.end, overflow: TextOverflow.ellipsis),
+            Divider(height: 4, indent: 30, endIndent: 30),
 
             // Service
-            Text(tableItem.serviceName ?? '',
-                textAlign: TextAlign.end,
-                maxLines: 2,
-                style: TextStyle(fontSize: 12.sp, height: 0.9),
-                overflow: TextOverflow.ellipsis),
+            Text(tableItem.serviceName ?? '', textAlign: TextAlign.end, overflow: TextOverflow.ellipsis),
           ],
         )),
         DataCell(YesNoWidget(tableItem.newCustomer)),
@@ -206,7 +199,7 @@ class _DbDataSource extends DataTableSource {
             FittedBox(child: Text(tableItem.total!.percentageOf(tableItem.percentage))),
           ],
         )),
-        DataCell(Text(tableItem.notes ?? '')),
+        DataCell(Text(tableItem.notes ?? '', maxLines: 2, overflow: TextOverflow.ellipsis)),
       ],
     );
   }

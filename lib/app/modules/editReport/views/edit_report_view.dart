@@ -30,17 +30,19 @@ class EditReportView extends GetView<EditReportController> {
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.nameController,
                         decoration: InputDecoration(hintText: S.of(context).nameOfClient))
+                    .addMaxCount(29)
                     .withLabel(S.of(context).name),
                 16.verticalSpace,
                 TextField(
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.lastNameController,
                         decoration: InputDecoration(hintText: S.of(context).lastNameOfClient))
+                    .addMaxCount(29)
                     .withLabel(S.of(context).lastName),
                 16.verticalSpace,
                 TextField(
                   controller: controller.phoneController,
-                ).withLabel(S.of(context).phoneNumber),
+                ).addMaxCount(13).withLabel(S.of(context).phoneNumber),
                 16.verticalSpace,
                 YesNoButton(
                     title: S.of(context).newCustomer,
