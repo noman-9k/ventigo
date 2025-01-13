@@ -17,8 +17,7 @@ class ServicesController extends GetxController {
   Future<List> fetchData() async {
     List<SearchItem> list = [];
 
-    List<DbCategory> categories =
-        await DbController.to.appDb.getAllCategoriesF();
+    List<DbCategory> categories = await DbController.to.appDb.getAllCategoriesF();
     List<DbService> services = await DbController.to.appDb.getAllServicesF();
 
     categories.forEach((element) {
@@ -41,19 +40,16 @@ class ServicesController extends GetxController {
     index = dbCategories.indexWhere((element) => element.name == query);
 
     if (index == -1) {
-      DbService service =
-          await DbController.to.appDb.getServiceByServiceName(query);
+      DbService service = await DbController.to.appDb.getServiceByServiceName(query);
 
-      DbCategory category =
-          await DbController.to.appDb.getCategoryByService(service);
+      DbCategory category = await DbController.to.appDb.getCategoryByService(service);
 
       index = dbCategories.indexWhere((element) => element.id == category.id);
     }
     selectCategory(index);
     update();
 
-    scrollController.animateTo(index * height,
-        duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+    scrollController.animateTo(index * height, duration: Duration(milliseconds: 500), curve: Curves.easeIn);
   }
 
   deleteService(int id) {

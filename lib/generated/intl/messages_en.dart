@@ -67,8 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "canAddAPhoneNumber":
             MessageLookupByLibrary.simpleMessage("Can add a phone number"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
-        "cardPay": MessageLookupByLibrary.simpleMessage("Card Pay: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Card\nPay"),
+        "cardPay": MessageLookupByLibrary.simpleMessage("Cash Pay: "),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Cash\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "category": MessageLookupByLibrary.simpleMessage("Category: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Category Name"),
@@ -116,6 +116,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "employeeName": MessageLookupByLibrary.simpleMessage("Employee Name: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Employee Percentage"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Employee\nInformation"),
         "employees": MessageLookupByLibrary.simpleMessage("Employees"),
@@ -213,16 +216,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Number of Service for month"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Number of Units"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Or Create a new Category"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Or sign in as"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "paymentByCard":
-            MessageLookupByLibrary.simpleMessage("Payment by Card"),
+            MessageLookupByLibrary.simpleMessage("Payment by Cash"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Percentage"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pieces": MessageLookupByLibrary.simpleMessage("Pieces"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Please add a category first to add an employee"),

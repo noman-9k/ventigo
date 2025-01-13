@@ -134,6 +134,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Име на служител: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Процент на служителите"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Данни за \nслужителя"),
         "employees": MessageLookupByLibrary.simpleMessage("Служители"),
@@ -231,16 +234,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Брой услуги за месеца"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Брой единици"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Или създайте нова категория"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или влезте като"),
         "password": MessageLookupByLibrary.simpleMessage("Парола"),
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Плащане с карта"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон "),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Телефонен номер"),
         "pieces": MessageLookupByLibrary.simpleMessage("Парчета"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Моля, първо добавете категория, за да добавите служител"),

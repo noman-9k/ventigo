@@ -10,12 +10,20 @@ import 'dialogs/edit_service_dialog.dart';
 import 'dialogs/reset_Password_dialog.dart';
 import 'dialogs/security_questions_dialog.dart';
 import 'dialogs/selecy_table_dialog.dart';
+import 'dialogs/set_max_rows_dialog.dart';
 import 'sheets/data_item_bottom_sheet.dart';
 
 pushChangeSecurityQuestionsDialog(BuildContext context, {bool isFirstTime = false}) {
   showDialog(
     context: context,
     builder: (context) => SecurityQuestionsDialog(isFirstTime: isFirstTime),
+  );
+}
+
+pushSetMaxRowsDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (context) => SetMaxRowsDialog(context),
   );
 }
 

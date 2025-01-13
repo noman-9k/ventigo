@@ -123,6 +123,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Mitarbeitername:"),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Mitarbeiterprozentsatz"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Mitarbeiterdaten"),
         "employees": MessageLookupByLibrary.simpleMessage("Mitarbeiter"),
@@ -224,16 +227,21 @@ class MessageLookup extends MessageLookupByLibrary {
             "Anzahl der Services für den Monat"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Anzahl der Einheiten"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Oder neue Kategorie erstellen"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Oder anmelden als"),
         "password": MessageLookupByLibrary.simpleMessage("Kennwort"),
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Zahlung per Karte"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Prozentsatz"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "pieces": MessageLookupByLibrary.simpleMessage("Stück"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Bitte fügen Sie zuerst eine Kategorie hinzu, um einen Mitarbeiter hinzuzufügen"),

@@ -122,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nazwisko pracownika: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Odsetek pracownika"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Dane pracownika\n"),
         "employees": MessageLookupByLibrary.simpleMessage("pracownicy"),
@@ -219,16 +222,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Numer usługi w miesiącu"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Liczba jednostek"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Lub utwórz nową kategorię"),
         "orSignInAs":
             MessageLookupByLibrary.simpleMessage("Lub zaloguj się jako"),
         "password": MessageLookupByLibrary.simpleMessage("Hasto pracownika"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Płatność Kartą"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Odsetek"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
         "pieces": MessageLookupByLibrary.simpleMessage("kawałki"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Proszę wypełnić pole odpowiedzi"),
         "pleaseSelectAQuestion":

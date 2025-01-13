@@ -35,26 +35,31 @@ class CostsTable extends StatelessWidget {
                         return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                       return AppColors.lightYellow;
                     }),
-                    columnSpacing: 12,
-                    horizontalMargin: 12,
-                    minWidth: 650,
+                    columnSpacing: 10,
+                    horizontalMargin: 20,
+                    minWidth: 1100,
                     columns: [
                       DataColumn2(
-                          label: Text(S.of(context).nameOfncost, textAlign: TextAlign.center, style: headerStyle)),
+                          fixedWidth: 120,
+                          label: Text(S.of(context).nameOfncost, textAlign: TextAlign.start, style: headerStyle)),
                       DataColumn2(
-                          label:
-                              Text(S.of(context).relatedncategories, textAlign: TextAlign.center, style: headerStyle)),
-                      DataColumn2(
-                          label: Text(
-                        S.of(context).deductednfromTax,
-                        textAlign: TextAlign.center,
-                        style: headerStyle,
+                          label: Center(
+                        child: Text(
+                          S.of(context).deductednfromTax,
+                          textAlign: TextAlign.center,
+                          style: headerStyle,
+                        ),
                       )),
-                      DataColumn2(label: Center(child: Text(S.of(context).date, style: headerStyle))),
-                      DataColumn2(label: Center(child: Text('No. of\nunits', style: headerStyle))),
                       DataColumn2(
+                          size: ColumnSize.M,
                           label:
-                              Center(child: Text(S.of(context).price + '\n' + S.of(context).cost, style: headerStyle))),
+                              Center(child: Text(S.of(context).date, textAlign: TextAlign.center, style: headerStyle))),
+                      DataColumn2(label: Center(child: Center(child: Text('No. of\nunits', style: headerStyle)))),
+                      DataColumn2(
+                          size: ColumnSize.L,
+                          label: Center(
+                              child: Center(
+                                  child: Text(S.of(context).price + '\n' + S.of(context).cost, style: headerStyle)))),
                       DataColumn2(
                           size: ColumnSize.L,
                           label: Center(
@@ -65,8 +70,15 @@ class CostsTable extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                           ))),
                       DataColumn2(
-                          label: Text(S.of(context).systematicnexpenditure,
-                              textAlign: TextAlign.center, style: headerStyle)),
+                          label: Center(
+                        child:
+                            Text(S.of(context).systematicnexpenditure, textAlign: TextAlign.center, style: headerStyle),
+                      )),
+                      DataColumn2(
+                          fixedWidth: 250,
+                          label: Center(
+                              child: Text(S.of(context).relatedncategories,
+                                  textAlign: TextAlign.center, style: headerStyle))),
                     ],
                     rows: tableItems
                         .map((tableItem) => DataRow(
@@ -81,13 +93,13 @@ class CostsTable extends StatelessWidget {
                                 }),
                                 cells: [
                                   DataCell(Text(tableItem.name ?? '')),
-                                  DataCell(Center(child: Text(tableItem.categories.join(', ')))),
                                   DataCell(YesNoWidget(tableItem.isDeductFromTax)),
-                                  DataCell(Text(tableItem.date?.smallDate() ?? '', style: TextStyle(fontSize: 10))),
+                                  DataCell(Text(tableItem.date?.smallDate() ?? '')),
                                   DataCell(Center(child: Text(tableItem.numberOfUnits.toString()))),
                                   DataCell(Center(child: Text(tableItem.price.toString()))),
                                   DataCell(Center(child: Text(tableItem.unitsOfMeasurement ?? ''))),
                                   DataCell(YesNoWidget(tableItem.isSystematic)),
+                                  DataCell(Center(child: Text(tableItem.categories.join(', ')))),
                                 ]))
                         .toList(),
                   ),

@@ -18,12 +18,13 @@ class AddServiceController extends GetxController {
 
   List<DbCategories>? categories;
 
+  RxInt serviceLength = 0.obs;
+
+  RxInt categoryLength = 0.obs;
+
   @override
   Future<void> onReady() async {
-    categories = await DbController.to.appDb
-        .getAllCategories()
-        .listen((event) {})
-        .asFuture();
+    categories = await DbController.to.appDb.getAllCategories().listen((event) {}).asFuture();
 
     update();
     super.onReady();
@@ -91,10 +92,8 @@ class AddServiceController extends GetxController {
         ? await _addNewCategory(categoryNameController.text)
         : await DbController.to.appDb.getCategoryId(categoryName!);
 
-    await DbController.to.appDb.insertNewCompanionService(
-        serviceNameController.text,
-        double.tryParse(priceController.text) ?? 0,
-        categoryId);
+    await DbController.to.appDb
+        .insertNewCompanionService(serviceNameController.text, double.tryParse(priceController.text) ?? 0, categoryId);
 
     Get.back();
   }
@@ -104,8 +103,7 @@ class AddServiceController extends GetxController {
       return await DbController.to.appDb.insertNewCompanionCategory(name);
     } catch (e) {
       log('addNewCategory error: $e');
-      return await DbController.to.appDb
-          .insertNewCategory(DbCategory(name: name, id: 0));
+      return await DbController.to.appDb.insertNewCategory(DbCategory(name: name, id: 0));
     }
   }
 

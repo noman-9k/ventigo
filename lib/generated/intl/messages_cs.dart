@@ -118,6 +118,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Jméno zaměstnance: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Procento zaměstnance"),
+        "employeeWillBeDeletedPermanently":
+            MessageLookupByLibrary.simpleMessage(
+                "Employee will be deleted Permanently"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Zaměstnanec\nData"),
         "employees": MessageLookupByLibrary.simpleMessage("Zaměstnanci"),
@@ -212,15 +215,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Počet služeb za měsíc"),
         "numberOfUnits": MessageLookupByLibrary.simpleMessage("Počet jednotek"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Nebo vytvořit novou kategorii"),
         "orSignInAs":
             MessageLookupByLibrary.simpleMessage("Nebo se přihlaste jako"),
         "password": MessageLookupByLibrary.simpleMessage("Heslo"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Platba kartou"),
+        "paymentByCash":
+            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
         "percentage": MessageLookupByLibrary.simpleMessage("Procento"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonní číslo"),
+        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
+            "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Pro přidání zaměstnance nejprve přidejte kategorii"),

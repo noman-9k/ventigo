@@ -22,6 +22,12 @@ class LoginView extends GetView<LoginController> {
         appBar: AppBar(
           actions: [
             IconButton(
+                onPressed: () => controller.shareMyApp(),
+                icon: Icon(
+                  Icons.share,
+                  color: AppColors.blueColor,
+                )),
+            IconButton(
               icon: Row(
                 children: [
                   Icon(Icons.language_outlined),
@@ -36,11 +42,8 @@ class LoginView extends GetView<LoginController> {
                     mainAxisSize: MainAxisSize.min,
                     children: S.delegate.supportedLocales
                         .map((e) => ListTile(
-                              title: AppText.boldText(
-                                  controller.getCountryName(e.languageCode)),
-                              leading: AppText.boldText(
-                                  controller.getFlag(e.languageCode),
-                                  fontSize: 25),
+                              title: AppText.boldText(controller.getCountryName(e.languageCode)),
+                              leading: AppText.boldText(controller.getFlag(e.languageCode), fontSize: 25),
                               onTap: () {
                                 controller.changeLanguage(e);
                                 Navigator.pop(context);
@@ -63,15 +66,11 @@ class LoginView extends GetView<LoginController> {
                 40.verticalSpace,
                 Center(child: Image.asset(AppImages.logo)),
                 40.verticalSpace,
-                Center(
-                    child: AppText.boldText(S.of(context).login,
-                        color: AppColors.blueColor, fontSize: 24.sp)),
+                Center(child: AppText.boldText(S.of(context).login, color: AppColors.blueColor, fontSize: 24.sp)),
                 4.verticalSpace,
                 Center(
                   child: Container(
-                      decoration: BoxDecoration(
-                          color: AppColors.blueColor,
-                          borderRadius: BorderRadius.circular(5)),
+                      decoration: BoxDecoration(color: AppColors.blueColor, borderRadius: BorderRadius.circular(5)),
                       height: 5,
                       width: 50),
                 ),
@@ -79,17 +78,14 @@ class LoginView extends GetView<LoginController> {
                 TextField(
                   controller: controller.loginController,
                   decoration: InputDecoration(
-                      hintText: S.of(context).userName,
-                      prefixIcon:
-                          Icon(Icons.person, color: AppColors.primaryColor)),
+                      hintText: S.of(context).userName, prefixIcon: Icon(Icons.person, color: AppColors.primaryColor)),
                 ).withLabel(S.of(context).userName),
                 10.verticalSpace,
                 TextField(
                   controller: controller.passController,
                   decoration: InputDecoration(
                     hintText: S.of(context).password,
-                    prefixIcon: Icon(Icons.lock_outlined,
-                        color: AppColors.primaryColor),
+                    prefixIcon: Icon(Icons.lock_outlined, color: AppColors.primaryColor),
                   ),
                 ).withLabel(S.of(context).password),
                 40.verticalSpace,
@@ -104,18 +100,13 @@ class LoginView extends GetView<LoginController> {
                 Row(
                   children: [
                     Expanded(
-                      child: Container(
-                          height: 1,
-                          margin: EdgeInsets.only(right: 15, left: 5),
-                          color: AppColors.lightGrey),
+                      child:
+                          Container(height: 1, margin: EdgeInsets.only(right: 15, left: 5), color: AppColors.lightGrey),
                     ),
-                    AppText.mediumText(S.of(context).orSignInAs,
-                        color: AppColors.lightGrey),
+                    AppText.mediumText(S.of(context).orSignInAs, color: AppColors.lightGrey),
                     Expanded(
-                      child: Container(
-                          margin: EdgeInsets.only(left: 15, right: 5),
-                          height: 1,
-                          color: AppColors.lightGrey),
+                      child:
+                          Container(margin: EdgeInsets.only(left: 15, right: 5), height: 1, color: AppColors.lightGrey),
                     ),
                   ],
                 ),
@@ -125,10 +116,7 @@ class LoginView extends GetView<LoginController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Image.asset(AppImages.admin_main)),
+                        SizedBox(width: 50, height: 50, child: Image.asset(AppImages.admin_main)),
                         10.horizontalSpace,
                         AppText.mediumText(S.of(context).adminMaine),
                       ],

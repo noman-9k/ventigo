@@ -11,8 +11,7 @@ import '../../../../generated/l10n.dart';
 import '../dialog_modal.dart';
 
 class EditServiceDialog extends StatefulWidget {
-  const EditServiceDialog(
-      {super.key, required this.onDone, required this.service});
+  const EditServiceDialog({super.key, required this.onDone, required this.service});
   final Function(String?) onDone;
   final DbService service;
 
@@ -27,8 +26,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
   @override
   void initState() {
     serviceNameController = TextEditingController(text: widget.service.name);
-    priceController =
-        TextEditingController(text: widget.service.price.toString());
+    priceController = TextEditingController(text: widget.service.price.toString());
     super.initState();
   }
 
@@ -44,13 +42,10 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
           filled: true,
           floatingLabelBehavior: FloatingLabelBehavior.auto,
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.transparent)),
+              borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.transparent)),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.transparent)),
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
+              borderRadius: BorderRadius.circular(12), borderSide: const BorderSide(color: Colors.transparent)),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 1.0),
         ),
       ),
       child: DialogModel(
@@ -69,7 +64,7 @@ class _EditServiceDialogState extends State<EditServiceDialog> {
                   //     borderRadius: BorderRadius.circular(12),
                   //     borderSide: const BorderSide(color: Colors.transparent)),
                   ),
-            ).withLabel(S.of(context).serviceName),
+            ).addMaxCount(29).withLabel(S.of(context).serviceName),
             16.verticalSpace,
             TextField(
               controller: priceController,

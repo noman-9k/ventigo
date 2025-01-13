@@ -17,6 +17,10 @@ class AppConstants {
     'What is your favorite color?',
   ];
 
+  static int maxRows = 500;
+
+  static String maxCosts = 'maxCosts';
+
   static List<Language> languages = [
     Language(language: 'English', countryFlag: '🇺🇸', languageCode: 'en'),
     Language(language: 'Ukrainian', countryFlag: '🇺🇦', languageCode: 'uk'),

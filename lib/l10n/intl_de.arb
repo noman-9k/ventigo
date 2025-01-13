@@ -202,11 +202,14 @@
   "whatIsYourFavoriteSong": "Was ist Ihr Lieblingslied?",
   "whatIsYourFavoriteColor": "Was ist Ihre Lieblingsfarbe?",
   "number": "Nummer",
-"viewServicesBefore7Days": "Dienste vor 7 Tagen anzeigen",
-"canAddAPhoneNumber": "Kann eine Telefonnummer hinzufügen",
-"invalidPin": "Ungültige PIN",
-"note": "Notiz",
-"enterANote": "Notiz eingeben",
-"characters": "Zeichen"
-
+  "viewServicesBefore7Days": "Dienste vor 7 Tagen anzeigen",
+  "canAddAPhoneNumber": "Kann eine Telefonnummer hinzufügen",
+  "invalidPin": "Ungültige PIN",
+  "note": "Notiz",
+  "enterANote": "Notiz eingeben",
+  "characters": "Zeichen",
+  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
+  "paymentByCash": "Payment By Cash",
+  "optionally": " (Optionally)",
+  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
 }

@@ -203,10 +203,13 @@
   "whatIsYourFavoriteColor": "Was ist Ihre Lieblingsfarbe?",
   "number": "номер",
   "viewServicesBefore7Days": "Преглед на услугите преди 7 дни",
- "canAddAPhoneNumber": "Може да добави телефонен номер",
- "invalidPin": "Невалиден ПИН",
- "note": "Забележка",
- "enterANote": "Въведете бележка",
- "characters": "знаци"
-  
+  "canAddAPhoneNumber": "Може да добави телефонен номер",
+  "invalidPin": "Невалиден ПИН",
+  "note": "Забележка",
+  "enterANote": "Въведете бележка",
+  "characters": "знаци",
+  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
+  "paymentByCash": "Payment By Cash",
+  "optionally": " (Optionally)",
+  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
 }

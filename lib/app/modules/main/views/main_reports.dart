@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../config/app_text.dart';
@@ -44,10 +43,9 @@ class MainReportsView extends GetView<MainController> {
             ],
           ),
         ),
-        10.verticalSpace,
         Expanded(child: GetBuilder<MainController>(builder: (controller) {
           return ReportsTable(stream: controller.currentStream);
-        }))
+        })),
       ],
     );
   }

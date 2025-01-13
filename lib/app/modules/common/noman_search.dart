@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/services.dart';
+import 'package:ventigo/extensions/text_field_extension.dart';
+
+import '../../../config/app_styles.dart';
+import '../../../generated/l10n.dart';
+
 class NomanTextFieldSearch extends StatefulWidget {
   /// A default list of values that can be used for an initial list of elements to select from
   final List? initialList;
@@ -34,6 +40,8 @@ class NomanTextFieldSearch extends StatefulWidget {
 
   final TextInputType? keyboardType;
 
+  final int? maxLength;
+
   /// Creates a NomanTextFieldSearch for displaying selected elements and retrieving a selected element
   const NomanTextFieldSearch(
       {Key? key,
@@ -42,6 +50,7 @@ class NomanTextFieldSearch extends StatefulWidget {
       required this.controller,
       this.textStyle,
       this.future,
+      this.maxLength,
       this.getSelectedValue,
       this.decoration,
       this.scrollbarDecoration,
@@ -347,26 +356,33 @@ class _NomanTextFieldSearchState extends State<NomanTextFieldSearch> {
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
       link: this._layerLink,
-      child: TextField(
-        keyboardType: widget.keyboardType,
-        controller: widget.controller,
-        focusNode: this._focusNode,
-        decoration: widget.decoration != null
-            ? widget.decoration
-            : InputDecoration(floatingLabelBehavior: FloatingLabelBehavior.never, labelText: widget.label),
-        style: widget.textStyle,
-        onChanged: (String value) {
-          // every time we make a change to the input, update the list
-          _debouncer.run(() {
-            setState(() {
-              if (hasFuture) {
-                updateGetItems();
-              } else {
-                updateList();
-              }
-            });
-          });
-        },
+      child: Column(
+        children: [
+          TextField(
+            inputFormatters: [
+              LengthLimitingTextInputFormatter(widget.maxLength),
+            ],
+            keyboardType: widget.keyboardType,
+            controller: widget.controller,
+            focusNode: this._focusNode,
+            decoration: widget.decoration != null
+                ? widget.decoration
+                : InputDecoration(floatingLabelBehavior: FloatingLabelBehavior.never, labelText: widget.label),
+            style: widget.textStyle,
+            onChanged: (String value) {
+              // every time we make a change to the input, update the list
+              _debouncer.run(() {
+                setState(() {
+                  if (hasFuture) {
+                    updateGetItems();
+                  } else {
+                    updateList();
+                  }
+                });
+              });
+            },
+          ).addMaxCount(widget.maxLength),
+        ],
       ),
     );
   }

@@ -203,10 +203,13 @@
   "whatIsYourFavoriteColor": "Какой ваш любимый цвет?",
   "number": "число",
   "viewServicesBefore7Days": "Просмотр услуг до 7 дней",
-"canAddAPhoneNumber": "Можно добавить номер телефона",
-"invalidPin": "Неверный PIN-код",
-"note": "Примечание",
-"enterANote": "Введите примечание",
-"characters": "символы"
+  "canAddAPhoneNumber": "Можно добавить номер телефона",
+  "invalidPin": "Неверный PIN-код",
+  "note": "Примечание",
+  "enterANote": "Введите примечание",
+  "characters": "символы",
+  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
+  "paymentByCash": "Payment By Cash",
+  "optionally": " (Optionally)",
+  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
 }
-  

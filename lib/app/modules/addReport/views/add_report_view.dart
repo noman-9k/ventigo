@@ -25,10 +25,11 @@ class AddReportView extends GetView<AddReportController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppAppBar(
-          leading: AppBackButton(),
-          title:
-              //  S.of(context).hello +
-              (EmployeeService.to.employee?.value.name ?? 'Walker!')),
+        leading: AppBackButton(),
+        title:
+            //  S.of(context).hello +
+            (EmployeeService.to.employee?.value.name ?? 'Walker!'),
+      ),
       body: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: SingleChildScrollView(
@@ -44,32 +45,35 @@ class AddReportView extends GetView<AddReportController> {
                 AppText.lightBoldText(S.of(context).name),
                 SizedBox(height: 5),
                 NomanTextFieldSearch(
+                    maxLength: 25,
                     key: ValueKey(controller.nameController),
                     label: S.of(context).nameOfClient,
                     controller: controller.nameController,
                     future: () => controller.fetchDataName(),
                     getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
-                16.verticalSpace,
+                11.verticalSpace,
                 AppText.lightBoldText(S.of(context).lastName),
                 SizedBox(height: 5),
                 NomanTextFieldSearch(
+                    maxLength: 25,
                     label: S.of(context).lastNameOfClient,
                     key: ValueKey(controller.lastNameController),
                     controller: controller.lastNameController,
                     future: () => controller.fetchDataName(),
                     getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
-                16.verticalSpace,
+                11.verticalSpace,
                 if (controller.canAddAPhone()) ...[
                   AppText.lightBoldText(S.of(context).phoneNumber),
                   SizedBox(height: 5),
                   NomanTextFieldSearch(
+                      maxLength: 13,
                       keyboardType: TextInputType.phone,
                       label: S.of(context).phone,
                       key: ValueKey(controller.phoneController),
                       controller: controller.phoneController,
                       future: () => controller.fetchDataPhone(),
                       getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),
-                  16.verticalSpace,
+                  11.verticalSpace,
                 ],
                 GetBuilder<YesNoButtonController>(builder: (controller) {
                   return Column(
@@ -94,7 +98,7 @@ class AddReportView extends GetView<AddReportController> {
                   );
                 }),
                 YesNoButton(
-                    title: S.of(context).paymentByCard,
+                    title: 'Pay with Cash',
                     onChanged: (value) {
                       controller.cardPay = value;
                     }),
@@ -129,6 +133,7 @@ class AddReportView extends GetView<AddReportController> {
                 TextField(
                     controller: controller.priceController,
                     keyboardType: TextInputType.number,
+                    inputFormatters: [LengthLimitingTextInputFormatter(13)],
                     decoration: InputDecoration(
                       hintText: S.of(context).priceOfService,
                     )).withLabel(S.of(context).price),
@@ -148,10 +153,10 @@ class AddReportView extends GetView<AddReportController> {
                 SizedBox(height: 5),
                 TextField(
                     controller: controller.notesController,
-                    minLines: 5,
-                    maxLines: 7,
+                    minLines: 3,
+                    maxLines: 5,
                     onChanged: (value) => controller.notesLength.value = value.length,
-                    keyboardType: TextInputType.multiline,
+                    keyboardType: TextInputType.text,
                     inputFormatters: [
                       LengthLimitingTextInputFormatter(45),
                     ],

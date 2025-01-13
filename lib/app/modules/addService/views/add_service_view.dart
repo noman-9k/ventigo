@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
@@ -21,10 +22,7 @@ class AddServiceView extends GetView<AddServiceController> {
       //   onPressed: () => controller.getAll(),
       //   child: Icon(Icons.arrow_forward),
       // ),
-      appBar: AppBar(
-          leading: AppBackButton(),
-          title: AppText.boldText(S.of(context).addService),
-          centerTitle: true),
+      appBar: AppBar(leading: AppBackButton(), title: AppText.boldText(S.of(context).addService), centerTitle: true),
       body: SingleChildScrollView(
         child: Padding(
           padding: AppConstants.defaultPadding,
@@ -55,11 +53,13 @@ class AddServiceView extends GetView<AddServiceController> {
                 textCapitalization: TextCapitalization.sentences,
                 // onTap: controller.addNewCategory,
                 // readOnly: true,
+                inputFormatters: [LengthLimitingTextInputFormatter(29)],
+                onChanged: (value) => controller.categoryLength.value = value.length,
                 controller: controller.categoryNameController,
                 decoration: InputDecoration(
                   hintText: S.of(context).enterCategoryName,
                 ),
-              ).withLabel(S.of(context).categoryName),
+              ).addMaxCount(29).withLabel(S.of(context).categoryName),
               32.verticalSpace,
               AppText.mediumText(S.of(context).nameOfTheService),
               10.verticalSpace,
@@ -67,9 +67,10 @@ class AddServiceView extends GetView<AddServiceController> {
                 style: TextStyle(fontSize: 14.sp),
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller.serviceNameController,
-                decoration:
-                    InputDecoration(hintText: S.of(context).enterServiceName),
-              ).withLabel(S.of(context).serviceName),
+                onChanged: (value) => controller.serviceLength.value = value.length,
+                inputFormatters: [LengthLimitingTextInputFormatter(29)],
+                decoration: InputDecoration(hintText: S.of(context).enterServiceName),
+              ).addMaxCount(29).withLabel(S.of(context).serviceName),
               32.verticalSpace,
               AppText.mediumText(S.of(context).costOfMaterialsForThisServices),
               10.verticalSpace,
@@ -82,8 +83,7 @@ class AddServiceView extends GetView<AddServiceController> {
               32.verticalSpace,
               ElevatedButton(
                 onPressed: controller.dbAddService,
-                child: AppText.boldText(S.of(context).addService,
-                    color: Colors.white),
+                child: AppText.boldText(S.of(context).addService, color: Colors.white),
               ),
             ],
           ),

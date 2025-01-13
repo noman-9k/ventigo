@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/config/app_enums.dart';
 import 'package:ventigo/config/app_text.dart';
-import 'package:ventigo/extensions/text_field_extension.dart';
+import 'package:ventigo/extensions/text_field_extension.dart'; // Ensure this extension contains the 'withLabel' method
 
 import '../../../../generated/l10n.dart';
 import '../../common/back_button.dart';
@@ -28,17 +29,21 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
               return Column(
                 children: [
                   TextField(
+                          inputFormatters: [LengthLimitingTextInputFormatter(29)],
                           textCapitalization: TextCapitalization.sentences,
                           controller: controller.nameController,
                           decoration: InputDecoration(hintText: S.of(context).enterYourName))
+                      .addMaxCount(29)
                       .withLabel(S.of(context).name),
+                  // .withLabel(S.of(context).name)
+
                   10.verticalSpace,
                   TextField(
                       textCapitalization: TextCapitalization.sentences,
                       controller: controller.lastNameController,
                       decoration: InputDecoration(
                         hintText: S.of(context).enterYourLastName,
-                      )).withLabel(S.of(context).lastName),
+                      )).addMaxCount(29).withLabel(S.of(context).lastName),
                   10.verticalSpace,
                   TextField(
                       controller: controller.loginController,
@@ -65,6 +70,9 @@ class AddEmployeeView extends GetView<AddEmployeeController> {
                   5.verticalSpace,
                   TextField(
                     controller: controller.percentageController,
+                    inputFormatters: [
+                      LengthLimitingTextInputFormatter(4),
+                    ],
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(hintText: S.of(context).setPercentageOfIncome),
                   ).withLabel(S.of(context).percentage),

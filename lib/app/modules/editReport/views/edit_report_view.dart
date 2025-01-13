@@ -18,9 +18,7 @@ class EditReportView extends GetView<EditReportController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: AppText.boldText(S.of(context).editReport, fontSize: 20.sp),
-          leading: AppBackButton()),
+      appBar: AppBar(title: AppText.boldText(S.of(context).editReport, fontSize: 20.sp), leading: AppBackButton()),
       body: SingleChildScrollView(
         child: Padding(
           padding: AppConstants.defaultPadding,
@@ -31,20 +29,20 @@ class EditReportView extends GetView<EditReportController> {
                 TextField(
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.nameController,
-                        decoration: InputDecoration(
-                            hintText: S.of(context).nameOfClient))
+                        decoration: InputDecoration(hintText: S.of(context).nameOfClient))
+                    .addMaxCount(29)
                     .withLabel(S.of(context).name),
                 16.verticalSpace,
                 TextField(
                         textCapitalization: TextCapitalization.sentences,
                         controller: controller.lastNameController,
-                        decoration: InputDecoration(
-                            hintText: S.of(context).lastNameOfClient))
+                        decoration: InputDecoration(hintText: S.of(context).lastNameOfClient))
+                    .addMaxCount(29)
                     .withLabel(S.of(context).lastName),
                 16.verticalSpace,
                 TextField(
                   controller: controller.phoneController,
-                ).withLabel(S.of(context).phoneNumber),
+                ).addMaxCount(13).withLabel(S.of(context).phoneNumber),
                 16.verticalSpace,
                 YesNoButton(
                     title: S.of(context).newCustomer,
@@ -59,7 +57,7 @@ class EditReportView extends GetView<EditReportController> {
                     }),
                 16.verticalSpace,
                 YesNoButton(
-                    title: S.of(context).paymentByCard,
+                    title: 'Payment By Cash',
                     onChanged: (value) {
                       controller.cardPay = value;
                     }),
@@ -77,8 +75,7 @@ class EditReportView extends GetView<EditReportController> {
                 controller.selectedCategory == null
                     ? const SizedBox()
                     : GetServiceOfCategoryById(
-                        categoryId: controller.selectedCategory?.id,
-                        onChanged: controller.onServiceChanged),
+                        categoryId: controller.selectedCategory?.id, onChanged: controller.onServiceChanged),
                 16.verticalSpace,
                 // TextField(
                 //     controller: controller.priceController,
@@ -92,8 +89,7 @@ class EditReportView extends GetView<EditReportController> {
                       onPressed: controller.editReport,
                       child: controller.isLoading.isTrue
                           ? CircularProgressIndicator()
-                          : AppText.boldText(S.of(context).submit,
-                              color: Colors.white));
+                          : AppText.boldText(S.of(context).submit, color: Colors.white));
                 }),
                 16.verticalSpace,
               ],

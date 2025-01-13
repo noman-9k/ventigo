@@ -5,11 +5,11 @@ import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
 class CustomDropDown extends StatefulWidget {
-  const CustomDropDown(
-      {super.key, required this.items, this.onChanged, required this.title});
+  const CustomDropDown({super.key, required this.items, this.onChanged, required this.title, this.selectedValue});
   final List<String>? items;
   final Function(String?)? onChanged;
   final String title;
+  final String? selectedValue;
 
   @override
   State<CustomDropDown> createState() => _CustomDropDownState();
@@ -17,6 +17,12 @@ class CustomDropDown extends StatefulWidget {
 
 class _CustomDropDownState extends State<CustomDropDown> {
   String? selectedValue;
+
+  @override
+  void initState() {
+    selectedValue = widget.selectedValue;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +49,13 @@ class _CustomDropDownState extends State<CustomDropDown> {
           height: 50,
           width: 1.sw,
           padding: const EdgeInsets.only(left: 14, right: 14),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: AppColors.veryLightGrey),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(14), color: AppColors.veryLightGrey),
         ),
-        iconStyleData: const IconStyleData(
-            icon: Icon(Icons.arrow_forward_ios_outlined), iconSize: 14),
+        iconStyleData: const IconStyleData(icon: Icon(Icons.arrow_forward_ios_outlined), iconSize: 14),
         dropdownStyleData: DropdownStyleData(
           maxHeight: 200,
           width: 1.sw - 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              color: AppColors.whiteColor),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(14), color: AppColors.whiteColor),
           offset: const Offset(0, 0),
           scrollbarTheme: ScrollbarThemeData(
             radius: const Radius.circular(40),
@@ -62,8 +63,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
             thumbVisibility: MaterialStateProperty.all(true),
           ),
         ),
-        menuItemStyleData: const MenuItemStyleData(
-            height: 40, padding: EdgeInsets.only(left: 14, right: 14)),
+        menuItemStyleData: const MenuItemStyleData(height: 40, padding: EdgeInsets.only(left: 14, right: 14)),
       ),
     );
   }

@@ -22,7 +22,7 @@ class MainView extends GetView<MainController> {
       backgroundColor: Colors.grey[100],
       appBar: AppAppBar(title: S.of(context).hello),
       body: TwoTabsView(
-        topCenterWidget: DateWidget(),
+        // topCenterWidget: DateWidget(),
         onFilterPressed: (p0) {
           if (p0 == 0) Get.toNamed(Routes.COSTS_FILTER);
           if (p0 == 1) Get.toNamed(Routes.FILTERS);

@@ -7,6 +7,7 @@ import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
+import '../../../../config/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../dialog/dialog_functions.dart';
 import '../controllers/settings_controller.dart';
@@ -24,9 +25,8 @@ class SettingsView extends GetView<SettingsController> {
               Padding(
                 padding: AppConstants.defaultPadding,
                 child: Column(children: [
-                  Image.asset('assets/icon/settings.png', height: 80.h),
+                  Image.asset('assets/icon/settings.png', height: 60.h),
                   10.verticalSpace,
-                  20.verticalSpace,
                   ListTile(
                     title: AppText.boldText(S.of(context).changeAdminPassword),
                     trailing: Icon(Icons.arrow_forward_ios),
@@ -35,6 +35,48 @@ class SettingsView extends GetView<SettingsController> {
                     },
                   ),
 
+                  ListTile(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    selectedColor: Colors.transparent,
+                    title: AppText.boldText('Set Max Rows to Keep'),
+                    onTap: () {
+                      pushSetMaxRowsDialog(context);
+                    },
+                    trailing: Icon(Icons.arrow_forward_ios),
+
+                    // trailing:
+                    // SizedBox(
+                    //   width: 0.2.sw,
+                    //   child: TextField(
+                    //       clipBehavior: Clip.antiAlias,
+                    //       keyboardType: TextInputType.number,
+                    //       textAlign: TextAlign.end,
+                    //       maxLines: 1,
+                    //       textInputAction: TextInputAction.done,
+                    //       style: AppStyles.boldStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
+                    //       controller: controller.maxRowsController,
+                    //       decoration: InputDecoration(
+                    //         fillColor: Colors.transparent,
+                    //         border: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           borderSide: const BorderSide(color: AppColors.primaryColor, width: 2),
+                    //         ),
+                    //         enabledBorder: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           borderSide: const BorderSide(color: AppColors.primaryColor, width: 2),
+                    //         ),
+                    //         focusedBorder: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(10),
+                    //           borderSide: const BorderSide(color: AppColors.primaryColor, width: 2),
+                    //         ),
+                    //       ),
+                    //       onSubmitted: (value) {
+                    //         controller.saveMaxRows(context, value);
+                    //       }),
+                    // ),
+                  ),
                   ListTile(
                     title: AppText.boldText(S.of(context).exportToFile),
                     trailing: Icon(Icons.arrow_forward_ios),
