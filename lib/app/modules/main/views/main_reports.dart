@@ -17,7 +17,7 @@ class MainReportsView extends GetView<MainController> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -43,9 +43,11 @@ class MainReportsView extends GetView<MainController> {
             ],
           ),
         ),
-        Expanded(child: GetBuilder<MainController>(builder: (controller) {
-          return ReportsTable(stream: controller.currentStream);
-        })),
+        GetBuilder<MainController>(builder: (controller) {
+          return Expanded(
+            child: ReportsTable(stream: controller.currentStream),
+          );
+        }),
       ],
     );
   }

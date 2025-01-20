@@ -48,7 +48,7 @@ extension ListExtension on List<StatResultModel> {
         totals.noRegCustomer += item.noRegCustomer;
         totals.noNewCustomer += item.noNewCustomer;
         totals.totalServices += item.totalServices;
-        (totals.totalCost += item.totalCost).roundToDouble();
+        (totals.totalCost += item.totalCost).round();
         totals.percentage += item.percentage;
         totals.shopCost = item.shopCost;
         totals.uniqueCustomers = item.uniqueCustomers;
