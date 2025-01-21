@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 import 'package:ventigo/extensions/double_extensions.dart';
@@ -59,7 +58,8 @@ class ReportsTable extends GetView<MainController> {
                     DataColumn2(
                         label: Center(child: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center)),
                         size: ColumnSize.S),
-                    DataColumn2(label: Text(S.of(context).customerndata, style: headerStyle), fixedWidth: 300),
+                    DataColumn2(
+                        label: Center(child: Text(S.of(context).customerndata, style: headerStyle)), fixedWidth: 300),
                     DataColumn2(
                         label: Center(
                           child: Text(S.of(context).phone + '\n' + S.of(context).number,
@@ -161,7 +161,7 @@ class _DbDataSource extends DataTableSource {
         return tableItem.date?.getDayColor();
       }),
       cells: [
-        DataCell(Center(child: Text(tableItem.employeeName ?? S.of(context).noData, maxLines: 2))),
+        DataCell(Text(tableItem.employeeName ?? S.of(context).noData, maxLines: 2)),
         DataCell(YesNoWidget(tableItem.regCustomer)),
         DataCell(YesNoWidget(tableItem.cardPay)),
         // DataCell(Text(tableItem.name ?? S.of(context).noData)),

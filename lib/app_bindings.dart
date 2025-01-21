@@ -3,6 +3,7 @@ import 'package:ventigo/app/app_services/delete_excess_data_service.dart';
 import 'package:ventigo/app/app_services/employee_service.dart';
 
 import 'app/app_services/category_service.dart';
+import 'app/app_services/network_controller.dart';
 import 'app/db/db_controller.dart';
 import 'app/modules/splash/controllers/splash_controller.dart';
 import 'app/app_services/purchase_service.dart';
@@ -12,6 +13,7 @@ class AppBindings extends Bindings {
   void dependencies() {
     Get.put<SplashController>(SplashController());
     Get.put<DbController>(DbController(), permanent: true);
+    Get.put<NetworkController>(NetworkController());
 
     // services
     Get.lazyPut<EmployeeService>(() => EmployeeService());
