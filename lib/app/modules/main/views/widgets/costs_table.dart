@@ -37,11 +37,17 @@ class CostsTable extends StatelessWidget {
                     }),
                     columnSpacing: 10,
                     horizontalMargin: 20,
-                    minWidth: 1100,
+                    minWidth: 1200,
                     columns: [
                       DataColumn2(
-                          fixedWidth: 120,
-                          label: Text(S.of(context).nameOfncost, textAlign: TextAlign.start, style: headerStyle)),
+                          fixedWidth: 170,
+                          label: Text(
+                            S.of(context).nameOfncost,
+                            textAlign: TextAlign.start,
+                            style: headerStyle,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          )),
                       DataColumn2(
                           label: Center(
                         child: Text(
