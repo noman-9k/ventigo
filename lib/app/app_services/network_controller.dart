@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class NetworkController extends GetxController {
   final Connectivity _connectivity = Connectivity();
-  final RxBool isConnected = true.obs; // Default to true
+  final RxBool isConnected = false.obs; // Default to true
 
   StreamSubscription<List<ConnectivityResult>>? _subscription;
 
