@@ -33,7 +33,7 @@ class EmployeeDataTable extends StatelessWidget {
                 }),
                 columns: [
                   DataColumn2(label: Text(S.of(context).regncus), size: ColumnSize.S),
-                  DataColumn2(label: Text('Cash/Pay'), size: ColumnSize.S),
+                  DataColumn2(label: Text(S.of(context).cashnpay), size: ColumnSize.S),
                   DataColumn2(
                       label: Text(S.of(context).employeendata, textAlign: TextAlign.center), size: ColumnSize.L),
                   DataColumn2(label: Center(child: Text(S.of(context).date)), fixedWidth: 100),

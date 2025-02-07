@@ -43,7 +43,7 @@ class UserDataTable extends StatelessWidget {
               }),
               columns: [
                 DataColumn2(label: Center(child: Text(S.of(context).regncus, style: headerStyle)), size: ColumnSize.S),
-                DataColumn2(label: Center(child: Text('Cash\nPay', style: headerStyle)), size: ColumnSize.S),
+                DataColumn2(label: Center(child: Text(S.of(context).cashnpay, style: headerStyle)), size: ColumnSize.S),
                 DataColumn2(label: Text(S.of(context).customerndata, style: headerStyle), fixedWidth: 300),
                 DataColumn2(
                     label: Center(

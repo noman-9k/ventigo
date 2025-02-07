@@ -74,7 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Може да добави телефонен номер"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отказ"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Плащане с карта: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\n"),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане \nс карта"),
         "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Категории"),
         "category": MessageLookupByLibrary.simpleMessage("Категория: "),

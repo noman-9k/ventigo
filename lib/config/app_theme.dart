@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_styles.dart';
 
 class AppTheme {
   ThemeData appThemeDate = ThemeData(
-    fontFamily: GoogleFonts.poppins().fontFamily,
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
