@@ -55,7 +55,7 @@ class MySharedPref {
   }
 
   static String getLanguage() {
-    return _sharedPreferences.getString('language') ?? 'en';
+    return _sharedPreferences.getString('language') ?? 'pl';
   }
 
   static void deleteFromDisk(String s) {

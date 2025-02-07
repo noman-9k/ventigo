@@ -206,9 +206,17 @@
   "invalidPin": "Nieprawidłowy kod PIN",
   "note": "Uwaga",
   "enterANote": "Wprowadź notatkę",
-  "characters": "characters",
-  "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
-  "paymentByCash": "Payment By Cash",
-  "optionally": " (Optionally)",
-  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
+  "characters": "znaki",
+  "employeeWillBeDeletedPermanently": "Pracownik zostanie trwale usunięty",
+  "paymentByCash": "Płatność gotówką",
+  "optionally": "(Opcjonalnie)",
+  "piecesLitersKilograms": "Sztuki, Litry, Kilogramy ..",
+  "uniquenclients": "Unique\\nClients",
+  "setMaxRowsToKeep": "Set Max Rows to Keep",
+  "employeeInformation": "Employee Information",
+  "cashnpay": "Cash\\nPay",
+  "electricityWaterGasEtc": "Electricity, Water, Gas, etc",
+  "noOfnunits": "No. of\\nunits",
+  "unitOfnmeasurement": "Unit of\\nMeasurement",
+  "payWithCash": "Pay with Cash"
 }

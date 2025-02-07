@@ -98,7 +98,7 @@ class AddReportView extends GetView<AddReportController> {
                   );
                 }),
                 YesNoButton(
-                    title: 'Pay with Cash',
+                    title: S.of(context).payWithCash,
                     onChanged: (value) {
                       controller.cardPay = value;
                     }),

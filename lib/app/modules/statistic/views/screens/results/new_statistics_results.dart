@@ -195,7 +195,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                         child: FittedBox(
                             fit: BoxFit.fitWidth,
                             child: Text(
-                              'Unique\nClients',
+                              S.of(context).uniquenclients,
                               style: headerStyle,
                             )),
                       ),

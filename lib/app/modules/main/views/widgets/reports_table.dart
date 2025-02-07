@@ -48,7 +48,7 @@ class ReportsTable extends GetView<MainController> {
                   wrapInCard: false,
                   columns: [
                     DataColumn2(
-                        label: Text('Employee Information', style: headerStyle, textAlign: TextAlign.center),
+                        label: Text(S.of(context).employeeInformation, style: headerStyle, textAlign: TextAlign.center),
                         fixedWidth: 210),
                     DataColumn2(
                       label:
@@ -56,7 +56,8 @@ class ReportsTable extends GetView<MainController> {
                       size: ColumnSize.S,
                     ),
                     DataColumn2(
-                        label: Center(child: Text('Cash\nPay', style: headerStyle, textAlign: TextAlign.center)),
+                        label: Center(
+                            child: Text(S.of(context).cashnpay, style: headerStyle, textAlign: TextAlign.center)),
                         size: ColumnSize.S),
                     DataColumn2(
                         label: Center(child: Text(S.of(context).customerndata, style: headerStyle)), fixedWidth: 300),

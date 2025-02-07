@@ -17,8 +17,7 @@ class SecurityQuestionsDialog extends StatefulWidget {
   final bool isFirstTime;
 
   @override
-  State<SecurityQuestionsDialog> createState() =>
-      _SecurityQuestionsDialogState();
+  State<SecurityQuestionsDialog> createState() => _SecurityQuestionsDialogState();
 }
 
 class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
@@ -35,11 +34,8 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
         children: [
           Text(S.of(context).securityQuestions, style: AppStyles.boldStyle()),
           10.verticalSpace,
-          if (MySharedPref.getFromDisk('question') != null ||
-              MySharedPref.getFromDisk('question') == '')
-            AppText.lightBoldText(
-                S.of(context).previousQuestion +
-                    ':\n${MySharedPref.getFromDisk('question') ?? ''}',
+          if (MySharedPref.getFromDisk('question') != null || MySharedPref.getFromDisk('question') == '')
+            AppText.lightBoldText(S.of(context).previousQuestion + ':\n${MySharedPref.getFromDisk('question') ?? ''}',
                 align: TextAlign.center),
           10.verticalSpace,
           CustomDropDown(
@@ -63,7 +59,7 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
             ),
-          ).withLabel('Answer'),
+          ).withLabel(S.of(context).answer),
           20.verticalSpace,
           ElevatedButton(
             onPressed: () {
@@ -77,8 +73,7 @@ class _SecurityQuestionsDialogState extends State<SecurityQuestionsDialog> {
 
                 return;
               }
-              if (answerController.text.trim().isEmpty ||
-                  answerController.text.trim() == '') {
+              if (answerController.text.trim().isEmpty || answerController.text.trim() == '') {
                 Get.showSnackbar(GetSnackBar(
                   title: S.of(context).pleaseFillInTheAnswerField,
                   message: S.of(context).pleaseFillInTheAnswerField,

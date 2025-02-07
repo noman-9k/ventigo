@@ -40,7 +40,7 @@ class AddCostView extends GetView<AddCostController> {
                 NomanTextFieldSearch(
                     maxLength: 25,
                     // key: ValueKey(controller.nameController),
-                    label: 'Electricity, Water, Gas, etc',
+                    label: S.of(context).electricityWaterGasEtc,
                     controller: controller.nameController,
                     future: () => controller.fetchCategoriesName(),
                     getSelectedValue: (SearchItem value) => controller.onSearchItemChanged(value)),

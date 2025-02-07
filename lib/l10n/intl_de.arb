@@ -211,5 +211,13 @@
   "employeeWillBeDeletedPermanently": "Employee will be deleted Permanently",
   "paymentByCash": "Payment By Cash",
   "optionally": " (Optionally)",
-  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. "
+  "piecesLitersKilograms": "Pieces, Liters, Kilograms .. ",
+  "uniquenclients": "Unique\\nClients",
+  "setMaxRowsToKeep": "Set Max Rows to Keep",
+  "employeeInformation": "Employee Information",
+  "cashnpay": "Cash\\nPay",
+  "electricityWaterGasEtc": "Electricity, Water, Gas, etc",
+  "noOfnunits": "No. of\\nunits",
+  "unitOfnmeasurement": "Unit of\\nMeasurement",
+  "payWithCash": "Pay with Cash"
 }

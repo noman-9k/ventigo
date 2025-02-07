@@ -70,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Zrušit"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Platba kartou: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZaplatit"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("kategorie"),
         "category": MessageLookupByLibrary.simpleMessage("kategorie: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Název kategorie"),
@@ -114,6 +115,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Upravit kategorii"),
         "editReport": MessageLookupByLibrary.simpleMessage("Upravit zprávu"),
         "editService": MessageLookupByLibrary.simpleMessage("Upravit službu"),
+        "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
+            "Electricity, Water, Gas, etc"),
+        "employeeInformation":
+            MessageLookupByLibrary.simpleMessage("Employee Information"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Jméno zaměstnance: "),
         "employeePercentage":
@@ -202,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noNewnclient":
             MessageLookupByLibrary.simpleMessage("Ne. Nový\nKlient"),
         "noOfnservices": MessageLookupByLibrary.simpleMessage("Počet\nslužeb"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
         "noRegnclient": MessageLookupByLibrary.simpleMessage("Ne. Reg\nKlient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
@@ -221,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "orSignInAs":
             MessageLookupByLibrary.simpleMessage("Nebo se přihlaste jako"),
         "password": MessageLookupByLibrary.simpleMessage("Heslo"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Platba kartou"),
         "paymentByCash":
             MessageLookupByLibrary.simpleMessage("Payment By Cash"),
@@ -290,6 +297,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Služby"),
         "setAdminPassword":
             MessageLookupByLibrary.simpleMessage("Nastavit heslo správce"),
+        "setMaxRowsToKeep":
+            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
         "setPercentageOfIncome":
             MessageLookupByLibrary.simpleMessage("Nastavit procento příjmu"),
         "setPercentageOfIncomeIfNecessary":
@@ -311,8 +320,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Celkové procento za měsíc"),
         "totalPriceServicePerDay":
             MessageLookupByLibrary.simpleMessage("Celková cena služby za den"),
+        "uniquenclients":
+            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Jednotka měření"),
+        "unitOfnmeasurement":
+            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Jednotková cena"),
         "userName": MessageLookupByLibrary.simpleMessage("Uživatelské jméno"),
         "viewServicesBefore7Days":

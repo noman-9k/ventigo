@@ -390,16 +390,6 @@ class S {
     );
   }
 
-  /// `Admin Maine`
-  String get adminMaine {
-    return Intl.message(
-      'Admin Maine',
-      name: 'adminMaine',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Enter your last name`
   String get enterYourLastName {
     return Intl.message(
@@ -2175,6 +2165,96 @@ class S {
     return Intl.message(
       'Pieces, Liters, Kilograms .. ',
       name: 'piecesLitersKilograms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unique\nClients`
+  String get uniquenclients {
+    return Intl.message(
+      'Unique\\nClients',
+      name: 'uniquenclients',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Set Max Rows to Keep`
+  String get setMaxRowsToKeep {
+    return Intl.message(
+      'Set Max Rows to Keep',
+      name: 'setMaxRowsToKeep',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Employee Information`
+  String get employeeInformation {
+    return Intl.message(
+      'Employee Information',
+      name: 'employeeInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cash\nPay`
+  String get cashnpay {
+    return Intl.message(
+      'Cash\\nPay',
+      name: 'cashnpay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Electricity, Water, Gas, etc`
+  String get electricityWaterGasEtc {
+    return Intl.message(
+      'Electricity, Water, Gas, etc',
+      name: 'electricityWaterGasEtc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No. of\nunits`
+  String get noOfnunits {
+    return Intl.message(
+      'No. of\\nunits',
+      name: 'noOfnunits',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unit of\nMeasurement`
+  String get unitOfnmeasurement {
+    return Intl.message(
+      'Unit of\\nMeasurement',
+      name: 'unitOfnmeasurement',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay with Cash`
+  String get payWithCash {
+    return Intl.message(
+      'Pay with Cash',
+      name: 'payWithCash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Admin Maine`
+  String get adminMaine {
+    return Intl.message(
+      'Admin Maine',
+      name: 'adminMaine',
       desc: '',
       args: [],
     );

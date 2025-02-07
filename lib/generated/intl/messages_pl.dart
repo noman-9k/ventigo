@@ -71,12 +71,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Płatność kartą: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Karta\nZapłać"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategorie"),
         "category": MessageLookupByLibrary.simpleMessage("Kategoria: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Nazwa kategorii"),
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Zmień hasło administratora"),
-        "characters": MessageLookupByLibrary.simpleMessage("characters"),
+        "characters": MessageLookupByLibrary.simpleMessage("znaki"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Sprawdź swój plik w folderze Pobrane"),
@@ -118,13 +119,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Edytuj kategorię"),
         "editReport": MessageLookupByLibrary.simpleMessage("Edytuj raport"),
         "editService": MessageLookupByLibrary.simpleMessage("Edytuj usługę"),
+        "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
+            "Electricity, Water, Gas, etc"),
+        "employeeInformation":
+            MessageLookupByLibrary.simpleMessage("Employee Information"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Nazwisko pracownika: "),
         "employeePercentage":
             MessageLookupByLibrary.simpleMessage("Odsetek pracownika"),
         "employeeWillBeDeletedPermanently":
             MessageLookupByLibrary.simpleMessage(
-                "Employee will be deleted Permanently"),
+                "Pracownik zostanie trwale usunięty"),
         "employeendata":
             MessageLookupByLibrary.simpleMessage("Dane pracownika\n"),
         "employees": MessageLookupByLibrary.simpleMessage("pracownicy"),
@@ -208,6 +213,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noNewnclient":
             MessageLookupByLibrary.simpleMessage("Nie. Nowy\nKlient"),
         "noOfnservices": MessageLookupByLibrary.simpleMessage("Liczba\nusług"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
         "noRegnclient": MessageLookupByLibrary.simpleMessage("Nr rej\nKlient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
@@ -222,21 +228,22 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Numer usługi w miesiącu"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Liczba jednostek"),
-        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
+        "optionally": MessageLookupByLibrary.simpleMessage("(Opcjonalnie)"),
         "orCreateANewCategory":
             MessageLookupByLibrary.simpleMessage("Lub utwórz nową kategorię"),
         "orSignInAs":
             MessageLookupByLibrary.simpleMessage("Lub zaloguj się jako"),
         "password": MessageLookupByLibrary.simpleMessage("Hasto pracownika"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
         "paymentByCard": MessageLookupByLibrary.simpleMessage("Płatność Kartą"),
         "paymentByCash":
-            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
+            MessageLookupByLibrary.simpleMessage("Płatność gotówką"),
         "percentage": MessageLookupByLibrary.simpleMessage("Odsetek"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
         "pieces": MessageLookupByLibrary.simpleMessage("kawałki"),
-        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
-            "Pieces, Liters, Kilograms .. "),
+        "piecesLitersKilograms":
+            MessageLookupByLibrary.simpleMessage("Sztuki, Litry, Kilogramy .."),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Proszę wypełnić pole odpowiedzi"),
         "pleaseSelectAQuestion":
@@ -295,6 +302,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Usługi"),
         "setAdminPassword":
             MessageLookupByLibrary.simpleMessage("Ustaw hasło administratora"),
+        "setMaxRowsToKeep":
+            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
         "setPercentageOfIncome":
             MessageLookupByLibrary.simpleMessage("Ustaw procent dochodu"),
         "setPercentageOfIncomeIfNecessary":
@@ -316,8 +325,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Całkowity procent miesięcznie"),
         "totalPriceServicePerDay": MessageLookupByLibrary.simpleMessage(
             "Całkowita cena usługi za dzień"),
+        "uniquenclients":
+            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Jednostka miary"),
+        "unitOfnmeasurement":
+            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Cena jednostkowa"),
         "userName": MessageLookupByLibrary.simpleMessage("Nazwa użytkownika"),
         "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(

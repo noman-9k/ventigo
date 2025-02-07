@@ -60,7 +60,8 @@ class CostsTable extends StatelessWidget {
                           size: ColumnSize.M,
                           label:
                               Center(child: Text(S.of(context).date, textAlign: TextAlign.center, style: headerStyle))),
-                      DataColumn2(label: Center(child: Center(child: Text('No. of\nunits', style: headerStyle)))),
+                      DataColumn2(
+                          label: Center(child: Center(child: Text(S.of(context).noOfnunits, style: headerStyle)))),
                       DataColumn2(
                           size: ColumnSize.L,
                           label: Center(
@@ -70,7 +71,7 @@ class CostsTable extends StatelessWidget {
                           size: ColumnSize.L,
                           label: Center(
                               child: Text(
-                            'Unit of\nMeasurement',
+                            S.of(context).unitOfnmeasurement,
                             style: headerStyle,
                             textAlign: TextAlign.center,
                             overflow: TextOverflow.ellipsis,

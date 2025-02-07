@@ -24,113 +24,117 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "accessLevel": MessageLookupByLibrary.simpleMessage("Уровень доступа"),
         "addCategoryFirst":
-            MessageLookupByLibrary.simpleMessage("Сначала добавьте категорию"),
-        "addCost": MessageLookupByLibrary.simpleMessage("Добавить стоимость"),
+            MessageLookupByLibrary.simpleMessage("Добавьте сначала категорию"),
+        "addCost": MessageLookupByLibrary.simpleMessage("Добавить Расход"),
         "addEmployee":
             MessageLookupByLibrary.simpleMessage("Добавить сотрудника"),
         "addReport": MessageLookupByLibrary.simpleMessage("Добавить отчет"),
-        "addService": MessageLookupByLibrary.simpleMessage("Добавить сервис"),
+        "addService": MessageLookupByLibrary.simpleMessage("Добавить услугу"),
         "adminLogin":
             MessageLookupByLibrary.simpleMessage("Вход администратора"),
-        "adminMaine": MessageLookupByLibrary.simpleMessage("Администратор Мэн"),
+        "adminMaine": MessageLookupByLibrary.simpleMessage("Админ панель"),
         "all": MessageLookupByLibrary.simpleMessage("Все"),
         "allCostsAreAddedOnTheSameDateAddMore":
             MessageLookupByLibrary.simpleMessage(
-                "Все затраты добавляются в одну и ту же дату, добавьте еще, чтобы построить график"),
+                "Все расходы добавлены в ту же дату, добавьте еще для построения графика"),
         "amountPercentagePerDay":
-            MessageLookupByLibrary.simpleMessage("Сумма в процентах в день"),
+            MessageLookupByLibrary.simpleMessage("Сумма процента в день"),
         "anErrorOccurred":
             MessageLookupByLibrary.simpleMessage("Произошла ошибка"),
-        "answer": MessageLookupByLibrary.simpleMessage("Ответить"),
+        "answer": MessageLookupByLibrary.simpleMessage("Ответ"),
         "answerTheSecurityQuestionsToLogin":
             MessageLookupByLibrary.simpleMessage(
-                "Ответьте на контрольные вопросы для входа в систему"),
+                "Ответьте на контрольный вопрос для входа"),
         "applyFilter": MessageLookupByLibrary.simpleMessage("Применить фильтр"),
         "applyFilters":
-            MessageLookupByLibrary.simpleMessage("Применить фильтры"),
+            MessageLookupByLibrary.simpleMessage("Применить фильтр"),
         "areYouSureYouWantToClearAllData": MessageLookupByLibrary.simpleMessage(
-            "Вы уверены, что хотите удалить все данные?"),
+            "Вы уверены, что хотите очистить все данные?"),
         "areYouSureYouWantToDeleteThisCategory":
             MessageLookupByLibrary.simpleMessage(
-                "Вы уверены, что хотите удалить эту категорию?"),
+                "ArВы уверены что хотите удалить эту категорию?"),
         "areYouSureYouWantToDeleteThisCost":
             MessageLookupByLibrary.simpleMessage(
-                "Вы уверены, что хотите удалить эту стоимость?"),
+                "Вы уверены, что хотите удалить этот расход?"),
         "areYouSureYouWantToDeleteThisService":
             MessageLookupByLibrary.simpleMessage(
-                "Вы уверены, что хотите удалить эту службу?"),
+                "Вы уверены что хотите удалить эту услугу?"),
         "areYouSureYouWantToExitTheApp": MessageLookupByLibrary.simpleMessage(
             "Вы уверены? Вы хотите выйти из приложения."),
         "areYouSureYouWantToLogout": MessageLookupByLibrary.simpleMessage(
-            "Вы уверены? Вы хотите выйти из системы."),
-        "backupData": MessageLookupByLibrary.simpleMessage("Резервные данные"),
+            "Вы уверены? Вы хотите выйти из приложения."),
+        "backupData": MessageLookupByLibrary.simpleMessage(
+            "Резервное копирование данных"),
         "backupRestoredSuccessfully": MessageLookupByLibrary.simpleMessage(
-            "Резервная копия успешно восстановлена!"),
-        "boxes": MessageLookupByLibrary.simpleMessage("Коробки"),
+            "Данные восстановлены успешно!"),
+        "boxes": MessageLookupByLibrary.simpleMessage("Пачки"),
         "canAddAPhoneNumber": MessageLookupByLibrary.simpleMessage(
-            "Можно добавить номер телефона"),
+            "Возможность добавлять номер телефона"),
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
-        "cardPay": MessageLookupByLibrary.simpleMessage("Оплата картой: "),
-        "cardnpay": MessageLookupByLibrary.simpleMessage("Карта\nPay"),
+        "cardPay": MessageLookupByLibrary.simpleMessage("Наличные: "),
+        "cardnpay": MessageLookupByLibrary.simpleMessage("Наличные\nОплата"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Категории"),
         "category": MessageLookupByLibrary.simpleMessage("Категория: "),
         "categoryName":
             MessageLookupByLibrary.simpleMessage("Название категории"),
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Изменить пароль администратора"),
-        "characters": MessageLookupByLibrary.simpleMessage("символы"),
+        "characters": MessageLookupByLibrary.simpleMessage("символов"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
-                "Проверьте свой файл в папке Загрузки"),
+                "Файл находится в папке «Загрузки»"),
         "clear": MessageLookupByLibrary.simpleMessage("Очистить"),
         "clearData": MessageLookupByLibrary.simpleMessage("Очистить данные"),
-        "clearDates": MessageLookupByLibrary.simpleMessage("Очистить даты"),
+        "clearDates": MessageLookupByLibrary.simpleMessage("Очистить данные"),
         "confirm": MessageLookupByLibrary.simpleMessage("Подтвердить"),
-        "cost": MessageLookupByLibrary.simpleMessage("Стоимость"),
+        "cost": MessageLookupByLibrary.simpleMessage("Расход"),
         "costOfMaterials":
             MessageLookupByLibrary.simpleMessage("Стоимость\nматериалов"),
         "costOfMaterialsForThisServices": MessageLookupByLibrary.simpleMessage(
             "Стоимость материалов для этой услуги"),
-        "costs": MessageLookupByLibrary.simpleMessage("расходы"),
-        "costsFilter": MessageLookupByLibrary.simpleMessage("Фильтр затрат"),
+        "costs": MessageLookupByLibrary.simpleMessage("Расход"),
+        "costsFilter": MessageLookupByLibrary.simpleMessage("Фильтр расходов"),
         "costsPriceRange":
-            MessageLookupByLibrary.simpleMessage("Диапазон цен затрат"),
-        "costsTracker":
-            MessageLookupByLibrary.simpleMessage("Отслеживание затрат"),
-        "createOrSelectACategory": MessageLookupByLibrary.simpleMessage(
-            "Создайте или выберите категорию"),
+            MessageLookupByLibrary.simpleMessage("Диапазон цен расходов"),
+        "costsTracker": MessageLookupByLibrary.simpleMessage("График расходов"),
+        "createOrSelectACategory":
+            MessageLookupByLibrary.simpleMessage("Выберите категорию"),
         "customerndata":
-            MessageLookupByLibrary.simpleMessage("Данные клиента\n"),
+            MessageLookupByLibrary.simpleMessage("Информация\nклиента"),
         "dataBackup": MessageLookupByLibrary.simpleMessage(
             "Резервное копирование данных"),
-        "date": MessageLookupByLibrary.simpleMessage("Дата"),
+        "date": MessageLookupByLibrary.simpleMessage("Дата "),
         "dates": MessageLookupByLibrary.simpleMessage("Даты"),
         "deductFromTax":
-            MessageLookupByLibrary.simpleMessage("Вычесть из НАЛОГА"),
+            MessageLookupByLibrary.simpleMessage("Вычесть из налога"),
         "deductednfromTax":
-            MessageLookupByLibrary.simpleMessage("Вычтено\nиз налога"),
+            MessageLookupByLibrary.simpleMessage("Вычитается\nиз налога"),
         "deleteCategory":
             MessageLookupByLibrary.simpleMessage("Удалить категорию"),
-        "deleteCost": MessageLookupByLibrary.simpleMessage("Удалить стоимость"),
-        "deleteService": MessageLookupByLibrary.simpleMessage("Удалить службу"),
-        "deleted": MessageLookupByLibrary.simpleMessage("Удален"),
-        "doNotRepeat": MessageLookupByLibrary.simpleMessage("Не повторять"),
-        "done": MessageLookupByLibrary.simpleMessage("сделано"),
+        "deleteCost": MessageLookupByLibrary.simpleMessage("Удалить расход"),
+        "deleteService": MessageLookupByLibrary.simpleMessage("Удалить услугу"),
+        "deleted": MessageLookupByLibrary.simpleMessage("Удалено"),
+        "doNotRepeat": MessageLookupByLibrary.simpleMessage("Не повторяется"),
+        "done": MessageLookupByLibrary.simpleMessage("Готово"),
         "editCategory":
-            MessageLookupByLibrary.simpleMessage("Редактировать категорию"),
+            MessageLookupByLibrary.simpleMessage("Изменить категорию"),
         "editReport":
             MessageLookupByLibrary.simpleMessage("Редактировать отчет"),
-        "editService":
-            MessageLookupByLibrary.simpleMessage("Редактировать сервис"),
+        "editService": MessageLookupByLibrary.simpleMessage("Изменить услугу"),
+        "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
+            "Electricity, Water, Gas, etc"),
+        "employeeInformation":
+            MessageLookupByLibrary.simpleMessage("Employee Information"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Имя сотрудника: "),
         "employeePercentage":
-            MessageLookupByLibrary.simpleMessage("Процент сотрудников"),
+            MessageLookupByLibrary.simpleMessage("Процент сотрудника"),
         "employeeWillBeDeletedPermanently":
             MessageLookupByLibrary.simpleMessage(
-                "Employee will be deleted Permanently"),
+                "Сотрудник будет удален навсегда"),
         "employeendata":
-            MessageLookupByLibrary.simpleMessage("Данные о сотруднике\n"),
+            MessageLookupByLibrary.simpleMessage("Информация\nсотрудника"),
         "employees": MessageLookupByLibrary.simpleMessage("Сотрудники"),
         "enterANote":
             MessageLookupByLibrary.simpleMessage("Введите примечание"),
@@ -140,17 +144,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Введите пароль здесь"),
         "enterPrice": MessageLookupByLibrary.simpleMessage("Введите цену"),
         "enterServiceName":
-            MessageLookupByLibrary.simpleMessage("Введите имя службы"),
+            MessageLookupByLibrary.simpleMessage("Введите название услуги"),
         "enterYourLastName":
-            MessageLookupByLibrary.simpleMessage("Введите свою фамилию"),
-        "enterYourLogin":
-            MessageLookupByLibrary.simpleMessage("Введите свой логин"),
-        "enterYourName":
-            MessageLookupByLibrary.simpleMessage("Введите свое имя"),
+            MessageLookupByLibrary.simpleMessage("Введите фамилию"),
+        "enterYourLogin": MessageLookupByLibrary.simpleMessage("Введите логин"),
+        "enterYourName": MessageLookupByLibrary.simpleMessage("Введите имя"),
         "enterYourPassword":
-            MessageLookupByLibrary.simpleMessage("Введите свой пароль"),
+            MessageLookupByLibrary.simpleMessage("Введите пароль"),
         "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
-        "everyDay": MessageLookupByLibrary.simpleMessage("каждый день"),
+        "everyDay": MessageLookupByLibrary.simpleMessage("Каждый день"),
         "everyMonth": MessageLookupByLibrary.simpleMessage("Каждый месяц"),
         "everyQuarter": MessageLookupByLibrary.simpleMessage("Каждый квартал"),
         "everyWeek": MessageLookupByLibrary.simpleMessage("Каждую неделю"),
@@ -158,110 +160,119 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit": MessageLookupByLibrary.simpleMessage("Выход"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Выйти из приложения"),
         "exportToFile":
-            MessageLookupByLibrary.simpleMessage("Экспортировать в файл"),
-        "exported": MessageLookupByLibrary.simpleMessage("Экспортировано"),
-        "filters": MessageLookupByLibrary.simpleMessage("Фильтры"),
+            MessageLookupByLibrary.simpleMessage("Экспорт в файл Excel"),
+        "exported": MessageLookupByLibrary.simpleMessage("Експортовано"),
+        "filters": MessageLookupByLibrary.simpleMessage("Фильтр"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
-        "from": MessageLookupByLibrary.simpleMessage("От"),
-        "graphics": MessageLookupByLibrary.simpleMessage("Графика"),
-        "hello": MessageLookupByLibrary.simpleMessage("привет "),
+        "from": MessageLookupByLibrary.simpleMessage("С"),
+        "grams": MessageLookupByLibrary.simpleMessage("Граммы"),
+        "graphics": MessageLookupByLibrary.simpleMessage("Графики"),
+        "hello": MessageLookupByLibrary.simpleMessage("Привет "),
         "incorrectAnswer":
             MessageLookupByLibrary.simpleMessage("Неправильный ответ"),
         "invalidPin": MessageLookupByLibrary.simpleMessage("Неверный PIN-код"),
         "isRegularCus":
-            MessageLookupByLibrary.simpleMessage("Является обычным Cus. : "),
-        "itemDeleted": MessageLookupByLibrary.simpleMessage("Элемент удален"),
+            MessageLookupByLibrary.simpleMessage("Постоянный клиент : "),
+        "itemDeleted": MessageLookupByLibrary.simpleMessage("Удалено"),
+        "kilograms": MessageLookupByLibrary.simpleMessage("Килограммы"),
+        "kwh": MessageLookupByLibrary.simpleMessage("КВт/ч"),
         "lastName": MessageLookupByLibrary.simpleMessage("Фамилия"),
         "lastNameOfClient":
             MessageLookupByLibrary.simpleMessage("Фамилия клиента"),
-        "limited": MessageLookupByLibrary.simpleMessage("Ограничено"),
-        "login": MessageLookupByLibrary.simpleMessage("Войти"),
+        "letters": MessageLookupByLibrary.simpleMessage("Литры"),
+        "limited": MessageLookupByLibrary.simpleMessage("Ограничен"),
+        "login": MessageLookupByLibrary.simpleMessage("Вход"),
         "loginOrPasswordIsIncorrect":
-            MessageLookupByLibrary.simpleMessage("Логин или пароль неверен"),
+            MessageLookupByLibrary.simpleMessage("Неверный логин или пароль"),
         "logout": MessageLookupByLibrary.simpleMessage("Выход"),
-        "masternname": MessageLookupByLibrary.simpleMessage("Мастер\nИмя"),
-        "masters": MessageLookupByLibrary.simpleMessage("Мастера"),
-        "maxPrice": MessageLookupByLibrary.simpleMessage("Максимальная цена"),
-        "minPrice": MessageLookupByLibrary.simpleMessage("Минимальная цена"),
-        "name": MessageLookupByLibrary.simpleMessage("Имя"),
+        "masternname": MessageLookupByLibrary.simpleMessage("Имя\nсотрудника"),
+        "masters": MessageLookupByLibrary.simpleMessage("Сотрудники"),
+        "maxPrice": MessageLookupByLibrary.simpleMessage("Макс. цена"),
+        "milliliters": MessageLookupByLibrary.simpleMessage("Миллилитры"),
+        "minPrice": MessageLookupByLibrary.simpleMessage("Мин. цена"),
+        "name": MessageLookupByLibrary.simpleMessage("Название "),
         "nameOfClient": MessageLookupByLibrary.simpleMessage("Имя клиента"),
-        "nameOfCost":
-            MessageLookupByLibrary.simpleMessage("Название стоимости"),
+        "nameOfCost": MessageLookupByLibrary.simpleMessage("Название расходов"),
         "nameOfExpense":
-            MessageLookupByLibrary.simpleMessage("Название расхода"),
+            MessageLookupByLibrary.simpleMessage("Название расходов"),
         "nameOfTheService":
-            MessageLookupByLibrary.simpleMessage("Название службы"),
-        "nameOfncost": MessageLookupByLibrary.simpleMessage("Имя\nCost"),
-        "netProfit": MessageLookupByLibrary.simpleMessage("Чистая\nприбыль"),
+            MessageLookupByLibrary.simpleMessage("Создайте услугу"),
+        "nameOfncost":
+            MessageLookupByLibrary.simpleMessage("Название\nрасхода"),
+        "netProfit": MessageLookupByLibrary.simpleMessage(
+            "Прибыль (=цена услуги-цена материалов\n-процен работника-расходы в этом периоде)"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Новый клиент"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новый пароль"),
-        "newnclient": MessageLookupByLibrary.simpleMessage("Новый\nКлиент"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Новый\nCus"),
-        "no": MessageLookupByLibrary.simpleMessage("нет"),
-        "noCostsAddedYet":
-            MessageLookupByLibrary.simpleMessage("Стоимости пока не добавлены"),
+        "newnclient": MessageLookupByLibrary.simpleMessage("Новых\nклиентов"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Новый\nРасход"),
+        "no": MessageLookupByLibrary.simpleMessage("Нет"),
+        "noCostsAddedYet": MessageLookupByLibrary.simpleMessage(
+            "Пока нет добавленых расходов"),
         "noData": MessageLookupByLibrary.simpleMessage("Нет данных"),
         "noDataFound":
             MessageLookupByLibrary.simpleMessage("Данные не найдены"),
         "noEmployeeFoundnpleaseAddANewEmployee":
             MessageLookupByLibrary.simpleMessage(
                 "Сотрудник не найден\nПожалуйста, добавьте нового сотрудника."),
-        "noNewnclient":
-            MessageLookupByLibrary.simpleMessage("Нет. Новый\nКлиент"),
-        "noOfnservices": MessageLookupByLibrary.simpleMessage("Нет\nуслуг"),
+        "noNewnclient": MessageLookupByLibrary.simpleMessage("Сумма\nНовых"),
+        "noOfnservices": MessageLookupByLibrary.simpleMessage("Сумма\nуслуг"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
         "noRegnclient":
-            MessageLookupByLibrary.simpleMessage("Нет. Reg\nClient"),
+            MessageLookupByLibrary.simpleMessage("Сумма\nпостоянных"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
-                "Службы не найдены\nПожалуйста, добавьте новую службу"),
+                "Услуги не найдено \n Пожалуйста добавьте новую услугу"),
         "noUnitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Нет единиц измерения"),
-        "notLimited": MessageLookupByLibrary.simpleMessage("Не ограничено"),
+        "notLimited": MessageLookupByLibrary.simpleMessage("Не ограничен"),
         "note": MessageLookupByLibrary.simpleMessage("Примечание"),
-        "numOfnservices":
-            MessageLookupByLibrary.simpleMessage("Количество\nУслуг"),
-        "number": MessageLookupByLibrary.simpleMessage("число"),
+        "numOfnservices": MessageLookupByLibrary.simpleMessage("Сумма\nуслуг"),
+        "number": MessageLookupByLibrary.simpleMessage("номер"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Количество услуг за месяц"),
         "numberOfUnits":
             MessageLookupByLibrary.simpleMessage("Количество единиц"),
-        "optionally": MessageLookupByLibrary.simpleMessage(" (Optionally)"),
+        "optionally": MessageLookupByLibrary.simpleMessage(" (Необязательно)"),
         "orCreateANewCategory": MessageLookupByLibrary.simpleMessage(
             "Или создайте новую категорию"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или войдите как"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
-        "paymentByCard": MessageLookupByLibrary.simpleMessage("Оплата картой"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
+        "paymentByCard":
+            MessageLookupByLibrary.simpleMessage("Оплата наличными"),
         "paymentByCash":
-            MessageLookupByLibrary.simpleMessage("Payment By Cash"),
+            MessageLookupByLibrary.simpleMessage("Оплата наличными"),
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона"),
-        "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
-            "Pieces, Liters, Kilograms .. "),
+        "pieces": MessageLookupByLibrary.simpleMessage("Штуки"),
+        "piecesLitersKilograms":
+            MessageLookupByLibrary.simpleMessage("Штуки, литры,килограммы … "),
         "pleaseAddACategoryFirstToAddAnEmployee":
             MessageLookupByLibrary.simpleMessage(
-                "Чтобы добавить сотрудника, сначала добавьте категорию"),
+                "Сначала добавьте категорию, чтобы добавить сотрудника"),
         "pleaseFillInTheAnswerField": MessageLookupByLibrary.simpleMessage(
             "Пожалуйста, заполните поле ответа"),
         "pleaseSelectAQuestion":
-            MessageLookupByLibrary.simpleMessage("Пожалуйста, выберите вопрос"),
-        "pleaseTryAgain": MessageLookupByLibrary.simpleMessage(
-            "Пожалуйста, попробуйте еще раз"),
+            MessageLookupByLibrary.simpleMessage("Выберите вопрос"),
+        "pleaseTryAgain":
+            MessageLookupByLibrary.simpleMessage("Попробуйте еще раз"),
         "previousQuestion":
-            MessageLookupByLibrary.simpleMessage("Предыдущий вопрос"),
+            MessageLookupByLibrary.simpleMessage("Предыдущий вопрос "),
         "price": MessageLookupByLibrary.simpleMessage("Цена"),
         "priceOfService": MessageLookupByLibrary.simpleMessage("Цена услуги"),
         "priceRange": MessageLookupByLibrary.simpleMessage("Диапазон цен"),
-        "pricenservices": MessageLookupByLibrary.simpleMessage("Цена\nуслуги"),
+        "pricenservices": MessageLookupByLibrary.simpleMessage("Цена\nуслуг"),
         "privacyPolicy":
             MessageLookupByLibrary.simpleMessage("Политика конфиденциальности"),
-        "regnclient": MessageLookupByLibrary.simpleMessage("Регистр\nКлиент"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Reg\nCus"),
+        "regnclient":
+            MessageLookupByLibrary.simpleMessage("Постоянных\nклиентов"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Рег\nРасход"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Постоянный клиент"),
         "relatedncategories":
-            MessageLookupByLibrary.simpleMessage("Связанные\nКатегории"),
+            MessageLookupByLibrary.simpleMessage("Связанные\nкатегории"),
         "reloadApp":
             MessageLookupByLibrary.simpleMessage("Перезагрузить приложение"),
         "repetitionInterval":
@@ -269,67 +280,74 @@ class MessageLookup extends MessageLookupByLibrary {
         "report": MessageLookupByLibrary.simpleMessage("Отчет: "),
         "reports": MessageLookupByLibrary.simpleMessage("Отчеты"),
         "reportssalesTracker":
-            MessageLookupByLibrary.simpleMessage("Отчеты/Отслеживание продаж"),
+            MessageLookupByLibrary.simpleMessage("График рапортов"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Сбросить здесь"),
         "restoreData":
-            MessageLookupByLibrary.simpleMessage("Восстановить данные"),
-        "restoringDatabase": MessageLookupByLibrary.simpleMessage(
-            "Восстановление базы данных..."),
+            MessageLookupByLibrary.simpleMessage("Восстановление данных"),
+        "restoringDatabase":
+            MessageLookupByLibrary.simpleMessage("Восстановление базы данных…"),
         "results": MessageLookupByLibrary.simpleMessage("Результаты"),
-        "sales": MessageLookupByLibrary.simpleMessage("Продажи"),
+        "sales": MessageLookupByLibrary.simpleMessage("Продажа"),
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "saveEmployee":
             MessageLookupByLibrary.simpleMessage("Сохранить сотрудника"),
         "search": MessageLookupByLibrary.simpleMessage("Поиск"),
         "securityQuestions":
-            MessageLookupByLibrary.simpleMessage("Вопросы безопасности"),
+            MessageLookupByLibrary.simpleMessage("Контрольный вопрос"),
         "selectCategories":
-            MessageLookupByLibrary.simpleMessage("Выбрать категории"),
+            MessageLookupByLibrary.simpleMessage("Выберите категорию"),
         "selectCategoriesFromTheListnmaybeSeveral":
             MessageLookupByLibrary.simpleMessage(
                 "Выберите категории из списка\n(может быть несколько)"),
         "selectCategory":
-            MessageLookupByLibrary.simpleMessage("Выбрать категорию"),
+            MessageLookupByLibrary.simpleMessage("Выберите категорию"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Выбрать язык"),
         "selectQuestion":
-            MessageLookupByLibrary.simpleMessage("Выбрать вопрос"),
-        "selectService": MessageLookupByLibrary.simpleMessage("Выбрать услугу"),
+            MessageLookupByLibrary.simpleMessage("Выберите вопрос"),
+        "selectService":
+            MessageLookupByLibrary.simpleMessage("Выберите услугу"),
         "selectTheDatabaseToRestore": MessageLookupByLibrary.simpleMessage(
-            "Выберите базу данных для восстановления"),
-        "service": MessageLookupByLibrary.simpleMessage("Сервис "),
-        "serviceName": MessageLookupByLibrary.simpleMessage("Имя службы"),
+            "Выберите файл базы для восстановления"),
+        "service": MessageLookupByLibrary.simpleMessage("Услуга"),
+        "serviceName": MessageLookupByLibrary.simpleMessage("Название услуги"),
         "services": MessageLookupByLibrary.simpleMessage("Услуги"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(
-            "Установить пароль администратора"),
+            "Установить пароль администратора "),
+        "setMaxRowsToKeep":
+            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
         "setPercentageOfIncome":
-            MessageLookupByLibrary.simpleMessage("Установить процент дохода"),
+            MessageLookupByLibrary.simpleMessage("Установите процент дохода"),
         "setPercentageOfIncomeIfNecessary":
             MessageLookupByLibrary.simpleMessage(
-                "При необходимости установите процент дохода"),
+                "Установите процент дохода, если необходимо"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "showPhone": MessageLookupByLibrary.simpleMessage("Показать телефон"),
+        "statistic": MessageLookupByLibrary.simpleMessage("Статистика"),
         "submit": MessageLookupByLibrary.simpleMessage("Отправить"),
         "systematicExpenditure":
             MessageLookupByLibrary.simpleMessage("Систематические расходы"),
-        "systematicnexpenditure": MessageLookupByLibrary.simpleMessage(
-            "Системаматематические\nРасходы"),
+        "systematicnexpenditure":
+            MessageLookupByLibrary.simpleMessage("Систематические\nрасходы"),
         "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
-            "Добавлена ​​только одна стоимость, но добавьте еще, чтобы построить график"),
-        "to": MessageLookupByLibrary.simpleMessage("Кому"),
-        "total": MessageLookupByLibrary.simpleMessage("Итого"),
+            "Добавлена ​​только один расход, добавьте еще для построения графика"),
+        "to": MessageLookupByLibrary.simpleMessage("По"),
+        "total": MessageLookupByLibrary.simpleMessage("Сумма"),
         "totalPercentagePerMonth":
-            MessageLookupByLibrary.simpleMessage("Общий процент в месяц"),
-        "totalPriceServicePerDay": MessageLookupByLibrary.simpleMessage(
-            "Общая стоимость услуги за день"),
+            MessageLookupByLibrary.simpleMessage("Сумма процента в месяц"),
+        "totalPriceServicePerDay":
+            MessageLookupByLibrary.simpleMessage("Сумма цен услуг в день"),
+        "uniquenclients":
+            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Единица измерения"),
+        "unitOfnmeasurement":
+            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Цена за единицу"),
         "userName": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
-        "viewServicesBefore7Days":
-            MessageLookupByLibrary.simpleMessage("Просмотр услуг до 7 дней"),
+        "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(
+            "Видимости услуг больше 7 дней"),
         "visibilityLevelWithACrossFromTheList":
-            MessageLookupByLibrary.simpleMessage(
-                "Уровень видимости с крестиком из списка"),
+            MessageLookupByLibrary.simpleMessage("Уровень видимости"),
         "whatIsTheNameOfYourFavoritePet": MessageLookupByLibrary.simpleMessage(
             "Как зовут вашего любимого питомца?"),
         "whatIsYourFavoriteBook":
@@ -343,7 +361,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "whatIsYourFavoriteSong":
             MessageLookupByLibrary.simpleMessage("Какая ваша любимая песня?"),
         "whatsYourChildhoodNickname": MessageLookupByLibrary.simpleMessage(
-            "Какой у вас псевдоним в детстве?"),
+            "Какое било у вас прозвище в детстве?"),
         "yes": MessageLookupByLibrary.simpleMessage("Да")
       };
 }

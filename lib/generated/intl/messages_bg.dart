@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Отказ"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Плащане с карта: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Плащане с карта\n"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Категории"),
         "category": MessageLookupByLibrary.simpleMessage("Категория: "),
         "categoryName":
@@ -130,6 +131,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Редактиране на отчет"),
         "editService":
             MessageLookupByLibrary.simpleMessage("Редактиране на услуга"),
+        "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
+            "Electricity, Water, Gas, etc"),
+        "employeeInformation":
+            MessageLookupByLibrary.simpleMessage("Employee Information"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Име на служител: "),
         "employeePercentage":
@@ -221,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Няма намерен служител\nМоля, добавете нов служител."),
         "noNewnclient": MessageLookupByLibrary.simpleMessage("Не. Нов\nклиент"),
         "noOfnservices": MessageLookupByLibrary.simpleMessage("Брой\nуслуги"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
         "noRegnclient": MessageLookupByLibrary.simpleMessage("No. Reg\nClient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
@@ -239,6 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Или създайте нова категория"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или влезте като"),
         "password": MessageLookupByLibrary.simpleMessage("Парола"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Плащане с карта"),
         "paymentByCash":
@@ -314,6 +321,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Услуги"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Задаване на администраторска парола "),
+        "setMaxRowsToKeep":
+            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
         "setPercentageOfIncome":
             MessageLookupByLibrary.simpleMessage("Задайте процент от дохода"),
         "setPercentageOfIncomeIfNecessary":
@@ -335,8 +344,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Общ процент на месец"),
         "totalPriceServicePerDay": MessageLookupByLibrary.simpleMessage(
             "Обща цена на услугата на ден"),
+        "uniquenclients":
+            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Мерна единица"),
+        "unitOfnmeasurement":
+            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Единична цена"),
         "userName": MessageLookupByLibrary.simpleMessage("Потребителско име"),
         "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(

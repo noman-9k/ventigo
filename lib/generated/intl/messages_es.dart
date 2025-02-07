@@ -71,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancelar"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Pago con Tarjeta: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Tarjeta\nPagar"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Categorías"),
         "category": MessageLookupByLibrary.simpleMessage("Categoría:"),
         "categoryName":
@@ -119,6 +120,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Editar categoría"),
         "editReport": MessageLookupByLibrary.simpleMessage("Editar informe"),
         "editService": MessageLookupByLibrary.simpleMessage("Editar servicio"),
+        "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
+            "Electricity, Water, Gas, etc"),
+        "employeeInformation":
+            MessageLookupByLibrary.simpleMessage("Employee Information"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Nombre del empleado: "),
         "employeePercentage":
@@ -211,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Nº Nuevo\nCliente"),
         "noOfnservices":
             MessageLookupByLibrary.simpleMessage("Nº de\nservicios"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
         "noRegnclient":
             MessageLookupByLibrary.simpleMessage("No. Reg\nCliente"),
         "noServicesFoundnpleaseAddANewService":
@@ -233,6 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "orSignInAs":
             MessageLookupByLibrary.simpleMessage("O iniciar sesión como"),
         "password": MessageLookupByLibrary.simpleMessage("Contraseña"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Pago con Tarjeta"),
         "paymentByCash":
@@ -309,6 +316,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Servicios"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Establecer contraseña de administrador"),
+        "setMaxRowsToKeep":
+            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
         "setPercentageOfIncome": MessageLookupByLibrary.simpleMessage(
             "Establecer porcentaje de ingresos"),
         "setPercentageOfIncomeIfNecessary":
@@ -328,8 +337,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Porcentaje total por mes"),
         "totalPriceServicePerDay": MessageLookupByLibrary.simpleMessage(
             "Precio Total Servicio por día"),
+        "uniquenclients":
+            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Unidad de medidas"),
+        "unitOfnmeasurement":
+            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Precio unitario"),
         "userName": MessageLookupByLibrary.simpleMessage("Nombre de usuario"),
         "viewServicesBefore7Days":

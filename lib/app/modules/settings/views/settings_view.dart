@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:ventigo/app/constants/app_constants.dart';
 import 'package:ventigo/app/modules/common/logout_button.dart';
 import 'package:ventigo/config/app_colors.dart';
 import 'package:ventigo/config/app_text.dart';
 
-import '../../../../config/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../dialog/dialog_functions.dart';
 import '../controllers/settings_controller.dart';
@@ -40,7 +40,7 @@ class SettingsView extends GetView<SettingsController> {
                     focusColor: Colors.transparent,
                     hoverColor: Colors.transparent,
                     selectedColor: Colors.transparent,
-                    title: AppText.boldText('Set Max Rows to Keep'),
+                    title: AppText.boldText(S.of(context).setMaxRowsToKeep),
                     onTap: () {
                       pushSetMaxRowsDialog(context);
                     },
@@ -98,8 +98,13 @@ class SettingsView extends GetView<SettingsController> {
                   ListTile(
                     title: AppText.boldText(S.of(context).privacyPolicy),
                     trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: () {
-                      // Get.toNamed('/privacy');
+                    onTap: () async {
+                      try {
+                        final Uri _url = Uri.parse(
+                            'https://docs.google.com/document/u/0/d/1-qs_A8AIx9v5aFtHPbm9cjDm1yTeEitHifnrdds6Xug/mobilebasic?pli=1');
+
+                        await launchUrl(_url);
+                      } catch (e) {}
                     },
                   ),
                 ]),
