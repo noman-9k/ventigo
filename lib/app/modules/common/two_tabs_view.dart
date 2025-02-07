@@ -92,7 +92,7 @@ class _TwoTabsViewState extends State<TwoTabsView> with SingleTickerProviderStat
                   onPressed: () {
                     if (widget.onFilterPressed != null) widget.onFilterPressed!(_tabController.index);
                   },
-                  icon: Icon(FontAwesomeIcons.list))
+                  icon: Icon(FontAwesomeIcons.filter))
           ],
         ),
         Expanded(

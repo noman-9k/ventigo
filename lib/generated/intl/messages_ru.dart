@@ -32,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addService": MessageLookupByLibrary.simpleMessage("Добавить услугу"),
         "adminLogin":
             MessageLookupByLibrary.simpleMessage("Вход администратора"),
-        "adminMaine": MessageLookupByLibrary.simpleMessage("Админ панель"),
+        "adminMaine": MessageLookupByLibrary.simpleMessage("Панель админа"),
         "all": MessageLookupByLibrary.simpleMessage("Все"),
         "allCostsAreAddedOnTheSameDateAddMore":
             MessageLookupByLibrary.simpleMessage(
@@ -73,7 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Отмена"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Наличные: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Наличные\nОплата"),
-        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Оплата\\nналичными"),
         "categories": MessageLookupByLibrary.simpleMessage("Категории"),
         "category": MessageLookupByLibrary.simpleMessage("Категория: "),
         "categoryName":
@@ -123,9 +123,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Редактировать отчет"),
         "editService": MessageLookupByLibrary.simpleMessage("Изменить услугу"),
         "electricityWaterGasEtc": MessageLookupByLibrary.simpleMessage(
-            "Electricity, Water, Gas, etc"),
+            "Электричество,налоги,аренда и т.д"),
         "employeeInformation":
-            MessageLookupByLibrary.simpleMessage("Employee Information"),
+            MessageLookupByLibrary.simpleMessage("Информация о сотрудниках"),
         "employeeName":
             MessageLookupByLibrary.simpleMessage("Имя сотрудника: "),
         "employeePercentage":
@@ -217,7 +217,8 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Сотрудник не найден\nПожалуйста, добавьте нового сотрудника."),
         "noNewnclient": MessageLookupByLibrary.simpleMessage("Сумма\nНовых"),
         "noOfnservices": MessageLookupByLibrary.simpleMessage("Сумма\nуслуг"),
-        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
+        "noOfnunits":
+            MessageLookupByLibrary.simpleMessage("Количество \\nединиц"),
         "noRegnclient":
             MessageLookupByLibrary.simpleMessage("Сумма\nпостоянных"),
         "noServicesFoundnpleaseAddANewService":
@@ -238,7 +239,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Или создайте новую категорию"),
         "orSignInAs": MessageLookupByLibrary.simpleMessage("Или войдите как"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
-        "payWithCash": MessageLookupByLibrary.simpleMessage("Pay with Cash"),
+        "payWithCash": MessageLookupByLibrary.simpleMessage("Оплатаналичными"),
         "paymentByCard":
             MessageLookupByLibrary.simpleMessage("Оплата наличными"),
         "paymentByCash":
@@ -313,8 +314,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "services": MessageLookupByLibrary.simpleMessage("Услуги"),
         "setAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Установить пароль администратора "),
-        "setMaxRowsToKeep":
-            MessageLookupByLibrary.simpleMessage("Set Max Rows to Keep"),
+        "setMaxRowsToKeep": MessageLookupByLibrary.simpleMessage(
+            "Установить максимальное количество сохраняемых строк"),
         "setPercentageOfIncome":
             MessageLookupByLibrary.simpleMessage("Установите процент дохода"),
         "setPercentageOfIncomeIfNecessary":
@@ -330,6 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Систематические\nрасходы"),
         "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
             "Добавлена ​​только один расход, добавьте еще для построения графика"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("в этом месяце"),
         "to": MessageLookupByLibrary.simpleMessage("По"),
         "total": MessageLookupByLibrary.simpleMessage("Сумма"),
         "totalPercentagePerMonth":
@@ -337,11 +339,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalPriceServicePerDay":
             MessageLookupByLibrary.simpleMessage("Сумма цен услуг в день"),
         "uniquenclients":
-            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
+            MessageLookupByLibrary.simpleMessage("Уникальный\\nклиент"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Единица измерения"),
         "unitOfnmeasurement":
-            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
+            MessageLookupByLibrary.simpleMessage("Единицы\\nизмерения"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Цена за единицу"),
         "userName": MessageLookupByLibrary.simpleMessage("Имя пользователя"),
         "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(

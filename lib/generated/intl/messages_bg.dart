@@ -338,6 +338,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Систmatic\nРазходи"),
         "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
             "Има само една добавена цена, но добавете още, за да начертаете графиката"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("this month"),
         "to": MessageLookupByLibrary.simpleMessage("тото"),
         "total": MessageLookupByLibrary.simpleMessage("Общо"),
         "totalPercentagePerMonth":

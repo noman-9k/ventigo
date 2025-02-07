@@ -40,7 +40,8 @@ class MainCostsView extends GetView<MainController> {
             return Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                AppText.mediumBoldText(S.of(context).total + " " + S.of(context).costs),
+                AppText.mediumBoldText(
+                    S.of(context).total + " " + S.of(context).costs + "(" + S.of(context).thisMonth + ")"),
                 10.horizontalSpace,
                 FutureBuilder(
                     future: controller.getTotalCosts(),

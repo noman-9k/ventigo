@@ -314,6 +314,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Systmatic\nVýdaje"),
         "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
             "K vykreslení grafu je přidána pouze jedna cena, ale přidejte další"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("this month"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "total": MessageLookupByLibrary.simpleMessage("Celkem"),
         "totalPercentagePerMonth":

@@ -317,6 +317,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thereIsOnlyOneCostAddedYetAddMoreTo":
             MessageLookupByLibrary.simpleMessage(
                 "There is only one cost added yet add more to plot the graph"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("this month"),
         "to": MessageLookupByLibrary.simpleMessage("To"),
         "total": MessageLookupByLibrary.simpleMessage("Total"),
         "totalPercentagePerMonth":

@@ -16,7 +16,7 @@ class DashboardController extends GetxController {
   List<TabItem> navItems = [
     TabItem(title: S.current.settings, icon: FontAwesomeIcons.gear),
     TabItem(title: S.current.statistic, icon: FontAwesomeIcons.chartLine),
-    TabItem(title: S.current.filters, icon: FontAwesomeIcons.filter),
+    TabItem(title: S.current.filters, icon: FontAwesomeIcons.list),
     TabItem(title: S.current.services, icon: FontAwesomeIcons.gears),
     TabItem(title: S.current.employees, icon: FontAwesomeIcons.users),
   ];

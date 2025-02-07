@@ -2259,6 +2259,16 @@ class S {
       args: [],
     );
   }
+
+  /// `this month`
+  String get thisMonth {
+    return Intl.message(
+      'this month',
+      name: 'thisMonth',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

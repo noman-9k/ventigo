@@ -331,6 +331,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sistemamatic\nGasto"),
         "thereIsOnlyOneCostAddedYetAddMoreTo": MessageLookupByLibrary.simpleMessage(
             "Solo hay un costo agregado pero agrega más para trazar el gráfico"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("this month"),
         "to": MessageLookupByLibrary.simpleMessage("A"),
         "total": MessageLookupByLibrary.simpleMessage("total"),
         "totalPercentagePerMonth":

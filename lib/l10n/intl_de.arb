@@ -219,5 +219,6 @@
   "electricityWaterGasEtc": "Electricity, Water, Gas, etc",
   "noOfnunits": "No. of\\nunits",
   "unitOfnmeasurement": "Unit of\\nMeasurement",
-  "payWithCash": "Pay with Cash"
+  "payWithCash": "Pay with Cash",
+  "thisMonth": "this month"
 }
