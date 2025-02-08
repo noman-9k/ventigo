@@ -135,11 +135,11 @@
   "deleteCost": "Видалити витрату",
   "areYouSureYouWantToDeleteThisCost": "Ви впевнені, що хочете видалити цю витрату?",
   "noData": "Немає даних",
-  "regncus": "Reg\nCus",
+  "regncus": "Регул\nЗамо",
   "cardnpay": "Готівка\nПлатити",
   "employeendata": "Працівник\nІнформація",
   "customerndata": "Клієнт\nІнформація",
-  "newncus": "Новий\nCus",
+  "newncus": "Новий\nЗамо",
   "total": "Всього",
   "deleted": "Видалено",
   "itemDeleted": "Елемент видалено",
@@ -220,5 +220,11 @@
   "unitOfnmeasurement": "Одиниці\\nвимірювання",
   "payWithCash": "Оплата готівкою",
   "adminMaine": "Адмін панель",
-  "thisMonth": "цього місяця"
+  "thisMonth": "цього місяця",
+"charactersLeft": "залишилося символів",
+  "selectDates": "Виберіть дати",
+  "exportReports": "Експортувати звіти",
+  "exportCosts": "Витрати на експорт",
+  "reportsLimit": "Ліміт звітів",
+  "costsLimit": "Обмеження витрат"
 }

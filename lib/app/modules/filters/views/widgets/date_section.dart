@@ -24,7 +24,7 @@ class DateSection extends GetView<FiltersController> {
                   onPressed: () {
                     controller.selectDateRange(context);
                   },
-                  child: Text('Select Dates')),
+                  child: Text(S.of(context).selectDates)),
             ),
             10.horizontalSpace,
             Expanded(

@@ -5,6 +5,7 @@ import 'package:ventigo/extensions/text_field_extension.dart';
 
 import '../../../../config/app_colors.dart';
 import '../../../../config/app_text.dart';
+import '../../../../generated/l10n.dart';
 import '../../../app_services/local_storage_service.dart';
 import '../../../constants/app_constants.dart';
 import '../dialog_functions.dart';
@@ -40,11 +41,11 @@ class _SetMaxRowsDialogState extends State<SetMaxRowsDialog> {
             ],
             keyboardType: TextInputType.number,
             decoration: InputDecoration(border: InputBorder.none),
-          ).withLabel('Reports Limit'),
+          ).withLabel(S.of(context).reportsLimit),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             TextButton(
               onPressed: () => saveMaxDataRows(context, maxDataRowsController.text),
-              child: Text('Done'),
+              child: Text(S.of(context).done),
             )
           ]),
           TextField(
@@ -54,7 +55,7 @@ class _SetMaxRowsDialogState extends State<SetMaxRowsDialog> {
             ],
             keyboardType: TextInputType.number,
             decoration: InputDecoration(border: InputBorder.none),
-          ).withLabel('Costs Limit'),
+          ).withLabel(S.of(context).costsLimit),
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
             // TextButton(
             //   onPressed: () => Navigator.pop(context),
@@ -62,7 +63,7 @@ class _SetMaxRowsDialogState extends State<SetMaxRowsDialog> {
             // ),
             TextButton(
               onPressed: () => saveMaxCostsRows(context, maxCostRowsController.text),
-              child: Text('Done'),
+              child: Text(S.of(context).done),
             )
           ]),
         ],

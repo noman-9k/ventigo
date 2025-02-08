@@ -53,7 +53,7 @@
   "addReport": "Добавить отчет",
   "nameOfClient": "Имя клиента",
   "lastNameOfClient": "Фамилия клиента",
-  "phoneNumber": "Номер телефона",
+  "phoneNumber": "телефона Номер",
   "newCustomer": "Новый клиент",
   "regularCustomer": "Постоянный клиент",
   "paymentByCard": "Оплата наличными",
@@ -220,5 +220,11 @@
   "unitOfnmeasurement": "Единицы\\nизмерения",
   "payWithCash": "Оплатаналичными",
   "adminMaine": "Панель админа",
-  "thisMonth": "в этом месяце"
+  "thisMonth": "в этом месяце",
+  "charactersLeft": "осталось символов",
+  "selectDates": "Выберите даты",
+  "exportReports": "Экспортировать отчеты",
+  "exportCosts": "Экспортные расходы",
+  "reportsLimit": "Лимит отчетов",
+  "costsLimit": "Лимит затрат"
 }

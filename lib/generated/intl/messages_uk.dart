@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Змінити пароль адміністратора"),
         "characters": MessageLookupByLibrary.simpleMessage("Символів"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("залишилося символів"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Перевірте свій файл у папці завантажень"),
@@ -95,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Вартість матеріалів для цієї послуги"),
         "costs": MessageLookupByLibrary.simpleMessage("Витрата"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Фільтер витрат"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Обмеження витрат"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("діапазон ціни"),
         "costsTracker": MessageLookupByLibrary.simpleMessage("Графік витрат"),
@@ -159,6 +162,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Щороку"),
         "exit": MessageLookupByLibrary.simpleMessage("Вихід"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Вийти з додатку"),
+        "exportCosts":
+            MessageLookupByLibrary.simpleMessage("Витрати на експорт"),
+        "exportReports":
+            MessageLookupByLibrary.simpleMessage("Експортувати звіти"),
         "exportToFile": MessageLookupByLibrary.simpleMessage("Експорт у файл"),
         "exported": MessageLookupByLibrary.simpleMessage("Експортовано"),
         "filters": MessageLookupByLibrary.simpleMessage("Фільтри"),
@@ -203,7 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newCustomer": MessageLookupByLibrary.simpleMessage("Новий клієнт"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Новий пароль"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Нових\nклієнтів"),
-        "newncus": MessageLookupByLibrary.simpleMessage("Новий\nCus"),
+        "newncus": MessageLookupByLibrary.simpleMessage("Новий\nЗамо"),
         "no": MessageLookupByLibrary.simpleMessage("Ні"),
         "noCostsAddedYet":
             MessageLookupByLibrary.simpleMessage("Витрати ще не додано"),
@@ -269,7 +276,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Політика конфіденційності"),
         "regnclient":
             MessageLookupByLibrary.simpleMessage("Постійних\nклієнтів"),
-        "regncus": MessageLookupByLibrary.simpleMessage("Reg\nCus"),
+        "regncus": MessageLookupByLibrary.simpleMessage("Регул\nЗамо"),
         "regularCustomer":
             MessageLookupByLibrary.simpleMessage("Постійний клієнт"),
         "relatedncategories":
@@ -280,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Інтервал повторення"),
         "report": MessageLookupByLibrary.simpleMessage("Звіт: "),
         "reports": MessageLookupByLibrary.simpleMessage("Звіти"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Ліміт звітів"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Графік рапортів"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Скинути тут"),
@@ -302,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Виберіть категорії зі списку\n(можливо кілька)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Виберіть категорію"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Виберіть дати"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Виберіть мову"),
         "selectQuestion":
             MessageLookupByLibrary.simpleMessage("Виберіть питання"),

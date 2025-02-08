@@ -63,7 +63,7 @@ class ReportsTable extends GetView<MainController> {
                         label: Center(child: Text(S.of(context).customerndata, style: headerStyle)), fixedWidth: 300),
                     DataColumn2(
                         label: Center(
-                          child: Text(S.of(context).phone + '\n' + S.of(context).number,
+                          child: Text(S.of(context).number + '\n' + S.of(context).phone,
                               style: headerStyle, textAlign: TextAlign.center),
                         ),
                         size: ColumnSize.M),

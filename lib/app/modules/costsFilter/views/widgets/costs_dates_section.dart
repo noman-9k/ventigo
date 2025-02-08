@@ -25,7 +25,7 @@ class CostsDateSection extends GetView<CostsFilterController> {
                 onPressed: () {
                   controller.selectDateRange(context);
                 },
-                child: Text('Select Dates')),
+                child: Text(S.of(context).selectDates)),
           ),
           10.horizontalSpace,
           Expanded(

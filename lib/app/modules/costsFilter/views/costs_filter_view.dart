@@ -80,14 +80,14 @@ class CostsFilterView extends GetView<CostsFilterController> {
               20.verticalSpace,
               CustomDropDown(
                 items: [
-                  'Milliliters',
-                  'KW/h',
-                  'Kilograms',
-                  'Letters',
-                  'Pieces',
-                  'Grams',
-                  'Boxes',
-                  'No Unit of Measurements',
+                  S.of(context).milliliters,
+                  S.of(context).kwh,
+                  S.of(context).kilograms,
+                  S.of(context).letters,
+                  S.of(context).pieces,
+                  S.of(context).grams,
+                  S.of(context).boxes,
+                  S.of(context).noUnitOfMeasurements,
                 ],
                 title: S.of(context).unitOfMeasurements,
                 onChanged: (p0) {

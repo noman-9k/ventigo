@@ -220,5 +220,11 @@
   "noOfnunits": "No. of\\nunits",
   "unitOfnmeasurement": "Unit of\\nMeasurement",
   "payWithCash": "Pay with Cash",
-  "thisMonth": "this month"
+  "thisMonth": "this month",
+  "charactersLeft": "characters left",
+  "selectDates": "Select Dates",
+  "exportReports": "Export Reports",
+  "exportCosts": "Export Costs",
+  "reportsLimit": "Reports Limit",
+  "costsLimit": "Costs Limit"
 }

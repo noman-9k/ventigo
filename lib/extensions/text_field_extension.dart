@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:ventigo/config/app_text.dart';
 
 import '../config/app_styles.dart';
+import '../generated/l10n.dart';
 
 extension TextFieldExtension on Widget {
   Widget withLabel(String label) {
@@ -100,7 +101,7 @@ class _MaxCountTextFieldState extends State<_MaxCountTextField> {
           },
         ),
         Text(
-          "${widget.maxLength - _charCount} characters left",
+          "${widget.maxLength - _charCount}" + S.of(context).characters,
           style: AppStyles.lightStyle(),
         ),
       ],

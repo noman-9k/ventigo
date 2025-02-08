@@ -83,6 +83,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Промяна на администраторска парола"),
         "characters": MessageLookupByLibrary.simpleMessage("знаци"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("characters left"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Проверете файла си в папката за изтегляния"),
@@ -100,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "costs": MessageLookupByLibrary.simpleMessage("разходи"),
         "costsFilter":
             MessageLookupByLibrary.simpleMessage("Филтър за разходи"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Costs Limit"),
         "costsPriceRange": MessageLookupByLibrary.simpleMessage(
             "Ценови диапазон на разходите"),
         "costsTracker":
@@ -171,6 +174,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit": MessageLookupByLibrary.simpleMessage("Изход"),
         "exitApp":
             MessageLookupByLibrary.simpleMessage("Изход от приложението"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Export Costs"),
+        "exportReports": MessageLookupByLibrary.simpleMessage("Export Reports"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("Експортиране във файл"),
         "exported": MessageLookupByLibrary.simpleMessage("Експортирано"),
@@ -287,6 +292,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Интервал на повторение"),
         "report": MessageLookupByLibrary.simpleMessage("Доклад: "),
         "reports": MessageLookupByLibrary.simpleMessage("Отчети"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Reports Limit"),
         "reportssalesTracker": MessageLookupByLibrary.simpleMessage(
             "Отчети/Проследяване на продажби"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Нулирайте тук"),
@@ -309,6 +315,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Изберете категории от списъка\n(може няколко)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Изберете категория"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Select Dates"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Избор на език"),
         "selectQuestion":
             MessageLookupByLibrary.simpleMessage("Изберете въпрос"),

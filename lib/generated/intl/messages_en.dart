@@ -76,6 +76,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Change Admin Password"),
         "characters": MessageLookupByLibrary.simpleMessage("characters"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("characters left"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Check your file in the Downloads folder"),
@@ -90,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Cost of Materials for this Services"),
         "costs": MessageLookupByLibrary.simpleMessage("Costs"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Costs Filter"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Costs Limit"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Costs Price Range"),
         "costsTracker": MessageLookupByLibrary.simpleMessage("Costs Tracker"),
@@ -151,6 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Every Year"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Export Costs"),
+        "exportReports": MessageLookupByLibrary.simpleMessage("Export Reports"),
         "exportToFile": MessageLookupByLibrary.simpleMessage("Export to file"),
         "exported": MessageLookupByLibrary.simpleMessage("Exported"),
         "filters": MessageLookupByLibrary.simpleMessage("Filters"),
@@ -267,6 +272,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Repetition Interval"),
         "report": MessageLookupByLibrary.simpleMessage("Report: "),
         "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Reports Limit"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Reports/Sales Tracker"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Reset here"),
@@ -287,6 +293,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Select Categories from the list\n(maybe several)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Select Category"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Select Dates"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "selectQuestion":

@@ -71,13 +71,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Anuluj"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Płatność gotówką: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Płatność\ngotówką"),
-        "cashnpay": MessageLookupByLibrary.simpleMessage("Płatność\\ngotówką"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Płatność\ngotówką"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategorie"),
         "category": MessageLookupByLibrary.simpleMessage("Kategoria: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Nazwa kategorii"),
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Zmienić hasło administratora"),
         "characters": MessageLookupByLibrary.simpleMessage("znaki"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("pozostało znaków"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Sprawdź swój plik w folderze Pobrane"),
@@ -92,6 +94,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Koszt materiałów dla tej usługi"),
         "costs": MessageLookupByLibrary.simpleMessage("Koszty"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Filtr kosztów"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Limit kosztów"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Zakres cen kosztów"),
         "costsTracker":
@@ -155,6 +158,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Co rok"),
         "exit": MessageLookupByLibrary.simpleMessage("Wyjście"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Wyjdź z aplikacji"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Koszty eksportu"),
+        "exportReports":
+            MessageLookupByLibrary.simpleMessage("Eksportuj raporty"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("Eksportuj do pliku Excel"),
         "exported": MessageLookupByLibrary.simpleMessage("Eksportowano"),
@@ -213,8 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noNewnclient":
             MessageLookupByLibrary.simpleMessage("Nowych\nklientów"),
         "noOfnservices": MessageLookupByLibrary.simpleMessage("Ilośc\nusług"),
-        "noOfnunits":
-            MessageLookupByLibrary.simpleMessage("Liczba\\njednostek"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("Liczba\njednostek"),
         "noRegnclient":
             MessageLookupByLibrary.simpleMessage("Stałych\nklientów"),
         "noServicesFoundnpleaseAddANewService":
@@ -225,7 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "notLimited": MessageLookupByLibrary.simpleMessage("Nieograniczony"),
         "note": MessageLookupByLibrary.simpleMessage("Notatka"),
         "numOfnservices": MessageLookupByLibrary.simpleMessage("Liczba\nusług"),
-        "number": MessageLookupByLibrary.simpleMessage("liczba"),
+        "number": MessageLookupByLibrary.simpleMessage("Numer"),
         "numberOfServiceForMonth":
             MessageLookupByLibrary.simpleMessage("Suma usług za miesiąc"),
         "numberOfUnits":
@@ -275,6 +280,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Interwał powtórzeń"),
         "report": MessageLookupByLibrary.simpleMessage("Raport: "),
         "reports": MessageLookupByLibrary.simpleMessage("Raporty"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Limit raportów"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Harmonogram raportów"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Zresetuj tutaj"),
@@ -296,6 +302,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Wybierz kategorie z listy\n(może być kilka)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Wybierz kategorię"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Wybierz daty"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Wybierz język"),
         "selectQuestion":
             MessageLookupByLibrary.simpleMessage("Wybierz pytanie"),
@@ -334,11 +341,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalPriceServicePerDay":
             MessageLookupByLibrary.simpleMessage("Suma cen usług dziennie"),
         "uniquenclients":
-            MessageLookupByLibrary.simpleMessage("Unikalni\\nużytkownicy"),
+            MessageLookupByLibrary.simpleMessage("Unikalni\nużytkownicy"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Jednostka miary"),
         "unitOfnmeasurement":
-            MessageLookupByLibrary.simpleMessage("jednostki\\nmiary"),
+            MessageLookupByLibrary.simpleMessage("jednostki\nmiary"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Cena jednostkowa"),
         "userName": MessageLookupByLibrary.simpleMessage("Imię Użytkownika"),
         "viewServicesBefore7Days": MessageLookupByLibrary.simpleMessage(

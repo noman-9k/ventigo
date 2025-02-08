@@ -60,7 +60,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                                 ),
                                 width: 0.4.sw,
                                 height: 50.h,
-                                child: Center(child: AppText.boldText('Select Dates', color: AppColors.whiteColor)),
+                                child: Center(
+                                    child: AppText.boldText(S.of(context).selectDates, color: AppColors.whiteColor)),
                               ),
                             ),
                           ),
@@ -155,7 +156,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                   return AppColors.lightYellow;
                 }),
                 columnSpacing: 10,
-                minWidth: 700,
+                minWidth: 800,
                 horizontalMargin: 10,
                 columns: <DataColumn2>[
                   DataColumn2(
@@ -249,7 +250,7 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                               textAlign: TextAlign.center,
                             )),
                       ),
-                      size: ColumnSize.M),
+                      size: ColumnSize.L),
                 ],
                 rows: List<DataRow>.generate(
                   snapshot.data!.length,

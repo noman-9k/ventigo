@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Cambiar contraseña de administrador"),
         "characters": MessageLookupByLibrary.simpleMessage("characteres"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("characters left"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Revisa tu archivo en la carpeta Descargas"),
@@ -93,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Costo de los Materiales para estos Servicios"),
         "costs": MessageLookupByLibrary.simpleMessage("costos"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Filtro de Costos"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Costs Limit"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Rango de Precios de Costos"),
         "costsTracker":
@@ -159,6 +162,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exit": MessageLookupByLibrary.simpleMessage("Salir"),
         "exitApp":
             MessageLookupByLibrary.simpleMessage("Salir de la aplicación"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Export Costs"),
+        "exportReports": MessageLookupByLibrary.simpleMessage("Export Reports"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("Exportar a archivo"),
         "exported": MessageLookupByLibrary.simpleMessage("Exportado"),
@@ -281,6 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Intervalo de repetición"),
         "report": MessageLookupByLibrary.simpleMessage("Informe: "),
         "reports": MessageLookupByLibrary.simpleMessage("Informes"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Reports Limit"),
         "reportssalesTracker": MessageLookupByLibrary.simpleMessage(
             "Reportes/Rastreador de Ventas"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Restablecer aquí"),
@@ -302,6 +308,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Seleccione categorías de la lista\n(tal vez varias)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Seleccionar categoría"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Select Dates"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Seleccionar idioma"),
         "selectQuestion":

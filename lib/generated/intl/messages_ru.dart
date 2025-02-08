@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Изменить пароль администратора"),
         "characters": MessageLookupByLibrary.simpleMessage("символов"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("осталось символов"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Файл находится в папке «Загрузки»"),
@@ -95,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Стоимость материалов для этой услуги"),
         "costs": MessageLookupByLibrary.simpleMessage("Расход"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Фильтр расходов"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Лимит затрат"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Диапазон цен расходов"),
         "costsTracker": MessageLookupByLibrary.simpleMessage("График расходов"),
@@ -159,6 +162,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Каждый год"),
         "exit": MessageLookupByLibrary.simpleMessage("Выход"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Выйти из приложения"),
+        "exportCosts":
+            MessageLookupByLibrary.simpleMessage("Экспортные расходы"),
+        "exportReports":
+            MessageLookupByLibrary.simpleMessage("Экспортировать отчеты"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("Экспорт в файл Excel"),
         "exported": MessageLookupByLibrary.simpleMessage("Експортовано"),
@@ -246,7 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Оплата наличными"),
         "percentage": MessageLookupByLibrary.simpleMessage("Процент"),
         "phone": MessageLookupByLibrary.simpleMessage("Телефон"),
-        "phoneNumber": MessageLookupByLibrary.simpleMessage("Номер телефона"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("телефона Номер"),
         "pieces": MessageLookupByLibrary.simpleMessage("Штуки"),
         "piecesLitersKilograms":
             MessageLookupByLibrary.simpleMessage("Штуки, литры,килограммы … "),
@@ -280,6 +287,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Интервал повторения"),
         "report": MessageLookupByLibrary.simpleMessage("Отчет: "),
         "reports": MessageLookupByLibrary.simpleMessage("Отчеты"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Лимит отчетов"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("График рапортов"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Сбросить здесь"),
@@ -302,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Выберите категории из списка\n(может быть несколько)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Выберите категорию"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Выберите даты"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Выбрать язык"),
         "selectQuestion":
             MessageLookupByLibrary.simpleMessage("Выберите вопрос"),

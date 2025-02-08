@@ -79,6 +79,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword": MessageLookupByLibrary.simpleMessage(
             "Administratorkennwort ändern"),
         "characters": MessageLookupByLibrary.simpleMessage("Zeichen"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("characters left"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Überprüfen Sie Ihre Datei im Download-Ordner"),
@@ -93,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Materialkosten für diesen Dienst"),
         "costs": MessageLookupByLibrary.simpleMessage("Kosten"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Kostenfilter"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Costs Limit"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Kostenpreisspanne"),
         "costsTracker": MessageLookupByLibrary.simpleMessage("Kosten-Tracker"),
@@ -158,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Jedes Jahr"),
         "exit": MessageLookupByLibrary.simpleMessage("Beenden"),
         "exitApp": MessageLookupByLibrary.simpleMessage("App beenden"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Export Costs"),
+        "exportReports": MessageLookupByLibrary.simpleMessage("Export Reports"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("In Datei exportieren"),
         "exported": MessageLookupByLibrary.simpleMessage("Exportiert"),
@@ -278,6 +283,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Wiederholungsintervall"),
         "report": MessageLookupByLibrary.simpleMessage("Bericht:"),
         "reports": MessageLookupByLibrary.simpleMessage("Berichte"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Reports Limit"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Berichte/Verkaufs-Tracker"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Hier zurücksetzen"),
@@ -300,6 +306,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Wählen Sie Kategorien aus der Liste\n(eventuell mehrere)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Kategorie auswählen"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Select Dates"),
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Sprache auswählen"),
         "selectQuestion":

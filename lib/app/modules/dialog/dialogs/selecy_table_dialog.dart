@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ventigo/app/modules/dialog/dialog_modal.dart';
 
+import '../../../../generated/l10n.dart';
+
 class SelectExportTableDialog extends StatelessWidget {
   const SelectExportTableDialog({super.key, required this.onDataExport, required this.onExpenseExport});
   final Function() onDataExport;
@@ -11,8 +13,8 @@ class SelectExportTableDialog extends StatelessWidget {
     return DialogModel(
       child: Column(
         children: [
-          ListTile(title: Text('Export Reports'), onTap: onDataExport),
-          ListTile(title: Text('Export Costs'), onTap: onExpenseExport),
+          ListTile(title: Text(S.of(context).exportReports), onTap: onDataExport),
+          ListTile(title: Text(S.of(context).exportCosts), onTap: onExpenseExport),
         ],
       ),
     );

@@ -77,6 +77,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeAdminPassword":
             MessageLookupByLibrary.simpleMessage("Změnit heslo správce"),
         "characters": MessageLookupByLibrary.simpleMessage("characters"),
+        "charactersLeft":
+            MessageLookupByLibrary.simpleMessage("characters left"),
         "checkYourFileInTheDownloadsFolder":
             MessageLookupByLibrary.simpleMessage(
                 "Zkontrolujte svůj soubor ve složce Stažené soubory"),
@@ -91,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Náklady na materiály pro tyto služby"),
         "costs": MessageLookupByLibrary.simpleMessage("náklady"),
         "costsFilter": MessageLookupByLibrary.simpleMessage("Filtr nákladů"),
+        "costsLimit": MessageLookupByLibrary.simpleMessage("Costs Limit"),
         "costsPriceRange":
             MessageLookupByLibrary.simpleMessage("Cenové rozpětí nákladů"),
         "costsTracker":
@@ -153,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "everyYear": MessageLookupByLibrary.simpleMessage("Každý rok"),
         "exit": MessageLookupByLibrary.simpleMessage("Exit"),
         "exitApp": MessageLookupByLibrary.simpleMessage("Ukončit aplikaci"),
+        "exportCosts": MessageLookupByLibrary.simpleMessage("Export Costs"),
+        "exportReports": MessageLookupByLibrary.simpleMessage("Export Reports"),
         "exportToFile":
             MessageLookupByLibrary.simpleMessage("Exportovat do souboru"),
         "exported": MessageLookupByLibrary.simpleMessage("Exportováno"),
@@ -265,6 +270,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Interval opakování"),
         "report": MessageLookupByLibrary.simpleMessage("Report: "),
         "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+        "reportsLimit": MessageLookupByLibrary.simpleMessage("Reports Limit"),
         "reportssalesTracker":
             MessageLookupByLibrary.simpleMessage("Sledování přehledů/prodejů"),
         "resetHere": MessageLookupByLibrary.simpleMessage("Resetovat zde"),
@@ -286,6 +292,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Vyberte kategorie ze seznamu\n(možná několik)"),
         "selectCategory":
             MessageLookupByLibrary.simpleMessage("Vyberte kategorii"),
+        "selectDates": MessageLookupByLibrary.simpleMessage("Select Dates"),
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Vybrat jazyk"),
         "selectQuestion":
             MessageLookupByLibrary.simpleMessage("Vyberte otázku"),
