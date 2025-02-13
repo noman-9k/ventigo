@@ -6,6 +6,7 @@ import 'package:ventigo/app/modules/dialog/dialog_functions.dart';
 import 'package:ventigo/extensions/date_extension.dart';
 
 import '../../../../../config/app_colors.dart';
+import '../../../../../config/app_theme.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../db/drift_db.dart';
 import '../../../userData/widgets/user_data_table.dart';
@@ -29,86 +30,96 @@ class CostsTable extends StatelessWidget {
             return Column(
               children: [
                 Expanded(
-                  child: DataTable2(
-                    headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-                      if (states.contains(MaterialState.selected))
-                        return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-                      return AppColors.lightYellow;
-                    }),
-                    columnSpacing: 10,
-                    horizontalMargin: 20,
-                    minWidth: 1200,
-                    columns: [
-                      DataColumn2(
-                          fixedWidth: 170,
-                          label: Text(
-                            S.of(context).nameOfncost,
-                            textAlign: TextAlign.start,
-                            style: headerStyle,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          )),
-                      DataColumn2(
-                          label: Center(
-                        child: Text(
-                          S.of(context).deductednfromTax,
-                          textAlign: TextAlign.center,
-                          style: headerStyle,
+                  child: Theme(
+                    data: AppTheme().appThemeDate.copyWith(
+                          scrollbarTheme: ScrollbarThemeData(
+                            // transparent track
+                            // trackColor: MaterialStateProperty.all(Colors.transparent),
+                            // trackBorderColor: MaterialStateProperty.all(Colors.transparent),
+                            thumbColor: MaterialStateProperty.all(Colors.transparent),
+                          ),
                         ),
-                      )),
-                      DataColumn2(
-                          size: ColumnSize.M,
-                          label:
-                              Center(child: Text(S.of(context).date, textAlign: TextAlign.center, style: headerStyle))),
-                      DataColumn2(
-                          label: Center(child: Center(child: Text(S.of(context).noOfnunits, style: headerStyle)))),
-                      DataColumn2(
-                          size: ColumnSize.L,
-                          label: Center(
-                              child: Center(
-                                  child: Text(S.of(context).price + '\n' + S.of(context).cost, style: headerStyle)))),
-                      DataColumn2(
-                          size: ColumnSize.L,
-                          label: Center(
-                              child: Text(
-                            S.of(context).unitOfnmeasurement,
-                            style: headerStyle,
+                    child: DataTable2(
+                      headingRowColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+                        if (states.contains(MaterialState.selected))
+                          return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+                        return AppColors.lightYellow;
+                      }),
+                      columnSpacing: 10,
+                      horizontalMargin: 20,
+                      minWidth: 1200,
+                      columns: [
+                        DataColumn2(
+                            fixedWidth: 170,
+                            label: Text(
+                              S.of(context).nameOfncost,
+                              textAlign: TextAlign.start,
+                              style: headerStyle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            )),
+                        DataColumn2(
+                            label: Center(
+                          child: Text(
+                            S.of(context).deductednfromTax,
                             textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                          ))),
-                      DataColumn2(
-                          label: Center(
-                        child:
-                            Text(S.of(context).systematicnexpenditure, textAlign: TextAlign.center, style: headerStyle),
-                      )),
-                      DataColumn2(
-                          fixedWidth: 250,
-                          label: Center(
-                              child: Text(S.of(context).relatedncategories,
-                                  textAlign: TextAlign.center, style: headerStyle))),
-                    ],
-                    rows: tableItems
-                        .map((tableItem) => DataRow(
-                                onLongPress: () => pushConfirmDialog(
-                                      context,
-                                      title: S.of(context).deleteCost,
-                                      message: S.of(context).areYouSureYouWantToDeleteThisCost,
-                                      onDone: () => DbController.to.appDb.deleteCost(tableItem.id),
-                                    ),
-                                color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-                                  return Colors.grey[000];
-                                }),
-                                cells: [
-                                  DataCell(Text(tableItem.name ?? '')),
-                                  DataCell(YesNoWidget(tableItem.isDeductFromTax)),
-                                  DataCell(Text(tableItem.date?.smallDate() ?? '')),
-                                  DataCell(Center(child: Text(tableItem.numberOfUnits.toString()))),
-                                  DataCell(Center(child: Text(tableItem.price.toString()))),
-                                  DataCell(Center(child: Text(tableItem.unitsOfMeasurement ?? ''))),
-                                  DataCell(YesNoWidget(tableItem.isSystematic)),
-                                  DataCell(Center(child: Text(tableItem.categories.join(', ')))),
-                                ]))
-                        .toList(),
+                            style: headerStyle,
+                          ),
+                        )),
+                        DataColumn2(
+                            size: ColumnSize.M,
+                            label: Center(
+                                child: Text(S.of(context).date, textAlign: TextAlign.center, style: headerStyle))),
+                        DataColumn2(
+                            label: Center(child: Center(child: Text(S.of(context).noOfnunits, style: headerStyle)))),
+                        DataColumn2(
+                            size: ColumnSize.L,
+                            label: Center(
+                                child: Center(
+                                    child: Text(S.of(context).price + '\n' + S.of(context).cost, style: headerStyle)))),
+                        DataColumn2(
+                            size: ColumnSize.L,
+                            label: Center(
+                                child: Text(
+                              S.of(context).unitOfnmeasurement,
+                              style: headerStyle,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                            ))),
+                        DataColumn2(
+                            label: Center(
+                          child: Text(S.of(context).systematicnexpenditure,
+                              textAlign: TextAlign.center, style: headerStyle),
+                        )),
+                        DataColumn2(
+                            fixedWidth: 250,
+                            label: Center(
+                                child: Text(S.of(context).relatedncategories,
+                                    textAlign: TextAlign.center, style: headerStyle))),
+                      ],
+                      rows: tableItems
+                          .map((tableItem) => DataRow(
+                                  onLongPress: () => pushConfirmDialog(
+                                        context,
+                                        title: S.of(context).deleteCost,
+                                        message: S.of(context).areYouSureYouWantToDeleteThisCost,
+                                        onDone: () => DbController.to.appDb.deleteCost(tableItem.id),
+                                      ),
+                                  color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
+                                    return Colors.grey[000];
+                                  }),
+                                  cells: [
+                                    DataCell(Text(tableItem.name ?? '')),
+                                    DataCell(YesNoWidget(tableItem.isDeductFromTax)),
+                                    DataCell(Text(tableItem.date?.smallDate() ?? '')),
+                                    DataCell(Center(child: Text(tableItem.numberOfUnits.toString()))),
+                                    DataCell(Center(child: Text(tableItem.price.toString()))),
+                                    DataCell(Center(child: Text(tableItem.unitsOfMeasurement ?? ''))),
+                                    DataCell(YesNoWidget(tableItem.isSystematic)),
+                                    DataCell(Center(child: Text(tableItem.categories.join(', ')))),
+                                  ]))
+                          .toList(),
+                    ),
                   ),
                 ),
                 // Text(

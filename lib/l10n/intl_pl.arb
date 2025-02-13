@@ -192,7 +192,7 @@
   "statistic": "Statystyka",
   "costOfMaterials": "Koszt\nmateriałów",
   "pricenservices": "Cena\nusług",
-  "netProfit": "Zysk(=cena usługi- cena materiałów-procent\npracownika- wydatki za ten okres)",
+  "netProfit": "Zysk\n(cena uslug-materialy-% pracownika-wydatki za ten okres)",
   "whatIsTheNameOfYourFavoritePet": "Jak ma na imię Twoje ulubione zwierzątko?",
   "whatsYourChildhoodNickname": "Jaki jest Twój pseudonim z dzieciństwa?",
   "whatIsYourFavoriteMovie": "Jaki jest Twój ulubiony film?",
@@ -226,5 +226,6 @@
   "exportReports": "Eksportuj raporty",
   "exportCosts": "Koszty eksportu",
   "reportsLimit": "Limit raportów",
-  "costsLimit": "Limit kosztów"
+  "costsLimit": "Limit kosztów",
+  "phonennumber": "Telefon\nNumber"
 }

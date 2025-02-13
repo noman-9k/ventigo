@@ -47,8 +47,7 @@ class UserDataTable extends StatelessWidget {
                 DataColumn2(label: Text(S.of(context).customerndata, style: headerStyle), fixedWidth: 300),
                 DataColumn2(
                     label: Center(
-                      child: Text(S.of(context).number + '\n' + S.of(context).phone,
-                          style: headerStyle, textAlign: TextAlign.center),
+                      child: Text(S.of(context).phonennumber, style: headerStyle, textAlign: TextAlign.center),
                     ),
                     size: ColumnSize.L),
                 DataColumn2(label: Center(child: Text(S.of(context).date, style: headerStyle)), fixedWidth: 100),

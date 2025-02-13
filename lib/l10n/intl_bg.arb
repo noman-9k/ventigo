@@ -226,5 +226,6 @@
   "exportReports": "Export Reports",
   "exportCosts": "Export Costs",
   "reportsLimit": "Reports Limit",
-  "costsLimit": "Costs Limit"
+  "costsLimit": "Costs Limit",
+  "phonennumber": "Phone\\nNumber"
 }

@@ -226,5 +226,6 @@
   "exportReports": "Экспортировать отчеты",
   "exportCosts": "Экспортные расходы",
   "reportsLimit": "Лимит отчетов",
-  "costsLimit": "Лимит затрат"
+  "costsLimit": "Лимит затрат",
+  "phonennumber": "Phone\\nNumber"
 }

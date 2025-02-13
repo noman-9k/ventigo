@@ -221,10 +221,11 @@
   "payWithCash": "Оплата готівкою",
   "adminMaine": "Адмін панель",
   "thisMonth": "цього місяця",
-"charactersLeft": "залишилося символів",
+  "charactersLeft": "залишилося символів",
   "selectDates": "Виберіть дати",
   "exportReports": "Експортувати звіти",
   "exportCosts": "Витрати на експорт",
   "reportsLimit": "Ліміт звітів",
-  "costsLimit": "Обмеження витрат"
+  "costsLimit": "Обмеження витрат",
+  "phonennumber": "Phone\\nNumber"
 }

@@ -253,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone": MessageLookupByLibrary.simpleMessage("Teléfono"),
         "phoneNumber":
             MessageLookupByLibrary.simpleMessage("Número de teléfono"),
+        "phonennumber": MessageLookupByLibrary.simpleMessage("Phone\\nNumber"),
         "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
             "Pieces, Liters, Kilograms .. "),
         "pleaseAddACategoryFirstToAddAnEmployee":

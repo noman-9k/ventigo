@@ -101,7 +101,7 @@ class _MaxCountTextFieldState extends State<_MaxCountTextField> {
           },
         ),
         Text(
-          "${widget.maxLength - _charCount}" + S.of(context).characters,
+          S.of(context).characters + ' ${_charCount}/${widget.maxLength} ',
           style: AppStyles.lightStyle(),
         ),
       ],

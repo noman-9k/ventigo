@@ -155,8 +155,8 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                     return Theme.of(context).colorScheme.primary.withOpacity(0.08);
                   return AppColors.lightYellow;
                 }),
-                columnSpacing: 10,
-                minWidth: 800,
+                columnSpacing: 8,
+                minWidth: 1200,
                 horizontalMargin: 10,
                 columns: <DataColumn2>[
                   DataColumn2(
@@ -241,16 +241,17 @@ class NewStatisticsResults extends GetView<NewStatisticsResultsController> {
                       ),
                       size: ColumnSize.M),
                   DataColumn2(
-                      label: Center(
-                        child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                            child: Text(
-                              S.of(context).netProfit,
-                              style: headerStyle,
-                              textAlign: TextAlign.center,
-                            )),
+                    label: SizedBox(
+                      width: 350,
+                      child: Text(
+                        S.of(context).netProfit,
+                        style: headerStyle,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
                       ),
-                      size: ColumnSize.L),
+                    ),
+                    fixedWidth: 350,
+                  ),
                 ],
                 rows: List<DataRow>.generate(
                   snapshot.data!.length,

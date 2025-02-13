@@ -33,6 +33,13 @@ class DashboardController extends GetxController {
   onTapped(value) async {
     if (value == 1) {
       if (!await PurchaseService.to.isPurchased()) {
+        if (kDebugMode) {
+          currentIndex.value = 1;
+          update();
+
+          return;
+        }
+
         await PurchaseService.to.checkSubscription();
 
         currentIndex.value = 2;

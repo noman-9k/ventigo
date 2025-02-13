@@ -69,7 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cardPay": MessageLookupByLibrary.simpleMessage("Cash Pay: "),
         "cardnpay": MessageLookupByLibrary.simpleMessage("Cash\nPay"),
-        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\\nPay"),
+        "cashnpay": MessageLookupByLibrary.simpleMessage("Cash\nPay"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "category": MessageLookupByLibrary.simpleMessage("Category: "),
         "categoryName": MessageLookupByLibrary.simpleMessage("Category Name"),
@@ -195,7 +195,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameOfTheService":
             MessageLookupByLibrary.simpleMessage("Create a Service"),
         "nameOfncost": MessageLookupByLibrary.simpleMessage("Name of\nCost"),
-        "netProfit": MessageLookupByLibrary.simpleMessage("Net\nprofit"),
+        "netProfit": MessageLookupByLibrary.simpleMessage(
+            "Profit\n(serv.price-materials-employee % - costs in this period)"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("New Customer"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "newnclient": MessageLookupByLibrary.simpleMessage("New\nClient"),
@@ -211,7 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noNewnclient": MessageLookupByLibrary.simpleMessage("No. New\nClient"),
         "noOfnservices":
             MessageLookupByLibrary.simpleMessage("No of\nservices"),
-        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\\nunits"),
+        "noOfnunits": MessageLookupByLibrary.simpleMessage("No. of\nunits"),
         "noRegnclient": MessageLookupByLibrary.simpleMessage("No. Reg\nClient"),
         "noServicesFoundnpleaseAddANewService":
             MessageLookupByLibrary.simpleMessage(
@@ -240,6 +241,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Percentage"),
         "phone": MessageLookupByLibrary.simpleMessage("Phone"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "phonennumber": MessageLookupByLibrary.simpleMessage("Phone\\nNumber"),
         "pieces": MessageLookupByLibrary.simpleMessage("Pieces"),
         "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
             "Pieces, Liters, Kilograms .. "),
@@ -332,11 +334,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "totalPriceServicePerDay":
             MessageLookupByLibrary.simpleMessage("Total Price Service per day"),
         "uniquenclients":
-            MessageLookupByLibrary.simpleMessage("Unique\\nClients"),
+            MessageLookupByLibrary.simpleMessage("Unique\nClients"),
         "unitOfMeasurements":
             MessageLookupByLibrary.simpleMessage("Unit of measurements"),
         "unitOfnmeasurement":
-            MessageLookupByLibrary.simpleMessage("Unit of\\nMeasurement"),
+            MessageLookupByLibrary.simpleMessage("Unit of\nMeasurement"),
         "unitPrice": MessageLookupByLibrary.simpleMessage("Unit Price"),
         "userName": MessageLookupByLibrary.simpleMessage("User Name"),
         "viewServicesBefore7Days":

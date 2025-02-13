@@ -18,17 +18,15 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+        _current != null, 'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -1980,10 +1978,10 @@ class S {
     );
   }
 
-  /// `Net\nprofit`
+  /// `Profit\n(serv.price-materials-employee % - costs in this period)`
   String get netProfit {
     return Intl.message(
-      'Net\nprofit',
+      'Profit\n(serv.price-materials-employee % - costs in this period)',
       name: 'netProfit',
       desc: '',
       args: [],
@@ -2173,7 +2171,7 @@ class S {
   /// `Unique\nClients`
   String get uniquenclients {
     return Intl.message(
-      'Unique\\nClients',
+      'Unique\nClients',
       name: 'uniquenclients',
       desc: '',
       args: [],
@@ -2203,7 +2201,7 @@ class S {
   /// `Cash\nPay`
   String get cashnpay {
     return Intl.message(
-      'Cash\\nPay',
+      'Cash\nPay',
       name: 'cashnpay',
       desc: '',
       args: [],
@@ -2223,7 +2221,7 @@ class S {
   /// `No. of\nunits`
   String get noOfnunits {
     return Intl.message(
-      'No. of\\nunits',
+      'No. of\nunits',
       name: 'noOfnunits',
       desc: '',
       args: [],
@@ -2233,7 +2231,7 @@ class S {
   /// `Unit of\nMeasurement`
   String get unitOfnmeasurement {
     return Intl.message(
-      'Unit of\\nMeasurement',
+      'Unit of\nMeasurement',
       name: 'unitOfnmeasurement',
       desc: '',
       args: [],
@@ -2329,6 +2327,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Phone\nNumber`
+  String get phonennumber {
+    return Intl.message(
+      'Phone\\nNumber',
+      name: 'phonennumber',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -2337,13 +2345,13 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'bg'),
-      Locale.fromSubtags(languageCode: 'cs'),
-      Locale.fromSubtags(languageCode: 'de'),
-      Locale.fromSubtags(languageCode: 'es'),
       Locale.fromSubtags(languageCode: 'pl'),
-      Locale.fromSubtags(languageCode: 'ru'),
-      Locale.fromSubtags(languageCode: 'uk'),
+      // Locale.fromSubtags(languageCode: 'bg'),
+      // Locale.fromSubtags(languageCode: 'cs'),
+      // Locale.fromSubtags(languageCode: 'de'),
+      // Locale.fromSubtags(languageCode: 'es'),
+      // Locale.fromSubtags(languageCode: 'ru'),
+      // Locale.fromSubtags(languageCode: 'uk'),
     ];
   }
 

@@ -192,7 +192,7 @@
   "statistic": "Statistic",
   "costOfMaterials": "Cost of\nmaterials",
   "pricenservices": "Price\nservices",
-  "netProfit": "Net\nprofit",
+  "netProfit": "Profit\n(serv.price-materials-employee % - costs in this period)",
   "whatIsTheNameOfYourFavoritePet": "What is the name of your favorite pet?",
   "whatsYourChildhoodNickname": "Whats Your Childhood Nickname?",
   "whatIsYourFavoriteMovie": "What is your favorite movie?",
@@ -200,7 +200,7 @@
   "whatIsYourFavoriteFood": "What is your favorite food?",
   "whatIsYourFavoriteSong": "What is your favorite song?",
   "whatIsYourFavoriteColor": "What is your favorite color?",
-  "number": "number",
+  "number": "number",   
   "viewServicesBefore7Days": "View Services before 7 days",
   "canAddAPhoneNumber": "Can add a phone number",
   "invalidPin": "Invalid pin",
@@ -211,13 +211,13 @@
   "paymentByCash": "Payment By Cash",
   "optionally": " (Optionally)",
   "piecesLitersKilograms": "Pieces, Liters, Kilograms .. ",
-  "uniquenclients": "Unique\\nClients",
+  "uniquenclients": "Unique\nClients",
   "setMaxRowsToKeep": "Set Max Rows to Keep",
   "employeeInformation": "Employee Information",
-  "cashnpay": "Cash\\nPay",
+  "cashnpay": "Cash\nPay",
   "electricityWaterGasEtc": "Electricity, Water, Gas, etc",
-  "noOfnunits": "No. of\\nunits",
-  "unitOfnmeasurement": "Unit of\\nMeasurement",
+  "noOfnunits": "No. of\nunits",
+  "unitOfnmeasurement": "Unit of\nMeasurement",
   "payWithCash": "Pay with Cash",
   "adminMaine": "Admin Maine",
   "thisMonth": "this month",
@@ -226,5 +226,8 @@
   "exportReports": "Export Reports",
   "exportCosts": "Export Costs",
   "reportsLimit": "Reports Limit",
-  "costsLimit": "Costs Limit"
+  "costsLimit": "Costs Limit",
+  "phonennumber": "Phone\\nNumber"
+
+
 }

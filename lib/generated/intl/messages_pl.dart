@@ -202,7 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Utwórz usługę"),
         "nameOfncost": MessageLookupByLibrary.simpleMessage("Nazwa\nkosztu"),
         "netProfit": MessageLookupByLibrary.simpleMessage(
-            "Zysk(=cena usługi- cena materiałów-procent\npracownika- wydatki za ten okres)"),
+            "Zysk\n(cena uslug-materialy-% pracownika-wydatki za ten okres)"),
         "newCustomer": MessageLookupByLibrary.simpleMessage("Nowy klient"),
         "newPassword": MessageLookupByLibrary.simpleMessage("Nowe hasło"),
         "newnclient": MessageLookupByLibrary.simpleMessage("Nowy\nclient"),
@@ -249,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Procent"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Numer telefonu"),
+        "phonennumber": MessageLookupByLibrary.simpleMessage("Telefon\nNumber"),
         "pieces": MessageLookupByLibrary.simpleMessage("Sztuki"),
         "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
             "Sztuki, Litry, Kilogramy ... "),

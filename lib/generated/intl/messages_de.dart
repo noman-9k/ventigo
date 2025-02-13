@@ -251,6 +251,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "percentage": MessageLookupByLibrary.simpleMessage("Prozentsatz"),
         "phone": MessageLookupByLibrary.simpleMessage("Telefon"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
+        "phonennumber": MessageLookupByLibrary.simpleMessage("Phone\\nNumber"),
         "pieces": MessageLookupByLibrary.simpleMessage("Stück"),
         "piecesLitersKilograms": MessageLookupByLibrary.simpleMessage(
             "Pieces, Liters, Kilograms .. "),
